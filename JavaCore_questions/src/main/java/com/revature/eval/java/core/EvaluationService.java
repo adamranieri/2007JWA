@@ -31,7 +31,24 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		// Split string by spaces 
+		String[] split_strings = phrase.split("[-\\s]");
+		
+		String Acr="";
+		for(int i = 0; i < split_strings.length;i++){
+			Acr += split_strings[i].substring(0,1).toUpperCase();
+			
+		}
+		
+		//System.out.println(Acronym);
+		// grab first letter of each word from array
+		
+		// append to an empty string
+		
+		
+		return Acr;
+		//return null;
 	}
 
 	/**
@@ -85,16 +102,32 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
+			
+			// Check that all sides are exactly the same.
+			if (this.sideOne == this.sideTwo && this.sideOne == this.sideThree && this.sideTwo == this.sideThree) {
+				return true;
+			}
+			
 			return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
+			
+			// Check that atleast two of the sides are exactly the same.
+			if(this.sideOne == this.sideTwo || this.sideOne == this.sideThree || this.sideTwo == this.sideThree) {
+				return true;
+			}
 			return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+			// Check that all sides are different
+			if (this.sideOne != this.sideTwo && this.sideOne != this.sideThree && this.sideTwo != this.sideThree) {
+				return true;
+			}
+			
 			return false;
 		}
 
