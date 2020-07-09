@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dev.zakaria.calculator.Calculator;
-import dev.zakaria.calculator.CalculatorInterface;
-import dev.zakaria.calculator.IlligalTempException;
+import dev.zakaria.calculator.MyAwesomeCalculator;
+import dev.zakaria.calculator.ScienceCalculator;
+import dev.zakaria.calculator.IllegalTemperatureException;
 
 class CalculatorTests {
 
 //	public static CalculatorInterface c = null;
-	public static CalculatorInterface c = new Calculator();
+	public static ScienceCalculator c = new MyAwesomeCalculator();
 	//Positive tests
 		@Test // makes JUnit know this is a test to be run
 		void fToCTest1() {
@@ -47,7 +47,7 @@ class CalculatorTests {
 		void fNumberBellowZero() {
 			//-459.67
 			
-			Exception e = assertThrows(IlligalTempException.class, ()->{
+			Exception e = assertThrows(IllegalTemperatureException.class, ()->{
 				c.fToC(-500);
 			});
 			
@@ -59,12 +59,12 @@ class CalculatorTests {
 				c.cToF(-800);
 				fail();
 			}
-			catch (IlligalTempException e) {
+			catch (IllegalTemperatureException e) {
 				// TODO: handle exception
 				e.getMessage();
 			}
 			
-			Exception e = assertThrows(IlligalTempException.class, ()->{
+			Exception e = assertThrows(IllegalTemperatureException.class, ()->{
 				c.fToC(-800);
 			});
 			

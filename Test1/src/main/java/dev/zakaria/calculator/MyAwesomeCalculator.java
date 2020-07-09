@@ -1,8 +1,8 @@
 package dev.zakaria.calculator;
 
-public class Calculator implements CalculatorInterface{
+public class MyAwesomeCalculator implements ScienceCalculator{
 
-	public Calculator() {
+	public MyAwesomeCalculator() {
 		// TODO Auto-generated constructor stub
 	}
 	

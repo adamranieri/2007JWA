@@ -1,6 +1,6 @@
 package dev.zakaria.calculator;
 
-public interface CalculatorInterface {
+public interface ScienceCalculator {
 	
 	// convert between tempratures celcius to F
 	double fToC(double temperature);
