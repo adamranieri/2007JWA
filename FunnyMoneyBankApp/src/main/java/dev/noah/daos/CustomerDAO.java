@@ -4,22 +4,23 @@ import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
+import dev.noah.exceptions.CustomerCreationException;
 
 public interface CustomerDAO {
 
 	
 	// Create
-	Customer createCustomer(Customer customer, String username, String password);
+	Customer createCustomer(Customer customer) throws CustomerCreationException;
 	Customer addAccount(Account account);
 	
 	// Read
 	Customer getCustomerByCId(int id);
-	Set<Customer> getAllCustomers(Customer customer);
+	Set<Customer> getAllCustomers();
 	
 	
 	// Update
-	Customer updateUsername(Customer customer);
-	Customer updatePassword(Customer customer);
+	Customer updateCustomer(Customer customer);
+
 	
 	
 	

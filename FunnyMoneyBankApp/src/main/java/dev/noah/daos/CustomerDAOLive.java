@@ -1,11 +1,13 @@
 package dev.noah.daos;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
+import dev.noah.exceptions.CustomerCreationException;
 
 public class CustomerDAOLive implements CustomerDAO {
 
@@ -26,19 +28,19 @@ public class CustomerDAOLive implements CustomerDAO {
 		}
 	}
 
-	public Customer createCustomer(Customer customer, String username, String password) {
+	public Customer createCustomer(Customer customer) throws CustomerCreationException {
 
-		try {
-			username.charAt(6);
-			password.charAt(6);
-			customer.setcId(customerCounter);
-			customerCounter++;
-			return customer;
-		} catch (Exception e) {
-			System.out.println("Username or password is not at least 6 characters");
-			return null;
-
+		// Making sure that we have at least five characters for the username and password
+		if(customer.getUsername().length() < 4 || customer.getPassword().length() < 4) {
+			throw new CustomerCreationException();
 		}
+
+		customer.setcId(customerCounter);
+		customer_table.put(customerCounter, customer);
+		customerCounter++;
+
+		return customer;
+
 	}
 
 	public Customer addAccount(Account account) {
@@ -47,24 +49,21 @@ public class CustomerDAOLive implements CustomerDAO {
 	}
 
 	public Customer getCustomerByCId(int id) {
-		// TODO Auto-generated method stub
+		
+		return customer_table.get(id);
+	}
+
+	public Set<Customer> getAllCustomers() {
+		Set<Customer> customers = new HashSet<Customer>(customer_table.values());
+		return customers;
+	}
+
+	public Customer updateCustomer(Customer customer) {
+		customer_table.put(customer.getcId(), customer);
 		return null;
 	}
 
-	public Set<Customer> getAllCustomers(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Customer updateUsername(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Customer updatePassword(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	public boolean deleteCustomer(Customer customer) {
 		// TODO Auto-generated method stub
