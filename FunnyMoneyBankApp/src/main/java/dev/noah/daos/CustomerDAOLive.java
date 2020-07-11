@@ -27,14 +27,14 @@ public class CustomerDAOLive implements CustomerDAO {
 	}
 
 	public Customer createCustomer(Customer customer, String username, String password) {
-		
+
 		try {
 			username.charAt(6);
 			password.charAt(6);
 			customer.setcId(customerCounter);
 			customerCounter++;
 			return customer;
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Username or password is not at least 6 characters");
 			return null;
 
