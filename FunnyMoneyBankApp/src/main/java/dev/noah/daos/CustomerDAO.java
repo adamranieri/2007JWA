@@ -4,14 +4,14 @@ import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationException;
+import dev.noah.exceptions.CustomerCreationLengthException;
 
 public interface CustomerDAO {
 
 	
 	// Create
-	Customer createCustomer(Customer customer) throws CustomerCreationException;
-	Customer addAccount(Account account);
+	Customer createCustomer(Customer customer);
+	
 	
 	// Read
 	Customer getCustomerByCId(int id);
@@ -20,13 +20,9 @@ public interface CustomerDAO {
 	
 	// Update
 	Customer updateCustomer(Customer customer);
-
-	
-	
 	
 	
 	// Delete
-	boolean deleteCustomer(Customer customer);
-	boolean removeAccount(int id);
+	boolean deleteCustomer(int id);
 	
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationException;
+import dev.noah.exceptions.CustomerCreationLengthException;
 
 public class CustomerDAOLive implements CustomerDAO {
 
@@ -28,13 +28,10 @@ public class CustomerDAOLive implements CustomerDAO {
 		}
 	}
 
-	public Customer createCustomer(Customer customer) throws CustomerCreationException {
+	@Override
+	public Customer createCustomer(Customer customer) {
 
-		// Making sure that we have at least five characters for the username and password
-		if(customer.getUsername().length() < 4 || customer.getPassword().length() < 4) {
-			throw new CustomerCreationException();
-		}
-
+				
 		customer.setcId(customerCounter);
 		customer_table.put(customerCounter, customer);
 		customerCounter++;
@@ -43,36 +40,36 @@ public class CustomerDAOLive implements CustomerDAO {
 
 	}
 
-	public Customer addAccount(Account account) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	@Override
 	public Customer getCustomerByCId(int id) {
 		
 		return customer_table.get(id);
 	}
 
+	@Override
 	public Set<Customer> getAllCustomers() {
 		Set<Customer> customers = new HashSet<Customer>(customer_table.values());
 		return customers;
 	}
 
+	@Override
 	public Customer updateCustomer(Customer customer) {
 		customer_table.put(customer.getcId(), customer);
-		return null;
+		return customer;
 	}
 
 	
 
-	public boolean deleteCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean removeAccount(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteCustomer(int id) {
+		
+		Customer cus = customer_table.remove(id);
+		
+		if(cus == null) {
+			return false;
+		}
+		else {
+		return true;
+		}
 	}
 
 }
