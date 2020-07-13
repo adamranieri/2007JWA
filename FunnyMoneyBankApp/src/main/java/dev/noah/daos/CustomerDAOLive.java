@@ -11,7 +11,7 @@ import dev.noah.exceptions.CustomerCreationLengthException;
 
 public class CustomerDAOLive implements CustomerDAO {
 
-	private static CustomerDAOLive cDAO = null;
+	private static CustomerDAOLive cdao = null;
 	private Map<Integer, Customer> customer_table = new HashMap<Integer, Customer>(); // Temp database
 	private int customerCounter = 1;
 
@@ -20,11 +20,11 @@ public class CustomerDAOLive implements CustomerDAO {
 	};
 
 	public static CustomerDAO getCustomerDAO() {
-		if (cDAO == null) {
-			cDAO = new CustomerDAOLive();
-			return cDAO;
+		if (cdao == null) {
+			cdao = new CustomerDAOLive();
+			return cdao;
 		} else {
-			return cDAO;
+			return cdao;
 		}
 	}
 

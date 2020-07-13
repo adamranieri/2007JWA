@@ -73,20 +73,9 @@ class CustomerDAOTests {
 	
 	// Negative Tests
 
-	@Test
-	@Order(6)
-	void negCreateCustomer() {
-
-		Exception e = assertThrows(CustomerCreationLengthException.class, () -> {
-			Customer cus = new Customer(0, "tes", "pallly", null);
-			cdao.createCustomer(cus);
-		});
-
-		Assertions.assertEquals("The username or password is less than 4 characters", e.getMessage());
-	}
 	
 	@Test
-	@Order(7)
+	@Order(6)
 	void negDeleteCustomerTest() {
 		boolean cus = cdao.deleteCustomer(6);
 		System.out.println();
@@ -95,14 +84,14 @@ class CustomerDAOTests {
 	}
 	
 	@Test
-	@Order(8)
+	@Order(7)
 	void negGetCustomerByCId() {
 		Customer cus = cdao.getCustomerByCId(17);
 		Assertions.assertEquals(null, cus);
 	}
 	
 	@Test
-	@Order(9)
+	@Order(8)
 	void negDeleteCustomer() {
 		boolean cus = cdao.deleteCustomer(0);
 		Assertions.assertEquals(false, cus);

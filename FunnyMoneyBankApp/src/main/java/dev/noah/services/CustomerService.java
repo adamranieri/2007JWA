@@ -16,17 +16,17 @@ public interface CustomerService {
 	 * @param accounts
 	 * @return
 	 */
-	Customer createCustomer(Customer customer) throws CustomerCreationLengthException;
+	Customer createCustomer(String username, String password) throws CustomerCreationLengthException;
 	
 	//Read
-	Set<Customer> getAllCustomers(Customer customer);
-	Customer getCustomer(Customer customer);
+	Set<Customer> getAllCustomers();
+	Customer getCustomerByCId(int i);
 	
 	//Update
-	Customer changeCustomerUsername(Customer customer, String username);
-	Customer changeCustomerPassword(Customer customer, String password);
-	
+	Customer changeCustomerUsernameById(int id, String username);
+	Customer changeCustomerPasswordById(int id, String password);
+
 	//Destroy
-	Customer deleteCustomer(int id);
+	Boolean deleteCustomerByCId(int id);
 	
 }
