@@ -1,5 +1,7 @@
 package dev.ranieri.services;
 
+import java.util.Set;
+
 import dev.ranieri.entities.School;
 import dev.ranieri.exceptions.NegativeCapcityException;
 
@@ -11,7 +13,7 @@ public interface SchoolService {
 	School getSchoolById(int id);
 	School updateSchool(School school);
 	boolean deleteSchoolById(int id);
-	
+	Set<School> getAllSchools();
 	
 	//Higher level operations that are not just pure CRUD
 	/**
@@ -24,6 +26,8 @@ public interface SchoolService {
 	School increaseCapcity(School school, int amount) throws NegativeCapcityException;
 	
 	School renameSchool(School school, String newName);
+	
+	Set<School> getSchoolsByCapacityLessThan(int num);
 	
 	
 

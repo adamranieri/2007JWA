@@ -1,5 +1,8 @@
 package dev.ranieri.services;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import dev.ranieri.daos.SchoolDAO;
 import dev.ranieri.daos.SchoolDAOLocal;
 import dev.ranieri.entities.School;
@@ -48,6 +51,26 @@ public class SchoolServiceImpl implements SchoolService {
 	@Override
 	public boolean deleteSchoolById(int id) {	
 		return sdao.deleteSchool(id);
+	}
+
+	@Override
+	public Set<School> getAllSchools() {
+		return sdao.getAllSchools();
+	}
+
+	@Override
+	public Set<School> getSchoolsByCapacityLessThan(int num) {
+		
+		Set<School> smallSchools = new HashSet<School>();
+		
+		for(School school : sdao.getAllSchools()) {
+			
+			if(school.getCapacity()<num) {
+				smallSchools.add(school);
+			}
+		}
+		
+		return smallSchools;
 	}
 
 }
