@@ -24,6 +24,8 @@ class SchoolDAOtests {
 	@Order(1)
 	void createSchool() {
 		School monHigh = new School(0,"Monongalia Highschool", 600);// all entities have an id of zero until you save/create them
+		// JSON format {"sId":0, "name": "Monongalia Highschool", "capacity": 600}
+		
 		sdao.createSchool(monHigh);
 		Assertions.assertNotEquals(0, monHigh.getsId());
 	}
