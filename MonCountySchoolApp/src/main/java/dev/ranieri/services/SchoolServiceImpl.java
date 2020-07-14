@@ -40,4 +40,14 @@ public class SchoolServiceImpl implements SchoolService {
 		return sdao.getSchoolById(id);
 	}
 
+	@Override
+	public School updateSchool(School school) {		
+		return sdao.updateSchool(school);
+	}
+
+	@Override
+	public boolean deleteSchoolById(int id) {	
+		return sdao.deleteSchool(id);
+	}
+
 }
