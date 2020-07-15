@@ -1,28 +1,24 @@
 package dev.kusch.entities;
 
 public class Account {
-
-	private static int currentId = 1;
 	
 	private int aId;
 	private int cId;
 	private String name;
-	private float balance;
+	private double balance;
 	
-	Account(String name, float balance, int cId) {
+	public Account(String name, double d, int cId, int aid) {
 		this.name = name;
-		this.balance = balance;
+		this.balance = d;
 		this.cId = cId;
-		this.aId = currentId;
-		++currentId;
+		this.aId = aid;
 	}
 	
-	Account(String name, int cId) {
+	public Account(String name, int cId, int aid) {
 		this.name = name;
 		this.balance = 0;
 		this.cId = cId;
-		this.aId = currentId;
-		++currentId;
+		this.aId = aid;
 	}
 
 	@Override
@@ -54,7 +50,7 @@ public class Account {
 		this.name = name;
 	}
 
-	public float getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 

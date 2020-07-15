@@ -4,20 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-	private static int currentId = 1;
-	
 	// hold data retrieved from database
 	private int cId;
 	private String username;
 	private String password;
 	private List<Account> accounts;
 	
-	public Customer(String username, String password) {
+	public Customer(String username, String password, int cid) {
 		this.username = username;
 		this.password = password;
 		this.accounts = new ArrayList<Account>();
-		this.cId = currentId;
-		++currentId;
+		this.cId = cid;
 	}
 
 	@Override
