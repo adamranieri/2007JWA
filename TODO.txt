@@ -1,0 +1,4 @@
+Project 0: 
+	- write POSTMAN api tests
+	- implement services and controllers
+
