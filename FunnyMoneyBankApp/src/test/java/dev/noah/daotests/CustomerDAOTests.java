@@ -9,9 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import dev.noah.daos.CustomerDAO;
-import dev.noah.daos.CustomerDAOLive;
+import dev.noah.daos.CustomerDAOLocal;
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationLengthException;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -19,7 +18,7 @@ import org.junit.jupiter.api.Order;
 @TestMethodOrder(OrderAnnotation.class)
 class CustomerDAOTests {
 
-	public static CustomerDAO cdao = CustomerDAOLive.getCustomerDAO();
+	public static CustomerDAO cdao = CustomerDAOLocal.getCustomerDAO();
 
 	// Positive Tests
 
@@ -28,8 +27,8 @@ class CustomerDAOTests {
 	void createCustomer() {
 		Customer cus = new Customer(0, "TheLegend27", "SuperCoolPasswrod", null);
 		cdao.createCustomer(cus);
-		Assertions.assertNotEquals(0, cus.getcId()); // Confirming an object is created and not at zero(all entities
-														// start at zero until saved/created)
+		Assertions.assertNotEquals(0, cus.getcId());
+													
 	}
 
 	@Test
@@ -90,10 +89,4 @@ class CustomerDAOTests {
 		Assertions.assertEquals(null, cus);
 	}
 	
-	@Test
-	@Order(8)
-	void negDeleteCustomer() {
-		boolean cus = cdao.deleteCustomer(0);
-		Assertions.assertEquals(false, cus);
-	}
 }

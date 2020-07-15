@@ -7,21 +7,20 @@ import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationLengthException;
 
-public class CustomerDAOLive implements CustomerDAO {
+public class CustomerDAOLocal implements CustomerDAO {
 
-	private static CustomerDAOLive cdao = null;
+	private static CustomerDAOLocal cdao = null;
 	private Map<Integer, Customer> customer_table = new HashMap<Integer, Customer>(); // Temp database
 	private int customerCounter = 1;
 
-	private CustomerDAOLive() {
+	private CustomerDAOLocal() {
 
 	};
 
 	public static CustomerDAO getCustomerDAO() {
 		if (cdao == null) {
-			cdao = new CustomerDAOLive();
+			cdao = new CustomerDAOLocal();
 			return cdao;
 		} else {
 			return cdao;

@@ -4,7 +4,6 @@ import java.util.Set;
 
 import dev.noah.entities.Account;
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationLengthException;
 
 public interface CustomerDAO {
 

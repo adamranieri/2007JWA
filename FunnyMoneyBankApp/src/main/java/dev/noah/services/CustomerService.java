@@ -3,7 +3,6 @@ package dev.noah.services;
 import java.util.Set;
 
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationLengthException;
 
 public interface CustomerService {
 
@@ -16,15 +15,14 @@ public interface CustomerService {
 	 * @param accounts
 	 * @return
 	 */
-	Customer createCustomer(String username, String password) throws CustomerCreationLengthException;
+	Customer createCustomer(Customer cus);
 	
 	//Read
 	Set<Customer> getAllCustomers();
 	Customer getCustomerByCId(int i);
 	
 	//Update
-	Customer changeCustomerUsernameById(int id, String username);
-	Customer changeCustomerPasswordById(int id, String password);
+	Customer updateCustomer(Customer customer);
 
 	//Destroy
 	Boolean deleteCustomerByCId(int id);

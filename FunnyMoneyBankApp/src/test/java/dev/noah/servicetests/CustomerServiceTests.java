@@ -13,7 +13,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 
 import dev.noah.entities.Customer;
-import dev.noah.exceptions.CustomerCreationLengthException;
 import dev.noah.services.CustomerService;
 import dev.noah.services.CustomerServiceImpl;
 
@@ -29,18 +28,23 @@ class CustomerServiceTests {
 	
 	@Test
 	@Order(1)
-	void createCustomer() throws CustomerCreationLengthException {
-		Customer cus = cserv.createCustomer("Scary Terry","SomeKindOfPassword");
+	void createCustomer() {
+		Customer cus = new Customer();
+		cserv.createCustomer(cus);
 		Assertions.assertEquals(1, cus.getcId());
 	}
 	
 	@Test
 	@Order(2)
-	void getAllCustomers() throws CustomerCreationLengthException {
-		Customer cus = cserv.createCustomer("TheNewGuy", "SomeWhatOfAPassword");
-		cus = cserv.createCustomer("SomePerson", "The real password");
-		cus = cserv.createCustomer("ExtraPerson", "The real password");
-		cus = cserv.createCustomer("CreativePerson", "The real password");
+	void getAllCustomers() {
+		Customer cus = new Customer();
+		cserv.createCustomer(cus);
+		cus = new Customer();
+		cserv.createCustomer(cus);
+		cus = new Customer();
+		cserv.createCustomer(cus);
+		cus = new Customer();
+		cserv.createCustomer(cus);
 		Set<Customer> getCustomers = cserv.getAllCustomers();
 		Assertions.assertEquals(5, getCustomers.size());
 	}
@@ -55,38 +59,20 @@ class CustomerServiceTests {
 	
 	@Test
 	@Order(4)
-	void changeCustomerUsername() {
+	void updateCustomer() {
 		Customer cus = cserv.getCustomerByCId(1);
-		cserv.changeCustomerUsernameById(cus.getcId(), "SummerSalt");
+		cus.setUsername("SummerSalt");
+		cserv.updateCustomer(cus);
 		
-		Assertions.assertEquals("SummerSalt", cus.getUsername());
+		Assertions.assertEquals("SummerSalt", cserv.getCustomerByCId(1).getUsername());
 	}
 
-	@Test
-	@Order(5)
-	void changeCustomerPassword() {
-		Customer cus = cserv.getCustomerByCId(1);
-		cserv.changeCustomerPasswordById(cus.getcId(), "Tastey");
-		Assertions.assertEquals("Tastey", cus.getPassword());
-	}
+
 	
 	@Test
 	@Order(6)
 	void deleteCustomerByCId() {
 		boolean result = cserv.deleteCustomerByCId(1);
 		Assertions.assertEquals(true, result);
-	}
-	
-	//Negative Tests
-	
-	@Test
-	@Order(7)
-	void negCreateCustomer() {
-
-		Exception e = assertThrows(CustomerCreationLengthException.class, () -> {
-			Customer cus = cserv.createCustomer( "tes", "pallly");
-		});
-
-		Assertions.assertEquals("The username or password is less than 4 characters", e.getMessage());
 	}
 }
