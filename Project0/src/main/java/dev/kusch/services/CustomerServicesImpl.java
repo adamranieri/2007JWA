@@ -5,7 +5,7 @@ import java.util.Set;
 import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
 
-public class CustomerServicesLocal implements CustomerServices {
+public class CustomerServicesImpl implements CustomerServices {
 
 	@Override
 	public Customer addCustomer(Customer customer) {

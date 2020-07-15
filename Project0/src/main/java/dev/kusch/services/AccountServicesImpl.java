@@ -4,7 +4,7 @@ import java.util.Set;
 
 import dev.kusch.entities.Account;
 
-public class AccountServicesLocal implements AccountServices{
+public class AccountServicesImpl implements AccountServices{
 
 	@Override
 	public Account startAccount(Account account) {

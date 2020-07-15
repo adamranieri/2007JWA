@@ -3,12 +3,12 @@ package dev.kusch.controllers;
 import com.google.gson.Gson;
 
 import dev.kusch.services.AccountServices;
-import dev.kusch.services.AccountServicesLocal;
+import dev.kusch.services.AccountServicesImpl;
 import io.javalin.http.Handler;
 
 public class AccountControllers {
 
-	public static AccountServices sserv = new AccountServicesLocal();
+	public static AccountServices sserv = new AccountServicesImpl();
 	private static Gson gson = new Gson();
 	
 	public static Handler getAllAccounts = (ctx) -> {
