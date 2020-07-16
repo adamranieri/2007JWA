@@ -1,5 +1,8 @@
 package dev.ranieri.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 // Your entities are objects that are for storing information
 // they contain very little to no logic
 // they should be Java Beans
@@ -9,6 +12,8 @@ public class School {
 	
 	private String name;	
 	private int capacity;
+	
+	private Set<Student> students = new HashSet<Student>();
 	
 	public School() {
 		super();
@@ -39,7 +44,15 @@ public class School {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+
 	@Override
 	public String toString() {
 		return "School [sId=" + sId + ", name=" + name + ", capacity=" + capacity + "]";

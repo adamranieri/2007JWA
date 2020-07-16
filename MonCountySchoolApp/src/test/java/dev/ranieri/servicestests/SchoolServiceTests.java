@@ -44,7 +44,7 @@ class SchoolServiceTests {
 	}
 
 	// Negative test
-	
+	@Test
 	void capcityIsNegative() {
 		
 		Exception e = assertThrows(NegativeCapcityException.class, ()->{
@@ -54,6 +54,13 @@ class SchoolServiceTests {
 		
 		Assertions.assertEquals("School capcity cannot be less than 0", e.getMessage());
 		
+	}
+	
+	@Test
+	void getSchoolById() {
+		School school = sserv.getSchoolById(5);
+		System.out.println(school);
+		System.out.println(school.getStudents());
 	}
 
 }
