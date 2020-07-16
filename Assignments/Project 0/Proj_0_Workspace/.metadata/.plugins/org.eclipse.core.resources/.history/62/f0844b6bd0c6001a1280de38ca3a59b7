@@ -1,0 +1,14 @@
+package dev.alsabea.daos;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+public interface CustomerDao extends CRUD<Customer>{
+
+	
+	List<Account> getAccounts ( int id);
+	
+}

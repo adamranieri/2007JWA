@@ -1,0 +1,48 @@
+You have to create a backend API for a banking application. This application is designed to allow users to perform CRUD operations
+to a database.
+
+An API is a way for someone to communicate with your program. Think of a Scanner. However we will be using HTTP and 
+web servers.
+
+*we have not covered APIs yet. However you will still be able to create DAOs and services and tests
+
+
+- technical requirements
+Application must follow Controller - Service - DAO layering and be coded to interfaces
+The API must follow RESTful Naming conventions.
+Every Service and DAO method must be tested in JUnit 
+Every URL endpoint must have a postman test
+
+There are two resources for this REST API (you will be recieving a more detailed breakdown when we cover APIs monday)
+- customers
+- Accounts
+
+customers have accounts 
+
+customer attributes
+	- cId
+	- username
+	- password
+	- array of accounts
+
+account attributes
+	- aId
+	- cId (owner of the account)
+	- account name i.e "My Savings" or "Vacation Fund"
+	- balance
+
+*negative balances are not allowed this should cause an exception
+
+Bonus
+- Transaction Resource
+	- this resource keeps track of updates to the balance of customers accounts
+
+- Transaction attributes
+	- tId
+	- aId (account this transaction is part of)
+	- prevBalance
+	- finalBalance
+
+
+
+	

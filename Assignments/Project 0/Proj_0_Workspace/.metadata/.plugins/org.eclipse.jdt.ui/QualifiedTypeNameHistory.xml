@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="dev.alsabea.entities.Customer"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
+    <fullyQualifiedTypeName name="dev.alsabea.daos.CustomerDao"/>
+    <fullyQualifiedTypeName name="dev.alsabea.daos.impl.CustomerDaoImpl"/>
+    <fullyQualifiedTypeName name="dev.alsabea.connectionUtils.ConnectionUtils"/>
+    <fullyQualifiedTypeName name="dev.alsabea.exceptions.DaoException"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="dev.alsabea.daos.AccountDao"/>
+</qualifiedTypeNameHistroy>

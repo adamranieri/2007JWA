@@ -1,0 +1,5 @@
+package dev.alsabea.exceptions;
+
+public class DaoException {
+
+}

@@ -1,0 +1,12 @@
+package dev.alsabea.daos;
+
+import java.sql.Connection;
+
+import dev.alsabea.entities.Account;
+
+public interface AccountDao extends CRUD<Account>{
+
+	
+	
+
+}

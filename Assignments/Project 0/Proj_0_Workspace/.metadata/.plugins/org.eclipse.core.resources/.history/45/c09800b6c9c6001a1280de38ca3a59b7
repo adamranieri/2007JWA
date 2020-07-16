@@ -1,0 +1,67 @@
+package dev.alsabea.daos.impl;
+
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import dev.alsabea.daos.AccountDao;
+import dev.alsabea.daos.AccountDao;
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Account;
+
+public class AccountDaoImpl implements AccountDao{
+
+private static AccountDaoImpl dao = null;
+	
+	private AccountDaoImpl() {
+		
+	};
+	
+	public static AccountDao getAccountDao() {
+		
+		if(dao == null) {
+			dao = new AccountDaoImpl();
+			return dao;
+		}else {
+			return dao;
+		}
+		
+	}
+
+	
+	 private static final String insertSQL = "INSERT INTO account (customer_id, "
+	 		+ "account_name, balance) VALUES (?, ?, ?);";
+	
+	public Account create(Connection con, Account c) {
+		return c;
+		
+	}
+
+	public boolean delete(int id) {
+		return false;
+
+		
+		
+	}
+	
+	public Account update(Account t) {
+		return t;
+	
+	}
+
+	public Account retrieveById(int id) {
+		return null;
+
+	
+	}
+	
+	public List<Account> retrieveAllAccounts() {
+		return null;
+		
+	}
+
+	
+}

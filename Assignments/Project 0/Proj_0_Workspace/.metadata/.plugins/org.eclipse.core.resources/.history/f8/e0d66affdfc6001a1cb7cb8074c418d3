@@ -1,0 +1,10 @@
+package dev.alsabea.exceptions;
+
+public class DaoException extends Exception{
+	
+	DaoException(String message){
+		super (message)
+	}
+	
+
+}

@@ -1,0 +1,64 @@
+package dev.alsabea.daos.impl;
+
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import dev.alsabea.daos.AccountDao;
+import dev.alsabea.daos.AccountDao;
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Account;
+
+public class AccountDaoImpl implements AccountDao{
+
+private static AccountDaoImpl dao = null;
+	
+	private AccountDaoImpl() {
+		
+	};
+	
+	public static AccountDao getAccountDao() {
+		
+		if(dao == null) {
+			dao = new AccountDaoImpl();
+			return dao;
+		}else {
+			return dao;
+		}
+		
+	}
+
+	
+	 private static final String insertSQL = "INSERT INTO account (customer_id, "
+	 		+ "account_name, balance) VALUES (?, ?, ?);";
+
+	@Override
+	public Account create(Connection con, Account t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(Connection con, int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Account retrieveById(Connection con, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Account update(Connection con, Account t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+	
+}

@@ -1,0 +1,27 @@
+package dev.alsabea.daos;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+public interface AccountDao extends CRUD<Account>{
+
+	static Account extractFromRs(ResultSet rs) {
+		Account a = new Account();
+		
+		try {
+			c.setCustomerId(rs.getInt("customer_id"));
+			c.setUsername(rs.getString("username"));
+			c.setPassword(rs.getString("password"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return c;
+	}
+
+}

@@ -1,0 +1,8 @@
+package dev.alsabea.daos;
+
+public class TestCustomerDao {
+	
+	
+	//List<Account> getAccounts ( int id);
+
+}

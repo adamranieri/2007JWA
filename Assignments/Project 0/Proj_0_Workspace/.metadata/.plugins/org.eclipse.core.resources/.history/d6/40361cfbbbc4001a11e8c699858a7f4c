@@ -1,0 +1,7 @@
+package dev.alsabea.daos.impl;
+
+import dev.alsabea.daos.AccountDao;
+
+public class AccountDaoImpl implements AccountDao{
+
+}

@@ -1,0 +1,109 @@
+package dev.alsabea.daos.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import dev.alsabea.connectionUtils.ConnectionUtils;
+import dev.alsabea.daos.CustomerDao;
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+import dev.alsabea.exceptions.DaoException;
+
+public class CustomerDaoImpl implements CustomerDao {
+	
+	
+private static CustomerDaoImpl dao = null;
+	
+	private CustomerDaoImpl() {
+		
+	};
+	
+	public static CustomerDao getCustomerDao() {
+		
+		if(dao == null) {
+			dao = new CustomerDaoImpl();
+			return dao;
+		}else {
+			return dao;
+		}
+		
+	}
+
+	private final static String insertMySql= "insert into proj_0_db.Customer (username, password) values (?, ?) ";
+	
+	@Override
+	public boolean create(Customer t) {
+		Connection con= ConnectionUtils.getConnection();
+		
+		try (PreparedStatement ps= con.prepareStatement(insertMySql)){
+			ps.setString(1, t.getUsername());
+			ps.setString(2, t.getPassword());
+			if (ps.executeUpdate()!= 1)
+				throw new DaoException("sql query did not update the expected number of rows");
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private final static String retrieveSql= "SELECT * FROM proj_0_db.Customer WHERE customer_id = ?";
+	
+	
+	@Override
+	public Customer retrieveById(int id) {
+		Connection con= ConnectionUtils.getConnection();
+		ResultSet rs= null;
+		try (PreparedStatement ps= con.prepareStatement(retrieveSql)){
+			ps.setInt(1, id);
+			rs= ps.executeQuery();
+			rs.next();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+		return extractFromRs(rs);
+	}
+
+	private Customer extractFromRs(ResultSet rs) {
+		Customer c = new Customer();
+		
+		try {
+			c.setCustomerId(rs.getInt("customer_id"));
+			c.setUsername(rs.getString("username"));
+			c.setPassword(rs.getString("password"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return c;
+	}
+
+	@Override
+	public int update(Customer t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Account> getAccounts(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
+
+}

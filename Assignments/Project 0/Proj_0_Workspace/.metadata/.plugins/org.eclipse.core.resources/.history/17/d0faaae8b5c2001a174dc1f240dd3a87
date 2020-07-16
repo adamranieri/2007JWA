@@ -1,0 +1,12 @@
+package dev.alsabea.entities;
+
+import java.util.List;
+
+public class Customer {
+	
+	private int customerId;
+	private String username;
+	private String password;
+	private List<Account> Accounts;
+
+}

@@ -1,0 +1,10 @@
+package dev.alsabea.connectionUtils;
+
+import java.sql.Connection;
+
+public class ConnectionUtils {
+	
+	private static Connection con;
+	
+
+}

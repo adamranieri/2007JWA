@@ -1,0 +1,15 @@
+package dev.alsabea.daos;
+
+import java.util.List;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+public interface CustomerDao extends CRUD<Customer>{
+
+	
+	List<Account> getAccounts ( int id);
+	
+	int getIdByUsernameAndPassword(String username, String password);  //mainly used for testing purposes
+	
+}
