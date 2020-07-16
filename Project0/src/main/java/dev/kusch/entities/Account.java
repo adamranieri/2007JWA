@@ -20,6 +20,10 @@ public class Account {
 		this.cId = cId;
 		this.aId = aid;
 	}
+	
+	public Account() {
+		
+	}
 
 	@Override
 	public String toString() {

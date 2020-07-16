@@ -9,27 +9,26 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import dev.kusch.daos.AccountDAO;
-import dev.kusch.daos.AccountDAOLocal;
+import dev.kusch.daos.AccountDAOMaria;
 import dev.kusch.entities.Account;
-import dev.kusch.services.AccountServices;
 
 class AccountDaoTests {
 
-	public static AccountDAO cdao = AccountDAOLocal.getAccountDAO();
+	public static AccountDAO cdao = AccountDAOMaria.getAccountDAOMaria();
 
 	@Test
 	@Order(1)
 	void testCreateBasic() {
 		Account testAcc = new Account("VacationFund", 30.00, 1, 0);
 		cdao.createAccount(testAcc);
-		Assertions.assertNotEquals(0, testAcc.getcId());
+		Assertions.assertNotEquals(0, testAcc.getaId());
 	}
 
 	@Test
 	@Order(2)
 	void getAccountByIdBasic() {
-		Account getAcc = cdao.getAccountById(1);
-		Assertions.assertEquals(1, getAcc.getcId());
+		Account getAcc = cdao.getAccountById(2);
+		Assertions.assertEquals(2, getAcc.getaId());
 	}
 
 	@Test
@@ -45,7 +44,7 @@ class AccountDaoTests {
 	@Test
 	@Order(4)
 	void updateAccountBasic() {
-		Account vacat = cdao.getAccountById(1);
+		Account vacat = cdao.getAccountById(2);
 		vacat.setBalance(2000);
 		vacat = cdao.updateAccount(vacat);
 		Assertions.assertEquals(2000, vacat.getBalance());

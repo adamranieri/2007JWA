@@ -1,20 +1,24 @@
 package dev.kusch.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Customer {
 	// hold data retrieved from database
 	private int cId;
 	private String username;
 	private String password;
-	private List<Account> accounts;
+	private Set<Account> accounts;
 	
 	public Customer(String username, String password, int cid) {
 		this.username = username;
 		this.password = password;
-		this.accounts = new ArrayList<Account>();
+		this.accounts = new HashSet<Account>();
 		this.cId = cid;
+	}
+	
+	public Customer() {
+		
 	}
 
 	@Override
@@ -47,11 +51,11 @@ public class Customer {
 		this.password = password;
 	}
 
-	public List<Account> getAccounts() {
+	public Set<Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(List<Account> accounts) {
+	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
 	}
 	

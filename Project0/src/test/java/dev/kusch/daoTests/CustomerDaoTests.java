@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import dev.kusch.daos.CustomerDAO;
-import dev.kusch.daos.CustomerDAOLocal;
+import dev.kusch.daos.CustomerDAOMaria;
 import dev.kusch.entities.Customer;
 
 class CustomerDaoTests {
 	
-	public static CustomerDAO cdao = CustomerDAOLocal.getCustomerDAO();
+	public static CustomerDAO cdao = CustomerDAOMaria.getCustomerDAOMaria();
 
 	@Test
 	@Order(1)
@@ -38,7 +38,7 @@ class CustomerDaoTests {
 		cdao.createCustomer(testCust2);
 		
 		Set<Customer> fullCust = cdao.getAllCustomers();
-		Assertions.assertEquals(2, fullCust.size());	
+		Assertions.assertEquals(4, fullCust.size());	
 	}
 	
 	@Test
