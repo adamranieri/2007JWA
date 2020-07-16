@@ -12,13 +12,14 @@ import org.junit.jupiter.api.Order;
 
 import dev.ranieri.daos.SchoolDAO;
 import dev.ranieri.daos.SchoolDAOLocal;
+import dev.ranieri.daos.SchoolDAOMaria;
 import dev.ranieri.entities.School;
 
 // JUnit does not run your tests in order UNLESS you define it
 @TestMethodOrder(OrderAnnotation.class) // necessary to order your tests
 class SchoolDAOtests {
 	
-	public static SchoolDAO sdao = SchoolDAOLocal.getSchoolDAO();
+	public static SchoolDAO sdao =  SchoolDAOMaria.getSchoolDAOMaria();
 
 	@Test
 	@Order(1)
@@ -33,8 +34,8 @@ class SchoolDAOtests {
 	@Test
 	@Order(2)
 	void getSchoolById() {		
-		School monHigh = sdao.getSchoolById(1);
-		Assertions.assertEquals(1, monHigh.getsId());
+		School monHigh = sdao.getSchoolById(3);
+		Assertions.assertEquals(3, monHigh.getsId());
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ class SchoolDAOtests {
 		School suncrestElem = new School(0,"Suncrest Elementary",15);
 		sdao.createSchool(suncrestElem);
 		Set<School> schools = sdao.getAllSchools();
-		Assertions.assertEquals(2,schools.size());
+		Assertions.assertEquals(5,schools.size());
 	}
 	
 	@Test
@@ -53,7 +54,6 @@ class SchoolDAOtests {
 		mon.setName("Downtown Highschool");
 		mon = sdao.updateSchool(mon); //saves the changes to that school
 		Assertions.assertEquals("Downtown Highschool", mon.getName());
-		System.out.println(mon);
 		
 	}
 	

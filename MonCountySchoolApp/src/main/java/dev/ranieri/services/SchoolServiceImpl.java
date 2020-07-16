@@ -5,12 +5,13 @@ import java.util.Set;
 
 import dev.ranieri.daos.SchoolDAO;
 import dev.ranieri.daos.SchoolDAOLocal;
+import dev.ranieri.daos.SchoolDAOMaria;
 import dev.ranieri.entities.School;
 import dev.ranieri.exceptions.NegativeCapcityException;
 
 public class SchoolServiceImpl implements SchoolService {
 	
-	private static SchoolDAO sdao = SchoolDAOLocal.getSchoolDAO(); // we already have our basic CRUD operations
+	private static SchoolDAO sdao = SchoolDAOMaria.getSchoolDAOMaria(); // we already have our basic CRUD operations
 
 	@Override
 	public School establishSchool(School school) {
