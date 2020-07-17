@@ -13,7 +13,7 @@ public interface CustomerDAO {
 	
 	
 	// Read
-	Customer getCustomerByCId(int id);
+	Customer getCustomerBycId(int id);
 	Set<Customer> getAllCustomers();
 	
 	

@@ -2,15 +2,21 @@ package dev.noah.daotests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Set;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import dev.noah.daos.CustomerDAO;
-import dev.noah.daos.CustomerDAOLocal;
+import dev.noah.daos.CustomerDAOMaria;
 import dev.noah.entities.Customer;
+import dev.noah.utils.ConnectionUtil;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -18,8 +24,22 @@ import org.junit.jupiter.api.Order;
 @TestMethodOrder(OrderAnnotation.class)
 class CustomerDAOTests {
 
-	public static CustomerDAO cdao = CustomerDAOLocal.getCustomerDAO();
+	public static CustomerDAO cdao = CustomerDAOMaria.getCustomerDAOMaria();
 
+	@BeforeAll
+	static void initialSetup() {
+		try(Connection con = ConnectionUtil.getConnection()){
+			String sql = "CALL create_bank_tables";
+			CallableStatement cs = con.prepareCall(sql);
+			cs.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+	
 	// Positive Tests
 
 	@Test
@@ -35,14 +55,14 @@ class CustomerDAOTests {
 	@Order(2)
 	void getCustomerById() {
 
-		Customer cusTest = cdao.getCustomerByCId(1);
+		Customer cusTest = cdao.getCustomerBycId(1);
 		Assertions.assertEquals(1, cusTest.getcId());
 	}
 
 	@Test()
 	@Order(3)
 	void updateCustomer() {
-		Customer cus = cdao.getCustomerByCId(1);
+		Customer cus = cdao.getCustomerBycId(1);
 		cus.setUsername("TommyJohnson");
 		cus = cdao.updateCustomer(cus);
 		
@@ -85,8 +105,20 @@ class CustomerDAOTests {
 	@Test
 	@Order(7)
 	void negGetCustomerByCId() {
-		Customer cus = cdao.getCustomerByCId(17);
+		Customer cus = cdao.getCustomerBycId(17);
 		Assertions.assertEquals(null, cus);
+	}
+	
+	@AfterAll
+	static void cleanup() {
+		try(Connection con = ConnectionUtil.getConnection()){
+			String sql = "CALL drop_bank_tables";
+			CallableStatement cs = con.prepareCall(sql);
+			cs.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -22,7 +22,7 @@ public class ConnectionUtil {
 			props.load(stream);
 			String info = props.getProperty("connInfo");
 			Connection conn = DriverManager.getConnection(info); 
-			System.out.println(conn);
+			//System.out.println(conn);
 			return conn;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

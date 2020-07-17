@@ -38,6 +38,7 @@ public class CustomerController {
 	public static Handler updateCustomer = (ctx) -> {
 		Customer cus = gson.fromJson(ctx.body(), Customer.class);
 		cserv.updateCustomer(cus);
+		System.out.println(cus);
 		ctx.result(gson.toJson(cus));
 		ctx.status(200);
 		

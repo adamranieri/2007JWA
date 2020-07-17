@@ -40,7 +40,7 @@ public class CustomerDAOLocal implements CustomerDAO {
 	}
 
 	@Override
-	public Customer getCustomerByCId(int id) {
+	public Customer getCustomerBycId(int id) {
 		
 		return customer_table.get(id);
 	}

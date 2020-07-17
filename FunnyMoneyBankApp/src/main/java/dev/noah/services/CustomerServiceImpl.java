@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer getCustomerByCId(int id) {
-		return cdao.getCustomerByCId(id);
+		return cdao.getCustomerBycId(id);
 	}
 
 	@Override
