@@ -1,0 +1,14 @@
+package dev.alsabea.services;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestCustomerServices {
+
+	@Test
+	void TestAddCustomerService() {
+		fail("Not yet implemented");
+	}
+
+}

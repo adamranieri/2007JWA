@@ -82,7 +82,7 @@ call proj_0_db.procedure_populate_tables;
 		c.setCustomerId(10001);
 		c.setUsername("testName");
 		c.setPassword("testPass");
-		Assertions.assertNotNull( custDao.create(c));
+		Assertions.assertNotEquals( 0, custDao.create(c));
 
 	}
 	

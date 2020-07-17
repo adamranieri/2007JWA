@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCustomerServices.testGetAccounts" project="Project_0" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="dev.alsabea.services.TestCustomerServices" time="1.053" displayname="TestCustomerServices" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.services.TestCustomerServices]">
+    <testcase name="testGetAccounts" classname="dev.alsabea.services.TestCustomerServices" time="1.053" displayname="testGetAccounts()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.services.TestCustomerServices]/[method:testGetAccounts()]"/>
+  </testsuite>
+</testrun>
