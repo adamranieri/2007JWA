@@ -109,3 +109,95 @@ INSERT INTO game_player VALUES (5,3);
 
 INSERT INTO game_player values(2,3);
 INSERT INTO game_player values(3,3);
+
+
+-- Transactions and committing
+-- In SQL you can create transactions and you must commit any changes to a database for them to persist
+-- committing is telling the database to phyisically write your information
+
+
+INSERT INTO team VALUES (0,'Muttonchop Mountaineers', 'The Mountaineer');
+COMMIT; -- forces all changes since the last commit to be saved
+ROLLBACK; -- rollback means to go back to the previous commit
+
+DELETE FROM coach;
+
+-- transaction is a logical sequence of SQL statements
+-- ACID properties of transactions
+-- when you create a transaction you should to ACID principals to ensure a consistent and good db
+
+-- JOINS and UNIONS
+
+-- JOINS are way to denormalize our database
+-- we are horizontally stiching two tables together based on some join predicate
+-- the main purpose of joins is so that you can make easier queries
+SELECT * FROM coach;
+SELECT * FROM team;
+SELECT * FROM player;
+
+-- you can create virtual tables which are computed tables that do not exist physically
+SELECT name,mascot FROM team; -- what is returned is a virtual table
+
+-- left join everything in the left table will be presented even if it does not match something in the right
+SELECT * FROM team LEFT JOIN coach ON team.team_id = coach.t_id;
+
+-- all coaches (the left table) will presented it does not show things in the right table it does not match too
+SELECT * FROM coach LEFT JOIN team ON team.team_id = coach.t_id;
+
+-- find me the coaches for players
+SELECT coach.name,player.name  FROM coach INNER JOIN player on coach.t_id = player.t_id;
+
+-- cartesian product every record in one table matched with every record in the other
+-- sometimes helpful for answering hypothetical queries
+SELECT * FROM coach CROSS JOIN player;
+
+
+-- unions stack tables on top of each vertically
+-- unions require that the two tables you union have the same amount of fields
+-- unions are helpful when you have fields that are the same in seperate tables and you
+-- need to perform query over both of them
+-- whats the average salary in the league? 
+SELECT name, salary FROM player
+UNION ALL
+SELECT name, salary FROM coach
+
+-- functions are operations that you can apply to a field
+-- aggregate must be applied to multiple records to make sense (average, sum, mode)
+-- scalar is applied to single record's field
+
+SELECT AVG(salary) FROM player;
+
+-- when you use aggregate functions you should use group by to organize your query
+-- group by put my records into buckets based on this criterion
+
+-- what is the average salary per team?
+SELECT * FROM player;
+SELECT AVG(salary) FROM player GROUP BY t_id;
+
+SELECT * FROM player left join team on player.t_id = team.team_id; -- virtual table
+
+-- average salary by team name
+SELECT avg(salary),name 
+FROM (SELECT player_id,salary,team.name FROM player left join team on player.t_id = team.team_id)
+AS dummy 
+GROUP BY name;
+
+-- functions cannot alter your database
+-- no insert, deletes, or drops
+-- must always have at least one input and always give an output
+
+SELECT UPPER(name) FROM player; -- scalar function applies the functino to each field
+
+
+
+
+
+
+
+
+
+
+
+
+
+

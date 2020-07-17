@@ -51,8 +51,13 @@ public class SchoolController {
 		String id = ctx.pathParam("sid");
 		School school = sserv.getSchoolById(Integer.parseInt(id));
 		//school object but I want it sent back as a JSON		
-		String json = gson.toJson(school);
-		ctx.result(json);	
+		if(school ==null) {
+			ctx.status(404);
+		}else {
+			String json = gson.toJson(school);		
+			ctx.result(json);	
+		}
+	
 	};
 	
 	public static Handler updateSchool = (ctx)->{

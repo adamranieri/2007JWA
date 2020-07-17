@@ -51,6 +51,9 @@ public class SchoolServiceImpl implements SchoolService {
 	public School getSchoolById(int id) {
 		School school = sdao.getSchoolById(id);
 		Set<Student> students = studao.getStudentsBySchoolId(id);
+		if(school == null) {
+			return null;
+		}
 		school.setStudents(students);		
 		return school;
 	}
