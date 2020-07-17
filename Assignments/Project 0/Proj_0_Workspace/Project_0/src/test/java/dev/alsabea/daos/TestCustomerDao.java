@@ -1,16 +1,21 @@
 package dev.alsabea.daos;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import dev.alsabea.connectionUtils.ConnectionUtils;
 import dev.alsabea.daos.impl.CustomerDaoImpl;
-import dev.alsabea.entities.Account;
 import dev.alsabea.entities.Customer;
 
 
@@ -36,18 +41,34 @@ public class TestCustomerDao {
 	private String password;
 	private List<Account> Accounts;
 	 */
-	@Test @Order(1)
-	void createCustomer() {
-		Customer c= new Customer();
-		c.setCustomerId(10001);
-		c.setUsername("testName");
-		c.setPassword("testPass");
-		
-		Assertions.assertTrue(custDao.create(c));
+	/*
+	 * call proj_0_db.procedure_setup_proj_0_db(); 
 
-	}
+call proj_0_db.procedure_populate_tables;
+
+	 */
 	
-	@Test	@Order(2)
+//	@BeforeAll
+//	static void setUpDB() {
+//		String sql = "CALL proj_0_db.procedure_setup_proj_0_db;";
+//		String sql2 = "CALL proj_0_db.procedure_populate_tables;";
+//		Connection con= ConnectionUtils.getConnection();
+//		try {
+//			
+//			CallableStatement cs=con.prepareCall(sql);
+//			cs.execute();
+//			
+//			CallableStatement cs2 = con.prepareCall(sql2);
+//			cs2.execute();
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+	
+	@Test	@Order(1)
 	void testRetrieveById() {
 		
 		Customer c = custDao.retrieveById(3);
@@ -55,16 +76,28 @@ public class TestCustomerDao {
 		Assertions.assertEquals("rex", c.getUsername());
 	}
 	
+	@Test @Order(2)
+	void createCustomer() {
+		Customer c= new Customer();
+		c.setCustomerId(10001);
+		c.setUsername("testName");
+		c.setPassword("testPass");
+		Assertions.assertNotNull( custDao.create(c));
+
+	}
+	
+	
+	
 	
 	
 	@Test  @Order(3)
 	void testDeleteById() {
 		
 		Customer c= new Customer();
-		c.setUsername("userToBeDeleted");
-		c.setPassword("passToBeDeleted");
-		custDao.create(c);
-		int idInDb=custDao.getIdByUsernameAndPassword(c.getUsername(), c.getPassword());
+		c.setUsername("testUserToBeDeleted");
+		c.setPassword("testPassToBeDeleted");
+		
+		int idInDb=custDao.create(c);
 		
 		Assertions.assertTrue(custDao.delete(idInDb));
 	}
@@ -74,35 +107,55 @@ public class TestCustomerDao {
 	void testUpdate() {
 		
 		Customer t= new Customer();
-		String user = "userToBeUpdated";
-		String pass = "passToBeUpdated";
+		String user = "testUserToBeUpdated";
+		String pass = "testPassToBeUpdated";
 		t.setUsername(user);
 		t.setPassword(pass);
-		custDao.create(t);
-		int id= custDao.getIdByUsernameAndPassword(user, pass);
+		
+		int id= custDao.create(t);
 		
 		Customer c = new Customer();
 		c.setCustomerId(id);
-		c.setUsername("updatedTestName");
-		c.setPassword("updatedTestPassword");
+		c.setUsername("testUpdatedName");
+		c.setPassword("testUpdatedPassword");
 		
 		Assertions.assertTrue(custDao.update(c));
 	}
 	
-	@Test
-	void testGetAccounts() {
-		List<Account> accountsList=new ArrayList<>();
-		
-		accountsList= custDao.getAccounts( /*customer_id*/ 1);
-		
-		//System.out.println(accountsList.get(0).getBalance());
-		//System.out.println(accountsList.get(1).getBalance());
-		
-		Assertions.assertEquals(2, accountsList.size());
-		
+	
+	@AfterAll 
+	//@Disabled
+	static void removeTestingStuff() {
+		String sql = "delete from customer where username LIKE 'test%';";
+		Connection con= ConnectionUtils.getConnection();
+		try {
+			
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
+
+//	@AfterAll
+//	static void tearDownDB() {
+//		String sql = "CALL proj_0_db.procedure_tear_down_tables;";
+//		Connection con= ConnectionUtils.getConnection();
+//		try {
+//			
+//			CallableStatement cs=con.prepareCall(sql);
+//			cs.execute();
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
 	
 }
 

@@ -19,6 +19,8 @@ insert into customer (username , password) values
 
 select  * from account a ;
 
+
+
 insert into account (customer_id, account_name, balance ) values
 ( 1, "savings", 55),
 ( 1, "checking", 190),

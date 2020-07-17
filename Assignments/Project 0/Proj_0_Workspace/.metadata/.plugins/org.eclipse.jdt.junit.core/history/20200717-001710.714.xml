@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCustomerDao" project="Project_0" tests="4" started="0" failures="0" errors="1" ignored="0">
+  <testsuite name="dev.alsabea.daos.TestCustomerDao" incomplete="true" displayname="TestCustomerDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]">
+    <error>org.junit.platform.commons.JUnitException: @BeforeAll method 'void dev.alsabea.daos.TestCustomerDao.setUpDB()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).&#13;
+	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.assertStatic(LifecycleMethodUtils.java:57)&#13;
+	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.lambda$findMethodsAndAssertStatic$0(LifecycleMethodUtils.java:81)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)&#13;
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1085)&#13;
+	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findMethodsAndAssertStatic(LifecycleMethodUtils.java:81)&#13;
+	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findBeforeAllMethods(LifecycleMethodUtils.java:40)&#13;
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:162)&#13;
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:78)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)&#13;
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)&#13;
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)&#13;
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)&#13;
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)&#13;
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:141)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    <testcase name="testRetrieveById" classname="dev.alsabea.daos.TestCustomerDao" incomplete="true" displayname="testRetrieveById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testRetrieveById()]"/>
+    <testcase name="createCustomer" classname="dev.alsabea.daos.TestCustomerDao" incomplete="true" displayname="createCustomer()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:createCustomer()]"/>
+    <testcase name="testDeleteById" classname="dev.alsabea.daos.TestCustomerDao" incomplete="true" displayname="testDeleteById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testDeleteById()]"/>
+    <testcase name="testUpdate" classname="dev.alsabea.daos.TestCustomerDao" incomplete="true" displayname="testUpdate()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testUpdate()]"/>
+  </testsuite>
+</testrun>

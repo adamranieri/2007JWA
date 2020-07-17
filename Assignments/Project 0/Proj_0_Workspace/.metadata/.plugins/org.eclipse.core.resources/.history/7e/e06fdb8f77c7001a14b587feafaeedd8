@@ -1,0 +1,62 @@
+package dev.alsabea.daos;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+
+public class TestAccountDao {
+
+	
+	
+	@Test @Order(1)
+	void createCustomer() {
+		Account a= new Account()
+
+	}
+	
+	@Test	@Order(2)
+	void testRetrieveById() {
+		
+		Customer c = custDao.retrieveById(3);
+		
+		Assertions.assertEquals("rex", c.getUsername());
+	}
+	
+	
+	
+	@Test  @Order(3)
+	void testDeleteById() {
+		
+		Customer c= new Customer();
+		c.setUsername("userToBeDeleted");
+		c.setPassword("passToBeDeleted");
+		custDao.create(c);
+		int idInDb=custDao.getIdByUsernameAndPassword(c.getUsername(), c.getPassword());
+		
+		Assertions.assertTrue(custDao.delete(idInDb));
+	}
+	
+	
+	@Test
+	void testUpdate() {
+		
+		Customer t= new Customer();
+		String user = "userToBeUpdated";
+		String pass = "passToBeUpdated";
+		t.setUsername(user);
+		t.setPassword(pass);
+		custDao.create(t);
+		int id= custDao.getIdByUsernameAndPassword(user, pass);
+		
+		Customer c = new Customer();
+		c.setCustomerId(id);
+		c.setUsername("updatedTestName");
+		c.setPassword("updatedTestPassword");
+		
+		Assertions.assertTrue(custDao.update(c));
+	}
+}

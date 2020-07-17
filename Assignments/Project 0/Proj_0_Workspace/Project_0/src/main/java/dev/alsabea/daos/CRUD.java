@@ -2,7 +2,7 @@ package dev.alsabea.daos;
 
 public interface CRUD <T> {
 	
-	boolean create( T t) ;
+	int create( T t) ;
 	
 	boolean delete(int id);
 	
