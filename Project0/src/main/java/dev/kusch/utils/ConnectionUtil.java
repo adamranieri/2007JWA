@@ -19,7 +19,6 @@ public class ConnectionUtil {
 			String details = props.getProperty("condetails");
 			
 			Connection conn = DriverManager.getConnection(details);
-			System.out.println(conn);
 			return conn;
 		} catch (SQLException e) {
 			e.printStackTrace();

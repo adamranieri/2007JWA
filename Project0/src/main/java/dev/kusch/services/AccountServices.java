@@ -7,14 +7,23 @@ import dev.kusch.entities.Account;
 public interface AccountServices {
 
 	// CRUD like operations
+	
+	// Create
 	Account startAccount(Account account);
+	
+	// Read
 	Set<Account> getAllAccounts();
-	Account getAccountById(int aid, int cid);
+	Account getAccount(int aid);
+	Account getAccount(Account account);
+	Account getAccountByCustomer(int cid);
+	Set<Account> getAccountsLessThan(int bound, int cid);
+	Set<Account> getAccountsGreaterThan(int bound, int cid);
+	Set<Account> getAccountsBetween(int bound, int cid);
+	
+	// Update
 	Account updateAccount(Account account);
+	
+	// Delete
 	boolean deleteAccount(Account account);
-	
-	// more business logic
-	Set<Account> getAccountsLessThan(int bound);
-	Set<Account> getAccountsGreaterThan(int bound);
-	
+	boolean deleteAccount(int id);
 }

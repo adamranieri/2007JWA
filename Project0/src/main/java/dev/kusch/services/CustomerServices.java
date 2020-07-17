@@ -9,10 +9,20 @@ import dev.kusch.entities.Customer;
 public interface CustomerServices {
 
 	// CRUD like operations
+	
+	// Create
 	Customer addCustomer(Customer customer);
+	
+	// Read
 	Set<Customer> getAllCustomers();
-	Customer getCustomerById(int id);
-	Customer getCustomerByUser(String username);
+	Customer getCustomer(int id);
+	Customer getCustomer(Customer customer);
+	Customer getCustomer(String username);
+	
+	// Update
 	Customer updateCustomer(Customer customer);
+	
+	// Delete
 	boolean deleteCustomer(Customer customer);
+	boolean deleteCustomer(int id);
 }

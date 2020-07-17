@@ -71,6 +71,61 @@ public class AccountDAOMaria implements AccountDAO {
 			return null;
 		}
 	}
+	
+	@Override
+	public Set<Account> getAccountByCustomerId(int id) {
+		try (Connection conn = ConnectionUtil.getConnection()) {
+			String sql = "SELECT * FROM bankAPI_db.account WHERE c_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			Set<Account> accounts = new HashSet<Account>();
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Account account = new Account();
+				account.setaId(rs.getInt("a_id"));
+				account.setName(rs.getString("name"));
+				account.setBalance(rs.getInt("balance"));
+				
+				accounts.add(account);
+			}
+			return accounts;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Set<Account> getAccountWithBalanceBetween(int id, double lowerBound, double upperBound) {
+		try (Connection conn = ConnectionUtil.getConnection()) {
+			String sql = "SELECT * FROM bankAPI_db.account WHERE c_id = ? AND balance >= ? AND balance <= ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setDouble(2, lowerBound);
+			ps.setDouble(3, upperBound);
+			
+			Set<Account> accounts = new HashSet<Account>();
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Account account = new Account();
+				account.setaId(rs.getInt("a_id"));
+				account.setcId(rs.getInt("c_id"));
+				account.setName(rs.getString("name"));
+				account.setBalance(rs.getInt("balance"));
+				
+				accounts.add(account);
+			}
+			return accounts;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	@Override
 	public Set<Account> getAllAccounts() {
@@ -106,7 +161,10 @@ public class AccountDAOMaria implements AccountDAO {
 			ps.setDouble(2, account.getBalance());
 			ps.setInt(3,  account.getaId());
 			
-			ps.execute();
+			int count = ps.executeUpdate();
+			if (count == 0) {
+				return null;
+			}
 			return account;
 			
 		} catch (SQLException e) {
@@ -122,12 +180,15 @@ public class AccountDAOMaria implements AccountDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,  id);
 			
-			return ps.execute();
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				return true;
+			}
+			return false;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-
 }

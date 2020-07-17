@@ -3,13 +3,11 @@ package dev.kusch.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
-import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
 import dev.kusch.utils.ConnectionUtil;
 
@@ -44,26 +42,6 @@ public static CustomerDAO sdao = null;
 			rs.next();
 			int key = rs.getInt("c_id");
 			customer.setcId(key);
-			
-			
-			// builds the customer's customer list based on the customers credited to them in the customers table
-			String sqlAcc = "SELECT * FROM bankAPI_db.customer WHERE c_id = ?";
-			PreparedStatement psAcc = conn.prepareStatement(sqlAcc, Statement.RETURN_GENERATED_KEYS);
-			psAcc.setInt(1, customer.getcId());
-			ResultSet rsAcc = psAcc.executeQuery();
-			
-			Set<Account> accounts = new HashSet<Account>();
-			while(rsAcc.next()) {
-				Account account = new Account();
-				account.setaId(rsAcc.getInt("a_id"));
-				account.setName(rsAcc.getString("name"));
-				account.setBalance(rsAcc.getInt("balance"));
-				
-				accounts.add(account);
-			}
-			customer.setAccounts(accounts);
-			
-			
 			return customer;
 			
 		} catch (SQLException e) {
@@ -129,7 +107,10 @@ public static CustomerDAO sdao = null;
 			ps.setString(2, customer.getPassword());
 			ps.setInt(3,  customer.getcId());
 			
-			ps.execute();
+			int count = ps.executeUpdate();
+			if (count == 0) {
+				return null;
+			}
 			return customer;
 			
 		} catch (SQLException e) {
@@ -145,11 +126,38 @@ public static CustomerDAO sdao = null;
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,  id);
 			
-			return ps.execute();
+			int rows = ps.executeUpdate();
+			if (rows > 0) {
+				return true;
+			}
+			return false;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	@Override
+	public Customer getCustomerByUser(String username) {
+		try (Connection conn = ConnectionUtil.getConnection()) {
+			String sql = "SELECT * FROM bankAPI_db.customer WHERE username = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,  username);
+			
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			
+			Customer customer = new Customer();
+			customer.setcId(rs.getInt("c_id"));
+			customer.setUsername(rs.getString("username"));
+			customer.setPassword(rs.getString("password"));
+			
+			return customer;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

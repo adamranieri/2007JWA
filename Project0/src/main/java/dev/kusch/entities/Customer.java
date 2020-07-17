@@ -10,11 +10,11 @@ public class Customer {
 	private String password;
 	private Set<Account> accounts;
 	
-	public Customer(String username, String password, int cid) {
+	public Customer(int cId, String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.accounts = new HashSet<Account>();
-		this.cId = cid;
+		this.cId = cId;
 	}
 	
 	public Customer() {

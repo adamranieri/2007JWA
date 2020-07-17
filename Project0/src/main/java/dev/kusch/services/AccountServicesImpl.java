@@ -19,7 +19,19 @@ public class AccountServicesImpl implements AccountServices{
 	}
 
 	@Override
-	public Account getAccountById(int aid, int cid) {
+	public Account getAccount(int aid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Account getAccount(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Account getAccountByCustomer(int cid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,16 +49,27 @@ public class AccountServicesImpl implements AccountServices{
 	}
 
 	@Override
-	public Set<Account> getAccountsLessThan(int bound) {
+	public boolean deleteAccount(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Set<Account> getAccountsLessThan(int bound, int cid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<Account> getAccountsGreaterThan(int bound) {
+	public Set<Account> getAccountsGreaterThan(int bound, int cid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public Set<Account> getAccountsBetween(int bound, int cid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

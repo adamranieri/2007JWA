@@ -12,6 +12,8 @@ public interface AccountDAO {
 		// Read
 		Account getAccountById(int id);
 		Set<Account> getAllAccounts();
+		Set<Account> getAccountByCustomerId(int id);
+		Set<Account> getAccountWithBalanceBetween(int id, double lowerBound, double upperBound);
 		
 		// Update
 		Account updateAccount(Account account);
