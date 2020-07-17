@@ -1,6 +1,7 @@
 package dev.ranieri.app;
 
 import dev.ranieri.controllers.SchoolController;
+import dev.ranieri.controllers.StudentController;
 import io.javalin.Javalin;
 
 public class App {
@@ -22,6 +23,19 @@ public class App {
 		
 		//delete operation
 		app.delete("/schools/:sid", SchoolController.deleteSchool);
+		
+		//
+		app.get("/schools/:id/students", StudentController.getAllStudentsFromSchoolId);//returns All the students in that school
+		
+		app.get("/schools/:id/students/:stuid", StudentController.getStudentById);//returns a student with that id
+		app.get("/students/:stuid", StudentController.getStudentById); // also correct
+		
+		app.post("/schools/:id/students", StudentController.createStudent);//Add a new student to that school
+		
+		app.put("/schools/:id/students", StudentController.updateStudent);// update a student at that school
+		
+		app.delete("/schools/:id/students/:stuid", StudentController.deleteStudent);// delete this student at that school
+		
 		
 	
 		

@@ -135,8 +135,12 @@ public class SchoolDAOMaria implements SchoolDAO{
 			String sql = "DELETE FROM monschool_db.school WHERE s_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
-								
-			return ps.execute();				
+			int rows = ps.executeUpdate();
+			if(rows>0) {
+				return true;
+			}else {
+				return false;
+			}				
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

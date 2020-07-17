@@ -2,9 +2,14 @@ package dev.ranieri.daotests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Set;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -14,12 +19,27 @@ import dev.ranieri.daos.SchoolDAO;
 import dev.ranieri.daos.SchoolDAOLocal;
 import dev.ranieri.daos.SchoolDAOMaria;
 import dev.ranieri.entities.School;
+import dev.ranieri.utils.ConnectionUtil;
 
 // JUnit does not run your tests in order UNLESS you define it
 @TestMethodOrder(OrderAnnotation.class) // necessary to order your tests
 class SchoolDAOtests {
 	
 	public static SchoolDAO sdao =  SchoolDAOMaria.getSchoolDAOMaria();
+	
+	// will execute only once. Will be the first method called when we run these test cases
+	@BeforeAll
+	static void setUp() {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "CALL set_up_mondb";
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	@Order(1)
@@ -29,13 +49,14 @@ class SchoolDAOtests {
 		
 		sdao.createSchool(monHigh);
 		Assertions.assertNotEquals(0, monHigh.getsId());
+		Assertions.assertEquals(1, monHigh.getsId());
 	}
 	
 	@Test
 	@Order(2)
 	void getSchoolById() {		
-		School monHigh = sdao.getSchoolById(3);
-		Assertions.assertEquals(3, monHigh.getsId());
+		School monHigh = sdao.getSchoolById(1);
+		Assertions.assertEquals(1, monHigh.getsId());
 	}
 	
 	@Test
@@ -44,7 +65,7 @@ class SchoolDAOtests {
 		School suncrestElem = new School(0,"Suncrest Elementary",15);
 		sdao.createSchool(suncrestElem);
 		Set<School> schools = sdao.getAllSchools();
-		Assertions.assertEquals(5,schools.size());
+		Assertions.assertEquals(2,schools.size());
 	}
 	
 	@Test
@@ -71,5 +92,18 @@ class SchoolDAOtests {
 		Assertions.assertEquals(false, result);
 	}
 	
+	@AfterAll
+	static void tearDown() {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "CALL tear_down_mondb";
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 }

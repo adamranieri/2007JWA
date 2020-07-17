@@ -6,13 +6,17 @@ import java.util.Set;
 import dev.ranieri.daos.SchoolDAO;
 import dev.ranieri.daos.SchoolDAOLocal;
 import dev.ranieri.daos.SchoolDAOMaria;
+import dev.ranieri.daos.StudentDAO;
+import dev.ranieri.daos.StudentDAOMaria;
 import dev.ranieri.entities.School;
+import dev.ranieri.entities.Student;
 import dev.ranieri.exceptions.NegativeCapcityException;
 
 public class SchoolServiceImpl implements SchoolService {
 	
 	private static SchoolDAO sdao = SchoolDAOMaria.getSchoolDAOMaria(); // we already have our basic CRUD operations
-
+	private static StudentDAO studao = StudentDAOMaria.getStudentDAOMaria();
+	
 	@Override
 	public School establishSchool(School school) {
 		return sdao.createSchool(school);
@@ -39,9 +43,16 @@ public class SchoolServiceImpl implements SchoolService {
 		return school;
 	}
 
+	// a school can have students
+	// our serivce should use the school dao to get the school object
+	// then use our student dao to get students who go to that school and attach that to the object then 
+	// return that completed object
 	@Override
 	public School getSchoolById(int id) {
-		return sdao.getSchoolById(id);
+		School school = sdao.getSchoolById(id);
+		Set<Student> students = studao.getStudentsBySchoolId(id);
+		school.setStudents(students);		
+		return school;
 	}
 
 	@Override
