@@ -11,4 +11,6 @@ select * from proj_0_db.account ;
 
 SELECT * FROM proj_0_db.customer c ;
 
+DELETE FROM proj_0_db.customer WHERE customer_id > 5;
+
 

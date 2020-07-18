@@ -1,0 +1,56 @@
+package dev.alsabea.controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.services.AccountServices;
+import dev.alsabea.services.impl.AccountServicesImpl;
+import io.javalin.http.Handler;
+
+public class AccountsController {
+
+	private static AccountServices aServices =AccountServicesImpl.getAccountServicesInstance();
+	private static Gson gs= new Gson();
+	
+	public static Handler retrieveAllCustomerAccounts =  (ctx) ->{
+		
+		int id = Integer.parseInt(ctx.pathParam("id"));
+		List<Account> accts = aServices.retrieveAllAccounts(id); 
+		ctx.status(200);
+		ctx.result(gs.toJson(accts));
+		
+	};
+	
+	public static Handler retrieveAnAccount =  (ctx) ->{
+		int cid = Integer.parseInt(ctx.pathParam("id"));
+		
+		int aid = Integer.parseInt(ctx.pathParam("aid"));
+		
+
+		Account a = aServices.retrieveById(aid);
+		/*
+		 * should never let an account get returned without checking if it belongs to the customer or not
+		 */
+		if (Integer.compare(a.getCustomerId(), cid) == 0) {
+			ctx.status(200);
+			ctx.result(gs.toJson(a));
+		} else {
+			ctx.status(404);
+			ctx.result("Customer does not have such account");
+		}
+			
+		
+
+		
+	};
+	public static Handler createAnAccount = (ctx) ->{
+		
+		int id = Integer.parseInt(ctx.pathParam("id"));
+		Account a = gs.fromJson(ctx.body(), Account.class);
+		a.setCustomerId(id);
+		
+	};
+
+}

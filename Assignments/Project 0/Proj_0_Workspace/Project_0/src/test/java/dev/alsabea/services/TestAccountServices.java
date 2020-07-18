@@ -3,6 +3,7 @@ package dev.alsabea.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
@@ -146,7 +147,16 @@ class TestAccountServices {
 		Assertions.assertEquals(1, accts.size());
 	}
 	
-	
+	@Test
+	void testGetAccounts() {
+		List<Account> accountsList=new ArrayList<>();
+		
+		accountsList= aServices.retrieveAllAccounts( /*customer_id*/ 1);
+		
+		Assertions.assertEquals(2, accountsList.size());
+		
+		
+	}
 	
 	@AfterAll
 	static void removeTestingStuff() {

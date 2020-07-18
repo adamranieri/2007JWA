@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
-    <fullyQualifiedTypeName name="dev.alsabea.daos.CustomerDao"/>
     <fullyQualifiedTypeName name="dev.alsabea.exceptions.DaoException"/>
     <fullyQualifiedTypeName name="dev.alsabea.daos.AccountDao"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -11,7 +10,6 @@
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Disabled"/>
-    <fullyQualifiedTypeName name="dev.alsabea.daos.impl.CustomerDaoImpl"/>
     <fullyQualifiedTypeName name="dev.alsabea.daos.impl.AccountDaoImpl"/>
     <fullyQualifiedTypeName name="dev.alsabea.entities.Account"/>
     <fullyQualifiedTypeName name="dev.alsabea.daosandservices.CRUD"/>
@@ -21,5 +19,9 @@
     <fullyQualifiedTypeName name="io.javalin.http.Handler"/>
     <fullyQualifiedTypeName name="dev.alsabea.services.impl.CustomerServicesImpl"/>
     <fullyQualifiedTypeName name="dev.alsabea.controllers.CustomerController"/>
+    <fullyQualifiedTypeName name="dev.alsabea.daos.impl.CustomerDaoImpl"/>
+    <fullyQualifiedTypeName name="dev.alsabea.daos.CustomerDao"/>
+    <fullyQualifiedTypeName name="dev.alsabea.services.impl.AccountServicesImpl"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="dev.alsabea.controllers.AccountsController"/>
 </qualifiedTypeNameHistroy>

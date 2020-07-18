@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.alsabea.daos.AccountDao;
-import dev.alsabea.daos.CustomerDao;
 import dev.alsabea.daos.impl.AccountDaoImpl;
-import dev.alsabea.daos.impl.CustomerDaoImpl;
 import dev.alsabea.entities.Account;
 import dev.alsabea.exceptions.NegativeBalanceException;
 import dev.alsabea.services.AccountServices;
@@ -17,7 +15,6 @@ public class AccountServicesImpl implements AccountServices{
 	
 	private static AccountDao acctDao	= AccountDaoImpl.getAccountDao();
 	
-	private static CustomerDao cDao = CustomerDaoImpl.getCustomerDao();
 	
 	private AccountServicesImpl() {}
 	
@@ -33,8 +30,6 @@ public class AccountServicesImpl implements AccountServices{
 	public int create(Account t)  throws NegativeBalanceException{
 		if (t.getBalance() < 0)
 			throw new NegativeBalanceException();
-		//addAccount (int id, Account t)
-		cDao.
 		return acctDao.create(t);
 	}
 
@@ -44,6 +39,13 @@ public class AccountServicesImpl implements AccountServices{
 		return acctDao.delete(id);
 	}
 
+	@Override
+	public List<Account> retrieveAllAccounts(int custID) {
+		
+		return acctDao.getAllCustomerAccounts(custID);
+	}
+
+	
 	@Override
 	public Account retrieveById(int id) {
 		
@@ -82,5 +84,7 @@ public class AccountServicesImpl implements AccountServices{
 		}
 		return acctsToBeReturned;
 	}
+
+
 
 }

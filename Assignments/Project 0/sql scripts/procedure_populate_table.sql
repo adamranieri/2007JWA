@@ -22,4 +22,8 @@ BEGIN
 	( 5, "rubble", 898),
 	( 5, "mortgage", 1000);
 	
+	INSERT INTO account (customer_id , account_name , balance) VALUES
+	(1, "rere", 1001), (1, "rrrrr", 400), (1, "tttt", 700); 
+
+
 END;

@@ -12,3 +12,4 @@
 1595012083534	Rename package 'dev.alsabea.daosandservices.daos'
 1595015291518	Rename method 'getByUserName'
 1595015774151	Rename method 'retrieveByUserName'
+1595082821785	Rename type 'AccountController'

@@ -41,9 +41,9 @@ public class CustomersController {
 	
 	
 	public static Handler deleteCustomer = (ctx) -> {
-		String id = ctx.pathParam("cid");
+		String id = ctx.pathParam("id");
 		if (cServices.delete(Integer.parseInt(id))) {
-			ctx.status(201);
+			ctx.status(200);
 			ctx.result("delete operation executed successfully");
 		}
 		
@@ -52,27 +52,28 @@ public class CustomersController {
 	
 	
 	public static Handler updateCustomer = (ctx) ->{
+		int id = Integer.parseInt(ctx.pathParam("id"));
 		String custAsJson = ctx.body();
 		Customer c= gs.fromJson(custAsJson, Customer.class); 
+		c.setCustomerId(id);
 		if (cServices.update(c))
-			ctx.status(201);
+			ctx.status(200);
 		ctx.result(gs.toJson(cServices.retrieveById(c.getCustomerId())));
 	};
 	
 	
-	/*
-	 * reliant on
-	 */
 	public static Handler retrieveACustomer = (ctx) ->{
-		int id = Integer.parseInt(ctx.pathParam("cid"));
+		int id = Integer.parseInt(ctx.pathParam("id"));
 		Customer c = cServices.retrieveById(id);
 		
 		/*
-		 * it shouldn't be handled here
+		 * 
+		 * we have to get customer accounts from db and then attach it to the customer,
+		 * this is easier, no more logic in daos and services.
 		 */
 		
 		c.setAccounts(cServices.getCustomerAccounts(id)); 
-		
+		ctx.status(200);
 		ctx.result(gs.toJson(c));
 		
 		
