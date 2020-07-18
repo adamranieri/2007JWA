@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCustomerDao.createCustomer" project="Project_0" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="dev.alsabea.daos.TestCustomerDao" time="0.655" displayname="TestCustomerDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]">
-    <testcase name="createCustomer" classname="dev.alsabea.daos.TestCustomerDao" time="0.655" displayname="createCustomer()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:createCustomer()]"/>
-  </testsuite>
-</testrun>

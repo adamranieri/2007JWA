@@ -1,0 +1,28 @@
+package dev.alsabea.controllers;
+
+import java.util.Set;
+
+import dev.alsabea.services.impl.CustomerServicesImpl;
+import io.javalin.http.Handler;
+
+public class CustomerController {
+
+	private static CustomerServices cServices = CustomerServicesImpl.getCustomerServicesInstance();
+	
+	public static Handler getAllSchools = (ctx) ->{
+		Set<School> schools = sserv.getAllSchools();				
+		String json = gson.toJson(schools);	
+		
+		String capQ = ctx.queryParam("capcitylessthan");
+		
+		if(capQ != null) {
+			Set<School> smallSchools = sserv.getSchoolsByCapacityLessThan(Integer.parseInt(capQ));
+			ctx.result(gson.toJson(smallSchools));
+		}else {
+			ctx.result(json);	
+		}
+		
+			
+	};
+	
+}

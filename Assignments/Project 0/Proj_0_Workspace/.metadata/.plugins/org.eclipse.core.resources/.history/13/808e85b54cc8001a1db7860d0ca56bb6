@@ -1,0 +1,13 @@
+package dev.alsabea.daosandservices.services;
+
+import java.util.List;
+
+import dev.alsabea.daosandservices.CRUD;
+import dev.alsabea.entities.Account;
+
+public interface CustomerServices extends CRUD<Customer>{
+	
+	List<Account> getCustomerAccounts(int i);
+	
+	
+}

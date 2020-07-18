@@ -1,14 +1,12 @@
 package dev.alsabea.daos;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -68,7 +66,7 @@ call proj_0_db.procedure_populate_tables;
 //	}
 //	
 	
-	@Test	@Order(1)
+	@Test
 	void testRetrieveById() {
 		
 		Customer c = custDao.retrieveById(3);
@@ -76,7 +74,24 @@ call proj_0_db.procedure_populate_tables;
 		Assertions.assertEquals("rex", c.getUsername());
 	}
 	
-	@Test @Order(2)
+	@Test
+	void testRetrieveByUserName() {
+		
+		Customer c = custDao.retrieveByUsername("rex").get(0);
+		
+		Assertions.assertEquals(3, c.getCustomerId());
+	}
+	
+	@Test
+	void testRetrieveAll() {
+		
+		List<Customer> c = custDao.retrieveAll();
+		
+		Assertions.assertEquals(5, c.size());
+	}
+	
+	
+	@Test @Order(1)
 	void createCustomer() {
 		Customer c= new Customer();
 		c.setCustomerId(10001);

@@ -1,0 +1,21 @@
+package dev.alsabea.daosandservices.services;
+
+import dev.alsabea.entities.Account;
+
+public interface AccountServices {
+
+	
+	int create(  t) ;
+	
+	boolean delete(int id);
+	
+	T retrieveById(int id);
+	
+	boolean update ( T t);
+
+	
+	
+	
+	
+	
+}

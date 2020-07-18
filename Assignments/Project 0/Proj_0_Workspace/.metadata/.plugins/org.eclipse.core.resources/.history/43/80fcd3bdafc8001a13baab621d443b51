@@ -1,0 +1,27 @@
+package dev.alsabea.controllers;
+
+import java.util.List;
+import java.util.Set;
+
+import com.google.gson.Gson;
+
+import dev.alsabea.entities.Customer;
+import dev.alsabea.services.CustomerServices;
+import dev.alsabea.services.impl.CustomerServicesImpl;
+import io.javalin.http.Handler;
+
+public class CustomerController {
+
+	private static CustomerServices cServices = CustomerServicesImpl.getCustomerServicesInstance();
+	private static Gson gs= new Gson();
+	
+	public static Handler retrieveAllCustomers = (ctx) ->{
+		List<Customer> customers = cServices.retrieveAll();				
+		String json = gs.toJson(customers);	
+
+		ctx.result(json);	
+		
+			
+	};
+	
+}

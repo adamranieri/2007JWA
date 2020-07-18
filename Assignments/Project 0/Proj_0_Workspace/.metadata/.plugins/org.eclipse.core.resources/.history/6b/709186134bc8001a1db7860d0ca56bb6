@@ -1,0 +1,7 @@
+package dev.alsabea.daos;
+
+import dev.alsabea.entities.Account;
+
+public interface AccountDao extends CRUD<Account>{
+
+}

@@ -1,0 +1,11 @@
+package dev.alsabea.daosandservices.services;
+
+import dev.alsabea.entities.Account;
+
+public interface AccountServices extends CRUD<Account>{
+	
+	
+	
+	
+	
+}

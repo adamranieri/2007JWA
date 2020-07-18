@@ -1,0 +1,12 @@
+package dev.alsabea.services;
+
+import dev.alsabea.entities.Account;
+
+public interface AccountServices {
+
+	
+	int createAccount(Account a);
+	
+	
+	
+}

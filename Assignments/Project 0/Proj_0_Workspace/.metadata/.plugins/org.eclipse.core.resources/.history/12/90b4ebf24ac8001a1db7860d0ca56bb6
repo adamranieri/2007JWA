@@ -1,0 +1,14 @@
+package dev.alsabea.daos;
+
+import java.util.List;
+
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+public interface AccountDao extends CRUD<AccountDao>{
+
+
+
+	
+
+}

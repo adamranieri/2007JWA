@@ -1,5 +1,0 @@
-package dev.alsabea.daos.impl;
-
-public class AccountDaoImpl {
-
-}

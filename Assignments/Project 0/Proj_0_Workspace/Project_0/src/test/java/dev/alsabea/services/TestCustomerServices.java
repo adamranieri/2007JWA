@@ -8,10 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import dev.alsabea.connectionUtils.ConnectionUtils;
 import dev.alsabea.entities.Account;
@@ -19,27 +16,44 @@ import dev.alsabea.entities.Customer;
 import dev.alsabea.services.impl.CustomerServicesImpl;
 
 
-@TestMethodOrder(OrderAnnotation.class)
+
 class TestCustomerServices {
 
 	private static CustomerServices cServices = CustomerServicesImpl.getCustomerServicesInstance();
 	
-
-	@Test @Order(1)
+	
+	@Test
 	void testRetrieveById() {
 		
-		Customer c = cServices.getCustomerById(3);
+		Customer c = cServices.retrieveById(3);
 		
-		Assertions.assertEquals("rex", c.getUsername());
+		Assertions.assertEquals(3, c.getCustomerId());
+	}
+
+	@Test
+	void testRetrieveByUsername() {
+		
+		Customer c = cServices.retrieveByUsername("rex").get(0);
+		
+		Assertions.assertEquals(3, c.getCustomerId());
 	}
 	
-	@Test @Order(2)
+	
+	@Test
+	void testRetrieveAll() {
+		
+		List<Customer> c = cServices.retrieveAll();
+		
+		Assertions.assertEquals(5, c.size());
+	}
+	
+	@Test 
 	void TestAddCustomerService() {
 		Customer c= new Customer();
 		c.setCustomerId(10001);
 		c.setUsername("testName");
 		c.setPassword("testPass");
-		Assertions.assertNotEquals( 0,cServices.addCustomer(c));
+		Assertions.assertNotEquals( 0,cServices.create(c));
 		
 	}
 	
@@ -51,9 +65,9 @@ class TestCustomerServices {
 		c.setUsername("testUserToBeDeleted");
 		c.setPassword("testPassToBeDeleted");
 		
-		int idInDb=cServices.addCustomer(c);
+		int idInDb=cServices.create(c);
 		
-		Assertions.assertTrue(cServices.deleteCustomer(idInDb));
+		Assertions.assertTrue(cServices.delete(idInDb));
 	}
 	
 	
@@ -66,14 +80,14 @@ class TestCustomerServices {
 		t.setUsername(user);
 		t.setPassword(pass);
 		
-		int id= cServices.addCustomer(t);
+		int id= cServices.create(t);
 		
 		Customer c = new Customer();
 		c.setCustomerId(id);
 		c.setUsername("testUpdatedName");
 		c.setPassword("testUpdatedPassword");
 		
-		Assertions.assertTrue(cServices.updateCustomer(c));
+		Assertions.assertTrue(cServices.update(c));
 	}
 	
 	@Test
@@ -90,7 +104,7 @@ class TestCustomerServices {
 	
 	@AfterAll
 	static void removeTestingStuff() {
-		String sql = "delete from customer where username LIKE 'test%';";
+		String sql = "delete from proj_0_db.customer where username LIKE 'test%';";
 		Connection con= ConnectionUtils.getConnection();
 		try {
 			

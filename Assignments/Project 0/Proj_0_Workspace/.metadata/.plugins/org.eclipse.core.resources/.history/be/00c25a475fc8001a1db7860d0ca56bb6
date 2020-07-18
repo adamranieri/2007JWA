@@ -1,0 +1,22 @@
+package dev.alsabea.services;
+
+import java.util.List;
+
+import dev.alsabea.daos.CRUD;
+import dev.alsabea.entities.Account;
+import dev.alsabea.entities.Customer;
+
+public interface Customer {
+	
+	int create( Customer t) ;
+	
+	boolean delete(int id);
+	
+	Customer retrieveById(int id);
+	
+	boolean update ( Customer t);
+	
+	List<Account> getCustomerAccounts(int i);
+	
+	
+}

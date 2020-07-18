@@ -6,17 +6,20 @@ import dev.alsabea.entities.Account;
 import dev.alsabea.entities.Customer;
 
 public interface CustomerServices {
-
 	
-	int addCustomer(Customer c);
+	int create( Customer t) ;
 	
-	Customer getCustomerById(int id);
+	boolean delete(int id);
 	
-	boolean deleteCustomer(int id);
+	Customer retrieveById(int i);
+	List<Customer> retrieveAll();
+	List<Customer> retrieveByUsername(String username);
 	
-	boolean updateCustomer(Customer c);
+	boolean update ( Customer t);
 	
 	List<Account> getCustomerAccounts(int i);
+
+
 	
 	
 }

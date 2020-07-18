@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import dev.alsabea.connectionUtils.ConnectionUtils;
 import dev.alsabea.daos.CustomerDao;
@@ -68,6 +70,24 @@ private static CustomerDaoImpl dao = null;
 	}
 
 	@Override
+	public List<Customer> retrieveAll() {
+		final String retrieveSql= "SELECT * FROM proj_0_db.customer";
+		Connection con= ConnectionUtils.getConnection();
+		ResultSet rs= null;
+		List<Customer> recordsList = new ArrayList<>();
+		try (PreparedStatement ps= con.prepareStatement(retrieveSql)){
+			rs= ps.executeQuery();
+			while(rs.next())
+				recordsList.add(extractFromRs(rs));
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+		return recordsList;
+	}
+	
+	@Override
 	public Customer retrieveById(int id) {
 		final String retrieveSql= "SELECT * FROM proj_0_db.customer WHERE customer_id = ?";
 		Connection con= ConnectionUtils.getConnection();
@@ -82,6 +102,30 @@ private static CustomerDaoImpl dao = null;
 
 		return extractFromRs(rs);
 	}
+	
+	/*
+	 * username is not unique, for this reason we return a list.
+	 */
+	
+	@Override
+	public List<Customer> retrieveByUsername(String name) {
+		final String retrieveSql= "SELECT * FROM proj_0_db.customer WHERE username = ?";
+		Connection con= ConnectionUtils.getConnection();
+		ResultSet rs= null;
+		List<Customer> recordsList = new ArrayList<>();
+		try (PreparedStatement ps= con.prepareStatement(retrieveSql)){
+			ps.setString(1, name);
+			rs= ps.executeQuery();
+			while(rs.next())
+				recordsList.add(extractFromRs(rs));
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+		return recordsList;
+	}
+
 
 	
 
@@ -122,5 +166,8 @@ private static CustomerDaoImpl dao = null;
 		
 		return c;
 	}
+
+
+
 
 }

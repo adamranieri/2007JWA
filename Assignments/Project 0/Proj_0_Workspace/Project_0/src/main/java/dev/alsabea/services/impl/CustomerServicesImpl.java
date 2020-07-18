@@ -12,7 +12,7 @@ import dev.alsabea.services.CustomerServices;
 
 public class CustomerServicesImpl implements CustomerServices {
 
-	private static CustomerServices cServices ;
+	private static CustomerServicesImpl cServices ;
 	
 	private static CustomerDao custDao = CustomerDaoImpl.getCustomerDao();
 	private static AccountDao acctDao	= AccountDaoImpl.getAccountDao();
@@ -22,7 +22,7 @@ public class CustomerServicesImpl implements CustomerServices {
 	}
 	
 	
-	public static CustomerServices getCustomerServicesInstance() {
+	public static CustomerServicesImpl getCustomerServicesInstance() {
 		if (cServices == null)
 			cServices= new CustomerServicesImpl();
 		return cServices;
@@ -30,25 +30,37 @@ public class CustomerServicesImpl implements CustomerServices {
 	
 	
 	@Override
-	public int addCustomer(Customer c) {
+	public int create(Customer c) {
 		
 		return custDao.create(c);
 	}
 
 	@Override
-	public Customer getCustomerById(int id) {
+	public Customer retrieveById(int i) {
 		
-		return custDao.retrieveById(id);
+		return custDao.retrieveById(i);
+	}
+	
+	@Override
+	public List<Customer> retrieveByUsername(String username) {
+		
+		return custDao.retrieveByUsername(username);
+	}
+	
+	@Override
+	public List<Customer> retrieveAll() {
+		
+		return custDao.retrieveAll();
 	}
 
 	@Override
-	public boolean deleteCustomer(int id) {
+	public boolean delete(int id) {
 		
 		return custDao.delete(id);
 	}
 
 	@Override
-	public boolean updateCustomer(Customer c) {
+	public boolean update(Customer c) {
 		
 		return custDao.update(c);
 	}
