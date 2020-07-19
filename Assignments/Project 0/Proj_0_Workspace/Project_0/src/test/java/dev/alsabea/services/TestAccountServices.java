@@ -24,7 +24,22 @@ class TestAccountServices {
 	
 	AccountServices aServices = AccountServicesImpl.getAccountServicesInstance();
 
-	@Test @Order(1)
+	@Test	@Order(1)
+	void testRetrieveById() {
+		Account a= aServices.retrieveById(100);
+		Assertions.assertEquals("savings", a.getAccountName());
+		
+	}
+	
+	@Test	@Order(2)
+	void testRetrieveByIdNegative() {
+		Account a= aServices.retrieveById(898098);
+		Assertions.assertNull(a);
+		
+	}
+	
+	
+	@Test 
 	void testCreateAccount() {
 		Account a= new Account();
 		a.setCustomerId(5);
@@ -52,13 +67,7 @@ class TestAccountServices {
 	}
 	
 	
-	@Test	@Order(2)
-	void testRetrieveById() {
-		Account a= aServices.retrieveById(100);
-		Assertions.assertEquals("savings", a.getAccountName());
-		
-	}
-	
+
 	
 	
 	@Test 
@@ -134,7 +143,13 @@ class TestAccountServices {
 	void getAccountsWithBalanceLessThanWithList() {
 		
 		List<Account> accts= aServices.retrieveAllAccounts(1);
-		List<Account> acctsReturnedFromBalanceFunction = aServices.balanceLessThan(200, accts);
+		List<Account> acctsReturnedFromBalanceFunction = null;
+		try {
+			acctsReturnedFromBalanceFunction = aServices.balanceLessThan(200, accts);
+		} catch (NegativeBalanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Assertions.assertEquals(2, acctsReturnedFromBalanceFunction.size());
 	}
@@ -143,7 +158,13 @@ class TestAccountServices {
 	@Test
 	void getAccountsWithBalanceGreaterThanWithList() {
 		List<Account> accts= aServices.retrieveAllAccounts(1);
-		List<Account> acctsReturnedFromBalanceFunction = aServices.balanceGreaterThan( 200, accts);
+		List<Account> acctsReturnedFromBalanceFunction = null;
+		try {
+			acctsReturnedFromBalanceFunction = aServices.balanceGreaterThan( 200, accts);
+		} catch (NegativeBalanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Assertions.assertEquals(3, acctsReturnedFromBalanceFunction.size());
 	}

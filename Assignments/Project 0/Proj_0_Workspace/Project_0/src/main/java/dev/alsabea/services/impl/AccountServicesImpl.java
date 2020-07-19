@@ -66,7 +66,10 @@ public class AccountServicesImpl implements AccountServices {
 	 * -  list of accounts that have a balance that is less than the one in the 'balance parameter'
 	 */
 	@Override
-	public List<Account> balanceLessThan( int balance, List<Account> list) {
+	public List<Account> balanceLessThan( int balance, List<Account> list) throws NegativeBalanceException{
+		
+		if (balance < 0 )
+			throw new NegativeBalanceException();
 		List<Account> acctsToBeReturned = new ArrayList<>();
 		for (Account a : list) {
 			if (a.getBalance() < balance)
@@ -76,7 +79,9 @@ public class AccountServicesImpl implements AccountServices {
 	}
 
 	@Override
-	public List<Account> balanceGreaterThan( int balance, List<Account> list) {
+	public List<Account> balanceGreaterThan( int balance, List<Account> list) throws NegativeBalanceException{
+		if (balance < 0 )
+			throw new NegativeBalanceException();
 		List<Account> acctsToBeReturned = new ArrayList<>();
 		for (Account a : list) {
 			if (a.getBalance() > balance)

@@ -8,18 +8,23 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import dev.alsabea.connectionUtils.ConnectionUtils;
 import dev.alsabea.entities.Account;
 import dev.alsabea.entities.Customer;
 import dev.alsabea.services.impl.CustomerServicesImpl;
 
+@TestMethodOrder(OrderAnnotation.class)
 class TestCustomerServices {
 
 	private static CustomerServices cServices = CustomerServicesImpl.getCustomerServicesInstance();
 
 	@Test
+	@Order(1)
 	void testRetrieveById() {
 
 		Customer c = cServices.retrieveById(3);
@@ -28,6 +33,7 @@ class TestCustomerServices {
 	}
 
 	@Test
+	@Order(2)
 	void testRetrieveByIdNegative() {
 
 		Customer c = cServices.retrieveById(90);
@@ -36,6 +42,7 @@ class TestCustomerServices {
 	}
 
 	@Test
+	@Order(3)
 	void testRetrieveByUsername() {
 
 		Customer c = cServices.retrieveByUsername("rex").get(0);
@@ -44,6 +51,7 @@ class TestCustomerServices {
 	}
 
 	@Test
+	@Order(4)
 	void testRetrieveByUsernameNegative() {
 
 		List<Customer> c = cServices.retrieveByUsername("skdjfs");
@@ -52,6 +60,7 @@ class TestCustomerServices {
 	}
 
 	@Test
+	@Order(5)
 	void testRetrieveAll() {
 
 		List<Customer> c = cServices.retrieveAll();
@@ -60,6 +69,7 @@ class TestCustomerServices {
 	}
 
 	@Test
+	@Order(6)
 	void TestAddCustomer() {
 		Customer c = new Customer();
 		c.setCustomerId(10001);
@@ -103,7 +113,7 @@ class TestCustomerServices {
 	void testGetAccounts() {
 		List<Account> accountsList = new ArrayList<>();
 		accountsList = cServices.getCustomerAccounts( /* customer_id */ 1);
-		Assertions.assertEquals(2, accountsList.size());
+		Assertions.assertEquals(5, accountsList.size());
 	}
 
 	@Test

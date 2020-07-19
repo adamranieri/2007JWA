@@ -17,9 +17,9 @@ public interface AccountServices {
 	
 	boolean update ( Account t) throws NegativeBalanceException;
 	
-	List<Account> balanceLessThan(int balance, List<Account> list);
+	List<Account> balanceLessThan(int balance, List<Account> list) throws NegativeBalanceException;;
 
-	List<Account> balanceGreaterThan(int balance, List<Account> list);
+	List<Account> balanceGreaterThan(int balance, List<Account> list) throws NegativeBalanceException;;
 	
 	
 	
