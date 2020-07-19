@@ -125,9 +125,6 @@ public class CustomersController {
 			if (cServices.update(c)) {
 				ctx.status(200);
 				ctx.result(gs.toJson(cServices.retrieveById(c.getCustomerId())));
-			} else {
-				ctx.status(404);
-				ctx.result("an error with the update service or dao");
 			}
 		}
 		//if there is no such object in the database

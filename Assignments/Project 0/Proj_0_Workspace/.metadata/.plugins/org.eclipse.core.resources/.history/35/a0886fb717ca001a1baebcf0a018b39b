@@ -35,15 +35,8 @@ public class CustomersController {
 		if(usernameQ != null) {
 			//get all customers with the same username
 			List<Customer> list= cServices.retrieveByUsername(usernameQ);
-
-			if (list != null) {
-				//transform the list of customers to json, then send the value to the website.
-				ctx.result(gs.toJson(list));
-			} else {
-				ctx.status(404);
-				ctx.result("There is no customer with this username");
-			}
-
+			//transform the list of customers to json, then send the value to the website.
+			ctx.result(gs.toJson(list));
 		//if query is null
 		}else {
 			//get all customers in the database
@@ -90,10 +83,8 @@ public class CustomersController {
 			ctx.status(200);
 			//specify that the operation is a success through a message 
 			ctx.result("delete operation executed successfully");
-		} else {
-			ctx.status (404);
-			ctx.result("Delete Failed, no such element exist with this customer_id");
 		}
+		
 		
 	};
 	
@@ -125,9 +116,6 @@ public class CustomersController {
 			if (cServices.update(c)) {
 				ctx.status(200);
 				ctx.result(gs.toJson(cServices.retrieveById(c.getCustomerId())));
-			} else {
-				ctx.status(404);
-				ctx.result("an error with the update service or dao");
 			}
 		}
 		//if there is no such object in the database
@@ -145,11 +133,6 @@ public class CustomersController {
 		
 		//access the database, retrieve all accounts associated with the customer, then
 		// attach them to the customer
-		if (c ==  null ) {
-			ctx.status(404);
-			ctx.result("there is no customer with such id");
-			return;
-		}
 		c.setAccounts(cServices.getCustomerAccounts(id)); 
 		ctx.status(200);
 		//send them to the web page.

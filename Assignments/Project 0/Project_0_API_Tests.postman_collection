@@ -46,7 +46,47 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve a Customer with query",
+			"name": "Retrieve a Customer __Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8bcd16f-2635-4758-9e4d-f31fc5634542",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/-2",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"-2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Customer __Q",
 			"event": [
 				{
 					"listen": "test",
@@ -85,6 +125,52 @@
 						{
 							"key": "username",
 							"value": "rex"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Customer __Q Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13ee86c0-0db1-4eb1-beb1-a2c2f4937672",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/?username=lksahdfj",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "lksahdfj"
 						}
 					]
 				}
@@ -166,6 +252,39 @@
 			"response": []
 		},
 		{
+			"name": "Delete a Customer Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2f9ff9f-78fb-4cc6-933c-3da9b811ec9a",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customer/700",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"700"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Update A Customer",
 			"event": [
 				{
@@ -208,7 +327,49 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve an account_1",
+			"name": "Update A Customer Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a26d1429-e21b-45da-8ac9-aa4a06d79bc1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"Updated_from_postman\",\"password\":\"Updated_pass_from_postman\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/34",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an account",
 			"event": [
 				{
 					"listen": "test",
@@ -250,7 +411,7 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve an account_2",
+			"name": "Retrieve an account_Negative",
 			"event": [
 				{
 					"listen": "test",
@@ -357,6 +518,50 @@
 					}
 				},
 				"url": {
+					"raw": "localhost:7000/customer/2/accounts/159",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"159"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an account Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1e86918-0db3-4e29-9804-190f43e082a6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountName\":\"From_postman_acct\",\"balance\":500}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
 					"raw": "localhost:7000/customer/2/accounts/122",
 					"host": [
 						"localhost"
@@ -379,6 +584,50 @@
 					"listen": "test",
 					"script": {
 						"id": "94618193-8973-45ce-9e3c-e7168b8c4ed5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":123,\"customerId\":2,\"accountName\":\"Updated_From_postman_acct\",\"balance\":5500}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/123",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an account Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3ccb53e-a239-41b4-b92e-5ce18a60b48d",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -459,7 +708,7 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve all Customer Accounts with Query_1",
+			"name": "Retrieve all Customer Accounts QL",
 			"event": [
 				{
 					"listen": "test",
@@ -506,7 +755,54 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve all Customer Accounts with Query_2",
+			"name": "Retrieve all Customer Accounts QL Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0006512e-5f5d-4a3a-a27c-d0acd53e8211",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancelessthan=-200",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancelessthan",
+							"value": "-200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with QG",
 			"event": [
 				{
 					"listen": "test",
@@ -553,12 +849,110 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve all Customer Accounts with Query_3",
+			"name": "Retrieve all Customer Accounts with QG Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b53c20e2-a616-4fee-8344-dbee08f675ff",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancegreaterthan=-5",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancegreaterthan",
+							"value": "-5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with QLG",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "6613f6f6-6066-4fff-a134-773618a9ebf6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancegreaterthan=200&balancelessthan=1000",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancegreaterthan",
+							"value": "200"
+						},
+						{
+							"key": "balancelessthan",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with QLG Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9622253-bdd4-40a0-b65d-dcd978d4df34",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",

@@ -90,10 +90,8 @@ public class CustomersController {
 			ctx.status(200);
 			//specify that the operation is a success through a message 
 			ctx.result("delete operation executed successfully");
-		} else {
-			ctx.status (404);
-			ctx.result("Delete Failed, no such element exist with this customer_id");
 		}
+		
 		
 	};
 	
@@ -125,9 +123,6 @@ public class CustomersController {
 			if (cServices.update(c)) {
 				ctx.status(200);
 				ctx.result(gs.toJson(cServices.retrieveById(c.getCustomerId())));
-			} else {
-				ctx.status(404);
-				ctx.result("an error with the update service or dao");
 			}
 		}
 		//if there is no such object in the database
