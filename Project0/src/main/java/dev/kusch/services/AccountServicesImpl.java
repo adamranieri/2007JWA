@@ -2,74 +2,67 @@ package dev.kusch.services;
 
 import java.util.Set;
 
+import dev.kusch.daos.AccountDAO;
+import dev.kusch.daos.AccountDAOMaria;
 import dev.kusch.entities.Account;
 
 public class AccountServicesImpl implements AccountServices{
 
+	private static AccountDAO adao = AccountDAOMaria.getAccountDAOMaria();
+	
 	@Override
 	public Account startAccount(Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.createAccount(account);
 	}
 
 	@Override
 	public Set<Account> getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.getAllAccounts();
 	}
 
 	@Override
 	public Account getAccount(int aid) {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.getAccountById(aid);
 	}
 
 	@Override
 	public Account getAccount(Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getAccount(account.getaId());
 	}
 
 	@Override
-	public Account getAccountByCustomer(int cid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Account> getAccountsByCustomer(int cid) {
+		return adao.getAccountByCustomerId(cid);
 	}
 
 	@Override
 	public Account updateAccount(Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.updateAccount(account);
 	}
 
 	@Override
 	public boolean deleteAccount(Account account) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.deleteAccount(account.getaId());
 	}
 
 	@Override
 	public boolean deleteAccount(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		return adao.deleteAccount(id);
 	}
 
 	@Override
 	public Set<Account> getAccountsLessThan(int bound, int cid) {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.getAccountWithBalanceBetween(cid, 0, bound);
 	}
 
 	@Override
 	public Set<Account> getAccountsGreaterThan(int bound, int cid) {
-		// TODO Auto-generated method stub
-		return null;
+		return adao.getAccountWithBalanceBetween(cid, bound, Double.MAX_VALUE);
 	}
 
 	@Override
-	public Set<Account> getAccountsBetween(int bound, int cid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Account> getAccountsBetween(int lowerBound, int upperBound, int cid) {
+		return adao.getAccountWithBalanceBetween(cid, lowerBound, upperBound);
 	}
 
 }

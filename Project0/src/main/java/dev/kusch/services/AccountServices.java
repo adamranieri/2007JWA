@@ -15,10 +15,10 @@ public interface AccountServices {
 	Set<Account> getAllAccounts();
 	Account getAccount(int aid);
 	Account getAccount(Account account);
-	Account getAccountByCustomer(int cid);
+	Set<Account> getAccountsByCustomer(int cid);
 	Set<Account> getAccountsLessThan(int bound, int cid);
 	Set<Account> getAccountsGreaterThan(int bound, int cid);
-	Set<Account> getAccountsBetween(int bound, int cid);
+	Set<Account> getAccountsBetween(int lowerBound, int upperBound, int cid);
 	
 	// Update
 	Account updateAccount(Account account);

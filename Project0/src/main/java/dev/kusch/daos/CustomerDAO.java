@@ -12,7 +12,7 @@ public interface CustomerDAO {
 	// Read
 	Customer getCustomerById(int id);
 	Set<Customer> getAllCustomers();
-	Customer getCustomerByUser(String username);
+	Set<Customer> getCustomerByUser(String username);
 	
 	// Update
 	Customer updateCustomer(Customer customer);

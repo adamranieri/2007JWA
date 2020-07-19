@@ -17,7 +17,7 @@ public interface CustomerServices {
 	Set<Customer> getAllCustomers();
 	Customer getCustomer(int id);
 	Customer getCustomer(Customer customer);
-	Customer getCustomer(String username);
+	Set<Customer> getCustomer(String username);
 	
 	// Update
 	Customer updateCustomer(Customer customer);

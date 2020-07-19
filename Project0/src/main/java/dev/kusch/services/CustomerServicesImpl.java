@@ -32,7 +32,7 @@ public class CustomerServicesImpl implements CustomerServices {
 	}
 
 	@Override
-	public Customer getCustomer(String username) {
+	public Set<Customer> getCustomer(String username) {
 		return cdao.getCustomerByUser(username);
 	}
 

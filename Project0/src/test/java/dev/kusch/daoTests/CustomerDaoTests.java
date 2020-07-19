@@ -71,15 +71,15 @@ class CustomerDaoTests {
 	@Test
 	@Order(5)
 	void getCustomerByUserBasic() {
-		Customer getCust = cdao.getCustomerByUser("John Smith");
-		Assertions.assertEquals(1, getCust.getcId());
+		Set<Customer> getCust = cdao.getCustomerByUser("John Smith");
+		Assertions.assertEquals(1, getCust.iterator().next().getcId());
 	}
 	
 	@Test
 	@Order(6)
 	void testGetCustomerByUserNegative() {
-		Customer customer = cdao.getCustomerByUser("A cow jumped over the moon");
-		Assertions.assertNull(customer);
+		Set<Customer> customer = cdao.getCustomerByUser("A cow jumped over the moon");
+		Assertions.assertFalse(customer.iterator().hasNext());
 	}
 	
 	@Test

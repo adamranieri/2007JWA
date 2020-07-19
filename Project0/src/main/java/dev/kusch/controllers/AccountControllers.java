@@ -11,7 +11,7 @@ public class AccountControllers {
 	public static AccountServices sserv = new AccountServicesImpl();
 	private static Gson gson = new Gson();
 	
-	public static Handler getAllAccounts = (ctx) -> {
+	public static Handler getAllAccountsForCustomer = (ctx) -> {
 		
 	};
 	

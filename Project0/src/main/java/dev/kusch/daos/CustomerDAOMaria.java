@@ -139,21 +139,24 @@ public static CustomerDAO sdao = null;
 	}
 
 	@Override
-	public Customer getCustomerByUser(String username) {
+	public Set<Customer> getCustomerByUser(String username) {
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			String sql = "SELECT * FROM bankAPI_db.customer WHERE username = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,  username);
 			
+			Set<Customer> customers = new HashSet<Customer>();
 			ResultSet rs = ps.executeQuery();
-			rs.next();
 			
-			Customer customer = new Customer();
-			customer.setcId(rs.getInt("c_id"));
-			customer.setUsername(rs.getString("username"));
-			customer.setPassword(rs.getString("password"));
-			
-			return customer;
+			while(rs.next()) {
+				Customer customer = new Customer();
+				customer.setcId(rs.getInt("c_id"));
+				customer.setUsername(rs.getString("username"));
+				customer.setPassword(rs.getString("password"));
+				
+				customers.add(customer);
+			}
+			return customers;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

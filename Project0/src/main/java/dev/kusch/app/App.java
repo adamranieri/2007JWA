@@ -14,7 +14,7 @@ public class App {
 		// read operations
 		app.get("/customers", CustomerControllers.getAllCustomers);
 		app.get("/customers/:cid", CustomerControllers.getCustomerById);
-		app.get("/customers/:cid/accoutns", AccountControllers.getAllAccounts);
+		app.get("/customers/:cid/accounts", AccountControllers.getAllAccountsForCustomer);
 		app.get("/customers/:cid/accounts/:aid", AccountControllers.getAccountById);
 		
 		// create operation

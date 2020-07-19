@@ -68,15 +68,15 @@ class CustomerServiceTests {
 	@Test
 	@Order(5)
 	void testGetCustomerByUser() {
-		Customer customer = cserv.getCustomer("PuppLover87");
-		Assertions.assertEquals(2, customer.getcId());
+		Set<Customer> customer = cserv.getCustomer("PuppLover87");
+		Assertions.assertEquals(2, customer.iterator().next().getcId());
 	}
 	
 	@Test
 	@Order(6)
 	void testGetCustomerByBadUser() {
-		Customer customer = cserv.getCustomer("EXPLICITNAME");
-		Assertions.assertNull(customer);
+		Set<Customer> customer = cserv.getCustomer("EXPLICITNAME");
+		Assertions.assertFalse(customer.iterator().hasNext());
 	}
 	
 	@Test
