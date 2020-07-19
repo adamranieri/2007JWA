@@ -1,0 +1,7 @@
+what is left
+
+extra checks if something wrong, in case of delete, update or retrieve 
+
+(if no such element)
+
+and tests for the api.

@@ -128,23 +128,24 @@ class TestAccountServices {
 				aServices.update(aUpdated);	
 			});
 		
+	}
+	
+	@Test
+	void getAccountsWithBalanceLessThanWithList() {
 		
+		List<Account> accts= aServices.retrieveAllAccounts(1);
+		List<Account> acctsReturnedFromBalanceFunction = aServices.balanceLessThan(200, accts);
+		
+		Assertions.assertEquals(2, acctsReturnedFromBalanceFunction.size());
 	}
 	
 	
 	@Test
-	void getAccountsWithBalanceLessThan() {
-		List<Account> accts= aServices.balanceLessThan(1, 191);
+	void getAccountsWithBalanceGreaterThanWithList() {
+		List<Account> accts= aServices.retrieveAllAccounts(1);
+		List<Account> acctsReturnedFromBalanceFunction = aServices.balanceGreaterThan( 200, accts);
 		
-		Assertions.assertEquals(2, accts.size());
-	}
-	
-	
-	@Test
-	void getAccountsWithBalanceGreaterThan() {
-		List<Account> accts= aServices.balanceGreaterThan(2, 1000);
-		
-		Assertions.assertEquals(1, accts.size());
+		Assertions.assertEquals(3, acctsReturnedFromBalanceFunction.size());
 	}
 	
 	@Test

@@ -13,42 +13,43 @@ import dev.alsabea.daos.AccountDao;
 import dev.alsabea.entities.Account;
 import dev.alsabea.exceptions.DaoException;
 
-public class AccountDaoImpl implements AccountDao{
+public class AccountDaoImpl implements AccountDao {
 
-private static AccountDaoImpl dao = null;
-	
+	private static AccountDaoImpl dao = null;
+
 	private AccountDaoImpl() {
-		
+
 	};
-	
+
 	public static AccountDao getAccountDao() {
-		
-		if(dao == null) {
+
+		if (dao == null) {
 			dao = new AccountDaoImpl();
 			return dao;
-		}else {
+		} else {
 			return dao;
 		}
-		
+
 	}
 
 	@Override
 	public int create(Account t) {
-		final String insertMySql= "INSERT INTO proj_0_db.account (customer_id, account_name, balance)"
+		final String insertMySql = "INSERT INTO proj_0_db.account (customer_id, account_name, balance)"
 				+ " VALUES (?, ?, ?) ";
-		Connection con= ConnectionUtils.getConnection();
-		ResultSet rs= null;
+		Connection con = ConnectionUtils.getConnection();
+		ResultSet rs = null;
 		int createdAccountId = -1;
-		try (PreparedStatement ps= con.prepareStatement(insertMySql, Statement.RETURN_GENERATED_KEYS)){
+		try (PreparedStatement ps = con.prepareStatement(insertMySql, Statement.RETURN_GENERATED_KEYS)) {
 			ps.setInt(1, t.getCustomerId());
 			ps.setString(2, t.getAccountName());
 			ps.setInt(3, t.getBalance());
-			if (ps.executeUpdate()!= 1)
-				throw new DaoException("sql query did not update the expected number of rows");
+
+			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 			rs.next();
+			// get the key generated and assigned to the account object by the database
 			createdAccountId = rs.getInt("account_id");
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return createdAccountId;
@@ -56,30 +57,36 @@ private static AccountDaoImpl dao = null;
 
 	@Override
 	public boolean delete(int id) {
-		final String deleteSql= "DELETE FROM proj_0_db.account WHERE account_id = ?";
-		
-		Connection con= ConnectionUtils.getConnection();
-		
-		try (PreparedStatement ps= con.prepareStatement(deleteSql)){
-			ps.setInt(1,id);
-			if (ps.executeUpdate()!= 1)
+		final String deleteSql = "DELETE FROM proj_0_db.account WHERE account_id = ?";
+
+		Connection con = ConnectionUtils.getConnection();
+
+		int numOfDeletedRecords = -4;
+		try (PreparedStatement ps = con.prepareStatement(deleteSql)) {
+			ps.setInt(1, id);
+			numOfDeletedRecords = ps.executeUpdate();
+			if (numOfDeletedRecords > 1)
 				throw new DaoException("sql query did not update the expected number of rows");
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return true;
+		if (numOfDeletedRecords == 1)
+			return true;
+		else // if (numOfDeletedRecords == 0) no element have been deleted (id does not refer
+				// to any account object)
+			return false;
 	}
 
 	@Override
 	public Account retrieveById(int id) {
-		final String retrieveSql= "SELECT * FROM proj_0_db.account WHERE account_id= ?";
-		Connection con= ConnectionUtils.getConnection();
-		ResultSet rs= null;
-		try (PreparedStatement ps= con.prepareStatement(retrieveSql)){
+		final String retrieveSql = "SELECT * FROM proj_0_db.account WHERE account_id= ?";
+		Connection con = ConnectionUtils.getConnection();
+		ResultSet rs = null;
+		try (PreparedStatement ps = con.prepareStatement(retrieveSql)) {
 			ps.setInt(1, id);
-			rs= ps.executeQuery();
+			rs = ps.executeQuery();
 			rs.next();
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -88,68 +95,74 @@ private static AccountDaoImpl dao = null;
 
 	@Override
 	public boolean update(Account t) {
-		
-		int check=-1;
-		
-		final String updateSql="UPDATE proj_0_db.account "
+
+		final String updateSql = "UPDATE proj_0_db.account "
 				+ "SET customer_id= ? , account_name= ?, balance = ? WHERE account_id= ?;";
 
-		Connection con= ConnectionUtils.getConnection();
+		Connection con = ConnectionUtils.getConnection();
 
-		try (PreparedStatement ps= con.prepareStatement(updateSql)){
-			ps.setInt(1,t.getCustomerId());
+		int numOfUpdatedRecords = -4;
+		try (PreparedStatement ps = con.prepareStatement(updateSql)) {
+			ps.setInt(1, t.getCustomerId());
 			ps.setString(2, t.getAccountName());
 			ps.setInt(3, t.getBalance());
 			ps.setInt(4, t.getAccountId());
-			check= ps.executeUpdate();
-			if (check!= 1) {
-				System.out.println();
+			numOfUpdatedRecords = ps.executeUpdate();
+			if (numOfUpdatedRecords > 1)
 				throw new DaoException("sql query did not update the expected number of rows");
-			}
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return true;
+		if (numOfUpdatedRecords == 1)
+			return true;
+		else // (numOfUpdatedRecords == 0) no element have been Updated (id does not refer
+				// to any account object)
+			return false;
 	}
 
 	@Override
 	public List<Account> getAllCustomerAccounts(int id) {
-		final String sqlStmt= "SELECT * FROM proj_0_db.account WHERE customer_id = ?";
-		
-		Connection con= ConnectionUtils.getConnection();
-		ResultSet rs= null;
-		List<Account> accts= new ArrayList<>();
-		
-		try (PreparedStatement ps= con.prepareStatement(sqlStmt)){
+		final String sqlStmt = "SELECT * FROM proj_0_db.account WHERE customer_id = ?";
+
+		Connection con = ConnectionUtils.getConnection();
+		ResultSet rs = null;
+		List<Account> accts = new ArrayList<>();
+
+		try (PreparedStatement ps = con.prepareStatement(sqlStmt)) {
 			ps.setInt(1, id);
-			rs= ps.executeQuery();
-			
+			rs = ps.executeQuery();
+
 			while (rs.next()) {
 				accts.add(extractFromRs(rs));
 			}
 
-			
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return accts;
 	}
 
+	
+	/**
+	 *  Takes a result set, extract the Account information and 
+	 *  assign them to an Account object then returns this account.
+	 *  
+	 * @param rs
+	 * @return Account
+	 */
 	private Account extractFromRs(ResultSet rs) {
 		Account a = new Account();
-		
+
 		try {
 			a.setAccountId(rs.getInt("account_id"));
 			a.setCustomerId(rs.getInt("customer_id"));
 			a.setAccountName(rs.getString("account_name"));
 			a.setBalance(rs.getInt("balance"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return a;
 	}
 
-	
 }

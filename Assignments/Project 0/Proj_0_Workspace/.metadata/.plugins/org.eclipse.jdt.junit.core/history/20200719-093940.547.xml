@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCustomerDao" project="Project_0" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="dev.alsabea.daos.TestCustomerDao" time="1.082" displayname="TestCustomerDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]">
+    <testcase name="testRetrieveById" classname="dev.alsabea.daos.TestCustomerDao" time="0.622" displayname="testRetrieveById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testRetrieveById()]"/>
+    <testcase name="testRetrieveByUserName" classname="dev.alsabea.daos.TestCustomerDao" time="0.061" displayname="testRetrieveByUserName()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testRetrieveByUserName()]"/>
+    <testcase name="testRetrieveAll" classname="dev.alsabea.daos.TestCustomerDao" time="0.056" displayname="testRetrieveAll()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testRetrieveAll()]"/>
+    <testcase name="testDeleteById" classname="dev.alsabea.daos.TestCustomerDao" time="0.111" displayname="testDeleteById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testDeleteById()]"/>
+    <testcase name="createCustomer" classname="dev.alsabea.daos.TestCustomerDao" time="0.056" displayname="createCustomer()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:createCustomer()]"/>
+    <testcase name="testUpdate" classname="dev.alsabea.daos.TestCustomerDao" time="0.176" displayname="testUpdate()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testUpdate()]"/>
+  </testsuite>
+</testrun>

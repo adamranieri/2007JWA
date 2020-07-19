@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun TestAccountDao" project="Project_0" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="dev.alsabea.daos.TestAccountDao" time="1.005" displayname="TestAccountDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]">
+    <testcase name="testCreateAccount" classname="dev.alsabea.daos.TestAccountDao" time="0.576" displayname="testCreateAccount()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testCreateAccount()]"/>
+    <testcase name="testGetAccounts" classname="dev.alsabea.daos.TestAccountDao" time="0.058" displayname="testGetAccounts()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testGetAccounts()]"/>
+    <testcase name="testDeleteById" classname="dev.alsabea.daos.TestAccountDao" time="0.113" displayname="testDeleteById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testDeleteById()]"/>
+    <testcase name="testRetrieveById" classname="dev.alsabea.daos.TestAccountDao" time="0.066" displayname="testRetrieveById()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testRetrieveById()]"/>
+    <testcase name="testUpdate" classname="dev.alsabea.daos.TestAccountDao" time="0.192" displayname="testUpdate()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testUpdate()]"/>
+  </testsuite>
+</testrun>

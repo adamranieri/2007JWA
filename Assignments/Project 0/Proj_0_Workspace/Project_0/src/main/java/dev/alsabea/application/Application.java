@@ -11,6 +11,8 @@ public class Application {
 		
 		Javalin app = Javalin.create().start(7000);
 		
+		//customer requests
+		
 		app.get("/customer", CustomersController.retrieveAllCustomers);
 		
 		app.post("/customer", CustomersController.addACustomer);
@@ -22,6 +24,8 @@ public class Application {
 		
 		app.get("customer/:id", CustomersController.retrieveACustomer);
 		
+		
+		// account requests 
 		
 		app.get("customer/:id/accounts", AccountsController.retrieveAllCustomerAccounts);
 		app.get("customer/:id/accounts/:aid", AccountsController.retrieveAnAccount);

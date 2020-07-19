@@ -24,4 +24,5 @@
     <fullyQualifiedTypeName name="dev.alsabea.services.impl.AccountServicesImpl"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="dev.alsabea.controllers.AccountsController"/>
+    <fullyQualifiedTypeName name="java.lang.Number"/>
 </qualifiedTypeNameHistroy>

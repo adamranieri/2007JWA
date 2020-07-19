@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "f121932d-8b86-4c41-a6ff-f0b9481a06ee",
+		"name": "Project_0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve a Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbf22be7-2204-421d-9bb4-18fce56ff2a6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Customer with query",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccb0d064-a7de-41b3-996f-a879b5d7d18c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/?username=rex",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "rex"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e26dd8c-69c8-4bca-bd2c-0a31a40ca53f",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"from_postman\",\"password\":\"pass_from_postman\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aff99afb-15c9-40c8-b422-21742b0ba912",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customer/33",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update A Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "777ada25-bc67-4cf5-b767-acdf2403cc54",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"Updated_from_postman\",\"password\":\"Updated_pass_from_postman\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/34",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an account_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db86effa-abd3-483a-aaaf-078ae8762fbb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/102",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an account_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a2e2206-a385-4182-933e-70f6b3f204b6",
+						"exec": [
+							"pm.test(\"customer does not have such account\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/104",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0753d51-5fdd-4f6d-8638-9064da86e54e",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountName\":\"From_postman_acct\",\"balance\":500}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "688a97b3-47e6-4fc7-99c9-646e771bf512",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountName\":\"From_postman_acct\",\"balance\":500}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/122",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"122"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94618193-8973-45ce-9e3c-e7168b8c4ed5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":123,\"customerId\":2,\"accountName\":\"Updated_From_postman_acct\",\"balance\":5500}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/123",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "41801dd8-0d16-4bdf-8565-c6b30721165b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/2/accounts/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"2",
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with Query_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ea74e6e-96f8-4d7a-8445-1bd8ebd49914",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancelessthan=200",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancelessthan",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with Query_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ded987b3-209b-4334-8e24-654db9509f6a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancegreaterthan=200",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancegreaterthan",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Customer Accounts with Query_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6613f6f6-6066-4fff-a134-773618a9ebf6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/customer/1/accounts?balancegreaterthan=200&balancelessthan=1000",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customer",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancegreaterthan",
+							"value": "200"
+						},
+						{
+							"key": "balancelessthan",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
