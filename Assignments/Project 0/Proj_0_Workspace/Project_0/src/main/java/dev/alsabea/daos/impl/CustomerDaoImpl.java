@@ -93,7 +93,10 @@ public class CustomerDaoImpl implements CustomerDao {
 			e.printStackTrace();
 		}
 
-		return recordsList;
+		if (recordsList.size()!=0)
+			return recordsList; 
+		else
+			return null;
 	}
 
 	@Override
@@ -101,15 +104,19 @@ public class CustomerDaoImpl implements CustomerDao {
 		final String retrieveSql = "SELECT * FROM proj_0_db.customer WHERE customer_id = ?";
 		Connection con = ConnectionUtils.getConnection();
 		ResultSet rs = null;
+		boolean isNotEmpty = true;
 		try (PreparedStatement ps = con.prepareStatement(retrieveSql)) {
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			rs.next();
+			isNotEmpty= rs.next();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return extractFromRs(rs);
+		if (isNotEmpty)
+			return extractFromRs(rs);
+		else
+			return null;
 	}
 
 	/**
@@ -131,7 +138,10 @@ public class CustomerDaoImpl implements CustomerDao {
 			e.printStackTrace();
 		}
 
-		return recordsList;
+		if (recordsList.size()!=0)
+			return recordsList; 
+		else
+			return null;
 	}
 
 	@Override
@@ -166,7 +176,6 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	private Customer extractFromRs(ResultSet rs) {
 		Customer c = new Customer();
-
 		try {
 			c.setCustomerId(rs.getInt("customer_id"));
 			c.setUsername(rs.getString("username"));
@@ -174,7 +183,6 @@ public class CustomerDaoImpl implements CustomerDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return c;
 	}
 

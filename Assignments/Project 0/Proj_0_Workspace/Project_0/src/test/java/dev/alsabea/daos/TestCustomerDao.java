@@ -29,14 +29,33 @@ public class TestCustomerDao {
 
 		Assertions.assertEquals("rex", c.getUsername());
 	}
+	
+	@Test 
+	@Order(2)
+	void testRetrieveByIdNegative() {
+
+		Customer c = custDao.retrieveById(11);
+
+		Assertions.assertNull(c);
+	}
+	
 
 	@Test
-	@Order(2)
+	@Order(3)
 	void testRetrieveByUserName() {
 
 		Customer c = custDao.retrieveByUsername("rex").get(0);
 
 		Assertions.assertEquals(3, c.getCustomerId());
+	}
+	
+	@Test
+	@Order(4)
+	void testRetrieveByUserNameNegative() {
+
+		List<Customer> c = custDao.retrieveByUsername("al;ksdjfsaldkjfsljf");
+
+		Assertions.assertNull(c);
 	}
 
 	/*
@@ -45,7 +64,7 @@ public class TestCustomerDao {
 	 * be 5 customers, after we use the create test, we would have 6 customers.
 	 */
 	@Test
-	@Order(3)
+	@Order(5)
 	void testRetrieveAll() {
 
 		List<Customer> c = custDao.retrieveAll();

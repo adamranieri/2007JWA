@@ -27,27 +27,38 @@ public class TestAccountDao {
 	void testRetrieveById() {
 		Account a = aDao.retrieveById(100);
 		Assertions.assertEquals("savings", a.getAccountName());
-
 	}
 
 	@Test
 	@Order(2)
+	void testRetrieveByIdNegative() {
+		Account a = aDao.retrieveById(88888);
+		Assertions.assertNull(a);
+	}
+	
+	@Test
+	@Order(3)
 	void testGetAccounts() {
 		List<Account> accountsList = new ArrayList<>();
-
 		accountsList = aDao.getAllCustomerAccounts( /* customer_id */ 1);
-
 		Assertions.assertEquals(5, accountsList.size());
+	}
+	
+	@Test
+	@Order(4)
+	void testGetAccountsNegative() {
+		List<Account> accountsList = new ArrayList<>();
+		accountsList = aDao.getAllCustomerAccounts( /* customer_id */ 89);
+		Assertions.assertNull(accountsList);
 	}
 
 	@Test
-	@Order(3)
+	@Order(5)
 	void testCreateAccount() {
 		Account a = new Account();
 		a.setCustomerId(5);
 		a.setAccountName("test_create_name");
 		a.setBalance(800);
-
 		Assertions.assertNotEquals(-1, aDao.create(a));
 
 	}
@@ -58,9 +69,7 @@ public class TestAccountDao {
 		a.setCustomerId(5);
 		a.setAccountName("test_to_be_deleted");
 		a.setBalance(800);
-
 		int id = aDao.create(a);
-
 		Assertions.assertTrue(aDao.delete(id));
 
 	}

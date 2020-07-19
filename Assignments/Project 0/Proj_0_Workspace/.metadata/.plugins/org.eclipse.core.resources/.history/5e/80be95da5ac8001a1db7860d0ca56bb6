@@ -1,7 +1,0 @@
-package dev.alsabea.daosandservices.services.impl;
-
-import dev.alsabea.daosandservices.services.AccountServices;
-
-public class AccountServicesImpl implements AccountServices{
-
-}

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun testRetrieveAll()" project="Project_0" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="dev.alsabea.daos.TestCustomerDao" time="0.684" displayname="TestCustomerDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]">
-    <testcase name="testRetrieveAll" classname="dev.alsabea.daos.TestCustomerDao" time="0.684" displayname="testRetrieveAll()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestCustomerDao]/[method:testRetrieveAll()]"/>
-  </testsuite>
-</testrun>

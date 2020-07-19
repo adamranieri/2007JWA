@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestAccountDao.testUpdate" project="Project_0" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="dev.alsabea.daos.TestAccountDao" time="0.813" displayname="TestAccountDao" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]">
-    <testcase name="testUpdate" classname="dev.alsabea.daos.TestAccountDao" time="0.813" displayname="testUpdate()" uniqueid="[engine:junit-jupiter]/[class:dev.alsabea.daos.TestAccountDao]/[method:testUpdate()]"/>
-  </testsuite>
-</testrun>

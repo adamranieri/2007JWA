@@ -82,15 +82,19 @@ public class AccountDaoImpl implements AccountDao {
 		final String retrieveSql = "SELECT * FROM proj_0_db.account WHERE account_id= ?";
 		Connection con = ConnectionUtils.getConnection();
 		ResultSet rs = null;
+		boolean isNotEmpty=true;
 		try (PreparedStatement ps = con.prepareStatement(retrieveSql)) {
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			rs.next();
+			isNotEmpty = rs.next();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return extractFromRs(rs);
+		if (isNotEmpty)
+			return extractFromRs(rs);
+		else
+			return null;
 	}
 
 	@Override
@@ -140,7 +144,10 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		}
 
-		return accts;
+		if (accts.size()!=0)
+			return accts; 
+		else
+			return null;
 	}
 
 	

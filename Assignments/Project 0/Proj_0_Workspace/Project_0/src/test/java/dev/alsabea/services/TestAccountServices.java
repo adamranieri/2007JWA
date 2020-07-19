@@ -25,7 +25,7 @@ class TestAccountServices {
 	AccountServices aServices = AccountServicesImpl.getAccountServicesInstance();
 
 	@Test @Order(1)
-	void testCreateAccountHappyPath() {
+	void testCreateAccount() {
 		Account a= new Account();
 		a.setCustomerId(5);
 		a.setAccountName("test_create_name");
@@ -40,7 +40,7 @@ class TestAccountServices {
 	}
 	
 	@Test
-	void testCreateAccountUnhappyPath() {
+	void testCreateAccountNegative() {
 		Account a= new Account();
 		a.setCustomerId(5);
 		a.setAccountName("test_create_name");
@@ -83,7 +83,7 @@ class TestAccountServices {
 	
 	
 	@Test
-	void testUpdateHappyPath() {
+	void testUpdate() {
 		Account a= new Account();
 		a.setCustomerId(5);
 		a.setAccountName("testToBeUpdatedName");
@@ -106,7 +106,7 @@ class TestAccountServices {
 	}
 	
 	@Test
-	void testUpdateUnhappyPath() {
+	void testUpdateNegative() {
 		Account a= new Account();
 		a.setCustomerId(5);
 		a.setAccountName("testToBeUpdatedName");
@@ -154,7 +154,7 @@ class TestAccountServices {
 		
 		accountsList= aServices.retrieveAllAccounts( /*customer_id*/ 1);
 		
-		Assertions.assertEquals(2, accountsList.size());
+		Assertions.assertEquals(5, accountsList.size());
 		
 		
 	}
