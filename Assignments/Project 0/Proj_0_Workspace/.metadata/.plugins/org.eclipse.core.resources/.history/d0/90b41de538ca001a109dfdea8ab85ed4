@@ -22,7 +22,7 @@ public class Application {
 		app.delete("/customers/:id", CustomersController.deleteCustomer);
 		
 		
-		app.get("customers/:id", CustomersController.retrieveACustomer);
+		app.get("customer/:id", CustomersController.retrieveACustomer);
 		
 		
 		// account requests 
