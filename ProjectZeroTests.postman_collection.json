@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "664a857d-b16e-4b85-ac45-dff3e8cc0e3f",
+		"name": "ProjectZeroTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb7ad056-c851-416d-ab19-c35d04286450",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cId\": 0, \"username\": \"Kurt1997\", \"password\": \"loljkrofl\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb7ad056-c851-416d-ab19-c35d04286450",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cId\": 0, \"username\": \"UnholyMoley\", \"password\": \"Password\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers/1/accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb7ad056-c851-416d-ab19-c35d04286450",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"aId\": 0, \"accountName\": \"Savings Account\", \"accountBalance\": 53}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers/1/accounts 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6663497e-64e1-4557-a58a-dde46384b70b",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"aId\": 0, \"accountName\": \"Checkings\", \"accountBalance\": 100}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers/2/accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6660ad2-ce9a-48e2-97ce-99369d34cbc5",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"aId\": 0, \"accountName\": \"Savings Account\", \"accountBalance\": 53}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/2/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"2",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.variables.get(1);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customers/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.variables.get(1);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1/accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Savings Account\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1/accounts?balancelessthan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"Savings Account\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts?balancelessthan=10000",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "balancelessthan",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cId\": 0, \"username\": \"Kurt1997\", \"password\": \"5555g\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1/accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Savings Account\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"aId\": 1, \"accountName\": \"Savings Account\", \"accountBalance\": 42536357,\"cId\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1/accounts/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/1/accounts/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						"accounts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/customers/1/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40ad0fa2-a894-4c07-90c1-0ea435f49bde",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/1/",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers/2/accounts negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6660ad2-ce9a-48e2-97ce-99369d34cbc5",
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"aId\": 0, \"accountName\": \"Savings Account\", \"accountBalance\": -50}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/customers/2/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"customers",
+						"2",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
