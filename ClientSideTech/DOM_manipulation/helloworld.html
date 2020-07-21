@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM Manipulation</title>
+    <!-- DOM is the Document Object Model.
+    A representation of the elements in a web page as a tree.
+    JS can edit/manipulate the DOM. Remove elements add elements. modify elements -->
+
+</head>
+<body>
+    
+    <button onclick="hello()">Click Me For a Hello!!!</button>
+    <button id="spanishBtn">Click me for an Hola!!</button>
+    <button onclick="alert('bonjour')">Click me for a Bonjour!!</button>
+
+    <input id="nameInput" type="text" placeholder="name here">
+    <button onclick="greet()">Custom Greeting</button>
+
+    <h1 id="nameHeading">No Name Yet</h1>
+    
+</body>
+<script>
+    // The original and still main purpose of JS is to make web pages dynamic. You click on something
+    // something happens
+
+    // many of your functions that respond to events don't return anything
+    // many will have inputs. 
+    // your handler functions should just DO something
+    function hello(){
+        alert('Hello!!!')
+    }
+
+    function hola(){
+        alert('Hola!!!')
+    }
+
+    function greet(){
+        let name = document.getElementById("nameInput").value; // get us the value of the input tag
+        document.getElementById("nameHeading").innerHTML = name; // find nameHeading element and swap its inner html with name
+       // alert("Greetings to you " + name);
+    }
+
+    // just like Javalin, the second paramater is your callback handler function
+    // you are listening for a click on the spanish button element
+    // when that happens execute that hola function handler
+    document.getElementById("spanishBtn").addEventListener("click", hola);
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<!-- DOCTYPE says what type of document in this case HTML. Use the latest version of HTML. (HTML 5)     -->
+<html>
+<!-- root tag. Everything in your web page goes into this root tag -->
+
+<!-- head is for meta information. Information about the web page but not the actual content -->
+<head>
+    <title>Gators Football</title>
+    <link rel="stylesheet" href="gatorstyle.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sancreek&display=swap" rel="stylesheet">
+    <style>
+        p{ color:darksalmon;font-family: 'Press Start 2P', cursive;}
+        li{ color:green; font-family: 'Sancreek', cursive;}
+
+    </style>
+
+</head>
+
+<body>
+    <!-- your content goes in here -->
+    <div class="jumbotron">
+    <h1 style="color: blue;">Gators Football</h1>  <!-- in line styling -->
+    <h6 id="cheer">Let's go Gators</h6>
+
+    <p>
+        The Gators are the college football of the University of Florida. They play their home games
+        in Gainesville, Florida. The stadium is called The Swamp. The University and team is famous
+        for inventing the drink <b> Gatorade</b> back in the 60's.     
+    </p>
+    </div>
+ 
+    <!-- a div doesn't do anything by itself. It serves as a way to organize your code -->
+    <div class="table table-dark table-striped">
+    <h3>Gator Championships</h3>
+    <table>
+        <tr><thead  ><th>Opponent</th><th>Year</th></thead></tr>
+        <tr><td>Florida State University</td><td>1996</td></tr>
+        <tr><td>Oklahoma</td><td>2006</td></tr>
+        <tr><td>Ohio State</td><td>2008</td></tr>
+    </table>
+    </div>
+
+    <h3>Famous Players</h3>
+    <ul>
+        <li style="color: rebeccapurple;">Tim Tebow</li>
+        <li>Percy Harvin</li>
+        <li>Steve Spurrier</li>
+    </ul>
+
+    <!-- images are self closing tags meaning you do not not a second closing tag -->
+    <img src="gatorfootball.jpg" alt="Awesome football image"/>
+
+
+</body>
+
+</html>
+
+<!-- at a minimum an html page should have a doctype, head, body and html root tag -->
