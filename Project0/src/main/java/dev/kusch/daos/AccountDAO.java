@@ -3,6 +3,7 @@ package dev.kusch.daos;
 import java.util.Set;
 
 import dev.kusch.entities.Account;
+import dev.kusch.exceptions.NegativeBalanceException;
 
 public interface AccountDAO {
 		
@@ -16,7 +17,7 @@ public interface AccountDAO {
 		Set<Account> getAccountWithBalanceBetween(int id, double lowerBound, double upperBound);
 		
 		// Update
-		Account updateAccount(Account account);
+		Account updateAccount(Account account) throws NegativeBalanceException;
 		
 		// Delete
 		boolean deleteAccount(int id);

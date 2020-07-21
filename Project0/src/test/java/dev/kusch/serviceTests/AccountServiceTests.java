@@ -19,6 +19,7 @@ import dev.kusch.daos.AccountDAO;
 import dev.kusch.daos.AccountDAOMaria;
 import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
+import dev.kusch.exceptions.NegativeBalanceException;
 import dev.kusch.services.AccountServices;
 import dev.kusch.services.AccountServicesImpl;
 import dev.kusch.services.CustomerServices;
@@ -137,7 +138,11 @@ class AccountServiceTests {
 	@Order(13)
 	void testUpdateAccountBasic() {
 		Account account = new Account(1, "Food Fund", 187.34, 1);
-		aserv.updateAccount(account);
+		try {
+			aserv.updateAccount(account);
+		} catch (NegativeBalanceException e) {
+			e.printStackTrace();
+		}
 		Assertions.assertEquals(187.34, account.getBalance());
 	}
 	
@@ -145,7 +150,11 @@ class AccountServiceTests {
 	@Order(14)
 	void testUpdateFakeAccount() {
 		Account account = new Account(7, "My Fake Bank Account", 187.34, 1);
-		account = aserv.updateAccount(account);
+		try {
+			account = aserv.updateAccount(account);
+		} catch (NegativeBalanceException e) {
+			e.printStackTrace();
+		}
 		Assertions.assertNull(account);
 	}
 	

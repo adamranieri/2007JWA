@@ -8,6 +8,7 @@ import dev.kusch.services.AccountServices;
 import dev.kusch.services.AccountServicesImpl;
 import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
+import dev.kusch.exceptions.NegativeBalanceException;
 import io.javalin.http.Handler;
 
 public class AccountControllers {
@@ -69,7 +70,12 @@ public class AccountControllers {
 	public static Handler updateAccount = (ctx) -> {
 		String accountJson = ctx.body();
 		Account account = gson.fromJson(accountJson, Account.class);
-		account = aserv.updateAccount(account);
+		try {
+			account = aserv.updateAccount(account);
+		} catch (NegativeBalanceException e) {
+			e.printStackTrace();
+			ctx.result(gson.toJson(e.getMessage()));
+		}
 		if (account == null) {
 			ctx.status(404);
 		}

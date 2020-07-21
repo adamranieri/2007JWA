@@ -5,6 +5,7 @@ import java.util.Set;
 import dev.kusch.daos.AccountDAO;
 import dev.kusch.daos.AccountDAOMaria;
 import dev.kusch.entities.Account;
+import dev.kusch.exceptions.NegativeBalanceException;
 
 public class AccountServicesImpl implements AccountServices{
 
@@ -36,7 +37,7 @@ public class AccountServicesImpl implements AccountServices{
 	}
 
 	@Override
-	public Account updateAccount(Account account) {
+	public Account updateAccount(Account account) throws NegativeBalanceException {
 		return adao.updateAccount(account);
 	}
 

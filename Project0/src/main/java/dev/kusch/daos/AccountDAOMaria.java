@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import dev.kusch.entities.Account;
+import dev.kusch.exceptions.NegativeBalanceException;
 import dev.kusch.utils.ConnectionUtil;
 
 public class AccountDAOMaria implements AccountDAO {
@@ -153,8 +154,11 @@ public class AccountDAOMaria implements AccountDAO {
 	}
 
 	@Override
-	public Account updateAccount(Account account) {
+	public Account updateAccount(Account account) throws NegativeBalanceException {
 		try (Connection conn = ConnectionUtil.getConnection()) {
+			if (account.getBalance() < 0) {
+				throw new NegativeBalanceException();
+			}
 			String sql = "UPDATE bankAPI_db.account SET name = ?, Balance = ? WHERE a_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, account.getName());

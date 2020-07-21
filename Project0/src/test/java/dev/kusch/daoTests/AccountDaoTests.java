@@ -22,6 +22,7 @@ import dev.kusch.daos.CustomerDAO;
 import dev.kusch.daos.CustomerDAOMaria;
 import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
+import dev.kusch.exceptions.NegativeBalanceException;
 import dev.kusch.util.TestUtil;
 import dev.kusch.utils.ConnectionUtil;
 
@@ -138,7 +139,11 @@ class AccountDaoTests {
 	void updateAccountBasic() {
 		Account vacat = adao.getAccountById(2);
 		vacat.setBalance(2000);
-		vacat = adao.updateAccount(vacat);
+		try {
+			vacat = adao.updateAccount(vacat);
+		} catch (NegativeBalanceException e) {
+			e.printStackTrace();
+		}
 		Assertions.assertEquals(2000, vacat.getBalance());
 	}
 	
@@ -146,7 +151,11 @@ class AccountDaoTests {
 	@Order(13)
 	void updateAccountNegative() {
 		Account updater = new Account(100000000, "Bad Acc", 1000, 1);
-		updater = adao.updateAccount(updater);
+		try {
+			updater = adao.updateAccount(updater);
+		} catch (NegativeBalanceException e) {
+			e.printStackTrace();
+		}
 		Assertions.assertNull(updater);
 	}
 
