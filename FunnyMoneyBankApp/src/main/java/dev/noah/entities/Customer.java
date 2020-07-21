@@ -1,14 +1,14 @@
 package dev.noah.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Customer {
 
 	private int cId;
 	private String username;
 	private String password;
-	private List<Account> accounts = new ArrayList<Account>();
+	private Set<Account> accounts = new HashSet<Account>();
 	
 	
 	public Customer() {
@@ -16,12 +16,11 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(int cId, String username, String password, List<Account> accounts) {
+	public Customer(int cId, String username, String password) {
 		super();
 		this.cId = cId;
 		this.username = username;
 		this.password = password;
-		this.accounts = accounts;
 	}
 
 	public int getcId() {
@@ -48,11 +47,11 @@ public class Customer {
 		this.password = password;
 	}
 
-	public List<Account> getAccounts() {
+	public Set<Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(List<Account> accounts) {
+	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
 	}
 

@@ -1,5 +1,7 @@
 package dev.noah.entities;
 
+import dev.noah.exceptions.NegativeBalanceException;
+
 public class Account {
 
 	private int aId;
@@ -49,7 +51,11 @@ public class Account {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
+	public void setBalance(double balance) throws NegativeBalanceException {
+		
+		if(balance < 0) {
+			throw new NegativeBalanceException();
+		}
 		this.balance = balance;
 	}
 

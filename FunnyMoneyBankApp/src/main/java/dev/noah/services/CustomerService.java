@@ -20,6 +20,7 @@ public interface CustomerService {
 	//Read
 	Set<Customer> getAllCustomers();
 	Customer getCustomerByCId(int i);
+	Customer getCustomerByUsername(String username);
 	
 	//Update
 	Customer updateCustomer(Customer customer);

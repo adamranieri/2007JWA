@@ -27,7 +27,7 @@ class CustomerDAOTests {
 	public static CustomerDAO cdao = CustomerDAOMaria.getCustomerDAOMaria();
 
 	@BeforeAll
-	static void initialSetup() {
+	static void initialSetup() { 
 		try(Connection con = ConnectionUtil.getConnection()){
 			String sql = "CALL create_bank_tables";
 			CallableStatement cs = con.prepareCall(sql);
@@ -45,9 +45,9 @@ class CustomerDAOTests {
 	@Test
 	@Order(1)
 	void createCustomer() {
-		Customer cus = new Customer(0, "TheLegend27", "SuperCoolPasswrod", null);
+		Customer cus = new Customer(0, "TheLegend27", "SuperCoolPasswrod");
 		cdao.createCustomer(cus);
-		Assertions.assertNotEquals(0, cus.getcId());
+		Assertions.assertEquals(1, cdao.getCustomerBycId(1).getcId());
 													
 	}
 
@@ -72,42 +72,22 @@ class CustomerDAOTests {
 	@Test()
 	@Order(4)
 	void getAllCustomers() {
-		Customer cus = new Customer(0, "March111", "somekindofpassword", null);
+		Customer cus = new Customer(0, "March111", "somekindofpassword");
 		cdao.createCustomer(cus);
-		cus = new Customer(0, "jeremy37", "passwordsLOL", null);
+		cus = new Customer(0, "jeremy37", "passwordsLOL");
 		cdao.createCustomer(cus);
 		
 		Set<Customer> allCustomers = cdao.getAllCustomers();
-		//System.out.println("The amount of customers is " + allCustomers.size());
 		Assertions.assertEquals(3, allCustomers.size());
 	}
 	
 	@Test
 	@Order(5)
 	void deleteCustomerTest() {
-		boolean cus = cdao.deleteCustomer(1);
-		//System.out.println("The current customer table size is " + cdao.getAllCustomers().size());
+		boolean cus = cdao.deleteCustomer(2);
 		Assertions.assertEquals(true, cus);
 	}
 	
-	// Negative Tests
-
-	
-	@Test
-	@Order(6)
-	void negDeleteCustomerTest() {
-		boolean cus = cdao.deleteCustomer(6);
-		System.out.println();
-		Assertions.assertEquals(false, cus);
-		
-	}
-	
-	@Test
-	@Order(7)
-	void negGetCustomerByCId() {
-		Customer cus = cdao.getCustomerBycId(17);
-		Assertions.assertEquals(null, cus);
-	}
 	
 	@AfterAll
 	static void cleanup() {

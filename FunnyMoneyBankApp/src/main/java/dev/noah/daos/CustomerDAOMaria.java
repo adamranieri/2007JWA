@@ -56,6 +56,7 @@ public class CustomerDAOMaria implements CustomerDAO{
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM bank_db.customer WHERE c_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			
@@ -103,9 +104,9 @@ public class CustomerDAOMaria implements CustomerDAO{
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "UPDATE bank_db.customer SET username = ?, password = ? WHERE c_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, customer.getcId());
-			ps.setString(2, customer.getUsername());
-			ps.setString(3, customer.getPassword());
+			ps.setString(1, customer.getUsername());
+			ps.setString(2, customer.getPassword());
+			ps.setInt(3, customer.getcId());
 			ps.executeQuery();
 			return customer;
 			
@@ -120,7 +121,7 @@ public class CustomerDAOMaria implements CustomerDAO{
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "DELETE FROM bank_db.customer WHERE c_id = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setInt(1, id); 
 			int row = ps.executeUpdate();
 			
 			if(row > 0) {
