@@ -20,6 +20,7 @@ public class App {
 		app.get("/customers/:id/accounts", AccountController.getAccountsByCustomerId);
 		app.get("/customers/:id/accounts/:aid", AccountController.getAccountById);
 		app.get("/accounts/:aid", AccountController.getAccountById); 
+		app.get("/accounts", AccountController.getAllAccounts);
 		
 		
 		// u

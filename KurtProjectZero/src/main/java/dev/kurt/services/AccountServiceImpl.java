@@ -1,18 +1,23 @@
 package dev.kurt.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import dev.kurt.daos.AccountDAO;
 import dev.kurt.daos.AccountDAOMaria;
+import dev.kurt.daos.TransactionDAO;
+import dev.kurt.daos.TransactionDAOMaria;
 import dev.kurt.entities.Account;
 import dev.kurt.entities.Customer;
+import dev.kurt.entities.Transaction;
 import dev.kurt.exceptions.NegativeBalanceException;
 
 public class AccountServiceImpl implements AccountService {
 
 	
 	private static AccountDAO acdao = AccountDAOMaria.getAccountDAOMaria();
+	private static TransactionDAO traDao = TransactionDAOMaria.getTransactionDAOMaria();
 	
 	@Override
 	public Account openAccount(Account account) throws NegativeBalanceException {
@@ -92,6 +97,29 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return middleAccounts;
 	}
-	
 
+	@Override
+	public Account updateAccountByTransaction(Account account, Transaction transaction)
+			throws NegativeBalanceException {
+		if(transaction.getFinalBalance() < 0)
+		{
+			throw new NegativeBalanceException();
+		}
+		
+		account.setAccountBalance(transaction.getFinalBalance());
+		
+		return acdao.updateAccount(account);
+	}
+
+	@Override
+	public Account validateAccountHistory(Account account) {
+		ArrayList<Transaction> transactions = traDao.getTransactionsByAccountId(account.getaId());
+		double net = 0;
+		for(Transaction t: transactions) {
+			net += t.getFinalBalance() - t.getPrevBalance();
+		}
+		return null;
+	}
+
+	
 }

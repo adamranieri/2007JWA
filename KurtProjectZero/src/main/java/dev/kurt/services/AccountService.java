@@ -4,6 +4,7 @@ import java.util.Set;
 
 import dev.kurt.entities.Account;
 import dev.kurt.entities.Customer;
+import dev.kurt.entities.Transaction;
 import dev.kurt.exceptions.NegativeBalanceException;
 
 public interface AccountService {
@@ -20,6 +21,9 @@ public interface AccountService {
 	
 	
 	Account updateAccount(Account account) throws NegativeBalanceException;
+	Account updateAccountByTransaction(Account account, Transaction transaction) throws NegativeBalanceException;
+	
+	Account validateAccountHistory(Account account);
 	
 	
 	boolean deleteAccountById(int id);

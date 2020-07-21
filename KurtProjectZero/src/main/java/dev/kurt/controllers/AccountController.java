@@ -3,6 +3,7 @@ package dev.kurt.controllers;
 import java.util.Set;
 import com.google.gson.Gson;
 import dev.kurt.entities.Account;
+import dev.kurt.entities.Customer;
 import dev.kurt.services.AccountService;
 import dev.kurt.services.AccountServiceImpl;
 import io.javalin.http.Handler;
@@ -46,8 +47,9 @@ public class AccountController {
 	
 	
 	public static Handler getAllAccounts = (ctx) ->{
-		
-		
+		Set<Account> accounts = accServ.getAllAccounts();				
+		String json = gson.toJson(accounts);	
+		ctx.result(json);
 	};
 	
 	public static Handler getAccountById = (ctx)->{

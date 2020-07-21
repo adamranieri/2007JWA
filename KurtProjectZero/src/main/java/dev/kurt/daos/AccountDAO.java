@@ -3,6 +3,7 @@ package dev.kurt.daos;
 import java.util.Set;
 
 import dev.kurt.entities.Account;
+import dev.kurt.entities.Transaction;
 
 public interface AccountDAO {
 
@@ -15,6 +16,7 @@ public interface AccountDAO {
 	
 	//u
 	Account updateAccount(Account account);
+	Account updateAccountByTransaction(int aId,int tId);
 	
 	//d
 	boolean deleteAccount(int id);

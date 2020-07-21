@@ -6,7 +6,7 @@ import dev.kurt.entities.Transaction;
 
 public interface TransactionService {
 
-	Transaction createTransaction();
+	Transaction createTransaction(Transaction transaction);
 	
 	Transaction getTransactionById(int id);
 	ArrayList<Transaction> getAllTransactions();

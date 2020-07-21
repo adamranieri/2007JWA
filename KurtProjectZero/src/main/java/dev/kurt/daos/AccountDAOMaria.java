@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import dev.kurt.entities.Account;
+import dev.kurt.entities.Transaction;
 import dev.kurt.utils.ConnectionUtil;
 
 public class AccountDAOMaria implements AccountDAO{
@@ -180,6 +181,14 @@ public class AccountDAOMaria implements AccountDAO{
 			return false;
 		}
 	}
+
+	@Override
+	public Account updateAccountByTransaction(int aId, int tId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 	
 }
