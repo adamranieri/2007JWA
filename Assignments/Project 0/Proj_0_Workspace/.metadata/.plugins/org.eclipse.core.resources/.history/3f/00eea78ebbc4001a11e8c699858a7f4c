@@ -1,7 +1,0 @@
-package dev.alsabea.daos;
-
-public interface Account extends CRUD{
-	
-	
-
-}

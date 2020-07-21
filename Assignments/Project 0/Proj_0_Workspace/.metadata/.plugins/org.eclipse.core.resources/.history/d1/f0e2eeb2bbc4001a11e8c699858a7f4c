@@ -1,5 +1,0 @@
-package dev.alsabea.daos;
-
-public interface CustomerDao extends CRUD<Customer>{
-
-}
