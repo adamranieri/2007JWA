@@ -127,7 +127,6 @@ class TestAccountServices {
 		aUpdated.setCustomerId(5);
 		aUpdated.setAccountName("testUpdatedName");
 		aUpdated.setBalance(-1000);
-		
 		Assertions.assertThrows(NegativeBalanceException.class, () -> {
 			aServices.update(aUpdated);
 		});

@@ -36,6 +36,11 @@ public class Application {
 		
 		app.put("customers/:id/accounts/:aid",  AccountsController.updateAnAccount);
 		
+		
+		/*
+		 * still have the query params for account
+		 */
+		
 	}
 	
 }

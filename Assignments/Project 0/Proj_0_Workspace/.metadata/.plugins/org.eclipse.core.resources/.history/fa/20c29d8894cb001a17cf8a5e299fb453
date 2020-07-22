@@ -127,7 +127,6 @@ class TestAccountServices {
 		aUpdated.setCustomerId(5);
 		aUpdated.setAccountName("testUpdatedName");
 		aUpdated.setBalance(-1000);
-		
 		Assertions.assertThrows(NegativeBalanceException.class, () -> {
 			aServices.update(aUpdated);
 		});
@@ -156,6 +155,7 @@ class TestAccountServices {
 		Assertions.assertThrows(NegativeBalanceException.class, () -> {
 			aServices.balanceLessThan(-200, accts);
 		});
+
 	}
 
 	@Test
@@ -172,17 +172,6 @@ class TestAccountServices {
 		Assertions.assertEquals(3, acctsReturnedFromBalanceFunction.size());
 	}
 
-	@Test
-	void getAccountsWithBalanceGreaterThanWithListNegative() {
-
-		List<Account> accts = aServices.retrieveAllAccounts(1);
-		Assertions.assertThrows(NegativeBalanceException.class, () -> {
-			aServices.balanceGreaterThan(-200, accts);
-		});
-
-	}
-	
-	
 	@Test
 	void testGetAccounts() {
 		List<Account> accountsList = new ArrayList<>();
