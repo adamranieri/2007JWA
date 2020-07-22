@@ -20,5 +20,5 @@ public interface CustomerService {
 	boolean deleteCustomerById(int id);
 	
 	Set<Customer> getAllCustomers();
-//	Set<Customer>getCustomerByUsername(String user);
+	Customer getCustomerByUsername(String user);
 }

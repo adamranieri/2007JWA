@@ -43,15 +43,17 @@ public class CustomerServiceImpl implements CustomerService {
 		return cdao.getAllCustomers();
 	}
 	
-//	@Override
-//	public Set<Customer> getCustomerByUsername(String user) {
-//		Set<Customer> Customer = new HashSet<Customer>();	
-//		Customer customer = adao.getCustomerBy()
-//			if(Customer == user) {
-//				largeAccounts.add(account);
-//			}
-//		}	
-//		return largeAccounts;
-//	}
+	@Override
+	public Customer getCustomerByUsername(String user) {
+		Customer customerFound = null;	
+		for (Customer customer : cdao.getAllCustomers()) {
+			if(customer.getUsername().equals(user)) {
+				customer.setAccounts( adao.getAccountsByCustomerId(customer.getcId()));
+				customerFound = customer;	
+			}
+		}
+		return customerFound;
+	}
+	
 
 }
