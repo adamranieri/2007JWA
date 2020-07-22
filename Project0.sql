@@ -1,0 +1,86 @@
+-- Creation of our tables
+
+
+SET SQL_MODE = 'ORACLE';
+CREATE OR REPLACE PROCEDURE set_up_project AS
+BEGIN
+	
+	CREATE TABLE CUSTOMER(
+	CID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	USERNAME varchar(200) NOT NULL,
+	PASSWORD varchar(200) NOT NULL
+	);
+	
+	
+	CREATE TABLE ACCOUNT(
+	AID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	CID int NOT NULL,
+	ACOUNTNAME varchar(200) NOT NULL,
+	BALANCE double NOT NULL,
+	CONSTRAINT fk_account_customer FOREIGN KEY(CID) REFERENCES CUSTOMER(CID)
+	);
+
+	
+END;
+
+
+CREATE OR REPLACE PROCEDURE tear_down_project AS
+BEGIN
+	DROP TABLE project0_db.ACCOUNT
+	DROP TABLE project0_db.CUSTOMER
+END;
+
+
+SELECT * FROM CUSTOMER;
+SELECT * FROM ACCOUNT;
+
+
+CALL tear_down_project;
+CALL set_up_project;
+
+-- DELETE FROM project0_db.ACCOUNT WHERE AID = 1;
+-- SELECT * FROM CUSTOMER WHERE USERNAME LIKE '%john%';
+
+
+
+-- 	CREATE TABLE TRANSACTION(
+-- 	TID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+-- 	PREVBALANCE double NOT NULL,
+-- 	FINALBALANCE double NOT NULL
+-- 	);
+-- 	
+-- 	CREATE TABLE TRANS_JUNCTION(
+-- 	TID int,
+-- 	AID int,
+-- 	FOREIGN KEY(TID) REFERENCES TRANSACTION(TID),
+-- 	FOREIGN KEY(AID) REFERENCES ACCOUNT(AID)
+-- 	);
+
+-- INSERT INTO CUSTOMER (CID, USERNAME ,PASSWORD ) VALUES (0,'Steve A', 'default' );
+
+	CALL set_up_project;
+	INSERT INTO project0_db.CUSTOMER (CID, USERNAME ,PASSWORD )  VALUES (0,'Steve A', 'default' );
+	INSERT INTO project0_db.CUSTOMER (CID, USERNAME ,PASSWORD )  VALUES (0,'John A', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Jorge P', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Moses F', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Gregory B', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Edwin F', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Ernesto L', 'default' );
+	INSERT INTO project0_db.CUSTOMER VALUES (0,'Tikva A', 'default' );
+
+
+	INSERT INTO project0_db.ACCOUNT VALUES (0,1,'Checking', 10.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,1,'Checking', 100.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,1,'Saving', 210.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,2,'Checking', 110.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,2,'Checking', 150.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,3,'Checking', 10.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,4,'Checking', 100.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,5,'Saving', 210.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,5,'Checking', 110.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,4,'Checking', 150.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,3,'Checking', 10.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,6,'Checking', 100.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,7,'Saving', 210.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,8,'Checking', 110.55 );
+	INSERT INTO project0_db.ACCOUNT VALUES (0,8,'Checking', 150.55 );
