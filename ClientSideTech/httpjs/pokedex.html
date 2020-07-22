@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokedox</title>
+</head>
+<body>
+
+    <h1>Pokedex</h1>
+    <input id="pokeInput" type="text" placeholder="pokemon name">
+    <button onclick="getPokemon()">Find Pokemon</button>
+
+    <!-- <ul>
+        <li id="idLi">ID: </li>
+        <li id="nameLi">Name: </li>
+        <li id="typeLi">Type: </li>   
+    </ul> -->
+
+    <div id="pokeData"></div>
+
+    <div id="abilitesData"></div>
+
+    <img id="pokeImage" src="" alt="pokemon image">
+    
+</body>
+<script>
+
+    // this function will call the pokemon api and get a pokemon object
+    // async is a keyword that allows you use use the keyword await in the function
+    // async function getPokemon(){
+
+    //     // JS will make an httprequest to this api endpoint
+    //     // by default it is a get request
+
+    //     //JS is a single threaded language.
+    //     // It does not stop
+    //     // it executes one line then moves to the next
+
+    //     //JS is a scripting language. It tells the browser what to do
+    //     let httpResponse = await fetch("https://pokeapi.co/api/v2/pokemon/machamp/"); // returns a promise
+    //     let pokeObj = await httpResponse.json();// you have to wait for the body of the response to finish downloading
+    //     //onto your browser
+
+    //     // but by awaiting a function that returns a promise. JS will wait for that promise to have a value
+    //     // before continuing exectution
+    //     // A promise is a special object that when created does have a value
+    //     // but will eventually have a value. 
+
+    //     // JS tells your browser's http messenger to make this request
+    //     // JS will not wait for a response it will just keep executing the next piece of code
+
+    //     // In http the headers of a response are actually sent back before the body
+    //     // the headers can arive sooner than the content
+
+
+    //     console.log(httpResponse);
+    //     console.log(pokeObj.species);
+
+    //     document.getElementById("pokedata").innerHTML= pokeObj.species.name;
+    // }
+
+    async function getPokemon(){
+        // want to read the dom so that I can get a value
+        let pokeSearch = document.getElementById("pokeInput").value;
+        pokeSearch = pokeSearch.toLowerCase();
+
+        // awiting on our http promise to have a value
+        const httpResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`);
+
+        if(httpResponse.status === 404){
+            alert('pokemon not found');
+            return;
+        }
+        const pokemon = await httpResponse.json();
+
+
+        const id =  pokemon.id;
+        const name = pokemon.species.name;
+        const type = pokemon.types[0].type.name;
+        const abilities = pokemon.abilities;
+
+        // backticks string literals JS allow for interpolation
+        // document.getElementById("idLi").innerHTML= `ID: ${id}`;
+        // document.getElementById("nameLi").innerHTML= `Name: ${name}`;
+        // document.getElementById("typeLi").innerHTML= `Type: ${type}`;
+
+        document.getElementById("pokeData").innerHTML = `
+        <ul> 
+        <li>ID : ${id} </li>
+        <li>name : ${name} </li>
+        <li>type : ${type} </li>
+        </ul>
+        `;
+
+        let abilitiesHtml = `<ul> `;
+
+        for(let ability of abilities){
+            let info = `<li> ${ability.ability.name}</li>`
+            abilitiesHtml += info;
+        }
+        abilitiesHtml += `</ul>`;
+
+        document.getElementById("abilitesData").innerHTML = abilitiesHtml;
+        document.getElementById("pokeImage").src = pokemon.sprites.front_default;
+
+        console.log(pokemon)
+        
+    }
+
+
+</script>
+
+</html>
