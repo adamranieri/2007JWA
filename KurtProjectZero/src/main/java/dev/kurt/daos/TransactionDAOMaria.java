@@ -172,6 +172,31 @@ public class TransactionDAOMaria implements TransactionDAO{
 			return false;
 		}
 	}
+
+	@Override
+	public Transaction getFirstTransactionForAccount(int id) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "SELECT * FROM KurtBankDB.transaction WHERE a_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery(); // get us back a table with all the information
+			rs.next();// move table to first record
+			
+			Transaction transaction  = new Transaction();
+			transaction.settId(rs.getInt("t_id"));
+			transaction.setPrevBalance(rs.getDouble("previous_balance"));
+			transaction.setFinalBalance(rs.getDouble("final_balance"));
+			transaction.setaId(rs.getInt("a_id"));
+			
+			return transaction;
+		
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	
 	
