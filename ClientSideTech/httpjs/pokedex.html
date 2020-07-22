@@ -7,7 +7,7 @@
 
     <h1>Pokedex</h1>
     <input id="pokeInput" type="text" placeholder="pokemon name">
-    <button onclick="getPokemon()">Find Pokemon</button>
+    <button onclick="findPokemon()">Find Pokemon</button>
 
     <!-- <ul>
         <li id="idLi">ID: </li>
@@ -104,6 +104,53 @@
 
         console.log(pokemon)
         
+    }
+
+    function findPokemon(){
+
+        let pokeSearch = document.getElementById("pokeInput").value;
+        pokeSearch = pokeSearch.toLowerCase();
+
+        // promise chain where one promise creates another promise and you have multiple then functions
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`).then((httpResponse)=>{
+            return httpResponse.json(); // returns another promise
+        }).then((pokemon)=>{
+
+            
+        const id =  pokemon.id;
+        const name = pokemon.species.name;
+        const type = pokemon.types[0].type.name;
+        const abilities = pokemon.abilities;
+
+        // backticks string literals JS allow for interpolation
+        // document.getElementById("idLi").innerHTML= `ID: ${id}`;
+        // document.getElementById("nameLi").innerHTML= `Name: ${name}`;
+        // document.getElementById("typeLi").innerHTML= `Type: ${type}`;
+
+        document.getElementById("pokeData").innerHTML = `
+        <ul> 
+        <li>ID : ${id} </li>
+        <li>name : ${name} </li>
+        <li>type : ${type} </li>
+        </ul>
+        `;
+
+        let abilitiesHtml = `<ul> `;
+
+        for(let ability of abilities){
+            let info = `<li> ${ability.ability.name}</li>`
+            abilitiesHtml += info;
+        }
+        abilitiesHtml += `</ul>`;
+
+        document.getElementById("abilitesData").innerHTML = abilitiesHtml;
+        document.getElementById("pokeImage").src = pokemon.sprites.front_default;
+
+        console.log(pokemon)
+
+        })
+        
+
     }
 
 
