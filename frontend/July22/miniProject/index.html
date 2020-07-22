@@ -1,0 +1,38 @@
+<!--key = AIzaSyCCRfmiTnyXIBUTjCQUIbwkaXG1muvwmsE --> 
+<!-- http://api.gbif.org/v1/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AnimalDex</title>
+</head>
+<body>
+    <h1>Animals near u </h1>
+    <input id = "animalInput" type="text" placeholder="Search">
+    <button onclick = "getAnimals()">Find Pokemon</button>
+
+    <div id="animalList">`
+
+    </div>
+
+    
+</body>
+
+<script>
+    async function getAnimals(){
+        // want to read the DOM for value before fetch
+        const httpResponse = await fetch(`http://api.gbif.org/v1/occurrence/search?decimalLatitude=40.68,40.70`);
+        
+        // decimalLongitude=-73.99,-74.01
+        if(httpResponse.status == 404){
+            alert('not Found');
+            return;
+        }
+
+        
+        const animal = await httpResponse.json();
+       
+       console.log(animal);
+    }
+</script>
+</html>

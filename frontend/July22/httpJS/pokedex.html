@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokedex</title>
+</head>
+<body>
+    <h1>Pokedex</h1>
+    <input id = "pokeInput" type="text" placeholder="pokemon name">
+    <button onclick = "getPokemon()">Find Pokemon</button>
+
+    <!-- <ul>
+        <li id ="idLi">ID:</li>
+        <li id ="nameLi">Name: </li>
+        <li id ="typeLi">Type: </li>
+    </ul> -->
+
+    <div id="pokeData">
+
+    </div>
+
+    <div id="pokeAbilities">
+
+    </div>
+
+    <div id ="pokeSprite">
+
+    </div>
+    
+</body>
+<!-- <script>
+
+    // calls the pokeapi and gets a pokemon object
+    // default for fetch is a get request
+
+    // 'async' lets you use the await keyword
+    async function getPokemon(){
+
+        let httpResponse = await fetch("https://pokeapi.co/api/v2/pokemon/machamp");
+        
+        /* 
+        A promise is a special object that when created has no value.
+        Js will not wait for this promise to get a value, it will keep
+        moving to the next piece of code.  
+        by awaiting a function, JS will await that promise to have
+        a value before continuing execution
+        */ 
+
+        let pokeObj = await httpResponse.json(); 
+
+        /*
+        In http, the headers of a response are actually sent back before
+        the body.
+        */
+
+        console.log(httpResponse);
+        console.log(pokeObj.species);
+        document.getElementById("pokedata").innerHTML = body.species.name;
+    }
+</script> -->
+
+<script>
+    async function getPokemon(){
+        // want to read the DOM for value before fetch
+        let pokeSearch = document.getElementById("pokeInput").value.toLowerCase();
+        const httpResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`);
+        
+        if(httpResponse.status == 404){
+            alert('Pokemon not Found');
+            return;
+        }
+
+        
+        const pokemon = await httpResponse.json();
+       
+        console.log(pokemon);
+        const id = pokemon.id;
+        const name = pokemon.species.name;
+        const type = pokemon.types[0].type.name;
+        const abilities = pokemon.abilities;
+
+        // backticks - string literals in JS allow for interpolation
+
+
+        // document.getElementById("idLi").innerHTML = `ID: ${id}`;
+        // document.getElementById("nameLi").innerHTML = `Name: ${name}`;
+        // document.getElementById("typeLi").innerHTML = `Type: ${type}`;
+
+
+        //another way... 
+
+        document.getElementById("pokeData").innerHTML = `
+        <ul>
+        <li>ID: ${id} </li>
+        <li>Name: ${name}</li>
+        <li>Type: ${type}</li>
+        </ul>
+        `;
+
+        let abilitiesHtml = `<ul> `;
+
+        for(let ability of abilities){
+            let info = `<li> ${ability.ability.name} </li>`;
+            abilitiesHtml += info;
+        }
+        abilitiesHtml += `</ul>`;
+
+        document.getElementById("pokeAbilities").innerHTML = abilitiesHtml;
+        document.getElementById("pokeSprite").innerHTML = `<img src ="${pokemon.sprites.front_default}">`;
+        // find a free api online and make a frontend and present it friday
+
+    }
+</script>
+</html>
