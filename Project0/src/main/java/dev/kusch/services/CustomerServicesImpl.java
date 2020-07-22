@@ -4,7 +4,6 @@ import java.util.Set;
 
 import dev.kusch.daos.CustomerDAO;
 import dev.kusch.daos.CustomerDAOMaria;
-import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
 
 public class CustomerServicesImpl implements CustomerServices {

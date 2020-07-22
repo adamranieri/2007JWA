@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import dev.kusch.services.AccountServices;
 import dev.kusch.services.AccountServicesImpl;
 import dev.kusch.entities.Account;
-import dev.kusch.entities.Customer;
 import dev.kusch.exceptions.NegativeBalanceException;
 import io.javalin.http.Handler;
 

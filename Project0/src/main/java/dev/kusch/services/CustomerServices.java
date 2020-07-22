@@ -1,9 +1,7 @@
 package dev.kusch.services;
 
-import java.util.List;
 import java.util.Set;
 
-import dev.kusch.entities.Account;
 import dev.kusch.entities.Customer;
 
 public interface CustomerServices {

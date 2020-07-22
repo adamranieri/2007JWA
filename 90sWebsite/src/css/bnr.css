@@ -15,6 +15,10 @@ nav li {
     list-style-type: none;
 }
 
+nav li:hover {
+    background-color: yellow;
+}
+
 td {
     padding: 1%;
     width: 33%;

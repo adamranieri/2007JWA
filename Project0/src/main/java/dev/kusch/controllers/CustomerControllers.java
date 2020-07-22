@@ -20,6 +20,9 @@ public class CustomerControllers {
 		
 		if (username != null) {
 			Set<Customer> custWithUser = cserv.getCustomer(username);
+			if (custWithUser.isEmpty()) {
+				ctx.status(404);
+			}
 			ctx.result(gson.toJson(custWithUser));
 		} else {
 			ctx.result(json);
@@ -40,7 +43,10 @@ public class CustomerControllers {
 	public static Handler createCustomer = (ctx) -> {
 		String customerJson = ctx.body();
 		Customer customer = gson.fromJson(customerJson, Customer.class);
-		cserv.addCustomer(customer);
+		Customer resultCust = cserv.addCustomer(customer);
+		if (resultCust == null) {
+			ctx.status(409);
+		}
 		ctx.status(201);
 		ctx.result(gson.toJson(customer));
 	};
@@ -58,6 +64,9 @@ public class CustomerControllers {
 	public static Handler deleteCustomer = (ctx) -> {
 		String id = ctx.pathParam("cid");
 		boolean result = cserv.deleteCustomer(Integer.parseInt(id));
+		if (!result) {
+			ctx.status(404);
+		}
 	};
 	
 	

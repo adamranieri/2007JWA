@@ -16,6 +16,10 @@ nav li {
     list-style-type: none;
 }
 
+nav li:hover {
+    background-color: yellow;
+}
+
 #pack {
     width: 10%;
     height: 50%;

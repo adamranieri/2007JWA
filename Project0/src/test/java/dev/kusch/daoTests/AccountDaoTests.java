@@ -114,9 +114,7 @@ class AccountDaoTests {
 	void testGetAccountWithUpperBound() {
 		Set<Account> accounts = adao.getAccountWithBalanceBetween(1, 0, 800.00);
 		Account testAcc = new Account(0, "VacationFund", 30.00, 1);
-		Set<Account> expected = new HashSet<Account>();
-		expected.add(testAcc);
-		Assertions.assertEquals(expected.size(), accounts.size());
+		Assertions.assertEquals(1, accounts.size());
 	}
 	
 	@Test
@@ -158,16 +156,26 @@ class AccountDaoTests {
 		}
 		Assertions.assertNull(updater);
 	}
-
+	
 	@Test
 	@Order(14)
+	void testThrowsException() {
+		Account testAcc = adao.getAccountById(1);
+		Exception e = assertThrows(NegativeBalanceException.class, () -> {
+			testAcc.setBalance(-900);
+			adao.updateAccount(testAcc);
+		});
+	}
+
+	@Test
+	@Order(15)
 	void deleteAccount() {
 		boolean result = adao.deleteAccount(2);
 		Assertions.assertEquals(true, result);
 	}
 
 	@Test
-	@Order(15)
+	@Order(16)
 	void deleteAccountNegative() {
 		boolean result = adao.deleteAccount(20);
 		Assertions.assertEquals(false, result);

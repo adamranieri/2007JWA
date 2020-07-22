@@ -2,9 +2,6 @@ package dev.kusch.serviceTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
