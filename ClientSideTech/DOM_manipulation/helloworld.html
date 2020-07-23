@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <!-- The DOM is a representation of the elements in a page as a tree, JavaScript can manipulate the DOM -->
+    <!-- document is the root node of this tree -->
+</head>
+<body>
+    <button onclick="hello()">Click Me For a Hello</button>
+    <button id="spanishBtn">Click Me for an Hola</button>
+    <button id="frenchBtn">Click Me for an Bonjour</button>
+
+    <input id="nameInput" type="text" placeholder="name here"/>
+    <button onclick="greet()">Custom Greeting</button>
+
+    <h1 id="nameHeading">No Name Yet</h1>
+</body>
+
+<script>
+    // The original, and still main, purpose of JS is to make web pages dynamic.
+    // You click on something and something happens
+
+    // many of your functions that respond to events don't return anything, many will have inputs
+    // your handler functions should just DO something
+    function hello() {
+        alert("Hello!!!!");
+    }
+
+    function hola() {
+        alert("Hola");
+    }
+
+    function greet() {
+        let name = document.getElementById("nameInput").value; // gets us the value of the input tag
+        console.log(name);
+        document.getElementById("nameHeading").innerHTML = name;
+    }
+
+    // just like Javalin, the second parameter is your callback handler function
+    // you are listening for a click on the spanish buton element
+    // when that happens, execute the hola function handler
+    document.getElementById("spanishBtn").addEventListener("click", hola);
+    document.getElementById("frenchBtn").addEventListener("click", () => {
+        alert("Bounjour");
+    });
+</script>
+
+</html>

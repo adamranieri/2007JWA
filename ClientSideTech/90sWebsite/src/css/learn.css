@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    background-color: #654321;
+}
+ul li {
+    background-color: white;
+    padding: 10px;
+    margin: 0px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    display:inline-block;
+}
+nav li {
+    list-style-type: none;
+}
+
+nav li:hover {
+    background-color: yellow;
+}
+
+#cardBack {
+    width: 10%;
+    height: 20%;
+}

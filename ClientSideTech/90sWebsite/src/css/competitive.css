@@ -1,0 +1,53 @@
+body {
+    text-align: center;
+    background-color: #654321;
+}
+ul li {
+    background-color: white;
+    padding: 10px;
+    margin: 0px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    display:inline-block;
+}
+nav li {
+    list-style-type: none;
+}
+
+nav li:hover {
+    background-color: yellow;
+}
+
+.tourneyPicture {
+    width: 200px;
+    height: 150px;
+}
+
+.decklist {
+    display: inline;
+}
+
+tr {
+    border-style: solid;
+    border-color: black;
+    background-color: gray;
+}
+
+.deckTitle {
+    background-color: gray;
+}
+
+.num-type {
+    font-size: 7;
+    font-weight: bold;
+    font-style: italic;
+    background-color: darkgray;
+}
+
+.card-type {
+    font-size: 7;
+    font-weight: bold;
+    font-style: italic;
+    background-color: darkgray;
+}

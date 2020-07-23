@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+}
+
+#resultsBar {
+    content: '.';
+    visibility: hidden;
+    border-style: solid;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#submitBtn {
+    display: none;
+    padding: 3%;
+    background-color: green;
+}
+
+#operations {
+    margin: 2%;
+}
+
+#operations button {
+    padding: 2.4%;
+}
+
+.numRow {
+    margin: 2%
+}
+
+
+.numRow button {
+    padding: 2.5%
+}
+
+#resetBtn {
+    margin: 2.5%;
+    padding: 3%;
+    margin-top: .5%;
+    background-color: red;
+}

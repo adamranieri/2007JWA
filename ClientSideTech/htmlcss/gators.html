@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- DOCTYPE says what type of document this is -->
+<html> <!-- everything in the web page goes into this root tag -->
+
+    <!-- head is for meta information. Information about the webpage but not the actual content -->
+    <head>
+        <title>Gators Football</title>
+        <!-- this is where you'd put things like your stylesheet links and tags for search engines -->
+        <style>
+            p {
+                color: darksalmon;
+            }
+            li {
+                color: green;
+            }
+        </style>
+        <link rel="stylesheet" href="gatorstyle.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+
+    <!-- content is placed in the body -->
+    <body>
+        <div class="jumbotron">
+            <h1 style="color: blue">Gators Football</h1>
+            <h6 id="cheer">Let's go Gators</h6>
+
+            <p>
+                The Gators are the college football team of the University of Florida. THey play their home
+                games in Gainesville, Florida. The statium is called the Swamp. The university and team is
+                famous for inventing the drink <b>Gatorade</b> back in the 60's.
+            </p>
+        </div>
+        <!-- A div does nothing on its own, it just breaks html into logical chunks -->
+        <div class="table table-dark table-striped">
+            <h3>Gator Championships</h3>
+            <table>
+                <tr><thead><th>Opponent</th><th>Year</th></thead></tr>
+
+                <tr><td>Florida State University</td><td>1996</td></tr>
+                <tr><td>Oklahoma</td><td>2006</td></tr>
+                <tr><td>Ohio State</td><td>2008</td></tr>
+            </table>
+        </div>
+    </body>
+
+    <!-- Images are self closing tags meaning there is no second closing tag -->
+    <img src="gatorFootball.png" alt="Awesome football image" width=500px height = 400px/>
+
+    <h3>Famous Players</h3>
+    <ul class="list-group">
+        <li style="color: rebeccapurple" class="list-group-item">Tim Tebow</li>
+        <li class="list-group-item">Percy Harvin</li>
+        <li class="list-group-item">Steve Sperrier</li>
+    </ul>
+
+    <ol>
+        <li>Tim Tebow</li>
+        <li>Percy Harvin</li>
+        <li>Steve Sperrier</li>
+    </ol>
+
+</html>
+<!-- At a minimum, an html page should have a DOCTYPE, head, body, and html root tag-->

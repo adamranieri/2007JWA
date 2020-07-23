@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator.css"/>
+</head>
+<body>
+    <div id="resultsBar"></div>
+    <div id="numbers">
+        <div class="numRow">
+            <button onclick="displayNumber(1)">1</button>
+            <button onclick="displayNumber(2)">2</button>
+            <button onclick="displayNumber(3)">3</button>
+        </div>
+
+        <div class="numRow">
+            <button onclick="displayNumber(4)">4</button>
+            <button onclick="displayNumber(5)">5</button>
+            <button onclick="displayNumber(6)">6</button>
+        </div>
+
+        <div class="numRow">
+            <button onclick="displayNumber(7)">7</button>
+            <button onclick="displayNumber(8)">8</button>
+            <button onclick="displayNumber(9)">9</button>
+        </div>
+
+        <div class="numRow">
+            <button onclick="displayNumber(0)">0</button>
+        </div>
+
+    </div>
+    <div id="operations">
+        <button onclick="chooseFunction('+')">+</button>
+        <button onclick="chooseFunction('-')">-</button>
+        <button onclick="chooseFunction('*')">x</button>
+        <button onclick="chooseFunction('/')">/</button>
+    </div>
+    <button id="submitBtn" onclick="submit()">Submit</button>
+    <br/>
+    <button id="resetBtn" onclick="resetBtn()">C</button>
+
+
+</body>
+<script src="calculator.js"></script>
+</html>
