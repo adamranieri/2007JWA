@@ -4,14 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css"/>
 </head>
 
 <body onload="getRaces()">
     <h1>D&D Character Builder</h1>
-    <div id="races"></div>
-    <div id="subraces"></div>
-    <div id="classes"></div>
-    <div id="subclass"></div>
+    <div id="optionPicker">
+        <div id="races"></div>
+        <div id="subraces"></div>
+        <div id="classes"></div>
+        <div id="subclass"></div>
+    </div>
+
+    <div id="characterDisplay" hidden>
+        <table id="raceTable" align="center">
+            <caption id="raceTitle"></caption>
+            <thead><th>Speed</th> <th>STR</th> <th>DEX</th> <th>CON</th> <th>INT</th> <th>WIS</th> <th>CHA</th></thead>
+            <tr><td id="speed"></td> <td id="str"></td> <td id="dex"></td> <td id="con"></td> <td id="int"></td> <td id="wis"></td> <td id="cha"></td></tr>
+        </table>
+
+        <p id="subRace"></p>
+
+        <table id="classTable" align="center">
+            <caption id="classTitle"></caption>
+            <thead><th>Hit Die</th></thead>
+            <tr><td id="hitDie"></td></tr>
+        </table>
+
+        <p id="subClass"></p>
+
+        <table id="skillBonusTable" align="center"> </table>
+    </div>
+
+    <div id="statPicker" hidden>
+        <p>Type in your stats below (the standard stat array is [15, 14, 13, 12, 10, 8], but you can roll for them as well)</p>
+        
+        <div class="statRow">
+            <div class="statBlock">
+                <h4>STR</h4>
+                <input id="STR" value="10" type="number" min="3" max="20"/>
+            </div>
+
+            <div class="statBlock">
+                <h4>DEX</h4>
+                <input id="DEX" value="10" type="number" min="3" max="20"/>
+            </div>
+
+            <div class="statBlock">
+                <h4>CON</h4>
+                <input id="CON" value="10" type="number" min="3" max="20"/>
+            </div>
+        </div>
+
+        <div class="statRow">
+            <div class="statBlock">
+                <h4>INT</h4>
+                <input id="INT" value="10" type="number" min="3" max="20"/>
+            </div>
+
+            <div class="statBlock">
+                <h4>WIS</h4>
+                <input id="WIS" value="10" type="number" min="3" max="20"/>
+            </div>
+
+            <div class="statBlock">
+                <h4>CHA</h4>
+                <input id="CHA" value="10" type="number" min="3" max="20"/>
+            </div>
+        </div>
+
+        <button id="statPickerBtn" onClick="pickProf()">Choose</button>
+    </div>
+
+    <div id="profPicker" hidden>
+        <p>Proficiency picker</p>
+        <button id="profPickerBtn" onClick="displayCharacter()">Choose</button>
+    </div>
+
+    <button id="resetBtn" onclick="resetPage()">Start Over</button>
 </body>
 
 <script src="index.js"></script>

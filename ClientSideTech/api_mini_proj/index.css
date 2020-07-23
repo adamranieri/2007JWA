@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+}
+
+td {
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.statRow {
+    text-align: center;
+    display: flex;
+    margin-left: 12%;
+}
+
+.statBlock {
+    margin: 10%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+} 
+
+#resetBtn {
+    margin-top: 5%;
+    padding: 1.5%;
+}
