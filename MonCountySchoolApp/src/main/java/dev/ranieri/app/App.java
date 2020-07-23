@@ -7,7 +7,12 @@ import io.javalin.Javalin;
 public class App {
 	
 	public static void main(String[] args) {
-		Javalin app = Javalin.create().start(7000);
+		Javalin app = Javalin.create(config ->{     // pass in a lambda that describes HOW to create the app
+			
+			//config.enableCorsForAllOrigins();
+			config.addStaticFiles("/frontend");
+			
+		}).start(7000);
 		
 		
 		// REST APIs should support at a minimum the basic CRUD operations

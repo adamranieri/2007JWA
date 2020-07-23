@@ -92,18 +92,18 @@ class SchoolDAOtests {
 		Assertions.assertEquals(false, result);
 	}
 	
-	@AfterAll
-	static void tearDown() {
+//	@AfterAll
+//	static void tearDown() {
+//		
+//		try(Connection conn = ConnectionUtil.getConnection()){
+//			String sql = "CALL tear_down_mondb";
+//			CallableStatement cs = conn.prepareCall(sql);
+//			cs.execute();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
-		try(Connection conn = ConnectionUtil.getConnection()){
-			String sql = "CALL tear_down_mondb";
-			CallableStatement cs = conn.prepareCall(sql);
-			cs.execute();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
+//	}
 
 }
