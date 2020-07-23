@@ -13,8 +13,15 @@
         <input type="text" id="nameInput" placeholder="School Name">
         <input type="number" id="capacityInput" placeholder="School Capacity">
         <button id="schoolCreateBtn" onclick="createSchool()">Create School</button>
-
     </div>
+
+
+
+    <table id="schoolTable" hidden>
+        <thead><th>School ID</th> <th>School Name</th> <th>School Capacity</th></thead>
+        <tr><td id="sIdField">N/A</td><td id="nameField">N/A</td><td id="capacityField">N/A</td></tr>
+    </table>
+ 
 
 
     
@@ -56,7 +63,11 @@
         const httpResponse = await fetch("http://localhost:7000/schools",config);
         school = await httpResponse.json();
 
-        console.log(school);
+        document.getElementById("sIdField").innerHTML = school.sId;
+        document.getElementById("nameField").innerHTML = school.name;
+        document.getElementById("capacityField").innerHTML = school.capacity;    
+
+        document.getElementById("schoolTable").removeAttribute("hidden");    
     }
 
 
