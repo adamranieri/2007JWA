@@ -1,0 +1,8 @@
+1. install protractor npm install -g protractor
+2. update webdriver webdriver-manager update
+3. start selenium server webdiver-manager start  (keep the terminal open)
+4. create a node project in a folder  command (npm init)
+5. add protractor dependency to package.json
+6. write a main.js file that has the configurations
+7. run tests via protractor main.js
+
