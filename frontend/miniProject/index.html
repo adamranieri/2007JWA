@@ -1,0 +1,115 @@
+<!--key = AIzaSyCCRfmiTnyXIBUTjCQUIbwkaXG1muvwmsE --> 
+<!-- http://api.gbif.org/v1/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AnimalDex</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Animals near u</h1>
+
+
+    <form>
+        <label for="distanceRange">Distance: </label>
+		<input type="range" id="distanceRange" min="1" max="20" value="1" oninput="this.form.distanceInput.value=this.value"/>
+		<input type="number" id="distanceInput" min="1" max="20" value="1" oninput="this.form.distanceRange.value=this.value"/>
+	</form>
+
+    <button id = "find-me" onclick = "getAnimals"> Find Animals</button><br/>
+    <p id = "status"></p>
+
+
+    <div id="animalList">`
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+</body>
+
+<script>
+    async function getAnimals(latitude,longitude){
+        // want to read the DOM for value before fetch
+        // 1 deg of latitude = 68.9722 miles
+        // 1 deg of longitude = cos(lat.radians) * 69.172
+        let earthRadius = 3960.00000;
+        let degToRadians = Math.PI / 180.00000;
+        let radToDegrees = 180.00000 / Math.PI;
+        let inputDistance = document.getElementById("distanceInput").value;
+
+        function milesToLat(miles){
+            return (miles/earthRadius) * radToDegrees;
+        }
+
+        function milesToLong(latitude, miles){
+            let r = earthRadius*Math.cos(latitude*degToRadians)
+            return (miles/r)*radToDegrees;
+        }
+
+        let mileToLat = milesToLat(inputDistance);
+        let mileToLon = milesToLong(latitude,inputDistance);
+
+        let latLow = (latitude - mileToLat).toPrecision(8);
+        let latHi = (latitude + mileToLat).toPrecision(8);
+        let lonLow = (longitude - mileToLon).toPrecision(8);
+        let lonHi = (longitude + mileToLon).toPrecision(8);
+
+
+
+        
+
+        
+
+
+        const httpResponse = await fetch(`http://api.gbif.org/v1/occurrence/search?limit=200&year=2020&decimalLatitude=${latLow},${latHi}&decimalLongitude=${lonLow},${lonHi}`);
+        // get the species key after this
+        
+        if(httpResponse.status == 404){
+            alert('not Found');
+            return;
+        }
+
+        
+
+        
+        const animal = await httpResponse.json();
+        console.log(animal);
+        status.textContent = '';
+
+    }
+    
+
+
+
+    function geoFindMe() {
+
+        const status = document.querySelector('#status');
+
+        function success(position) {
+            const latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            getAnimals(latitude,longitude);
+        }
+
+        function error() {
+            status.textContent = 'Unable to retrieve your location';
+        }
+
+        if(!navigator.geolocation) {
+            status.textContent = 'Geolocation is not supported by your browser';
+        } else {
+            status.textContent = 'Locating…';
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+
+    }
+
+        document.querySelector('#find-me').addEventListener('click', geoFindMe);
+    
+</script>
+</html>
