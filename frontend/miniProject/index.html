@@ -1,29 +1,51 @@
-<!--key = AIzaSyCCRfmiTnyXIBUTjCQUIbwkaXG1muvwmsE --> 
 <!-- http://api.gbif.org/v1/ -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>AnimalDex</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Animals near u</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class = "jumbotron-heading">Animals near u</h1>
+            <p class="lead text-muted"> This tool will locate you and cross-reference your location against the massive GBIF biodiversity catalogue. 
+                It will show every animal occurence listed in their registry within whatever distance you choose. Person. Camera. ejfnkldl
+            </p>
+                <form>
+                    <div class="form-group">
+                        <label for="distanceRange">Distance (miles): </label>
+                        <input class="custom-range" type="range" id="distanceRange" min="1" max="20" value="1" oninput="this.form.distanceInput.value=this.value"/>
+                        <input class="form-control" type="number" id="distanceInput" min="1" max="20" value="1" oninput="this.form.distanceRange.value=this.value"/>
+                   </div>
+                </form>
+                <p class="form-text text-muted">More options: </p>
 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="if-animals" checked>
+                    <label class="form-check-label" for="if-animals">Search for Animalia?</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="checkbox" id="if-plants">
+                    <label class="form-check-label" for="if-plants">Search for Plants?</label>
+                </div>
 
-    <form>
-        <label for="distanceRange">Distance: </label>
-		<input type="range" id="distanceRange" min="1" max="20" value="1" oninput="this.form.distanceInput.value=this.value"/>
-		<input type="number" id="distanceInput" min="1" max="20" value="1" oninput="this.form.distanceRange.value=this.value"/>
-	</form>
-
-    <button id = "find-me" onclick = "getAnimals"> Find Animals</button><br/>
-    <p id = "status"></p>
-
-
-    <div id="animalList">`
-
+                <button id = "find-animals-btn" class="btn btn-primary"> Find Animals</button><br/>
+                <p class="form-text text-muted" id = "status"></p>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div id="animal-list">
+                <div class="card-columns" id="card-columns">
+    
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -31,85 +53,5 @@
     
 </body>
 
-<script>
-    async function getAnimals(latitude,longitude){
-        // want to read the DOM for value before fetch
-        // 1 deg of latitude = 68.9722 miles
-        // 1 deg of longitude = cos(lat.radians) * 69.172
-        let earthRadius = 3960.00000;
-        let degToRadians = Math.PI / 180.00000;
-        let radToDegrees = 180.00000 / Math.PI;
-        let inputDistance = document.getElementById("distanceInput").value;
-
-        function milesToLat(miles){
-            return (miles/earthRadius) * radToDegrees;
-        }
-
-        function milesToLong(latitude, miles){
-            let r = earthRadius*Math.cos(latitude*degToRadians)
-            return (miles/r)*radToDegrees;
-        }
-
-        let mileToLat = milesToLat(inputDistance);
-        let mileToLon = milesToLong(latitude,inputDistance);
-
-        let latLow = (latitude - mileToLat).toPrecision(8);
-        let latHi = (latitude + mileToLat).toPrecision(8);
-        let lonLow = (longitude - mileToLon).toPrecision(8);
-        let lonHi = (longitude + mileToLon).toPrecision(8);
-
-
-
-        
-
-        
-
-
-        const httpResponse = await fetch(`http://api.gbif.org/v1/occurrence/search?limit=200&year=2020&decimalLatitude=${latLow},${latHi}&decimalLongitude=${lonLow},${lonHi}`);
-        // get the species key after this
-        
-        if(httpResponse.status == 404){
-            alert('not Found');
-            return;
-        }
-
-        
-
-        
-        const animal = await httpResponse.json();
-        console.log(animal);
-        status.textContent = '';
-
-    }
-    
-
-
-
-    function geoFindMe() {
-
-        const status = document.querySelector('#status');
-
-        function success(position) {
-            const latitude  = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            getAnimals(latitude,longitude);
-        }
-
-        function error() {
-            status.textContent = 'Unable to retrieve your location';
-        }
-
-        if(!navigator.geolocation) {
-            status.textContent = 'Geolocation is not supported by your browser';
-        } else {
-            status.textContent = 'Locating…';
-            navigator.geolocation.getCurrentPosition(success, error);
-        }
-
-    }
-
-        document.querySelector('#find-me').addEventListener('click', geoFindMe);
-    
-</script>
+<script type="text/javascript" src="JS/functions.js"></script>
 </html>
