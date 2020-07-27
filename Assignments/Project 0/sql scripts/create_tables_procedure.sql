@@ -20,7 +20,7 @@ BEGIN
 	customer_id		int 	unsigned 	not null,
 	account_name 	varchar(55),
 	balance			int,
-	constraint fk_cust_id foreign key (customer_id) references customer(customer_id) on delete restrict on update cascade
+	constraint fk_cust_id foreign key (customer_id) references customer(customer_id) on delete restrict on update cascade  
 	);
 	
 	alter table account auto_increment = 100; 

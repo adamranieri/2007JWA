@@ -9,7 +9,19 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		Javalin app = Javalin.create().start(7000);
+		Javalin app = Javalin.create(config -> {
+			
+			//you must access the html through the localhost , so 
+			//http://localhost:7000/bankingapp.html
+			config.addStaticFiles("/frontend");
+			
+			//config.enableCorsForAllOrigins();
+		}).start(7000);
+		
+		//this line will host the frontend on the 7000 port, so we can circumvent the CORS issue
+//		app.config.addStaticFiles("/frontend");
+//		
+//		app.start(7000);
 		
 		//customer requests
 		

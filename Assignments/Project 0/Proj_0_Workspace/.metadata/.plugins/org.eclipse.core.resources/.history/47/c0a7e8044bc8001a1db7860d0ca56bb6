@@ -1,9 +1,0 @@
-package dev.alsabea.daos;
-
-public interface AccountDao extends CRUD<Account>{
-
-
-
-	
-
-}

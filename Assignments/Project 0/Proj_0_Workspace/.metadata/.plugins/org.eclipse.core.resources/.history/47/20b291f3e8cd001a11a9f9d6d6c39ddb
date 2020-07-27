@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mon School</title>
+</head>
+<body>
+    <h1>Monongalia County School System</h1>
+
+    <button onclick="getAllSchools()">Get All schools</button>
+
+    <div>
+        <h3>School Creator</h3>
+        <input type="text" id="nameInput" placeholder="School Name">
+        <input type="number" id="capacityInput" placeholder="School Capacity">
+        <button id="schoolCreateBtn" onclick="createSchool()">Create School</button>
+    </div>
+
+
+
+    <table id="schoolTable" hidden>
+        <thead><th>School ID</th> <th>School Name</th> <th>School Capacity</th></thead>
+        <tr><td id="sIdField">N/A</td><td id="nameField">N/A</td><td id="capacityField">N/A</td></tr>
+    </table>
+
+
+    
+</body>
+<script>
+    // CORS cross origin resource sharing. It is a security feature of the internet
+    // CORS is a way to prevent malicious JS from accessing apis it should not
+    // CORS is a filter that will block some http requests based on where the request came from
+    // this html is not on the same webaddress as the backend api (localhost:7000)
+    // therefore cors blocks it default
+
+    async function getAllSchools(){
+
+        const httpResponse = await fetch("http://localhost:7000/schools");
+        const schools = await httpResponse.json();
+        console.log(schools);
+
+    }
+
+    async function createSchool(){
+
+        // getting our inputs and creating an object that has those values
+        const sId = 0;
+        const name = document.getElementById("nameInput").value;
+        const capacity = Number.parseInt(document.getElementById("capacityInput").value);
+        let school = {
+            sId:sId,
+            name:name,
+            capacity:capacity
+        }
+
+        // config object literal. An object with a bunch of configuration to be used in a function
+        const config = {
+            method: "POST",
+            headers : {'Content-Type': 'application/json'}, // you can use the headers properties to set headers
+            body : JSON.stringify(school)
+        };
+
+        const httpResponse = await fetch("http://localhost:7000/schools",config);
+        school = await httpResponse.json();
+
+        document.getElementById("sIdField").innerHTML = school.sId;
+        document.getElementById("nameField").innerHTML = school.name;
+        document.getElementById("capacityField").innerHTML = school.capacity;    
+
+        document.getElementById("schoolTable").removeAttribute("hidden");    
+    }
+
+
+</script>
+</html>

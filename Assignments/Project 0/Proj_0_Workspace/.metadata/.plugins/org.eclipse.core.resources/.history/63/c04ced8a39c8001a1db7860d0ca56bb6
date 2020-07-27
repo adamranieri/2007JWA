@@ -1,9 +1,0 @@
-package dev.alsabea.services;
-
-public interface CustomerServices {
-
-	
-	void addCustomer(Customer c);
-	
-	
-}
