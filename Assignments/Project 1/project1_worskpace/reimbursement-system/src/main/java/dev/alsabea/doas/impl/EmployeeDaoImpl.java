@@ -14,16 +14,13 @@ import dev.alsabea.entities.Employee;
 import dev.alsabea.exceptions.DaoException;
 
 public class EmployeeDaoImpl implements EmployeeDao {
-	
-	
-	private static EmployeeDaoImpl dao= null; 
-	
+
+	private static EmployeeDaoImpl dao = null;
+
 	private EmployeeDaoImpl() {
-		
+
 	}
-	
-	
-	
+
 	public static EmployeeDao getInstance() {
 		if (dao == null) {
 			dao = new EmployeeDaoImpl();
@@ -33,13 +30,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
-	
-
 	@Override
 	public int createInstance(Employee t) {
 		final String insertMySql = "insert into reimbursement_system_db.emp_mgr "
-				+ " (first_name , last_name , username , password , emp_role, mgr_id) values "
-				+ "(?, ?, ?, ?, ?, ?) ";
+				+ " (first_name , last_name , username , password , emp_role, mgr_id) values " + "(?, ?, ?, ?, ?, ?) ";
 		Connection con = ConnectionEstablisher.getConnection();
 		int createdRecordId = -1;
 		ResultSet rs = null;
@@ -50,7 +44,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ps.setString(4, t.getPassword());
 			ps.setString(5, t.getEmpRole());
 			ps.setInt(6, t.getMgrId());
-			
+
 			ps.executeUpdate();
 
 			rs = ps.getGeneratedKeys();
@@ -63,8 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// return the generated key from the database.
 		return createdRecordId;
 	}
-	
-	
+
 	@Override
 	public List<Employee> retrieveAll() {
 		final String retrieveSql = "SELECT * FROM reimbursement_system_db.emp_mgr ";
@@ -80,12 +73,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			e.printStackTrace();
 		}
 
-		if (recordsList.size()!=0)
-			return recordsList; 
+		if (recordsList.size() != 0)
+			return recordsList;
 		else
 			return null;
 	}
-
 
 	@Override
 	public Employee retrieveById(int key) {
@@ -96,7 +88,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try (PreparedStatement ps = con.prepareStatement(retrieveSql)) {
 			ps.setInt(1, key);
 			rs = ps.executeQuery();
-			isNotEmpty= rs.next();
+			isNotEmpty = rs.next();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,9 +99,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			return null;
 	}
 
-
-
-
 	@Override
 	public boolean update(Employee t) {
 		final String updateSql = "UPDATE reimbursement_system_db.emp_mgr "
@@ -117,9 +106,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				+ " mgr_id=?  WHERE emp_id = ?;";
 
 		Connection con = ConnectionEstablisher.getConnection();
-		int numOfUpdatedRecords= -4;
+		int numOfUpdatedRecords = -4;
 		try (PreparedStatement ps = con.prepareStatement(updateSql)) {
-			//ps.setInt(1, t.getEmpId());
 			ps.setString(1, t.getFirstName());
 			ps.setString(2, t.getLastName());
 			ps.setString(3, t.getUsername());
@@ -136,7 +124,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		if (numOfUpdatedRecords == 1)
 			return true;
-		else // if (numOfDeletedRecords == 0) no element have been deleted (id does not refer
+		else // if (numOfDeletedRecords == 0) no element have been updated (id does not refer
 				// to any customer object)
 			return false;
 	}
@@ -152,7 +140,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			numOfDeletedRecords = ps.executeUpdate();
 			// if the delete function deletes more than 1 object, there must be an error,
 			// because emp_id is the primary_key, each record has a unique primary key
-			// so there must be some problem with the database or the DAO if it deletes more than one.
+			// so there must be some problem with the database or the DAO if it deletes more
+			// than one.
 			if (numOfDeletedRecords > 1)
 				throw new DaoException("sql query did not update the expected number of rows");
 		} catch (Exception e) {
@@ -165,12 +154,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			return false;
 	}
 
-
 	private Employee extractFromRs(ResultSet rs) {
-		Employee emp= new Employee();
-		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
-		
-		
+		Employee emp = new Employee();
+		// ( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
+
 		try {
 			emp.setEmpId(rs.getInt("emp_id"));
 			emp.setFirstName(rs.getString("first_name"));
@@ -183,15 +170,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		return emp;
 	}
 
-
-
-
-	
-	
-	
 }

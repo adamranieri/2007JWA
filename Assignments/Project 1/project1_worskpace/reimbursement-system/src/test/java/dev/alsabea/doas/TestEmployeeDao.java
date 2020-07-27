@@ -21,7 +21,7 @@ class TestEmployeeDao {
 
 	private static EmployeeDao  empDao = EmployeeDaoImpl.getInstance();
 	
-	@Test @Order(3)
+	@Test @Order(4)
 	final void testCreateInstance() {
 		/*
 		 * (firstName , lastName , username , password , emp_role, mgr_id)
@@ -40,8 +40,18 @@ class TestEmployeeDao {
 		Assertions.assertNotEquals(0, generatedId);
 		
 	}
+	
+	@Test  @Order(1)
+	final void testRetrieveAll() {
+		List<Employee> emps = empDao.retrieveAll();
+		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
+		Assertions.assertEquals(10, emps.size());
+		
+	}
+	
+	
 
-	@Test @Order(1)
+	@Test @Order(2)
 	final void testRetrieveById() {
 		Employee emp = empDao.retrieveById(1);
 		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
@@ -56,12 +66,11 @@ class TestEmployeeDao {
 		
 	}
 	
-	@Test  @Order(2)
-	final void testRetrieveAll() {
-		List<Employee> emps = empDao.retrieveAll();
+	@Test @Order(3)
+	final void testRetrieveByIdNegative() {
+		Employee emp = empDao.retrieveById(700);
 		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
-		Assertions.assertEquals(10, emps.size());
-		
+		Assertions.assertNull(emp);
 	}
 
 	@Test
@@ -91,6 +100,22 @@ class TestEmployeeDao {
 		
 	}
 
+	@Test
+	final void testUpdateNegative() {
+		Employee emp = new Employee();
+		emp.setEmpId(89);
+		emp.setFirstName("testFirstNameUpdateNoneExistent");
+		emp.setLastName("testLastNameUpdateNoneExistent");
+		emp.setUsername("testUserNameUpdateNoneExistent");
+		emp.setPassword("testPasswordUpdateNoneExistent");
+		emp.setEmpRole("testEmpRoleUpdateNoneExistent");
+		emp.setMgrId(3);
+		
+		Assertions.assertFalse(empDao.update(emp));
+		
+	}
+	
+	
 	@Test  
 	final void testDeleteById() {
 		Employee emp = new Employee();
@@ -109,6 +134,12 @@ class TestEmployeeDao {
 		
 	}
 
+	@Test  
+	final void testDeleteByIdNegative() {
+		Assertions.assertFalse(empDao.deleteById(9999));
+	}
+	
+	
 	
 	@AfterAll
 	final static void cleanUp() {
