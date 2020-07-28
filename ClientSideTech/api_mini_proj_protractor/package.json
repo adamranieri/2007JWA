@@ -1,0 +1,14 @@
+{
+  "name": "api_mini_proj_protractor",
+  "version": "1.0.0",
+  "description": "The tests for my API mini project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Justin Kusch",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "7.0.0"
+  }
+}

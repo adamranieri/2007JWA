@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>D&D Character Creator</title>
     <link rel="stylesheet" href="index.css"/>
 </head>
 
@@ -21,6 +21,7 @@
             <caption id="raceTitle"></caption>
             <thead><th>Speed</th> <th>STR</th> <th>DEX</th> <th>CON</th> <th>INT</th> <th>WIS</th> <th>CHA</th></thead>
             <tr><td id="speed"></td> <td id="str"></td> <td id="dex"></td> <td id="con"></td> <td id="int"></td> <td id="wis"></td> <td id="cha"></td></tr>
+            <tr><td id="dummy">Bonus: </td> <td id="strMod"></td> <td id="dexMod"></td> <td id="conMod"></td> <td id="intMod"></td> <td id="wisMod"></td> <td id="chaMod"></td></tr>
         </table>
 
         <p id="subRace"></p>
@@ -77,7 +78,7 @@
     </div>
 
     <div id="profPicker" hidden>
-        <p>Proficiency picker</p>
+        <div id="profBlock"></div>
         <button id="profPickerBtn" onClick="displayCharacter()">Choose</button>
     </div>
 

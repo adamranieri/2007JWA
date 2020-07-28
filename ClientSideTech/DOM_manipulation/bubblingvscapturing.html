@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bubbling vs. Capturing</title>
+</head>
+<body>
+    
+    <div id="divElement">
+        
+        <p id="paraElement">Hello I am a <b id="boldElement">paragraph</b></p>
+
+    </div>
+
+</body>
+
+<script>
+    // <div> is the outer element, <p> is nested in div, <b> is nested in p
+
+    // the default behavior for JS event execution order is bubbling
+    // the JS of the most nested element is executed first
+    // the event bubbles out from the innermost clicked element
+    // probably what you want 99% of the time
+
+
+    document.getElementById('divElement').addEventListener('click', () => {
+        console.log('Hello from div');
+    }, true);
+
+    document.getElementById('paraElement').addEventListener('click', () => {
+        console.log('Hello from para');
+    }, true);
+
+    document.getElementById('boldElement').addEventListener('click', () => {
+        console.log('Hello from bold');
+    }, true);
+    
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+api specs
+
+/customers/{cId}/accounts/{aId}
+
+
+You should flesh out the following api to support the following operations
+on both the customer and account resources. The appropriate status codes should be
+returned. 201 for created, 200 for all other successes, 404 for not found
+	- get
+	- post
+	- put
+	- delete
+
+customers should have optional query params of 
+/customers?username=smith65
+
+
+accounts should have optional query params of 
+/customers/10/accounts?balancegreaterthan=2000
+/customers/10/accounts?balancelessthan=5000
+
+these can be combined for
+/customers/10/accounts?balancelessthan=5000&balancegreaterthan=2000
+
+
+YOU MUST HAVE POSTMAN TESTS FOR EVERY API ENDPOINT!!!!!
+- they should be saved as one collection
+- you should be adding postman tests in the tests section as appropriate
+
+	

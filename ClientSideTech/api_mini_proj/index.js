@@ -3,7 +3,7 @@ let finalSubrace  = "";
 let finalClass = "";
 let finalSubclass = "";
 let stats = {};
-let proficiencies = {};
+let profCount = 0;
 
 function resetPage() {
     location.reload();
@@ -14,6 +14,17 @@ function resetPage() {
  *  FUNCTIONS FOR DISPLAYING THE FINAL PAGE
  * 
  */
+function buildProficiencyTable() {
+    let html = `<table id=profTable><t><thead>Proficiencies</thead>` 
+    for (let i = 0; i < profCount; ++i) {
+        let prof = document.getElementById(`prof${i}`);
+        html += `<td>${prof.value.replace("_", " ")}</td>`
+    }
+    html += `</table>`;
+    document.getElementById("skillBonusTable").innerHTML = html;
+}
+
+
 function displayRace(raceObj) {
     document.getElementById("raceTitle").innerHTML = raceObj.name;
     document.getElementById("speed").innerHTML = raceObj.speed + 'ft.';
@@ -27,6 +38,13 @@ function displayRace(raceObj) {
     document.getElementById("int").innerHTML = stats.INT;
     document.getElementById("wis").innerHTML = stats.WIS;
     document.getElementById("cha").innerHTML = stats.CHA;
+
+    document.getElementById("strMod").innerHTML = Math.floor((stats.STR - 10) / 2);
+    document.getElementById("dexMod").innerHTML = Math.floor((stats.DEX - 10) / 2);
+    document.getElementById("conMod").innerHTML = Math.floor((stats.CON - 10) / 2);
+    document.getElementById("intMod").innerHTML = Math.floor((stats.INT - 10) / 2);
+    document.getElementById("wisMod").innerHTML = Math.floor((stats.WIS - 10) / 2);
+    document.getElementById("chaMod").innerHTML = Math.floor((stats.CHA - 10) / 2);
 
 }
 
@@ -47,6 +65,7 @@ function displaySubClass(subclassObj) {
 
 async function displayCharacter() {
     finalSubclass = document.getElementById("subclasses").value;
+
 
     document.getElementById("optionPicker").style.display = "none";
     document.getElementById("statPicker").style.display = "none";
@@ -76,7 +95,7 @@ async function displayCharacter() {
     displaySubClass(responseObj);
 
 
-    /** BUILD PROFICIENCY TABLE HERE */
+    buildProficiencyTable();
 
 }
 
@@ -88,6 +107,8 @@ async function displayCharacter() {
  * 
  */
 async function pickProf() {
+    document.getElementById("statPickerBtn").style.display = "none";
+
     const str = Number.parseInt(document.getElementById("STR").value);
     const dex = Number.parseInt(document.getElementById("DEX").value);
     const con = Number.parseInt(document.getElementById("CON").value);
@@ -104,28 +125,34 @@ async function pickProf() {
         CHA: cha
     };
 
+    document.getElementById("STR").disabled = true;
+    document.getElementById("DEX").disabled = true;
+    document.getElementById("CON").disabled = true;
+    document.getElementById("INT").disabled = true;
+    document.getElementById("WIS").disabled = true;
+    document.getElementById("CHA").disabled = true;
+
+
     document.getElementById("profPicker").removeAttribute("hidden");
 
-    /** BUILD PROFICIENCY TABLE HERE */
-    // response = await fetch(`https://www.dnd5eapi.co/api/classes/${finalClass}`);
-    // responseObj = await response.json();
-    // const prof = responseObj.proficiency_choices;
+    response = await fetch(`https://www.dnd5eapi.co/api/classes/${finalClass}`);
+    responseObj = await response.json();
+    const prof = responseObj.proficiency_choices[0];
 
-    // let availProf = responseObj.from;
-    // let profHTML = `<label for="profs">Choose your proficiency:</label> <select name="prof" id="prof">`;
-    // for (let prof of availProf) {
-    //     let info = `<option value=${race.index}> ${race.index}</option>`;
-    //     racesHTML += info;
-    //}
-    // racesHTML += `</select>`;
+    for (let i = 0; i < prof.choose; ++i) {
+        profCount += 1;
+        let availProf = prof.from;
+        let profHTML = `<label for="profs">Choose your proficiency:</label> <select name="prof" class="profs" id="prof${i}">`;
+        for (let prof of availProf) {
+            let profName = prof.name.replace("Skill: ", "");
+            let profVal = profName.replace(" ", "_");
+            let info = `<option value=${profVal}> ${profName}</option>`;
+            profHTML += info;
+        }
+        profHTML += `</select> <br />`;
 
-    // document.getElementById("races").innerHTML = racesHTML;
-    // document.getElementById("races").innerHTML += `<button id="raceBtn" onClick="getSubRaces()">Choose</button>`;
-    
-    // for (let i = 0; i < prof.choose; ++i) {
-
-    // }
-
+        document.getElementById("profBlock").innerHTML += profHTML;
+    }
 }
 
 function pickStats() {

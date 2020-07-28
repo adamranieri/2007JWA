@@ -1,0 +1,6 @@
+Project 0: 
+	- improve current test cases
+	- write POSTMAN tests
+	- implement services
+	- implement controllers
+
