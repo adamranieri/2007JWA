@@ -1,10 +1,16 @@
 package dev.ranieri.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +29,12 @@ public class Director {
 	@Column(name = "name")
 	@NotNull
 	private String name;
+	
+	@OneToMany(mappedBy = "director", fetch = FetchType.EAGER, cascade = CascadeType.ALL)// this is the field in JAVA that has the annotation 
+	// saying what column has the foreignkey
+	// In hibernate the child table (the table that has the foreign key is called the owning table)
+	// Beacuse it is the child table that actually information to connect the two entities
+	List<Movie> movies = new ArrayList();
 	
 	public Director() {
 		super();
@@ -47,9 +59,18 @@ public class Director {
 		this.name = name;
 	}
 
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
+
 	@Override
 	public String toString() {
 		return "Director [dId=" + dId + ", name=" + name + "]";
 	}
 
+	
 }

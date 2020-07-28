@@ -11,12 +11,13 @@
 		<property name="hibernate.connection.username">adam</property>
         <property name="hibernate.connection.password">password123</property>
         
-         <property name="hibernate.hbm2ddl.auto">create-drop</property> 
+      <!-- <property name="hibernate.hbm2ddl.auto">create-drop</property>  -->   
          <!-- create drop mode will automatically drop and recreate your tables whenever you create a sessionFactory
          this is entirely a devlopment/testing feature NEVER have this in a completed application -->
         <property name="hibernate.show_sql">true</property>
         
         <mapping class = "dev.ranieri.entities.Director"></mapping>
+        <mapping class = "dev.ranieri.entities.Movie"></mapping>
         
 
     </session-factory>

@@ -20,6 +20,8 @@ class DirectorDAOtests {
 	
 	private static DirectorDAO ddao = new DirectorDAOhibenate();
 	
+	
+	
 
 	@Test
 	@Order(1)
