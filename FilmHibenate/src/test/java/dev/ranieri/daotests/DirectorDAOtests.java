@@ -25,7 +25,7 @@ class DirectorDAOtests {
 	@Order(1)
 	void createDirector() { 
 		// an object with an ID of 0 is understood to not be a record in the database
-		Director kyle = new Director(0,"Kyle Ford Coppola");
+		Director kyle = new Director(0,"Kyle Coppola");
 		ddao.createDirector(kyle);
 		Assertions.assertNotEquals(0, kyle.getdId());
 	}

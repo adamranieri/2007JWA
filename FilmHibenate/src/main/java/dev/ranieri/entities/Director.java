@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+
 
 // Hibernate requires your entities be beans
 @Entity // marks class as an entity
@@ -18,6 +21,7 @@ public class Director {
 	private int dId;
 	
 	@Column(name = "name")
+	@NotNull
 	private String name;
 	
 	public Director() {
