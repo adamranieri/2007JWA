@@ -9,31 +9,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.alsabea.connection.ConnectionEstablisher;
-import dev.alsabea.doas.EmployeeDao;
-import dev.alsabea.entities.Employee;
+import dev.alsabea.doas.EmployeeManagerDao;
+import dev.alsabea.entities.Employee_Manager;
 import dev.alsabea.exceptions.DaoException;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeManagerDaoImpl implements EmployeeManagerDao {
 
-	private static EmployeeDaoImpl dao = null;
+	private static EmployeeManagerDaoImpl dao = null;
 
-	private EmployeeDaoImpl() {
+	private EmployeeManagerDaoImpl() {
 
 	}
 
-	public static EmployeeDao getInstance() {
-		if (dao == null) {
-			dao = new EmployeeDaoImpl();
-			return dao;
-		} else {
-			return dao;
-		}
+	public static EmployeeManagerDao getInstance() {
+		if (dao == null) 
+			dao = new EmployeeManagerDaoImpl();
+		return dao;
+
 	}
 
 	@Override
-	public int createInstance(Employee t) {
+	public int createInstance(Employee_Manager t) {
 		final String insertMySql = "insert into reimbursement_system_db.emp_mgr "
-				+ " (first_name , last_name , username , password , emp_role, mgr_id) values " + "(?, ?, ?, ?, ?, ?) ";
+				+ " (first_name , last_name , username , password , emp_role, mgr_id) values " 
+				+ " (?, ?, ?, ?, ?, ?) ";
 		Connection con = ConnectionEstablisher.getConnection();
 		int createdRecordId = -1;
 		ResultSet rs = null;
@@ -59,11 +58,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public List<Employee> retrieveAll() {
+	public List<Employee_Manager> retrieveAll() {
 		final String retrieveSql = "SELECT * FROM reimbursement_system_db.emp_mgr ";
 		Connection con = ConnectionEstablisher.getConnection();
 		ResultSet rs = null;
-		List<Employee> recordsList = new ArrayList<>();
+		List<Employee_Manager> recordsList = new ArrayList<>();
 		try (PreparedStatement ps = con.prepareStatement(retrieveSql)) {
 			rs = ps.executeQuery();
 			while (rs.next())
@@ -80,7 +79,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee retrieveById(int key) {
+	public Employee_Manager retrieveById(int key) {
 		final String retrieveSql = "SELECT * FROM reimbursement_system_db.emp_mgr WHERE emp_id = ?";
 		Connection con = ConnectionEstablisher.getConnection();
 		ResultSet rs = null;
@@ -100,7 +99,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public boolean update(Employee t) {
+	public boolean update(Employee_Manager t) {
 		final String updateSql = "UPDATE reimbursement_system_db.emp_mgr "
 				+ " SET first_name = ?, last_name = ?, username= ? , password = ? , emp_role = ?, "
 				+ " mgr_id=?  WHERE emp_id = ?;";
@@ -124,8 +123,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		if (numOfUpdatedRecords == 1)
 			return true;
-		else // if (numOfDeletedRecords == 0) no element have been updated (id does not refer
-				// to any customer object)
+		else // if (numOfUpdatedRecords == 0) no element have been updated (id does not refer
+				// to any update object)
 			return false;
 	}
 
@@ -149,13 +148,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		if (numOfDeletedRecords == 1)
 			return true;
-		else // if (numOfDeletedRecords == 0) no element have been deleted (id does not refer
-				// to any customer object)
+		else 
 			return false;
 	}
 
-	private Employee extractFromRs(ResultSet rs) {
-		Employee emp = new Employee();
+	private Employee_Manager extractFromRs(ResultSet rs) {
+		Employee_Manager emp = new Employee_Manager();
 		// ( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 
 		try {

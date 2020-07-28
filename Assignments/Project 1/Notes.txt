@@ -47,3 +47,6 @@ to make it more scalable, we might need to isolate the employee from the manager
 
 I need the negative tests for both daos, before transitioning to the services.
 
+
+I need to decide where to put the negative number for id test, is it in the services, or the controller?
+

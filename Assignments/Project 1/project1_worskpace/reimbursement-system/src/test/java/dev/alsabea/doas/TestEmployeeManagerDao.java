@@ -13,20 +13,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import dev.alsabea.connection.ConnectionEstablisher;
-import dev.alsabea.doas.impl.EmployeeDaoImpl;
-import dev.alsabea.entities.Employee;
+import dev.alsabea.doas.impl.EmployeeManagerDaoImpl;
+import dev.alsabea.entities.Employee_Manager;
 
 @TestMethodOrder(OrderAnnotation.class)
-class TestEmployeeDao {
+class TestEmployeeManagerDao {
 
-	private static EmployeeDao  empDao = EmployeeDaoImpl.getInstance();
+	private static EmployeeManagerDao  empDao = EmployeeManagerDaoImpl.getInstance();
 	
 	@Test @Order(4)
 	final void testCreateInstance() {
 		/*
 		 * (firstName , lastName , username , password , emp_role, mgr_id)
 		 */
-		Employee emp = new Employee();
+		Employee_Manager emp = new Employee_Manager();
 		emp.setFirstName("testFirstName");
 		emp.setLastName("testLastName");
 		emp.setUsername("testUserName");
@@ -43,7 +43,7 @@ class TestEmployeeDao {
 	
 	@Test  @Order(1)
 	final void testRetrieveAll() {
-		List<Employee> emps = empDao.retrieveAll();
+		List<Employee_Manager> emps = empDao.retrieveAll();
 		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 		Assertions.assertEquals(10, emps.size());
 		
@@ -53,7 +53,7 @@ class TestEmployeeDao {
 
 	@Test @Order(2)
 	final void testRetrieveById() {
-		Employee emp = empDao.retrieveById(1);
+		Employee_Manager emp = empDao.retrieveById(1);
 		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 		Assertions.assertNotNull(emp);
 		Assertions.assertEquals("John", emp.getFirstName());
@@ -68,14 +68,14 @@ class TestEmployeeDao {
 	
 	@Test @Order(3)
 	final void testRetrieveByIdNegative() {
-		Employee emp = empDao.retrieveById(700);
+		Employee_Manager emp = empDao.retrieveById(700);
 		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 		Assertions.assertNull(emp);
 	}
 
 	@Test
 	final void testUpdate() {
-		Employee emp = new Employee();
+		Employee_Manager emp = new Employee_Manager();
 		emp.setFirstName("testFirstNameToBeUpdated");
 		emp.setLastName("testLastNameToBeUpdated");
 		emp.setUsername("testUserNameToBeUpdated");
@@ -86,7 +86,7 @@ class TestEmployeeDao {
 		
 		int generatedId= empDao.createInstance(emp);
 		
-		Employee emp_updated = new Employee();
+		Employee_Manager emp_updated = new Employee_Manager();
 		emp_updated.setEmpId(generatedId);
 		emp_updated.setFirstName("testFirstNameUpdated___");
 		emp_updated.setLastName("testLastNameUpdated___");
@@ -102,7 +102,7 @@ class TestEmployeeDao {
 
 	@Test
 	final void testUpdateNegative() {
-		Employee emp = new Employee();
+		Employee_Manager emp = new Employee_Manager();
 		emp.setEmpId(89);
 		emp.setFirstName("testFirstNameUpdateNoneExistent");
 		emp.setLastName("testLastNameUpdateNoneExistent");
@@ -118,7 +118,7 @@ class TestEmployeeDao {
 	
 	@Test  
 	final void testDeleteById() {
-		Employee emp = new Employee();
+		Employee_Manager emp = new Employee_Manager();
 		emp.setFirstName("testFirstNameToBeDeleted");
 		emp.setLastName("testLastNameToBeDeleted");
 		emp.setUsername("testUserNameToBeDeleted");

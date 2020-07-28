@@ -1,6 +1,6 @@
 package dev.alsabea.entities;
 
-public class Employee {
+public class Employee_Manager {
 
 	
 	private int 		empId;
