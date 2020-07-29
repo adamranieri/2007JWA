@@ -1,11 +1,15 @@
 package dev.ranieri.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -31,6 +35,10 @@ public class Movie {
 	@ManyToOne
 	@JoinColumn(name = "d_id") // it will use that foreign key column to get director that is associated with that movie
 	private Director director;
+	
+	@ManyToMany(mappedBy = "movies") // bidirectional relationship. Each entity can be used to get the other
+	// unidirectional relationship. Only one entity can be used to get the other
+	private List<Actor> actors = new ArrayList<Actor>();
 
 	public Movie() {
 		super();
@@ -74,6 +82,16 @@ public class Movie {
 
 	public void setDirector(Director director) {
 		this.director = director;
+	}
+	
+	
+
+	public List<Actor> getActors() {
+		return actors;
+	}
+
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
 	}
 
 	@Override
