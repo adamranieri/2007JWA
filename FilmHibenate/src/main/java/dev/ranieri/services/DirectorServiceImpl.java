@@ -12,6 +12,18 @@ public class DirectorServiceImpl implements DirectorService {
 	public MovieDAO mdao = new MovieDAOhibernate();
 	public DirectorDAO ddao = new DirectorDAOhibenate();
 	
+	
+	
+	public DirectorServiceImpl() {
+		super();
+	}
+
+	public DirectorServiceImpl(MovieDAO mdao, DirectorDAO ddao) {
+		super();
+		this.mdao = mdao;
+		this.ddao = ddao;
+	}
+
 	@Override
 	public Director createDirector(Director director) {
 		return this.ddao.createDirector(director);

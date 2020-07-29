@@ -1,5 +1,7 @@
 package dev.ranieri.daos;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -60,6 +62,12 @@ public class MovieDAOhibernate implements MovieDAO {
 		sess.close();
 		
 		return true;
+	}
+
+	@Override
+	public List<Movie> getAllMovies() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

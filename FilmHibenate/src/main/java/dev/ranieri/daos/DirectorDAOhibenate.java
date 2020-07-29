@@ -25,7 +25,7 @@ public class DirectorDAOhibenate implements DirectorDAO{
 		sess.beginTransaction(); // begin a transaction
 		
 		
-		sess.save(director); // this will save our director object		
+		sess.save(director); // this will save our director object	
 		
 		sess.getTransaction().commit(); // commit the transaction
 		sess.close(); // close a session

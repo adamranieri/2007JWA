@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
 
+import dev.ranieri.entities.Actor;
 import dev.ranieri.entities.Director;
 import dev.ranieri.entities.Movie;
 import dev.ranieri.utils.HibernateUtil;
@@ -87,6 +88,34 @@ class MultiplicityTests {
 		sess.close();
 		
 	}
+	
+	@Test
+	void viewActorMovies() {
+		Session sess = sf.openSession();
+		Actor actor = sess.get(Actor.class, 1);
+		
+		System.out.println(actor);
+		System.out.println(actor.getMovies());
+		
+		sess.close();
+	}
+	
+	@Test
+	void viewMoviesActor() {
+		Session sess = sf.openSession();
+		Movie m = sess.get(Movie.class, 10);
+		System.out.println(m);
+		System.out.println(m.getActors());
+		sess.close();
+		
+	}
+	
+	// General tips when using hiberante. Do not overuse hibernate. You have services that can help you
+	// Let hibernate do the CRUD operations and querying
+	// I generally like to update to entities directly rather than persisting through a parent
+	// I generally like using the parent.getChildren() as a purely read operation
+	
+	
 	
 	
 

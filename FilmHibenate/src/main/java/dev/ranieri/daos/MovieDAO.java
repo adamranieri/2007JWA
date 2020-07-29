@@ -1,5 +1,7 @@
 package dev.ranieri.daos;
 
+import java.util.List;
+
 import dev.ranieri.entities.Movie;
 
 public interface MovieDAO {
@@ -11,5 +13,7 @@ public interface MovieDAO {
 	Movie updateMovie(Movie movie);
 	
 	boolean deleteMovie(Movie movie);
+	
+	List<Movie> getAllMovies();
 
 }
