@@ -20,7 +20,7 @@ VALUES
 
 
 
-INSERT INTO reimbursement_system_db.reimbursement_requests 
+INSERT INTO reimbursement_system_db.reimbursement_request 
 (rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
 VALUES
 (0, 5, 1, 'req 5000$ to buy awesome car', 'DENIED', "you should save to buy it, no free money for you" ),

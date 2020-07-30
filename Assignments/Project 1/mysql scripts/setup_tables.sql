@@ -21,9 +21,12 @@ BEGIN
 	
 	
 	);
+
+
+
 	
 	
-	create table reimbursement_requests(
+	create table reimbursement_request(
 	rr_id					int			unsigned	primary key		AUTO_INCREMENT,
 	emp_id 					int 		unsigned	not null,
 	mgr_id					int 		unsigned	not null,

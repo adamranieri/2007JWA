@@ -173,7 +173,7 @@ class TestReimbursementRequestDao {
 	
 	@AfterAll
 	final static void cleanUp() {
-		String sql = "DELETE FROM reimbursement_system_db.reimbursement_requests  WHERE "
+		String sql = "DELETE FROM reimbursement_system_db.reimbursement_request  WHERE "
 				+ " reimbursement_request LIKE 'test%';";
 		Connection con = ConnectionEstablisher.getConnection();
 		try {

@@ -31,7 +31,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 	
 	@Override
 	public int createInstance(ReimbursementRequest t) {
-		final String insertMySql = "insert into reimbursement_system_db.reimbursement_requests  "
+		final String insertMySql = "insert into reimbursement_system_db.reimbursement_request  "
 				+ " (emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason ) values "
 				+ "(?, ?, ?, ?, ?) ";
 		Connection con = ConnectionEstablisher.getConnection();
@@ -59,7 +59,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 	
 	@Override
 	public List<ReimbursementRequest> retrieveAllRequestsByEmpId(int key) {
-		final String retrieveSql = "SELECT * FROM reimbursement_system_db.reimbursement_requests "
+		final String retrieveSql = "SELECT * FROM reimbursement_system_db.reimbursement_request "
 				+ " WHERE emp_id = ?";
 		Connection con = ConnectionEstablisher.getConnection();
 		ResultSet rs = null;
@@ -83,7 +83,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 	
 	@Override
 	public List<ReimbursementRequest> retrieveAllRequestsByMgrId(int key) {
-		final String retrieveSql = "SELECT * FROM reimbursement_system_db.reimbursement_requests "
+		final String retrieveSql = "SELECT * FROM reimbursement_system_db.reimbursement_request "
 				+ " WHERE mgr_id = ?";
 		Connection con = ConnectionEstablisher.getConnection();
 		ResultSet rs = null;
@@ -108,7 +108,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 	@Override
 	public ReimbursementRequest retrieveById(int key) {
 		final String retrieveSql = "SELECT * FROM "
-				+ "reimbursement_system_db.reimbursement_requests WHERE rr_id = ?";
+				+ "reimbursement_system_db.reimbursement_request WHERE rr_id = ?";
 		Connection con = ConnectionEstablisher.getConnection();
 		ResultSet rs = null;
 		boolean isNotEmpty = true;
@@ -130,7 +130,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 
 	@Override
 	public boolean update(ReimbursementRequest t) {
-		final String updateSql = "UPDATE reimbursement_system_db.reimbursement_requests "
+		final String updateSql = "UPDATE reimbursement_system_db.reimbursement_request "
 				+ " SET reimbursement_request = ? , reimbursement_status = ? , reason = ? "
 				+ "  WHERE rr_id = ?;";
 
@@ -156,7 +156,7 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao {
 
 	@Override
 	public boolean deleteById(int key) {
-		final String deleteSql = "DELETE FROM reimbursement_system_db.reimbursement_requests "
+		final String deleteSql = "DELETE FROM reimbursement_system_db.reimbursement_request "
 				+ " WHERE rr_id = ?";
 		int numOfDeletedRecords = -4;
 		Connection con = ConnectionEstablisher.getConnection();
