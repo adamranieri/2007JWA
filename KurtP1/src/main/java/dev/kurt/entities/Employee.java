@@ -1,5 +1,8 @@
 package dev.kurt.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,36 +12,40 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "e_id")
+	@Column(name = "emp_id")
 	private int employeeId;
 	
-	@Column(name = "username")
-	private String username;                                                    
+	@Column(name = "emp_username")
+	private String empUsername;                                                    
 	
-	@Column(name = "password")
-	private String password;
+	@Column(name = "emp_password")
+	private String empPassword;
 	
-	@Column(name = "first_name")
-	private String fName;
+	@Column(name = "emp_first_name")
+	private String empfName;
 	
-	@Column(name = "last_name")
-	private String lName;
+	@Column(name = "emp_last_name")
+	private String emplName;
 	
-	@Column(name = "permission_id")
-	private int permissionId; // managers are just employees with different permissions
+	@ManyToOne
+	@JoinColumn(name = "man_id")
+	private Manager manager;
 	
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<Reimbursement> reimbursements = new ArrayList();
+
 	public Employee() {
 		super();
 	}
 
-	public Employee(int employeeId, String username, String password, String fName, String lName, int permissionId) {
+	// Managers have employees, but employees can exist without one
+	public Employee(int employeeId, String empUsername, String empPassword, String empfName, String emplName) {
 		super();
 		this.employeeId = employeeId;
-		this.username = username;
-		this.password = password;
-		this.fName = fName;
-		this.lName = lName;
-		this.permissionId = permissionId;
+		this.empUsername = empUsername;
+		this.empPassword = empPassword;
+		this.empfName = empfName;
+		this.emplName = emplName;
 	}
 
 	public int getEmployeeId() {
@@ -49,55 +56,58 @@ public class Employee {
 		this.employeeId = employeeId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmpUsername() {
+		return empUsername;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmpUsername(String empUsername) {
+		this.empUsername = empUsername;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getEmpPassword() {
+		return empPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmpPassword(String empPassword) {
+		this.empPassword = empPassword;
 	}
 
-	public String getfName() {
-		return fName;
+	public String getEmpfName() {
+		return empfName;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setEmpfName(String empfName) {
+		this.empfName = empfName;
 	}
 
-	public String getlName() {
-		return lName;
+	public String getEmplName() {
+		return emplName;
 	}
 
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setEmplName(String emplName) {
+		this.emplName = emplName;
 	}
 
-	public int getPermissionId() {
-		return permissionId;
+	public Manager getManager() {
+		return manager;
 	}
 
-	public void setPermissionId(int permissionId) {
-		this.permissionId = permissionId;
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
+	public List<Reimbursement> getReimbursements() {
+		return reimbursements;
+	}
+
+	public void setReimbursements(List<Reimbursement> reimbursements) {
+		this.reimbursements = reimbursements;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", username=" + username + ", password=" + password + ", fName="
-				+ fName + ", lName=" + lName + ", permissionId=" + permissionId + "]";
+		return "Employee [employeeId=" + employeeId + ", empUsername=" + empUsername + ", empPassword=" + empPassword
+				+ ", empfName=" + empfName + ", emplName=" + emplName + ", manager=" + manager + "]";
 	}
-	
-	
-	
-	
-	
 	
 }

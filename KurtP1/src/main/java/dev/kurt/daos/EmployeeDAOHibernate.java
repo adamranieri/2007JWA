@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import dev.kurt.entities.Employee;
+import dev.kurt.entities.Manager;
+import dev.kurt.entities.Reimbursement;
 import dev.kurt.utils.HibernateUtil;
 
 public class EmployeeDAOHibernate implements EmployeeDAO {
@@ -77,11 +79,21 @@ public class EmployeeDAOHibernate implements EmployeeDAO {
 	public Employee getEmployeeByLogin(String user, String pass) {
 		Session sess = sf.openSession();	
 		Criteria crit = sess.createCriteria(Employee.class)
-				.add(Restrictions.eq("username",user))
-				.add(Restrictions.eq("password",pass));
+				.add(Restrictions.eq("empUsername",user))
+				.add(Restrictions.eq("empPassword",pass));
 		List<Employee> employees = crit.list();
 		
 		return employees.get(0);
+	}
+
+	@Override
+	public List<Employee> getEmployeesByManager(Manager manager) {
+		Session sess = sf.openSession();	
+		Criteria crit = sess.createCriteria(Employee.class);
+		crit.add(Restrictions.like("manager",manager));
+		List<Employee> employees = crit.list();
+		
+		return employees;
 	}
 
 }
