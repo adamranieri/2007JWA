@@ -30,9 +30,28 @@ public class App {
 		ReimbursementController reimbursementController = new ReimbursementController(employeeService, reimbursementService);
 		ManagerController managerController = new ManagerController(managerService);
 		
+		
 		app.post("/employees",employeeController.createEmployee);
 		app.post("/employees/:eid/reimbursements",reimbursementController.createReimbursement);
 		app.post("/managers",managerController.createManager);
+		// app.post(/login)
+		// DTO 
+		// let logincreds={
+		// user: user,
+		// pass: pass
+		// }
+		// dev.kurt.dtos
+		// dont relate directly to entity
+		/*
+		 * 
+		 * 
+		 * public class loginDTO {
+		 * 		private string user
+		 * 		private string password
+		 *  	make a new controller and write a specific handler for it
+		 * }
+		 * 
+		 * */
 		
 		
 		
@@ -44,7 +63,7 @@ public class App {
 		app.get("/reimbursements/:rid",reimbursementController.getReimbursementById);
 		app.get("/managers", managerController.getAllManagers);
 		app.get("/managers/:mid", managerController.getManagerById);
-		
+		// ctx.redirect
 		
 		app.put("/employees",employeeController.updateEmployee);
 		app.put("/employees/:eid/reimbursements", reimbursementController.updateReimbursement);
