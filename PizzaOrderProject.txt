@@ -1,0 +1,8 @@
+Pizza order tracker
+client: Joes Pizza
+background: When people call in to place orders the only way we have to track them is to write them down on pieces of paper.
+We want an application for our employees to log orders. We want our cooking staff to see what orders are pending and when
+the order is supposed to be done.
+priorities:
+	- Our staff is very busy and the interface needs to be as quick as possible to use
+	- The cooking staff needs to be alert to orders allergen restrictions so that special precautions are taken
