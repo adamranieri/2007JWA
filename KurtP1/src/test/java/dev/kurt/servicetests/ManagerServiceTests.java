@@ -68,4 +68,5 @@ private static ManagerService manServ = new ManagerServiceImpl();
 		boolean result = manServ.deleteManager(manager);
 		Assertions.assertEquals(true,result);
 	}
+
 }

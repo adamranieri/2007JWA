@@ -13,10 +13,11 @@ import dev.kurt.entities.Reimbursement;
 
 public class ReimbursementServiceImpl implements ReimbursementService{
 
-	public ReimbursementDAO serDao= new ReimbursementDAOHibernate();
+	private ReimbursementDAO serDao;
 	
 	public ReimbursementServiceImpl() {
 		super();
+		this.serDao = new ReimbursementDAOHibernate();
 	}
 	
 	public ReimbursementServiceImpl(ReimbursementDAO serDao) {

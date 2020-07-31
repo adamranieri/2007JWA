@@ -1,7 +1,7 @@
 package dev.kurt.controllers;
 
 import java.util.List;
-import java.util.Set;
+
 
 import com.google.gson.Gson;
 
@@ -12,10 +12,15 @@ import io.javalin.http.Handler;
 
 public class EmployeeController {
 	
-	public static EmployeeService eServ = new EmployeeServiceImpl();
-	private static Gson gson = new Gson();
+	private EmployeeService eServ;
+	private Gson gson = new Gson();
 	
-	public static Handler createEmployee = (ctx) ->{
+	public EmployeeController(EmployeeService eServ) {
+		super();
+		this.eServ = eServ;
+	}
+	
+	public Handler createEmployee = (ctx) ->{
 		String employeeJson = ctx.body();
 		Employee employee = gson.fromJson(employeeJson, Employee.class);
 		eServ.createEmployee(employee);
@@ -23,7 +28,7 @@ public class EmployeeController {
 		ctx.result(gson.toJson(employee));
 	};
 	
-	public static Handler getAllEmployees = (ctx) ->{
+	public Handler getAllEmployees = (ctx) ->{
 		
 		String userQ = ctx.queryParam("username");
 		String passQ = ctx.queryParam("password");
@@ -44,6 +49,37 @@ public class EmployeeController {
 	    default:
 	        throw new RuntimeException("404: Something Broke");
 		}
+		
+	};
+	
+	public Handler getEmployeeById = (ctx) ->{
+		String id = ctx.pathParam("eid");
+		Employee employee = eServ.getEmployeeById(Integer.parseInt(id));	
+		String json = gson.toJson(employee);
+		ctx.result(json);	
+	};
+	
+	
+	
+	public Handler updateEmployee = (ctx) ->{
+		String employeeJson = ctx.body();
+		Employee employee = gson.fromJson(employeeJson, Employee.class);
+		eServ.updateEmployee(employee);	
+		ctx.result(gson.toJson(employee));
+	};
+	
+	public Handler deleteEmployee = (ctx) ->{
+		String id = ctx.pathParam("eid");
+		Employee employee = eServ.getEmployeeById(Integer.parseInt(id));
+		Boolean result = eServ.deleteEmployee(employee);
+		ctx.result(result.toString());
+	};
+	
+	public Handler addReimbursementToEmployee = (ctx) ->{
+		
+	};
+	
+	public Handler getEmployeesByManager = (ctx) ->{
 		
 	};
 

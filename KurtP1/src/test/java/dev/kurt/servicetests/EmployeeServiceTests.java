@@ -2,6 +2,8 @@ package dev.kurt.servicetests;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,6 +20,7 @@ import dev.kurt.services.EmployeeService;
 import dev.kurt.services.EmployeeServiceImpl;
 import dev.kurt.services.ManagerService;
 import dev.kurt.services.ManagerServiceImpl;
+import dev.kurt.utils.HibernateUtil;
 
 @TestMethodOrder(OrderAnnotation.class) 
 public class EmployeeServiceTests {
@@ -104,8 +107,6 @@ public class EmployeeServiceTests {
 		Assertions.assertEquals(true,result);
 	}
 	
-	@AfterAll
-	static void tearDown() {
-		manServ.deleteManager(michael);
-	}
+	
+	
 }

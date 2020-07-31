@@ -23,14 +23,9 @@ public class ReimbursementServiceTests {
 
 	private static ReimbursementService reiServ = new ReimbursementServiceImpl();
 	private static EmployeeService eServ = new EmployeeServiceImpl();
-	private static Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
-	private static Employee bobby = new Employee(0,"bob@aol.com","bobisbob","Bob","Boberson");
+	private static Employee kurt = eServ.getEmployeeById(1);
+	private static Employee bobby = eServ.getEmployeeById(2);
 	
-	@BeforeAll
-	static void setUp() {
-		eServ.createEmployee(kurt);
-		eServ.createEmployee(bobby);
-	}
 	
 	@Test
 	@Order(1) 
@@ -88,12 +83,6 @@ public class ReimbursementServiceTests {
 		Reimbursement rei = reiServ.getReimbursementById(1);
 		boolean result = reiServ.deleteReimbursement(rei);
 		Assertions.assertEquals(true,result);
-	}
-	
-	@AfterAll
-	static void tearDown() {
-		eServ.deleteEmployee(kurt);
-		eServ.deleteEmployee(bobby);
 	}
 	
 }

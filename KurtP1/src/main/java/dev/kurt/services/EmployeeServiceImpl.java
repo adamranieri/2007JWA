@@ -16,12 +16,14 @@ import dev.kurt.entities.Reimbursement;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-	public EmployeeDAO eDao = new EmployeeDAOHibernate();
-	public ReimbursementDAO reiDao = new ReimbursementDAOHibernate();
+	private EmployeeDAO eDao;
+	private ReimbursementDAO reiDao;
 	
 	
 	public EmployeeServiceImpl() {
 		super();
+		this.eDao = new EmployeeDAOHibernate();
+		this.reiDao = new ReimbursementDAOHibernate();
 	}
 	
 	public EmployeeServiceImpl(EmployeeDAO eDao, ReimbursementDAO reiDao) {
