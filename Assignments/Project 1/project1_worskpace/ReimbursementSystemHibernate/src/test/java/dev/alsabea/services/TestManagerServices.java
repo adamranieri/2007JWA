@@ -1,4 +1,4 @@
-package dev.alsabea.doas;
+package dev.alsabea.services;
 
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
@@ -12,18 +12,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
-import dev.alsabea.doas.impl.ManagerDaoImpl;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.services.impl.ManagerServicesImpl;
 
 
 @TestMethodOrder(OrderAnnotation.class)
-class TestManagerDao {
+class TestManagerServices {
 
-	private static ManagerDao mDao= ManagerDaoImpl.getInstance();
+	private static ManagerServices mServ= ManagerServicesImpl.getInstance();
 	
 	
 	@Test
-	@Order(5)
+	@Order(4)
 	final void testCreateInstance() {
 		Manager mgr = new Manager();
 		mgr.setFirstName("testFirstName");
@@ -32,33 +32,24 @@ class TestManagerDao {
 		mgr.setPassword("testPassword");
 	
 		
-		long generatedId= mDao.createInstance(mgr);
+		long generatedId= mServ.createInstance(mgr);
 		
 		Assertions.assertNotEquals(-1, generatedId);
 	}
 	
-	@ParameterizedTest
-	@CsvSource({"1, johnUser, johnPass", "3, maryUser, maryPass" })
-	@Order(1)
-	final void testRetrieveByUserAndPass(long mId, String user, String pass) {
-		Assertions.assertEquals(mId, mDao.retrieveByUsernameAndPassword(user, pass).getMgrId());
-	}
+//	@Test
+//	@Order(1)
+//	final void testRetrieveAll() {
+//		Assertions.assertEquals(3, mDao.retrieveAll().size());
+//	}
 
-	
-	@Test
-	@Order(2)
-	final void testRetrieveByUserAndPassNegative() {
-		Assertions.assertNull(mDao.retrieveByUsernameAndPassword("testtest", "noPass"));
-	}
-
-	
 	@ParameterizedTest
 	@CsvSource({"1, John, Doe, 2, 1" , 
 				"2, rick, brick, 2, 3 "})
-	@Order(3)
+	@Order(2)
 	final void testRetrieveById(long id, String firstName, String lastName,
 			int empsSize, int numOfReqs) {
-		Manager m= mDao.retrieveById(id);
+		Manager m= mServ.retrieveById(id);
 		
 		Assertions.assertEquals(firstName, m.getFirstName());
 		Assertions.assertEquals(lastName, m.getLastName());
@@ -68,9 +59,9 @@ class TestManagerDao {
 
 	@ParameterizedTest
 	@ValueSource(ints = {100, 200, 300, 400})
-	@Order(4)
+	@Order(3)
 	final void testRetrieveById(long id) {
-		Assertions.assertNull(mDao.retrieveById(id));
+		Assertions.assertNull(mServ.retrieveById(id));
 	}
 
 	
@@ -84,7 +75,7 @@ class TestManagerDao {
 		mgr.setPassword("testPasswordToBeUpdated");
 	
 		
-		long generatedId= mDao.createInstance(mgr);
+		long generatedId= mServ.createInstance(mgr);
 		
 		Manager mgr2 = new Manager();
 		mgr2.setMgrId(generatedId);
@@ -93,7 +84,7 @@ class TestManagerDao {
 		mgr2.setUsername("testUserNameUpdated");
 		mgr2.setPassword("testPasswordUpdated");
 		
-		Assertions.assertTrue(mDao.update(mgr2));
+		Assertions.assertTrue(mServ.update(mgr2));
 	}
 
 	
@@ -107,7 +98,7 @@ class TestManagerDao {
 		mgr2.setUsername("testUserNameUpdated");
 		mgr2.setPassword("testPasswordUpdated");
 		
-		Assertions.assertFalse(mDao.update(mgr2));
+		Assertions.assertFalse(mServ.update(mgr2));
 	}
 	
 	
@@ -120,16 +111,16 @@ class TestManagerDao {
 		mgr.setPassword("testPasswordToBeDeleted");
 		
 		
-		long generatedId= mDao.createInstance(mgr);
+		long generatedId= mServ.createInstance(mgr);
 		
-		Assertions.assertTrue(mDao.deleteById(generatedId));
+		Assertions.assertTrue(mServ.deleteById(generatedId));
 		
 	}
 
 	
 	@Test
 	final void testDeleteByIdNegative() {
-		Assertions.assertFalse(mDao.deleteById(78));	
+		Assertions.assertFalse(mServ.deleteById(78));	
 	}
 
 	

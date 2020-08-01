@@ -1,7 +1,5 @@
 package dev.alsabea.services.impl;
 
-import java.util.List;
-
 import dev.alsabea.doas.EmployeeDao;
 import dev.alsabea.doas.impl.EmployeeDaoImpl;
 import dev.alsabea.entities.Employee;
@@ -12,7 +10,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
 	
 	private static EmployeeServicesImpl ems;
 	
-	private static EmployeeDao emd= EmployeeDaoImpl.getInstance();
+	private static EmployeeDao eDao= EmployeeDaoImpl.getInstance();
 	
 	
 	public static EmployeeServicesImpl getInstance() {
@@ -28,29 +26,34 @@ public class EmployeeServicesImpl implements EmployeeServices {
 	@Override
 	public long createInstance(Employee t) {
 		
-		return emd.createInstance(t);
+		return eDao.createInstance(t);
 	}
 
 	@Override
 	public Employee retrieveById(long key) {
 		
-		return emd.retrieveById(key);
+		return eDao.retrieveById(key);
+	}
+	
+	@Override
+	public Employee retrieveByUsernameAndPassword(String username, String password) {
+		
+		return eDao.retrieveByUsernameAndPassword(username, password);
 	}
 
 	@Override
 	public boolean update(Employee t) {
-		return emd.update(t);
+		return eDao.update(t);
 	}
 
 	@Override
 	public boolean deleteById(long key) {
 		
-		return emd.deleteById(key);
+		return eDao.deleteById(key);
 	}
 
-	@Override
-	public List<Employee> retrieveAll() {
-		return emd.retrieveAll();
-	}
+
+
+
 
 }

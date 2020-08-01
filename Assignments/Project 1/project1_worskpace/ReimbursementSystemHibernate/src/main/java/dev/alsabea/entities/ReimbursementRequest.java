@@ -17,7 +17,7 @@ public class ReimbursementRequest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "rr_id")
-	private long 		rrId;  //reimbursement request id, this is the primary key of the table;
+	private long 	rrId;  //reimbursement request id, this is the primary key of the table;
 	
 	@ManyToOne
 	@JoinColumn(name = "emp_id", nullable = false) 
@@ -25,7 +25,7 @@ public class ReimbursementRequest {
 	
 	@ManyToOne
 	@JoinColumn(name = "mgr_id", nullable = false) 
-	private Employee mgr;
+	private Manager mgr;
 	
 	@Column(name = "reimbursement_request", nullable = false)
 	private String		reimbursementRequest;
@@ -39,6 +39,11 @@ public class ReimbursementRequest {
 	public ReimbursementRequest() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public ReimbursementRequest(long id) {
+		super();
+		this.rrId=id;
 	}
 
 	public long getRrId() {
@@ -57,11 +62,11 @@ public class ReimbursementRequest {
 		this.emp = emp;
 	}
 
-	public Employee getMgr() {
+	public Manager getMgr() {
 		return mgr;
 	}
 
-	public void setMgr(Employee mgr) {
+	public void setMgr(Manager mgr) {
 		this.mgr = mgr;
 	}
 

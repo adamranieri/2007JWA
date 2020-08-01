@@ -25,6 +25,7 @@ VALUES
 
 
 
+
 INSERT INTO reimbursement_system_db.reimbursement_request 
 (rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
 VALUES
@@ -33,5 +34,7 @@ VALUES
 (0, 3, 2, 'req 550000 to cover medical bill', 'APPROVED', "covered by insurance"),
 (0, 4, 2, 'req 550000 to cover Lamborghini', 'APPROVED', "it is an awesome car "),
 (0, 6, 3,  'req 10000 to cover student loans', 'DENIED', " no reason, I don't feel like it ");
+
+
 
 END;

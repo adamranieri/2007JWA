@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYZ Login</title>
+</head>
+<body>
+    <h1>XYZ Best Company</h1>
+
+    <div>
+        <br>
+        <input type="text" id="usernameInput" placeholder="username">
+        <input type="text" id="passwordInput" placeholder="password">
+
+        <button id="getPerson" onclick="getPerson()">get Person</button>
+    </div>
+
+
+
+    <table id="table">
+        <!-- hidden -->
+        <thead>
+            <th>role</th>
+            <th> username</th>
+            <th> Password</th>
+        </thead>
+        <tr>
+            <td id="roleField">N/A</td>
+            <td id="usernameField">N/A</td>
+            <td id="passwordField">N/A</td>
+        </tr>
+    </table>
+
+
+
+    <script>
+
+        async function getPerson() {
+
+            // getting our inputs and creating an object that has those values
+            const usernamex = document.getElementById("usernameInput").value;
+            const passwordx = document.getElementById("passwordInput").value;
+
+            let credentials = {
+                username: usernamex,
+                password: passwordx
+            }
+
+            // config object literal. An object with a bunch of configuration to be used in a function
+            const config = {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+                body: JSON.stringify(credentials)
+            };
+
+            const httpResponse = await fetch("http://localhost:7000/xyz", config);
+            person = await httpResponse.json();
+
+            document.getElementById("roleField").innerHTML=person.role;
+            document.getElementById("usernameField").innerHTML = person.username;
+            document.getElementById("passwordField").innerHTML = person.password;
+
+            //document.getElementById("customerTable").removeAttribute("hidden");    
+        }
+
+
+    </script>
+</body>
+</html>

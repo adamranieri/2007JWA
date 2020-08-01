@@ -1,15 +1,16 @@
 package dev.alsabea.doas.impl;
 
-import java.util.List;
-
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.EmployeeDao;
 import dev.alsabea.entities.Employee;
+import dev.alsabea.entities.Manager;
 import dev.alsabea.exceptions.DaoException;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -39,7 +40,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			generatedId = ((Long) s.save(t)).longValue();
 
 			s.getTransaction().commit();
-		}
+		} catch(org.hibernate.exception.ConstraintViolationException e) {
+			//e.printStackTrace();
+			return -1;
+		} 
 
 		return generatedId;
 	}
@@ -50,19 +54,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return sf.openSession().get(Employee.class, key);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> retrieveAll() {
-
+	public Employee retrieveByUsernameAndPassword(String username, String password) {
+		
 		try (Session sess = sf.openSession()) {
 
 			@SuppressWarnings("deprecation")
-			Criteria crit = sess.createCriteria(Employee.class);
-			return crit.list();
-
+			Criteria crit  = sess.createCriteria(Employee.class);
+			crit.add(Restrictions.like("username", username));
+			crit.add(Restrictions.ilike("password", password));
+			return (Employee) crit.uniqueResult();
+		} catch(HibernateException e) {
+			e.printStackTrace();
 		}
 
+		return null;
 	}
+
+	
+
 
 	/*
 	 * Query query = session.createQuery("update Stock set stockName = :stockName" +
@@ -78,29 +88,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 */
 	@Override
 	public boolean update(Employee t) {
-		int result = 0;
-		try (Session s = sf.openSession()) {
+		
+		try(Session s = sf.openSession()){
 			s.beginTransaction();
-			@SuppressWarnings("rawtypes")
-			Query q = s
-					.createQuery("UPDATE Employee " + "SET firstName = :fn, lastName = :ln, password= :p "
-							+ " , mgr= :m WHERE empId= :eid")
-					.setParameter("fn", t.getFirstName()).setParameter("ln", t.getLastName())
-					.setParameter("p", t.getPassword()).setParameter("m", t.getMgr()).setParameter("eid", t.getEmpId());
-
-			result = q.executeUpdate();
-			if (result > 1)
-				throw new DaoException("more than one record got updated");
+			s.update(t);
 			s.getTransaction().commit();
-		} catch (DaoException | javax.persistence.PersistenceException e) {
-			e.printStackTrace();
-		}
-
-		if (result == 1)
 			return true;
-		else
+		} catch (javax.persistence.OptimisticLockException e) {
 			return false;
-
+		}
+		
 	}
 
 	@Override
@@ -125,6 +122,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			return false;
 
 	}
+
 
 
 }

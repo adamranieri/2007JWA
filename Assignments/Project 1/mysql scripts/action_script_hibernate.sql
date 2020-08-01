@@ -17,6 +17,7 @@ DELETE FROM reimbursement_system_db.emp_mgr where emp_id > 3; -- to delete the e
 DELETE FROM reimbursement_system_db.emp_mgr;
 
 
+
 -- UPDATE emp_mgr SET mgr_id = NULL WHERE firstName LIKE 'test%';
 
 DELETE FROM reimbursement_system_db.employee  WHERE first_name LIKE 'test%';

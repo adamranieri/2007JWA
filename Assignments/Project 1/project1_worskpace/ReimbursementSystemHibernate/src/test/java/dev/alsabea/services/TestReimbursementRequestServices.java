@@ -1,194 +1,160 @@
-//package dev.alsabea.services;
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//import java.util.List;
-//
-//import org.junit.jupiter.api.AfterAll;
-//import org.junit.jupiter.api.Assertions;
-//import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-//import org.junit.jupiter.api.Order;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.TestMethodOrder;
-//import org.junit.jupiter.params.ParameterizedTest;
-//import org.junit.jupiter.params.provider.CsvSource;
-//import org.junit.jupiter.params.provider.ValueSource;
-//
-//import dev.alsabea.connection.ConnectionEstablisher;
-//import dev.alsabea.doas.ReimbursementRequestDao;
-//import dev.alsabea.doas.impl.ReimbursementRequestDaoImpl;
-//import dev.alsabea.entities.ReimbursementRequest;
-//
-//@TestMethodOrder(OrderAnnotation.class)
-//class TestReimbursementRequestServices {
-//
-//	private static ReimbursementRequestDao  rrDao = ReimbursementRequestDaoImpl.getInstance();
-//	
-//	
-//	@Test
-//	final void testCreateInstance() {
-//		ReimbursementRequest rr = new ReimbursementRequest();
-//		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-//		
-//		rr.setEmpId(5);
-//		rr.setMgrId(1);
-//		rr.setReimbursementRequest("testReimbursementRequest 5000");
-//		rr.setReimbursementStatus("testStatus");
-//		rr.setReason("testReason");
-//		
-//		
-//		long generatedId= rrDao.createInstance(rr);
-//		
-//		Assertions.assertNotEquals(-1, generatedId);
-//	}
-//	
-//	
-//	/*
-//	 * to use @ParameterizedTest, you must remove the @Test annotation, you cannot use both
-//	 * @ParameterizedTest and @Test on one function there must be only one of them.
-//	 */
-//	//@Test 
+package dev.alsabea.services;
+
+import org.hibernate.Session;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import dev.alsabea.connection.HibernateConnectionEstablisher;
+import dev.alsabea.entities.Employee;
+import dev.alsabea.entities.Manager;
+import dev.alsabea.entities.ReimbursementRequest;
+import dev.alsabea.services.impl.ReimbursementRequestServicesImpl;
+
+@TestMethodOrder(OrderAnnotation.class)
+class TestReimbursementRequestServices {
+
+	private static ReimbursementRequestServices  rrServ = ReimbursementRequestServicesImpl.getInstance();
+	
+	
+	@Test
+	final void testCreateInstance() {
+		ReimbursementRequest rr = new ReimbursementRequest();
+		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
+		
+		
+		rr.setMgr(new Manager(2));
+		rr.setEmp(new Employee(4));
+		rr.setReimbursementRequest("testReimbursementRequest 5000");
+		rr.setReimbursementStatus("testStatus");
+		rr.setReason("testReason");
+		
+		
+		long generatedId= rrServ.createInstance(rr);
+		
+		Assertions.assertNotEquals(-1, generatedId);
+	}
+	
+	
+	/*
+	 * we will not do createNegativeTest, because in the services we check if the 
+	 * employee actually belongs to the manager or not.
+	 * or if the manager or the employee actually exist
+	 */
+	
 //	@ParameterizedTest
-//	@CsvSource({"6,2", "9,1"})
-//	@Order (1)
-//	final void testRetrieveAllByEmpId(int id, int expected) {
-//		List<ReimbursementRequest> rrs = rrDao.retrieveAllRequestsByEmpId(id);
-//		Assertions.assertEquals(expected, rrs.size());
-//
+//	@CsvSource({"1,4" ,	//employee's manager id is not 1
+//				"2, 10", //non existent employee
+//				"60, 3", //non existent manager
+//				"50,40" // both are not existent
+//				})
+//	final void testCreateInstanceNegative(int mgrId, int empId) {
 //	}
-//	
-//	
-//	@Test 
-//	@Order (2)
-//	final void testRetrieveAllByEmpIdNegative() {
-//		List<ReimbursementRequest> rrs = rrDao.retrieveAllRequestsByEmpId(99);
-//		Assertions.assertNull(rrs);
-//		
-//	}
-//
-//
-//
-//	@ParameterizedTest
-//	@CsvSource({"2 , 2","1 , 1"})
-//	@Order (3)
-//	final void testRetrieveAllByMgrId(int id, int expected) {
-//		
-//		List<ReimbursementRequest> rrs = rrDao.retrieveAllRequestsByMgrId(id);
-//		Assertions.assertEquals(expected, rrs.size());
-//	}
-//	
-//	
-//	@Test 
-//	@Order (4)
-//	final void testRetrieveAllByMgrIdNegative() {
-//		List<ReimbursementRequest> rrs = rrDao.retrieveAllRequestsByMgrId(99);
-//		Assertions.assertNull(rrs);
-//	}
-//	
-//	
-//	@Test
-//	final void testRetrieveById() {
-//		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-//		//1	5	1	req 5000$ to buy awesome car	DENIED	you should save to buy it, no free money for you
-//		ReimbursementRequest rr = rrDao.retrieveById(1);
-//		Assertions.assertEquals(5, rr.getEmpId());
-//		Assertions.assertEquals(1, rr.getMgrId());
-//		Assertions.assertEquals("DENIED", rr.getReimbursementStatus());
-//		
-//	}
-//	
-//	
-//	@Test
-//	final void testRetrieveByIdNegative() {
-//		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-//		//1	5	1	req 5000$ to buy awesome car	DENIED	you should save to buy it, no free money for you
-//		ReimbursementRequest rr = rrDao.retrieveById(999);
-//		Assertions.assertNull(rr);
-//		
-//	}
-//	
-//
-//	
-//
-//	@Test
-//	final void testUpdate() {
-//		ReimbursementRequest rr = new ReimbursementRequest();
-//		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-//		
-//		rr.setEmpId(7);
-//		rr.setMgrId(2);
-//		rr.setReimbursementRequest("testReimbursementRequestToBeUpdated");
-//		rr.setReimbursementStatus("testStatusToBeUpdated");
-//		rr.setReason("testReasonToBeUpdated");
-//		
-//		long generatedId= rrDao.createInstance(rr);
-//		
-//		ReimbursementRequest rr2 = new ReimbursementRequest();
-//		rr2.setRrId(generatedId);
-//		rr2.setReimbursementRequest("testReimbursementRequestUpdated");
-//		rr2.setReimbursementStatus("testStatusUpdated");
-//		rr2.setReason("testReasonUpdated");
-//		
-//		Assertions.assertTrue(rrDao.update(rr2));
-//		
-//		
-//	}
-//	
-//	
-//	@Test
-//	final void testUpdateNegative() {
-//		
-//		ReimbursementRequest rr = new ReimbursementRequest();
-//		rr.setRrId(60000);
-//		rr.setReimbursementRequest("testReimbursementRequestToBe");
-//		rr.setReimbursementStatus("testStatusToBeUpdated");
-//		rr.setReason("testReasonToBeUpdated");
-//		
-//		Assertions.assertFalse(rrDao.update(rr));
-//		
-//	}
-//
-//	@Test
-//	final void testDeleteById() {
-//		ReimbursementRequest rr = new ReimbursementRequest();
-//		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-//		
-//		rr.setEmpId(5);
-//		rr.setMgrId(1);
-//		rr.setReimbursementRequest("testReimbursementRequestToBeDeleted");
-//		rr.setReimbursementStatus("testStatusToBeDeleted");
-//		rr.setReason("testReasonToBeDeleted");
-//		
-//		
-//		long generatedId= rrDao.createInstance(rr);
-//		
-//		Assertions.assertTrue(rrDao.deleteById(generatedId));
-//	}
-//	
-//	
-//	@ParameterizedTest
-//	@ValueSource(ints = {100,200, -300,  50000, Integer.MAX_VALUE})
-//	final void testDeleteByIdNegative(int id) {
-//
-//		Assertions.assertFalse(rrDao.deleteById(id));
-//	}
-//	
-//	
-//	@AfterAll
-//	final static void cleanUp() {
-//		String sql = "DELETE FROM reimbursement_system_db.reimbursement_request  WHERE "
-//				+ " reimbursement_request LIKE 'test%';";
-//		Connection con = ConnectionEstablisher.getConnection();
-//		try {
-//
-//			PreparedStatement ps = con.prepareStatement(sql);
-//			ps.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//
-//}
+
+
+	
+	@ParameterizedTest
+	@CsvSource({"1, 1, 1, DENIED", "4,4,2, APPROVED"})
+	final void testRetrieveById(int rrId, int empId, int mgrId, String status) {
+		ReimbursementRequest rr = rrServ.retrieveById(rrId);
+		Assertions.assertEquals(empId, rr.getEmp().getEmpId());
+		Assertions.assertEquals(mgrId, rr.getMgr().getMgrId());
+		Assertions.assertEquals(status, rr.getReimbursementStatus());
+		
+	}
+	
+	
+	@Test
+	final void testRetrieveByIdNegative() {
+		ReimbursementRequest rr = rrServ.retrieveById(999);
+		Assertions.assertNull(rr);
+		
+	}
+
+	@Test
+	final void testUpdate() {
+		ReimbursementRequest rr = new ReimbursementRequest();
+		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
+		
+		rr.setEmp(new Employee(3));
+		rr.setMgr(new Manager (2));
+		rr.setReimbursementRequest("testReimbursementRequestToBeUpdated");
+		rr.setReimbursementStatus("testStatusToBeUpdated");
+		rr.setReason("testReasonToBeUpdated");
+		
+		long generatedId= rrServ.createInstance(rr);
+		
+		ReimbursementRequest rr2 = new ReimbursementRequest();
+		rr2.setRrId(generatedId);
+		rr2.setEmp(new Employee(3));
+		rr2.setMgr(new Manager (2));
+		rr2.setReimbursementRequest("testReimbursementRequestUpdated");
+		rr2.setReimbursementStatus("testStatusUpdated");
+		rr2.setReason("testReasonUpdated");
+		
+		Assertions.assertTrue(rrServ.update(rr2));
+		
+		
+	}
+	
+	
+	@ParameterizedTest
+	@CsvSource({"6000,1,1", "1,3,3", "2, 1, 2" , "1, 400, 2", "1, 1, 300"})
+	final void testUpdateNegative(int rrId, int empId, int mgrId) {
+		
+		ReimbursementRequest rr = new ReimbursementRequest();
+		rr.setRrId(60000);
+		rr.setReimbursementRequest("testReimbursementRequestToBe");
+		rr.setReimbursementStatus("testStatusToBeUpdated");
+		rr.setReason("testReasonToBeUpdated");
+		
+		Assertions.assertFalse(rrServ.update(rr));
+		
+	}
+
+	@Test
+	final void testDeleteById() {
+		ReimbursementRequest rr = new ReimbursementRequest();
+		
+		rr.setEmp(new Employee(2));
+		rr.setMgr(new Manager(1));
+		rr.setReimbursementRequest("testReimbursementRequestToBeDeleted");
+		rr.setReimbursementStatus("testStatusToBeDeleted");
+		rr.setReason("testReasonToBeDeleted");
+		
+		
+		long generatedId= rrServ.createInstance(rr);
+		
+		Assertions.assertTrue(rrServ.deleteById(generatedId));
+	}
+	
+	
+	@ParameterizedTest
+	@ValueSource(ints = {100,200, -300,  50000, Integer.MAX_VALUE})
+	final void testDeleteByIdNegative(int id) {
+
+		Assertions.assertFalse(rrServ.deleteById(id));
+	}
+	
+	
+	@AfterAll
+	final static void cleanUp() {
+		String sql = "DELETE FROM ReimbursementRequest  WHERE "
+				+ " reimbursementRequest LIKE 'test%'";
+		try (Session s = HibernateConnectionEstablisher.getSessionFactory().openSession()){
+
+			s.beginTransaction();
+			s.createQuery(sql).executeUpdate();
+			s.getTransaction().commit();
+
+		} catch (javax.persistence.PersistenceException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

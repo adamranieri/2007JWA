@@ -50,3 +50,13 @@ I need the negative tests for both daos, before transitioning to the services.
 
 I need to decide where to put the negative number for id test, is it in the services, or the controller?
 
+
+
+Add criteria to the insert and update functions, if the employee or manager exist, and submit a request only for an existing employee.
+
+or do that in the front end.
+
+
+the web page will hold the information of whether the instance is an employee or a manager, so nothing you do for the javalin, javalin does not need to check for anything.
+
+

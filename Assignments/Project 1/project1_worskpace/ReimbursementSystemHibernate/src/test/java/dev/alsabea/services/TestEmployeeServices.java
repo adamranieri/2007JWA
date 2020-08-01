@@ -1,8 +1,5 @@
-package dev.alsabea.doas;
 
-import java.util.List;
-
-import javax.validation.ConstraintViolationException;
+package dev.alsabea.services;
 
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
@@ -16,16 +13,17 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
-import dev.alsabea.doas.impl.EmployeeDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.services.impl.EmployeeServicesImpl;
 
 @TestMethodOrder(OrderAnnotation.class)
-class TestEmployeeDao {
+class TestEmployeeServices {
 
-	private static EmployeeDaoImpl  empDao = EmployeeDaoImpl.getInstance();
-	
-	@Test @Order(5)
+	private static EmployeeServices empServ = EmployeeServicesImpl.getInstance();
+
+	@Test
+	@Order(5)
 	final void testCreateInstance() {
 		/*
 		 * (firstName , lastName , username , password , emp_role, mgr_id)
@@ -35,23 +33,23 @@ class TestEmployeeDao {
 		emp.setLastName("testLastName");
 		emp.setUsername("testUserName");
 		emp.setPassword("testPassword");
-		Manager mgr= new Manager();
+		Manager mgr = new Manager();
 		mgr.setMgrId(1);
 		emp.setMgr(mgr);
-		
-		long generatedId= empDao.createInstance(emp);
-		
+
+		long generatedId = empServ.createInstance(emp);
+
 		Assertions.assertNotEquals(0, generatedId);
-		
+
 	}
-	
+
 	/**
-	 * reason behind the test below, is because we cannot create an employee 
-	 * and assign it to a non-existent manager.
+	 * reason behind the test below, is because we cannot create an employee and
+	 * assign it to a non-existent manager.
 	 */
-	
-	@ParameterizedTest 
-	@ValueSource(ints = {90, 80})
+
+	@ParameterizedTest
+	@ValueSource(ints = { 90, 80 })
 	@Order(6)
 	final void testCreateInstanceNegative(int mgrId) {
 		/*
@@ -62,56 +60,48 @@ class TestEmployeeDao {
 		emp.setLastName("testLastName");
 		emp.setUsername("testUserName");
 		emp.setPassword("testPassword");
-		emp.setMgr(new Manager (mgrId));
+		emp.setMgr(new Manager(mgrId));
 
-		
-			 
-		Assertions.assertEquals(-1, empDao.createInstance(emp));
-		
-		
+		Assertions.assertEquals(-1, empServ.createInstance(emp));
+
 	}
-	
-	
-	
+
 	@ParameterizedTest
-	@CsvSource({"1, gregUser, gregPass", "3, jaxUser, jaxPass", 
-				"6, robUser, robPass"})
+	@CsvSource({ "1, gregUser, gregPass", "3, jaxUser, jaxPass", "6, robUser, robPass" })
 	@Order(1)
 	final void testRetrieveByUserAndPass(long eId, String user, String pass) {
-		Assertions.assertEquals(eId, empDao.retrieveByUsernameAndPassword(user, pass).getEmpId());
+		Assertions.assertEquals(eId, empServ.retrieveByUsernameAndPassword(user, pass).getEmpId());
 	}
 
-	
 	@Test
-	@Order (2)
+	@Order(2)
 	final void testRetrieveByUserAndPassNegative() {
-		Assertions.assertNull(empDao.retrieveByUsernameAndPassword("testtest", "noPass"));
+		Assertions.assertNull(empServ.retrieveByUsernameAndPassword("testtest", "noPass"));
 	}
-	
-	
-	 @Test
-	 @Order(3)
+
+	@Test
+	@Order(3)
 	final void testRetrieveById() {
-		 Employee emp = empDao.retrieveById(1);
-		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
+		Employee emp = empServ.retrieveById(1);
+		// ( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 		Assertions.assertNotNull(emp);
 		Assertions.assertEquals("greg", emp.getFirstName());
 		Assertions.assertEquals("dreg", emp.getLastName());
-		
+
 		Assertions.assertEquals("gregUser", emp.getUsername());
 		Assertions.assertEquals("gregPass", emp.getPassword());
-		Assertions.assertEquals("John",emp.getMgr().getFirstName()); 
+		Assertions.assertEquals("John", emp.getMgr().getFirstName());
 		Assertions.assertEquals(1, emp.getReqs().size());
-		
+
 	}
-	
-	@Test @Order(4)
+
+	@Test
+	@Order(4)
 	final void testRetrieveByIdNegative() {
-		Employee emp = empDao.retrieveById(700);
-		//( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
+		Employee emp = empServ.retrieveById(700);
+		// ( emp_id, first_name , last_name , username , password , emp_role, mgr_id)
 		Assertions.assertNull(emp);
 	}
-	
 
 	@Test
 	final void testUpdate() {
@@ -120,28 +110,28 @@ class TestEmployeeDao {
 		emp.setLastName("testLastNameToBeUpdated");
 		emp.setUsername("testUserNameToBeUpdated");
 		emp.setPassword("testPasswordToBeUpdated");
-		
+
 		Manager m = new Manager();
 		m.setMgrId(3);
-		
+
 		emp.setMgr(m);
-		
-		long generatedId= empDao.createInstance(emp);
-		
+
+		long generatedId = empServ.createInstance(emp);
+
 		Employee emp_updated = new Employee();
 		emp_updated.setEmpId(generatedId);
 		emp_updated.setFirstName("testFirstNameUpdated___");
 		emp_updated.setLastName("testLastNameUpdated___");
 		emp_updated.setUsername("testUserNameUpdated___");
 		emp_updated.setPassword("testPasswordUpdated___");
-	
+
 		Manager mUpdated = new Manager();
 		mUpdated.setMgrId(3);
-		
+
 		emp_updated.setMgr(mUpdated);
-		
-		Assertions.assertTrue(empDao.update(emp_updated));
-		
+
+		Assertions.assertTrue(empServ.update(emp_updated));
+
 	}
 
 	@Test
@@ -152,45 +142,42 @@ class TestEmployeeDao {
 		emp.setLastName("testLastNameUpdateNoneExistent");
 		emp.setUsername("testUserNameUpdateNoneExistent");
 		emp.setPassword("testPasswordUpdateNoneExistent");
-		
-		Manager m= new Manager();
+
+		Manager m = new Manager();
 		m.setMgrId(3);
 		emp.setMgr(m);
-		
-		Assertions.assertFalse(empDao.update(emp));
-		
+
+		Assertions.assertFalse(empServ.update(emp));
+
 	}
 
-	@Test  
+	@Test
 	final void testDeleteById() {
 		Employee emp = new Employee();
 		emp.setFirstName("testFirstNameToBeDeleted");
 		emp.setLastName("testLastNameToBeDeleted");
 		emp.setUsername("testUserNameToBeDeleted");
 		emp.setPassword("testPasswordToBeDeleted");
-		
-		Manager m= new Manager();
+
+		Manager m = new Manager();
 		m.setMgrId(2);
 		emp.setMgr(m);
-		
-		long generatedId= empDao.createInstance(emp);
-		
-		Assertions.assertTrue(empDao.deleteById(generatedId));
-		
+
+		long generatedId = empServ.createInstance(emp);
+
+		Assertions.assertTrue(empServ.deleteById(generatedId));
+
 	}
 
-	@Test  
+	@Test
 	final void testDeleteByIdNegative() {
-		Assertions.assertFalse(empDao.deleteById(9999));
+		Assertions.assertFalse(empServ.deleteById(9999));
 	}
-	
 
-	
-	
 	@AfterAll
 	final static void cleanUp() {
 		String sql = "DELETE FROM Employee  WHERE firstName LIKE 'test%'";
-		try (Session s= HibernateConnectionEstablisher.getSessionFactory().openSession()){
+		try (Session s = HibernateConnectionEstablisher.getSessionFactory().openSession()) {
 
 			s.beginTransaction();
 			s.createQuery(sql).executeUpdate();
@@ -200,5 +187,5 @@ class TestEmployeeDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

@@ -9,7 +9,7 @@ BEGIN
 	
 	first_name		varchar(55)			not null,
 	last_name		varchar(55)			not null,
-	username  		varchar(55)			not null,
+	username  		varchar(55)			not null	unique,
 	password		varchar(55)			not null
 	
 	);
@@ -19,7 +19,7 @@ BEGIN
 	
 	first_name		varchar(55)			not null,
 	last_name		varchar(55)			not null,
-	username  		varchar(55)			not null,
+	username  		varchar(55)			not null 	unique,
 	password		varchar(55)			not null,
 	mgr_id			int			unsigned		not null,
 	
