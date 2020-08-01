@@ -50,53 +50,33 @@ private static ManagerService mserv = new ManagerServiceImpl();
 	
 	@Test
 	@Order(5)
-	void updateUsername() {
+	void updatePassword() {
 		Manager manager = mserv.getManagerById(1);
-		manager.setUsername("WaterDoose");
-		mserv.updateUsername(manager, "Waternoose");
-		Assertions.assertEquals("WaterDoose", mserv.getManagerById(1).getUsername());
+		manager.setPassword("NewPass");
+		manager = mserv.updateManager(manager);
+		Assertions.assertEquals("NewPass", mserv.getManagerById(1).getPassword());
 		
-		manager.setUsername("Waternoose");
-		mserv.updateUsername(manager, "WaterDoose");
+		manager.setPassword("TotallyNotEvilAtAll");
+		manager = mserv.updateManager(manager);
 	}
 	
 	@Test
 	@Order(6)
-	void updateBadUsername() {
+	void updateBadPassword() {
 		Manager manager = new Manager(10, "Boo", "hugs", "Boo", "Boo");
-		Manager man = mserv.updateUsername(manager, "Boo");
+		Manager man = mserv.updateManager(manager);
 		Assertions.assertNull(man);
 	}
 	
 	@Test
 	@Order(7)
-	void updatePassword() {
-		Manager manager = mserv.getManagerById(1);
-		manager.setPassword("NewPass");
-		manager = mserv.updatePassword(manager);
-		Assertions.assertEquals("NewPass", mserv.getManagerById(1).getPassword());
-		
-		manager.setPassword("TotallyNotEvilAtAll");
-		manager = mserv.updatePassword(manager);
-	}
-	
-	@Test
-	@Order(8)
-	void updateBadPassword() {
-		Manager manager = new Manager(10, "Boo", "hugs", "Boo", "Boo");
-		Manager man = mserv.updatePassword(manager);
-		Assertions.assertNull(man);
-	}
-	
-	@Test
-	@Order(9)
 	void testLoginSuccess() {
 		boolean result = mserv.loginManager("Waternoose", "TotallyNotEvilAtAll");
 		Assertions.assertTrue(result);
 	}
 	
 	@Test
-	@Order(10)
+	@Order(8)
 	void testLoginBadPass() {
 		boolean result = mserv.loginManager("Waternoose", "FakePassword");
 		Assertions.assertFalse(result);

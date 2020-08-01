@@ -22,12 +22,7 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public Manager updateUsername(Manager manager, String oldUser) {
-		return mdao.updateManager(manager);
-	}
-
-	@Override
-	public Manager updatePassword(Manager manager) {
+	public Manager updateManager(Manager manager) {
 		return mdao.updateManager(manager);
 	}
 

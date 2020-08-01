@@ -21,12 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateUsername(Employee employee, String oldUser) {
-		return edao.updateEmployee(employee);
-	}
-
-	@Override
-	public Employee updatePassword(Employee employee) {
+	public Employee updateEmployee(Employee employee) {
 		return edao.updateEmployee(employee);
 	}
 

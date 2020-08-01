@@ -8,9 +8,8 @@ public interface EmployeeService {
 	
 	Employee getEmployeeById(int id);
 	List<Employee> getEmployeeByUser(String user);
-	
-	Employee updateUsername(Employee employee, String oldUser);
-	Employee updatePassword(Employee employee);
+
+	Employee updateEmployee(Employee employee);
 
 	boolean loginEmployee(String username, String password);
 }

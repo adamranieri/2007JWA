@@ -53,67 +53,47 @@ class EmployeeServiceTests {
 	
 	@Test
 	@Order(5)
-	void updateUsername() {
+	void updateEmployee() {
 		Employee employee = eserv.getEmployeeById(1);
-		employee.setUsername("Sully");
-		eserv.updateUsername(employee, "Sullivan");
-		Assertions.assertEquals("Sully", eserv.getEmployeeById(1).getUsername());
+		employee.setPassword("NewPass");
+		eserv.updateEmployee(employee);
+		Assertions.assertEquals("NewPass", eserv.getEmployeeById(1).getPassword());
 		
-		employee.setUsername("Sullivan");
-		eserv.updateUsername(employee, "Sully");
+		employee.setPassword("B3stSc4r3r");
+		eserv.updateEmployee(employee);
 	}
 	
 	@Test
 	@Order(6)
-	void updateBadUsername() {
+	void updateBadEmployee() {
 		Employee employee = new Employee(10, "Boo", "hugs", "Boo", "Boo", new ArrayList<Reimbursement>());
-		Employee emp = eserv.updateUsername(employee, "Boo");
+		Employee emp = eserv.updateEmployee(employee);
 		Assertions.assertNull(emp);
 	}
 	
 	@Test
 	@Order(7)
-	void updatePassword() {
-		Employee employee = eserv.getEmployeeById(1);
-		employee.setPassword("NewPass");
-		eserv.updatePassword(employee);
-		Assertions.assertEquals("NewPass", eserv.getEmployeeById(1).getPassword());
-		
-		employee.setPassword("B3stSc4r3r");
-		eserv.updatePassword(employee);
-	}
-	
-	@Test
-	@Order(8)
-	void updateBadPassword() {
-		Employee employee = new Employee(10, "Boo", "hugs", "Boo", "Boo", new ArrayList<Reimbursement>());
-		Employee emp = eserv.updatePassword(employee);
-		Assertions.assertNull(emp);
-	}
-	
-	@Test
-	@Order(9)
 	void testLoginSuccess() {
 		boolean result = eserv.loginEmployee("Sullivan", "B3stSc4r3r");
 		Assertions.assertTrue(result);
 	}
 	
 	@Test
-	@Order(10)
+	@Order(8)
 	void testLoginBadPass() {
 		boolean result = eserv.loginEmployee("Sullivan", "FakePassword");
 		Assertions.assertFalse(result);
 	}
 
 	@Test
-	@Order(11)
+	@Order(9)
 	void testLoginBadUser() {
 		boolean result = eserv.loginEmployee("FakeEmployee", "B3stSc4r3r");
 		Assertions.assertFalse(result);
 	}
 
 	@Test
-	@Order(12)
+	@Order(10)
 	void testLoginWrongUserPass() {
 		boolean result = eserv.loginEmployee("Wazowski", "B3stSc4r3r");
 		Assertions.assertFalse(result);

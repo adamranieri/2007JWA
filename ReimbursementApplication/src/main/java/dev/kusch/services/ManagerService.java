@@ -8,9 +8,8 @@ public interface ManagerService {
 	
 	Manager getManagerById(int id);
 	List<Manager> getManagerByUser(String user);
-	
-	Manager updateUsername(Manager manager, String oldUser);
-	Manager updatePassword(Manager manager);
+
+	Manager updateManager(Manager manager);
 	
 	boolean loginManager(String username, String password);
 

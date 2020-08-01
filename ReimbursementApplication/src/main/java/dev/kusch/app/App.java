@@ -7,8 +7,13 @@ import io.javalin.Javalin;
 
 public class App {
 	
-	public static void main(String[] args) {
-		Javalin app = Javalin.create().start(7000);
+	public static void main(String[] args) {		
+		Javalin app = Javalin.create(config -> {
+			
+			//config.enableCorsForAllOrigins();
+			config.addStaticFiles("/frontend");
+			
+		}).start(7000);
 		
 		// GET
 		app.get("/employees/:eid", EmployeeController.getEmployee);
