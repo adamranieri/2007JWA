@@ -66,7 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         String strDate = dateFormat.format(date);  
         reimbursement.setSubmitDate(strDate);
 		employee.getReimbursements().add(this.reiDao.createReimbursement(reimbursement));
-		return employee;
+		return this.eDao.updateEmployee(employee);
 	}
 
 	@Override

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -29,9 +31,13 @@ public class Manager {
 	@Column(name = "man_last_name")
 	private String manlName;
 	
-	@OneToMany(mappedBy = "manager")
+//	@OneToMany(mappedBy = "manager")
+//	@LazyCollection(LazyCollectionOption.FALSE)
+	
+	@OneToMany (mappedBy= "manager", fetch= FetchType.EAGER) 
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Employee> employees = new ArrayList();
+	transient List<Employee> employees = new ArrayList<Employee>();
 
 	public Manager() {
 		super();

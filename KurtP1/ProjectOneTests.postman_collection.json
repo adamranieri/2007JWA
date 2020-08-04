@@ -1,0 +1,1049 @@
+{
+	"info": {
+		"_postman_id": "d8621498-ac47-4660-a336-3022d885154c",
+		"name": "ProjectOneTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create man michael",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "121e4cd0-2e71-4b21-aa68-faa2c67072d1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"managerId\": 0, \"manUsername\": \"number0neboss\", \"manPassword\": \"gretzky23\", \"manfName\": \"Michael\", \"manlName\": \"Scott\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create man Frodo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51713008-efd5-4bed-abe4-10fb6a693248",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"managerId\": 0, \"manUsername\": \"ringholder\", \"manPassword\": \"shire123\", \"manfName\": \"Frodo\", \"manlName\": \"Baggins\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create man Gandalf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bce25aaf-8152-40f5-b1e9-a63ba19fe707",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"managerId\": 0, \"manUsername\": \"wizard45\", \"manPassword\": \"fgfgfg\", \"manfName\": \"Gandalf\", \"manlName\": \"TheGrey\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create emp kurt no manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dac18968-f79d-40c4-b887-03be0addc6af",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"kurt1997\", \"empPassword\": \"97yuhbirw\", \"empfName\": \"Kurt\", \"emplName\": \"Dawiec\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create rei uber",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbfa6c2b-716d-4527-bfb6-95bf95b59c3d",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reimbursementId\": 0, \"reimbursementName\": \"Uber rides\", \"amount\": 200}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees/1/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1",
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create emp bobby",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46ea7612-6b7a-4655-9204-c4c076c61d72",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"xX_Bobby_Boi_QuiCkScoP3z_Xx\", \"empPassword\": \"1v1meRust\", \"empfName\": \"Bobby\", \"emplName\": \"Rodriguez\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers/1/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create emp john",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb6101af-9ef6-49ed-b864-7f5846e0cf31",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"JohnnyBro\", \"empPassword\": \"johnjohn\", \"empfName\": \"John\", \"emplName\": \"Smith\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers/1/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create emp jack",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2460688-5c16-4a94-a81f-17f98491534a",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"Jackkkkk\", \"empPassword\": \"111\", \"empfName\": \"Jack\", \"emplName\": \"Jackinson\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers/2/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"2",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create emp chris",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5debaefd-aae7-4846-83dc-495941478cc5",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"cpdvo\", \"empPassword\": \"password123\", \"empfName\": \"Christopher\", \"emplName\": \"Poveda\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers/2/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"2",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create rei steak",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d403faf-4edb-49d1-8e2f-14a91c143b2c",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reimbursementId\": 0, \"reimbursementName\": \"Filet Mignon\", \"amount\": 50}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees/1/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1",
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create rei flight",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3639cd9-f533-485b-beec-ecb7bb44285c",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reimbursementId\": 0, \"reimbursementName\": \"Delta flight 1234 1st class\", \"amount\": 12000}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees/2/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"2",
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all emp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5f8aac3-5e4d-43d7-be54-b97a706c2374",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Kurt\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Bobby\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"John\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Jack\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Christopher\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get kurt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8a93c54-0920-4656-ac24-5aeb35026180",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Kurt\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get kurt all rei",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e81fbf96-e633-40ed-8ee7-181049f272ba",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Uber rides\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Filet Mignon\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees/1/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1",
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get kurt uber",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "853e73aa-721f-49f7-bb55-87d9ce196c98",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Uber rides\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"Filet Mignon\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees/1/reimbursements/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1",
+						"reimbursements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all rei",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3a1d1d9-7a97-4cde-b9bd-2720bee9e335",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Uber rides\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Filet Mignon\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Delta flight 1234 1st class\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get uber rei",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14478779-d80a-4770-9d5e-99c50546c466",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"Delta flight 1234 1st class\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/reimbursements/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"reimbursements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all man",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "411db5a5-9343-4891-9cdd-ab3729c75c65",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Gandalf\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Michael\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Frodo\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get gandalf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ed243ff-def7-4d2b-abf3-c3b40642f49f",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Gandalf\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Michael\");\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Frodo\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get frodo emps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34e42d40-4b98-4888-86a2-be2ef0853b91",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"Bobby\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/managers/2/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"2",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bobby married",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "afee8884-bbeb-4f78-8275-69aec89422a6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"employeeId\": 0, \"empUsername\": \"xX_Bobby_Boi_QuiCkScoP3z_Xx\", \"empPassword\": \"1v1meRust\", \"empfName\": \"Bobby\", \"emplName\": \"Johnson\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bobby flight rei approved",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9edb78a2-14e3-433f-8da9-7866b21001fb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reimbursementId\": 3, \"reimbursementName\": \"Delta flight 1234 1st class\", \"amount\": 12000, \"status\":\"Approved\", \"notes\":\"Thank u for your hard work bobby! <3\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employees/2/reimbursements",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"2",
+						"reimbursements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "michael change pword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5433e6e-f70d-48b4-8608-9b4afef5a92d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"managerId\": 1, \"manUsername\": \"number0neboss\", \"manPassword\": \"moresecure\", \"manfName\": \"Michael\", \"manlName\": \"Scott\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/managers",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kurt fired rei delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a77d30ee-337b-4fa4-ac2b-34d5bbdb1faa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees/1/reimbursements/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1",
+						"reimbursements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kurt fired",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de84b561-71fc-44aa-bf7d-e92a60e985e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/employees/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "michael fired",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55a359c9-5c8a-4cc5-b2d3-b37f1f02aa9d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/managers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"managers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -29,9 +29,10 @@ public class ReimbursementController {
 		int employeeId = Integer.parseInt(ctx.pathParam("eid"));
 		Reimbursement reimbursement = gson.fromJson(ctx.body(), Reimbursement.class);  
 		Employee employee = eServ.getEmployeeById(employeeId);
-		eServ.addReimbursementToEmployee(employee, reimbursement);
-		ctx.status(201); 
+		reimbursement.setEmployee(employee);
+		reiServ.createReimbursement(reimbursement);
 		ctx.result(gson.toJson(reimbursement));
+		ctx.status(201); 
 	};
 	
 	

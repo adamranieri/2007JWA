@@ -72,6 +72,8 @@ public class EmployeeDAOHibernate implements EmployeeDAO {
 		Criteria crit = sess.createCriteria(Employee.class);
 		List<Employee> employees = crit.list();
 		
+		sess.close();
+		
 		return employees;
 	}
 
@@ -83,6 +85,8 @@ public class EmployeeDAOHibernate implements EmployeeDAO {
 				.add(Restrictions.eq("empPassword",pass));
 		List<Employee> employees = crit.list();
 		
+		sess.close();
+		
 		return employees.get(0);
 	}
 
@@ -92,6 +96,8 @@ public class EmployeeDAOHibernate implements EmployeeDAO {
 		Criteria crit = sess.createCriteria(Employee.class);
 		crit.add(Restrictions.like("manager",manager));
 		List<Employee> employees = crit.list();
+		
+		sess.close();
 		
 		return employees;
 	}

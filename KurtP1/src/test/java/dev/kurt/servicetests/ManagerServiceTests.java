@@ -2,24 +2,43 @@ package dev.kurt.servicetests;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+import dev.kurt.daos.EmployeeDAOHibernate;
 import dev.kurt.daos.ManagerDAO;
 import dev.kurt.daos.ManagerDAOHibernate;
+import dev.kurt.daos.ReimbursementDAOHibernate;
+import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
+import dev.kurt.services.EmployeeService;
+import dev.kurt.services.EmployeeServiceImpl;
 import dev.kurt.services.ManagerService;
 import dev.kurt.services.ManagerServiceImpl;
+import dev.kurt.utils.HibernateUtil;
 
 
 @TestMethodOrder(OrderAnnotation.class)
 public class ManagerServiceTests {
 
-private static ManagerService manServ = new ManagerServiceImpl();
+private static ManagerService manServ = new ManagerServiceImpl(new ManagerDAOHibernate(), new EmployeeDAOHibernate());
+private static EmployeeService empServ = new EmployeeServiceImpl(new EmployeeDAOHibernate(), new ReimbursementDAOHibernate());
+private static Employee employee = new Employee(0,"kurt1997","pword","kurt","dawiec");
 	
+	@BeforeAll
+	static void setUp() {
+		empServ.createEmployee(employee);
+	}
+
 	@Test
 	@Order(1)
 	void createManager() {
@@ -62,11 +81,25 @@ private static ManagerService manServ = new ManagerServiceImpl();
 	}
 	
 	@Test
-	@Order(6) 
+	@Order(6)
+	void addEmployee() {
+		Manager manager = manServ.getManagerById(1);
+		manServ.addEmployeeToManager(manager, employee);
+		Assertions.assertNotEquals(0,manager.getEmployees().size());
+	}
+	
+	@Test
+	@Order(7) 
 	void deleteManager() {
 		Manager manager = manServ.getManagerById(1);
+		System.out.println(manServ.getManagerById(2));
 		boolean result = manServ.deleteManager(manager);
 		Assertions.assertEquals(true,result);
+	}
+	
+	@AfterAll
+	static void tearDown() {
+		empServ.deleteEmployee(empServ.getEmployeeById(1));
 	}
 
 }

@@ -70,6 +70,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 		Criteria crit = sess.createCriteria(Manager.class);
 		List<Manager> managers = crit.list();
 		
+		sess.close();
+		
 		return managers;
 	}
 
@@ -80,6 +82,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 		crit.add(Restrictions.like("manUsername",user));
 		crit.add(Restrictions.like("manPassword",pass));
 		List<Manager> managers = crit.list();
+		
+		sess.close();
 		
 		return managers.get(0);
 	}

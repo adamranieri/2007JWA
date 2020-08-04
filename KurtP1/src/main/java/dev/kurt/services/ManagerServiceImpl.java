@@ -2,21 +2,26 @@ package dev.kurt.services;
 
 import java.util.List;
 
+import dev.kurt.daos.EmployeeDAO;
+import dev.kurt.daos.EmployeeDAOHibernate;
 import dev.kurt.daos.ManagerDAO;
 import dev.kurt.daos.ManagerDAOHibernate;
+import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 
 public class ManagerServiceImpl implements ManagerService {
 
 	public ManagerDAO manDao = new ManagerDAOHibernate();
+	public EmployeeDAO empDao = new EmployeeDAOHibernate();
 	
 	public ManagerServiceImpl() {
 		super();
 	}
 	
-	public ManagerServiceImpl(ManagerDAO manDao) {
+	public ManagerServiceImpl(ManagerDAO manDao, EmployeeDAO empDao) {
 		super();
 		this.manDao = manDao;
+		this.empDao = empDao;
 	}
 	
 	
@@ -48,6 +53,13 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public boolean deleteManager(Manager manager) {
 		return this.manDao.deleteManager(manager);
+	}
+
+	@Override
+	public Manager addEmployeeToManager(Manager manager, Employee employee) {
+		employee.setManager(manager);
+		manager.getEmployees().add(this.empDao.createEmployee(employee));
+		return manager;
 	}
 
 	

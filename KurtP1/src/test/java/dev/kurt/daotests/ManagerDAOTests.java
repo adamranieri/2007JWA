@@ -8,8 +8,11 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import dev.kurt.daos.EmployeeDAO;
+import dev.kurt.daos.EmployeeDAOHibernate;
 import dev.kurt.daos.ManagerDAO;
 import dev.kurt.daos.ManagerDAOHibernate;
+import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 
 
@@ -17,6 +20,7 @@ import dev.kurt.entities.Manager;
 class ManagerDAOTests {
 	
 	private static ManagerDAO manDao = new ManagerDAOHibernate();
+	
 	
 	@Test
 	@Order(1)
@@ -59,8 +63,9 @@ class ManagerDAOTests {
 		Assertions.assertNotEquals("password",manager.getManPassword());
 	}
 	
+	
 	@Test
-	@Order(6) 
+	@Order(7) 
 	void deleteManager() {
 		Manager manager = manDao.getManagerById(1);
 		boolean result = manDao.deleteManager(manager);

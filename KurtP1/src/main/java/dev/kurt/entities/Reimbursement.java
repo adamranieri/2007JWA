@@ -30,9 +30,15 @@ public class Reimbursement {
 	private String statusDate;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "emp_id")
 	private Employee employee;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "man_id")
+	private Manager manager;
+	
+	
 	
 	public Reimbursement() {
 		super();

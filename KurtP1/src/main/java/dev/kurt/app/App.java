@@ -24,9 +24,9 @@ public class App {
 		
 		EmployeeService employeeService = new EmployeeServiceImpl(new EmployeeDAOHibernate(), new ReimbursementDAOHibernate());
 		ReimbursementService reimbursementService = new ReimbursementServiceImpl(new ReimbursementDAOHibernate());
-		ManagerService managerService = new ManagerServiceImpl(new ManagerDAOHibernate());
+		ManagerService managerService = new ManagerServiceImpl(new ManagerDAOHibernate(), new EmployeeDAOHibernate());
 		
-		EmployeeController employeeController = new EmployeeController(employeeService);
+		EmployeeController employeeController = new EmployeeController(employeeService, managerService);
 		ReimbursementController reimbursementController = new ReimbursementController(employeeService, reimbursementService);
 		ManagerController managerController = new ManagerController(managerService);
 		
@@ -34,6 +34,7 @@ public class App {
 		app.post("/employees",employeeController.createEmployee);
 		app.post("/employees/:eid/reimbursements",reimbursementController.createReimbursement);
 		app.post("/managers",managerController.createManager);
+		app.post("/managers/:mid/employees",employeeController.addEmployeeToMan);
 		// app.post(/login)
 		// DTO 
 		// let logincreds={
@@ -63,6 +64,7 @@ public class App {
 		app.get("/reimbursements/:rid",reimbursementController.getReimbursementById);
 		app.get("/managers", managerController.getAllManagers);
 		app.get("/managers/:mid", managerController.getManagerById);
+		app.get("/managers/:mid/employees", employeeController.getEmployeesByManager);
 		// ctx.redirect
 		
 		app.put("/employees",employeeController.updateEmployee);

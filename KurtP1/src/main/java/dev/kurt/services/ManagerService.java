@@ -14,6 +14,7 @@ public interface ManagerService {
 	List<Manager> getAllManagers();
 	
 	Manager updateManager(Manager manager);
+	Manager addEmployeeToManager(Manager manager, Employee employee);
 	
 	boolean deleteManager(Manager manager);
 	

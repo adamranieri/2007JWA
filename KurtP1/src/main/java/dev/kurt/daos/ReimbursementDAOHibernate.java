@@ -48,6 +48,8 @@ public class ReimbursementDAOHibernate implements ReimbursementDAO {
 		Criteria crit = sess.createCriteria(Reimbursement.class);
 		List<Reimbursement> reimbursements = crit.list();
 		
+		sess.close();
+		
 		return reimbursements;
 	}
 
@@ -57,6 +59,8 @@ public class ReimbursementDAOHibernate implements ReimbursementDAO {
 		Criteria crit = sess.createCriteria(Reimbursement.class);
 		crit.add(Restrictions.like("employee",employee));
 		List<Reimbursement> reimbursements = crit.list();
+		
+		sess.close();
 		
 		return reimbursements;
 	}

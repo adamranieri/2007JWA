@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -30,13 +32,17 @@ public class Employee {
 	@Column(name = "emp_last_name")
 	private String emplName;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinColumn(name = "man_id")
 	private Manager manager;
 	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Reimbursement> reimbursements = new ArrayList();
+//	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//	
+	
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	@Cascade(CascadeType.SAVE_UPDATE)
+    transient List<Reimbursement> reimbursements = new ArrayList<>();
 
 	public Employee() {
 		super();
@@ -111,7 +117,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", empUsername=" + empUsername + ", empPassword=" + empPassword
-				+ ", empfName=" + empfName + ", emplName=" + emplName + ", manager=" + manager + "]";
+				+ ", empfName=" + empfName + ", emplName=" + emplName + "]";
 	}
 	
 }

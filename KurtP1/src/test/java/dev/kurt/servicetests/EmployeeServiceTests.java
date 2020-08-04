@@ -2,8 +2,11 @@ package dev.kurt.servicetests;
 
 import java.util.List;
 
+
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
-
+import dev.kurt.daos.EmployeeDAOHibernate;
+import dev.kurt.daos.ManagerDAOHibernate;
+import dev.kurt.daos.ReimbursementDAOHibernate;
 import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 import dev.kurt.entities.Reimbursement;
@@ -25,8 +30,8 @@ import dev.kurt.utils.HibernateUtil;
 @TestMethodOrder(OrderAnnotation.class) 
 public class EmployeeServiceTests {
 	
-	private static EmployeeService eServ = new EmployeeServiceImpl();
-	private static ManagerService manServ = new ManagerServiceImpl();
+	private static EmployeeService eServ = new EmployeeServiceImpl(new EmployeeDAOHibernate(), new ReimbursementDAOHibernate());
+	private static ManagerService manServ = new ManagerServiceImpl(new ManagerDAOHibernate(), new EmployeeDAOHibernate());
 	private static Manager michael = new Manager(0,"gretzky@email.com","number1boss","Michael","Scott");
 	
 	@BeforeAll
@@ -39,6 +44,7 @@ public class EmployeeServiceTests {
 	void createEmployee() {
 		Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
 		eServ.createEmployee(kurt);
+		System.out.println(kurt);
 		Assertions.assertNotEquals(0, kurt.getEmployeeId());
 	}
 	
@@ -47,6 +53,7 @@ public class EmployeeServiceTests {
 	@Order(2)
 	void getEmployeeById() {
 		Employee employee = eServ.getEmployeeById(1);
+		System.out.println(employee);
 		Assertions.assertEquals(1, employee.getEmployeeId());
 	}
 	
@@ -107,6 +114,5 @@ public class EmployeeServiceTests {
 		Assertions.assertEquals(true,result);
 	}
 	
-	
-	
+
 }

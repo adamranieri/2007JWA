@@ -3,6 +3,7 @@ package dev.kurt.controllers;
 import java.util.List;
 import com.google.gson.Gson;
 
+import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 import dev.kurt.services.ManagerService;
 import dev.kurt.services.ManagerServiceImpl;
@@ -66,8 +67,9 @@ public class ManagerController {
 		ctx.result(gson.toJson(manager));
 	};
 	
+	
 	public Handler deleteManager = (ctx) ->{
-		String id = ctx.pathParam("cid");
+		String id = ctx.pathParam("mid");
 		Manager manager = manServ.getManagerById(Integer.parseInt(id));
 		Boolean result = manServ.deleteManager(manager);
 		ctx.result(result.toString());
