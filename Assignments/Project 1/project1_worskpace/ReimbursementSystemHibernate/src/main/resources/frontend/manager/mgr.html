@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+</head>
+<body onload="getMgr()">
+    <a href="../xyz-loginpage-dummy.html">Back</a>
+
+
+    <h3 id= "j-object-mgr" >HEAD 3</h3>
+
+    <button id= "emp1" onclick="redirectToEmp1()">go to emp 1</button>
+
+    <script>
+
+        function getMgr(){
+            //global variable
+            mgr= JSON.parse( window.localStorage.getItem("mgr")).mgr;
+            console.log(mgr.firstName);
+            console.log(mgr.emps[0]);
+     
+        }
+
+        function redirectToEmp1(){
+
+
+            window.localStorage.setItem("emp", JSON.stringify(mgr.emps[0]));
+            let jj= window.localStorage.getItem("emp");
+            console.log(jj);
+            window.location.replace("./mgr-emp.html");
+        }
+
+    </script>
+    
+</body>
+</html>

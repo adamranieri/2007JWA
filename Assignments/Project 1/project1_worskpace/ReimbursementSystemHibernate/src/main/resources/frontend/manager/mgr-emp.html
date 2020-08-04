@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+</head>
+<body onload="getEmpInfo()">
+    <a href="mgr.html">Back</a> <br>
+
+    <h3>employees</h3>
+
+    <script>
+        function getEmpInfo(){
+            emp = JSON.parse (window.localStorage.getItem("emp"));
+            console.log(emp.firstName);
+        }
+
+    </script>
+</body>
+</html>

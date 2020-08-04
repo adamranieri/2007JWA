@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Subselect;
 
 @Entity
 @Table(name = "employee")
@@ -42,7 +46,7 @@ public class Employee {
 	@JoinColumn(name = "mgr_id",  nullable = false) 
 	Manager mgr;
 	
-	@OneToMany(mappedBy = "emp")
+	@OneToMany(mappedBy = "emp", fetch= FetchType.EAGER)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	List<ReimbursementRequest> reqs = new ArrayList<>();
 

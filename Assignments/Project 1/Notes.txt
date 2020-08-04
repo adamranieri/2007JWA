@@ -60,3 +60,11 @@ or do that in the front end.
 the web page will hold the information of whether the instance is an employee or a manager, so nothing you do for the javalin, javalin does not need to check for anything.
 
 
+after spending a whole day dealing with hibernate intricacies and dealing with 
+
+{ Lazy Initialization Exception, Multiple Fetch type exception, Gson stack overflow,
+   
+NEVER USE ASSOCIATIONS EVER AGAIN. EVER
+
+every column is a column.
+  }

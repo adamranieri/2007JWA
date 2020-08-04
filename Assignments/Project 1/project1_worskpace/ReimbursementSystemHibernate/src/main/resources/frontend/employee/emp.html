@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMP</title>
+</head>
+
+<body onload="getElement()">
+    <a href="../xyz-loginpage-dummy.html">Back</a>
+
+
+    <h3 id="theObject"></h3>
+
+    <h3 id="firstName"> </h3>
+    <h3 id="lastName"></h3>
+
+    <table>
+
+
+
+
+    </table>
+
+    <button id=submitRequest onclick="moveToReimbursementPage()"> Submit Request</button>
+
+    <script>
+
+        function getElement() {
+            //global var
+            emp = JSON.parse(window.localStorage.getItem("emp")).emp;
+            console.log(emp.firstName);
+
+            document.getElementById("theObject").innerHTML = JSON.stringify(emp);
+        };
+
+        function moveToReimbursementPage() {
+            let credentials = { mgrId: emp.mgr.mgrId, empId: emp.empId }
+            window.localStorage.setItem("crd", JSON.stringify(credentials));
+            window.location.replace("./emp-reimbursement.html");
+
+        }
+
+
+    </script>
+</body>
+
+</html>

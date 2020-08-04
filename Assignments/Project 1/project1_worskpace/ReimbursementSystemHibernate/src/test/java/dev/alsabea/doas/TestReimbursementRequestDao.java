@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
-import dev.alsabea.doas.impl.ReimbursementReqDaoHibImpl;
+import dev.alsabea.doas.impl.ReimbursementRequestDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.entities.ReimbursementRequest;
@@ -19,7 +19,7 @@ import dev.alsabea.entities.ReimbursementRequest;
 @TestMethodOrder(OrderAnnotation.class)
 class TestReimbursementRequestDao {
 
-	private static ReimbursementRequestDao  rrDao = ReimbursementReqDaoHibImpl.getInstance();
+	private static ReimbursementRequestDao  rrDao = ReimbursementRequestDaoImpl.getInstance();
 	
 	
 	@Test

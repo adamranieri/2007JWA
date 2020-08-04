@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYZ Login</title>
+</head>
+<body>
+    <h1>XYZ Best Company</h1>
+
+    <div>
+        <br>
+        <input type="text" id="usernameInput" placeholder="username">
+        <input type="text" id="passwordInput" placeholder="password">
+
+        <button id="getPerson" onclick="getPerson()">get Person</button>
+
+
+        <button id = "manager" onclick="managerSession()"> manager demo </button>
+        <button id = "employee" onclick="employeeSession()">employee demo</button>
+
+    </div>
+
+
+    <script>
+
+        function managerSession() {
+
+            let personMgr = {"role":"mgr","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe","username":"johnUser","password":"johnPass","emps":[{"empId":1,"firstName":"greg","lastName":"dreg","reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"}]},{"empId":2,"firstName":"ria","lastName":"bro","reqs":[]}]}};
+
+            window.localStorage.setItem("mgr", JSON.stringify(personMgr));
+            window.location.replace("./manager/mgr.html");
+        }
+
+
+        function employeeSession() {
+
+        // getting our inputs and creating an object that has those values
+
+
+
+        let personEmp = {"role":"emp","emp":{"empId":1,"firstName":"greg","lastName":"dreg","username":"gregUser","password":"gregPass","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe"},"reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"}]}};
+
+
+        window.localStorage.setItem("emp",JSON.stringify(personEmp) );
+        window.location.replace("./employee/emp.html");
+
+        }
+
+
+    </script>
+</body>
+</html>

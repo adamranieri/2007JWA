@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -37,13 +40,9 @@ public class Manager {
 	private String password;
 
 	
-	@OneToMany (mappedBy= "mgr") 
+	@OneToMany (mappedBy= "mgr", fetch= FetchType.LAZY) 
 	@Cascade(CascadeType.SAVE_UPDATE)
 	List<Employee> emps = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "mgr")
-	@Cascade(CascadeType.SAVE_UPDATE)
-	List<ReimbursementRequest> reqs = new ArrayList<>();
 
 	public Manager() {
 		super();
@@ -104,21 +103,11 @@ public class Manager {
 		this.emps = emps;
 	}
 
-	public List<ReimbursementRequest> getReqs() {
-		return reqs;
-	}
-
-	public void setReqs(List<ReimbursementRequest> reqs) {
-		this.reqs = reqs;
-	}
-
 	@Override
 	public String toString() {
 		return "Manager [mgrId=" + mgrId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", emps=" + emps + ", reqs=" + reqs + "]";
+				+ username + ", password=" + password + ", emps=" + emps + "]";
 	}
-	
-
 	
 	
 	

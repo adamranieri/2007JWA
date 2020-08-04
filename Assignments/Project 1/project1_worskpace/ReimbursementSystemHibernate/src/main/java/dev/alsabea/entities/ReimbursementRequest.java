@@ -25,6 +25,7 @@ public class ReimbursementRequest {
 	
 	@ManyToOne
 	@JoinColumn(name = "mgr_id", nullable = false) 
+	//@Column(name = "mgr_id", nullable = false)
 	private Manager mgr;
 	
 	@Column(name = "reimbursement_request", nullable = false)

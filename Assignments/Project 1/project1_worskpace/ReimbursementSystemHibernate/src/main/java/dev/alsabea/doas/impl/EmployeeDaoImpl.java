@@ -1,16 +1,15 @@
 package dev.alsabea.doas.impl;
 
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.EmployeeDao;
 import dev.alsabea.entities.Employee;
-import dev.alsabea.entities.Manager;
 import dev.alsabea.exceptions.DaoException;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -40,10 +39,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			generatedId = ((Long) s.save(t)).longValue();
 
 			s.getTransaction().commit();
-		} catch(org.hibernate.exception.ConstraintViolationException e) {
-			//e.printStackTrace();
+		} catch (org.hibernate.exception.ConstraintViolationException e) {
+			// e.printStackTrace();
 			return -1;
-		} 
+		}
 
 		return generatedId;
 	}
@@ -54,25 +53,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return sf.openSession().get(Employee.class, key);
 	}
 
-	@Override
-	public Employee retrieveByUsernameAndPassword(String username, String password) {
-		
-		try (Session sess = sf.openSession()) {
-
-			@SuppressWarnings("deprecation")
-			Criteria crit  = sess.createCriteria(Employee.class);
-			crit.add(Restrictions.like("username", username));
-			crit.add(Restrictions.ilike("password", password));
-			return (Employee) crit.uniqueResult();
-		} catch(HibernateException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
-	
-
+//	@Override
+//	public Employee retrieveByUsernameAndPassword(String username, String password) {
+//		
+//		Employee e= null;
+//		try (Session sess = sf.openSession()) {
+//
+//			@SuppressWarnings("deprecation")
+//			Criteria crit  = sess.createCriteria(Employee.class);
+//			crit.add(Restrictions.like("username", username));
+//			crit.add(Restrictions.like("password", password));
+//			e=(Employee) crit.uniqueResult();
+//			e.getReqs().size();
+//			return e;
+//		} catch(HibernateException ex) {
+//			ex.printStackTrace();
+//		}
+//
+//		return null;
+//	}
 
 	/*
 	 * Query query = session.createQuery("update Stock set stockName = :stockName" +
@@ -88,8 +87,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 */
 	@Override
 	public boolean update(Employee t) {
-		
-		try(Session s = sf.openSession()){
+
+		try (Session s = sf.openSession()) {
 			s.beginTransaction();
 			s.update(t);
 			s.getTransaction().commit();
@@ -97,7 +96,28 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} catch (javax.persistence.OptimisticLockException e) {
 			return false;
 		}
-		
+
+	}
+
+	@Override
+	public Employee retrieveByUsernameAndPassword(String username, String password) {
+		try (Session s = sf.openSession()) {
+		//	s.beginTransaction();
+
+			TypedQuery<Employee> q = s
+					.createQuery(
+							"SELECT e from Employee e JOIN FETCH e.reqs "
+									+ " WHERE e.username = :user AND e.password = :pass",
+							Employee.class)
+					.setParameter("user", username).setParameter("pass", password);
+
+		//	s.getTransaction().commit();
+			Employee e = q.getSingleResult();
+			return e;
+		} catch(NoResultException ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -122,7 +142,5 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			return false;
 
 	}
-
-
 
 }

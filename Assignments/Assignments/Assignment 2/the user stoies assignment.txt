@@ -1,0 +1,7 @@
+Child report card tracker
+client: Sunnyville Preschool
+background: We are a day care. Parents have have told us that they want to see a daily report of how there kid
+is behaving. They want to see if there were any issues or notes our teachers made.
+priorities:
+	- Many of our teachers are older and not technically savvy
+	- Parents want their report card to mobile friendly so they can check on the go

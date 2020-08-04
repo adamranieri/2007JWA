@@ -17,23 +17,6 @@
     </div>
 
 
-
-    <table id="table">
-        <!-- hidden -->
-        <thead>
-            <th>role</th>
-            <th> username</th>
-            <th> Password</th>
-        </thead>
-        <tr>
-            <td id="roleField">N/A</td>
-            <td id="usernameField">N/A</td>
-            <td id="passwordField">N/A</td>
-        </tr>
-    </table>
-
-
-
     <script>
 
         async function getPerson() {
@@ -54,14 +37,31 @@
                 body: JSON.stringify(credentials)
             };
 
-            const httpResponse = await fetch("http://localhost:7000/xyz", config);
-            person = await httpResponse.json();
 
-            document.getElementById("roleField").innerHTML=person.role;
-            document.getElementById("usernameField").innerHTML = person.username;
-            document.getElementById("passwordField").innerHTML = person.password;
+            
 
-            //document.getElementById("customerTable").removeAttribute("hidden");    
+
+            //const httpResponse = await fetch("http://localhost:7000/xyz", config);
+            //let person = await httpResponse.json();
+
+            
+
+
+
+            // if (person.role ==="mgr"){
+            //     //window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
+            //     //window.location.replace("mgr.html");
+
+
+            // }
+            // else {
+
+            //    // window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
+            //     //window.location.replace("emp.html")
+
+            // }
+
+
         }
 
 
