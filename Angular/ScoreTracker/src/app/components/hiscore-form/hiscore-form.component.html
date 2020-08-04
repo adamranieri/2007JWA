@@ -1,0 +1,12 @@
+<h3>Add a new High Score!!</h3>
+<!-- ngModel performs two way data binding and will send 
+any information in the input field directly into a variable -->
+<h6>Intials</h6>
+<input type="text" [(ngModel)] = "intials" placeholder="ACR">
+
+<h6>Points</h6>
+<input type="number" [(ngModel)] = "points" placeholder="1000">
+
+<button (click)="submitScore()">Submit Score</button>
+
+

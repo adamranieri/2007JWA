@@ -1,0 +1,17 @@
+
+<h3>High Scores</h3>
+<button (click)= "revealScores()">{{btnText}}</button>
+<ol *ngIf ="showScores"> 
+    <!-- ngIf will display this element if the value is true -->
+    <li *ngFor = "let score of scores">Initials: {{score.initials}}  points: {{score.points}} </li>
+
+</ol>
+
+
+<ul>
+    <!-- will repeat this html element once per 
+        item in the array -->
+    <li *ngFor = "let game of games">{{game}}</li>
+</ul>
+
+<button (click) = "alter()">Alter Description</button>
