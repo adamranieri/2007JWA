@@ -1,10 +1,14 @@
 package dev.kusch.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 
+import dev.kusch.entities.Employee;
 import dev.kusch.entities.Reimbursement;
+import dev.kusch.services.EmployeeService;
+import dev.kusch.services.EmployeeServiceImpl;
 import dev.kusch.services.ReimbursementService;
 import dev.kusch.services.ReimbursementServiceImpl;
 import io.javalin.http.Handler;
@@ -12,18 +16,30 @@ import io.javalin.http.Handler;
 public class ReimbursementController {
 	
 	private static ReimbursementService rserv = new ReimbursementServiceImpl();
+	private static EmployeeService eserv = new EmployeeServiceImpl();
 	private static Gson gson = new Gson();
 	
 	public static Handler createReimbursement = (ctx) -> {
+		System.out.println("here");
 		String reimJson = ctx.body();
 		Reimbursement reim = gson.fromJson(reimJson, Reimbursement.class);
-		rserv.createReimbursement(reim);
+		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
+		System.out.println(emp);
+		reim.setEmployee(emp);
+		reim = rserv.createReimbursement(reim);
 		ctx.status(201);
 		ctx.result(gson.toJson(reim));
 	};
 	
 	public static Handler getAllReimbursements = (ctx) -> {
 		List<Reimbursement> reims = rserv.getAllReimbursements();
+		ctx.result(gson.toJson(reims));
+	};
+	
+	public static Handler getReimbursementsByUser = (ctx) -> {
+		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
+		System.out.println(emp.getReimbursements());
+		List<Reimbursement> reims = rserv.getReimbursementsByEmployee(emp);
 		ctx.result(gson.toJson(reims));
 	};
 	

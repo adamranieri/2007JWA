@@ -74,6 +74,7 @@ class ReimbursementServiceTests {
 	void getReimbursementsByEmployee() {
 		Employee emp = eserv.getEmployeeById(1);
 		List<Reimbursement> reim = rserv.getReimbursementsByEmployee(emp);
+		System.out.println(reim);
 		Assertions.assertEquals(1, reim.size());
 		Assertions.assertEquals("Denied", reim.get(0).getStatus());
 	}

@@ -10,8 +10,7 @@ public class App {
 	public static void main(String[] args) {		
 		Javalin app = Javalin.create(config -> {
 			
-			//config.enableCorsForAllOrigins();
-			config.addStaticFiles("/frontend");
+			config.enableCorsForAllOrigins();
 			
 		}).start(7000);
 		
@@ -19,15 +18,16 @@ public class App {
 		app.get("/employees/:eid", EmployeeController.getEmployee);
 		app.get("/managers/:mid", ManagerController.getManager);
 		app.get("/reimbursements", ReimbursementController.getAllReimbursements);
+		app.get("/employees/:eid/reimbursements", ReimbursementController.getReimbursementsByUser);
 		app.get("/reimbursements/:rid", ReimbursementController.getReimbursementById);
 		
 		// PUT
-		app.put("/reimbursements", ReimbursementController.createReimbursement);
+		app.put("/reimbursements", ReimbursementController.updateReimbursement);
+		app.put("/employees", EmployeeController.updateEmployee);
+		app.put("/managers", ManagerController.updateManager);
 		
 		// POST
-		app.post("/employees/:eid", EmployeeController.updateEmployee);
-		app.post("/managers/:mid", ManagerController.updateManager);
-		app.post("/reimbursements/:rid", ReimbursementController.updateReimbursement);
+		app.post("/employees/:eid/reimbursements", ReimbursementController.createReimbursement);
 		
 		// DELETE
 		app.delete("/reimbursements", ReimbursementController.deleteReimbursement);

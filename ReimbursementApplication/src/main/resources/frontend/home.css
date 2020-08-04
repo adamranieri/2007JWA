@@ -1,0 +1,46 @@
+#headbar {
+    height: 150px;
+    margin-bottom: 2%;
+    padding: 25px;
+}
+
+#headbar h1 {
+    font-size: 36pt;
+}
+
+#headbar p {
+    font-size: 12pt;
+}
+
+#reimTable {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+}
+
+#headRow {
+    font-size: 36pt;
+    text-align: center;
+}
+
+.table {
+    background-color:	#428bca;
+    color: white;
+}
+
+.table button {
+    background-color: #5BC0DE;
+}
+
+.table .pendBtn {
+    color: yellow;
+}
+
+.table .acptBtn {
+    color: green;
+}
+
+.table .denyBtn {
+    color: red;
+}
+

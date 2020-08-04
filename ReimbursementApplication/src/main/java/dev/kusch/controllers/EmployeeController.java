@@ -16,7 +16,6 @@ public class EmployeeController {
 	private static Gson gson = new Gson();
 
 	public static Handler getEmployee = (ctx) -> {
-		
 		String userQuery = ctx.queryParam("username");
 		String passQuery = ctx.queryParam("password");
 		if (userQuery != null) {

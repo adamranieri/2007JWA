@@ -34,8 +34,8 @@ public class Employee {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL) 
+	private transient List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
 
 	public Employee() {
 		super();

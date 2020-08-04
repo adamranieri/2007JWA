@@ -112,7 +112,19 @@ public class ReimbursementDAOHibernate implements ReimbursementDAO {
 
 	@Override
 	public List<Reimbursement> getReimbursementsByEmployee(Employee employee) {
-		return employee.getReimbursements();
+		//return employee.getReimbursements();
+		
+		try (Session sess = sf.openSession()) {
+			sess.beginTransaction();
+			Criteria crit = sess.createCriteria(Reimbursement.class);
+			crit.add(Restrictions.like("employee", employee));
+			List<Reimbursement> reimbursement = crit.list();
+			sess.getTransaction().commit();
+			return reimbursement;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
