@@ -9,12 +9,38 @@
     <a href="emp.html">Back</a> <br>
 
 
+    <button onclick="submitRequest()" >submit request</button>
 
+    
 
     <script>
         function getBothIds(){
             crd = JSON.parse(window.localStorage.getItem("crd"));
             console.log(crd.empId + " " + crd.mgrId); 
+        }
+
+        function submitRequest(){
+
+            let empReturned= {"empId":5,"firstName":"max","lastName":"sonic","username":"maxUser","password":"maxPass","mgr":{"mgrId":3,"firstName":"mary","lastName":"brooks"},"reqs":[{"rrId":12,"reimbursementRequest":"10000 for buying a boat","reimbursementStatus":"PENDING","reason":""}]}
+            
+            console.log(empReturned);
+
+            window.localStorage.setItem("emp", JSON.stringify(empReturned));
+            window.location.replace("emp.html");
+
+            // const config = {
+            //     method: "POST",
+            //     headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+            //     body: JSON.stringify(credentials)
+            // };
+
+
+            
+
+
+            // const httpResponse = await fetch("http://localhost:7000/reimbursement-request", config);
+            // let emp = await httpResponse.json();
+
         }
 
     </script>

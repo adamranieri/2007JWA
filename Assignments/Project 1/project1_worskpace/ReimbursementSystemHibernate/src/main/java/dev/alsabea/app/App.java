@@ -1,6 +1,8 @@
 package dev.alsabea.app;
 
 import dev.alsabea.controllers.LogInPageController;
+import dev.alsabea.controllers.ManagerPageController;
+import dev.alsabea.controllers.EmployeePageController;
 import io.javalin.Javalin;
 
 public class App {
@@ -21,32 +23,19 @@ public class App {
 		app.post("/xyz", LogInPageController.getStaff);
 		
 		
+		
 		// employee page
 		
-			// reimbursement form to submit page
+		// *** reimbursement form to submit page ***
 		
+		//create rr
+		app.post("/employee/reimbursement-request", EmployeePageController.createRequest);
 		
+
 		//manager page
 		
-			//list of employee page
-		
-			
-			//employee requests page, pending and already judged requests page
-			
-		
-		
-		
-		//app.get
-		
-		//Employee
-		
-		//app.get("", handler)
-		
-		
-		//Manager
-		
-		
-		//Reimbursement Requests
+		//update request
+		app.put("/manager/employee-request", ManagerPageController.updateRequest);
 
 		
 	}

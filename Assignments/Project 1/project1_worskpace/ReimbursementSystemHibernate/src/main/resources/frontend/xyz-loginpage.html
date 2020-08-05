@@ -41,25 +41,21 @@
             
 
 
-            //const httpResponse = await fetch("http://localhost:7000/xyz", config);
-            //let person = await httpResponse.json();
+            const httpResponse = await fetch("http://localhost:7000/xyz", config);
+            let person = await httpResponse.json();
 
-            
-
-
-
-            // if (person.role ==="mgr"){
-            //     //window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
-            //     //window.location.replace("mgr.html");
+            if (person.role ==="mgr"){
+                //window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
+                //window.location.replace("mgr.html");
 
 
-            // }
-            // else {
+            }
+            else {
 
-            //    // window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
-            //     //window.location.replace("emp.html")
+               // window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
+                //window.location.replace("emp.html")
 
-            // }
+            }
 
 
         }

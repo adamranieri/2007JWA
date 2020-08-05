@@ -1,13 +1,10 @@
 package dev.alsabea.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
 
+import dev.alsabea.controllers.utilities.Cleaner;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
-import dev.alsabea.entities.ReimbursementRequest;
 import dev.alsabea.services.EmployeeServices;
 import dev.alsabea.services.ManagerServices;
 import dev.alsabea.services.impl.EmployeeServicesImpl;
@@ -60,44 +57,6 @@ public class LogInPageController {
 	/*
 	 * removes circular reference, manager and employee username and passwords.
 	 */
-	private static class Cleaner{
-		static Employee cleanInstance(Employee e) {
-			
-			e.getMgr().setEmps(null);
-			e.getMgr().setUsername(null);
-			e.getMgr().setPassword(null);
-			
-			
-			e.setReqs(cleanReqs(e.getReqs()));
-			return e;
-				
-			
-		}
-		
-		private static Manager cleanInstance(Manager m) {
-			
-			List<Employee> emps= new ArrayList<>();
-			for (Employee e: m.getEmps()) {
-				e.setUsername(null);
-				e.setPassword(null);
-				e.setMgr(null);
-				e.setReqs(cleanReqs(e.getReqs()));
-				emps.add(e);
-			}
-			m.setEmps(emps);
-			return m;
-			
-		}
-		
-		private static  List<ReimbursementRequest> cleanReqs(List<ReimbursementRequest> reqs){
-			for (ReimbursementRequest req: reqs) {
-				req.setEmp(null);
-				req.setMgr(null);
-			}
-			return reqs;
-		}
-		
-	}
 
 	private static class Credentials {
 
