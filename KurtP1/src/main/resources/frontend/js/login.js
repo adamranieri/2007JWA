@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Reimbursement Portal</title>
-</head>
-<body>
-    <h1>Welcome!</h1>
-
-    <div>
-        <h3>Login</h3>
-        <input type="text" id="username-input" placeholder="Username">
-        <input type="text" id="password-input" placeholder="Password">
-        <button id="employee-login-btn" onclick="getEmployeeByLogin()">Login</button>
-    </div>
-</body>
-
-
-<script>
 async function getEmployeeByLogin(){
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
@@ -28,7 +10,7 @@ async function getEmployeeByLogin(){
     const config = {
         method: "POST",
         headers : {'Content-Type': 'application/json'}, // you can use the headers properties to set headers
-        body : JSON.stringify(loginCreds)
+        body : JSON.stringify(school)
     };
 
     const httpResponse = await fetch("http://localhost:7000/login",config);
@@ -36,6 +18,3 @@ async function getEmployeeByLogin(){
     console.log(user);
 
 }
-</script>
-
-</html>

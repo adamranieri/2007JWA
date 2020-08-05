@@ -13,7 +13,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="employee")
 
-public class Employee {
+public class Employee extends User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
