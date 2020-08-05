@@ -34,7 +34,7 @@ public class App {
 		EmployeeController employeeController = new EmployeeController(employeeService, managerService);
 		ReimbursementController reimbursementController = new ReimbursementController(employeeService, reimbursementService);
 		ManagerController managerController = new ManagerController(managerService);
-		LoginController loginController = new LoginController(uServ);
+		LoginController loginController = new LoginController(uServ, employeeService, managerService);
 		
 		
 		app.post("/employees",employeeController.createEmployee);
@@ -52,7 +52,7 @@ public class App {
 		app.get("/managers", managerController.getAllManagers);
 		app.get("/managers/:mid", managerController.getManagerById);
 		app.get("/managers/:mid/employees", employeeController.getEmployeesByManager);
-		app.get("login", loginController.getUserInfo);
+		app.get("/login", loginController.getUserInfo);
 		
 		app.put("/employees",employeeController.updateEmployee);
 		app.put("/employees/:eid/reimbursements", reimbursementController.updateReimbursement);

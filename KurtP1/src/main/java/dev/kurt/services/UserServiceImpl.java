@@ -13,6 +13,7 @@ import dev.kurt.dtos.LoginDTO;
 import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 import dev.kurt.entities.User;
+import dev.kurt.exceptions.InvalidLoginException;
 
 public class UserServiceImpl implements UserService {
 	
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User loginUser(LoginDTO dto) {
+	public User loginUser(LoginDTO dto) throws InvalidLoginException {
 		List<Employee> empUsers = empDao.getAllEmployees();
 		List<Manager> manUsers = manDao.getAllManagers();
 		
@@ -42,12 +43,11 @@ public class UserServiceImpl implements UserService {
 		
 		for(Manager m : manUsers) {
 			if(m.getManUsername().equals(dto.getUsername()) && m.getManPassword().equals(dto.getPassword())) {
-				System.out.println("if you're reading this you fixed it");
 				return manDao.getManagerByLogin(m.getManUsername(), m.getManPassword());
 			}
 		}
 				
-		return null;
+		throw new InvalidLoginException();
 	}
 
 }

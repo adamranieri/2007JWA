@@ -10,6 +10,7 @@ import dev.kurt.daos.ReimbursementDAOHibernate;
 import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 import dev.kurt.entities.User;
+import dev.kurt.exceptions.InvalidLoginException;
 import dev.kurt.services.EmployeeService;
 import dev.kurt.services.EmployeeServiceImpl;
 import dev.kurt.services.ManagerService;
@@ -27,7 +28,7 @@ class UserServiceTests {
 	
 	
 	@Test
-	void test() {
+	void test() throws InvalidLoginException {
 		manServ.createManager(michael);
 		empServ.createEmployee(employee);
 		User user = uServ.loginUser(null);

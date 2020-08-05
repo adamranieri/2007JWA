@@ -5,16 +5,21 @@ async function getEmployeeByLogin(){
     let loginCreds ={
         username:username,
         password:password
-    }
-
-    const config = {
-        method: "POST",
-        headers : {'Content-Type': 'application/json'}, // you can use the headers properties to set headers
-        body : JSON.stringify(school)
     };
 
-    const httpResponse = await fetch("http://localhost:7000/login",config);
-    const user = await httpResponse.json();
-    console.log(user);
+    const userhttpResponse = await fetch("http://localhost:7000/login", 
+    { 
+        method: 'POST',
+        headers : {'Content-Type': 'application/json'},
+        body : JSON.stringify(loginCreds)
+     })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
+    .catch(function(err) {
+        console.info(err + " url: " + url);
+    });
 
 }
