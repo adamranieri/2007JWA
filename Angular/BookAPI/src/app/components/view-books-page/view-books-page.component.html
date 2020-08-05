@@ -1,0 +1,29 @@
+<h1>Book Viewer</h1>
+
+<table>
+    <thead><th>ID</th><th>Title</th><th>Author</th></thead>
+    <tr *ngFor = "let book of books">
+        <td>{{book.id}}</td>
+        <td>{{book.title | quotes}}</td>
+        <td>{{book.author}}</td>
+        <td><Button (click)="showBookDetails(book.id)">More Info</Button></td>
+    </tr>
+</table>
+
+<div *ngIf = "selectedBook">
+    <h3>ID : {{selectedBook.id}}</h3>
+    <hr>
+
+    <h3>Title : {{selectedBook.title}}</h3>
+    <hr>
+
+    <h3>Author : {{selectedBook.author}}</h3>
+    <hr>
+
+    <h3>Genre : {{selectedBook.genre}}</h3>
+    <hr>
+
+    <h3>Pages : {{selectedBook.pages | currency}}</h3>
+    <hr>
+    
+</div>

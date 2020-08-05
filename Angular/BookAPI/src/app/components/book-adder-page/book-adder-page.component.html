@@ -1,0 +1,38 @@
+<h1>Book Adder</h1>
+
+<div>
+
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi">
+      </mat-form-field> -->
+
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput value="The Fellowship of the Ring" [(ngModel)]="titleField">
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Author</mat-label>
+        <input matInput type="text" value="Tolkien" [(ngModel)]="authorField">
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <input matInput type="text" value="adventure" [(ngModel)]="genreField">
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+        <mat-label>Pages</mat-label>
+        <input matInput type="number" placeholder="360" [(ngModel)]="pagesField">
+    </mat-form-field>
+
+
+
+    <button (click)="addBook()">Submit</button>
+
+</div>
