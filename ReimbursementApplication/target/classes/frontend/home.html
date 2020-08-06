@@ -4,19 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MPortal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
 </head>
-<body onload="loadPage()">
-    <div id="headbar">
-        <img src="MInc.png" alt="Monsters Inc. Logo"/>
-        <p>Logged in as: </p>
+<body onload="loadPage()" class="container-fluid">
+    <div id="headbar" class="row bg-primary text-white">
+        <div class="col-sm-1 d-inline-block">
+            <img src="MInc.png" alt="Monsters Inc. Logo" width="100px" height = "100px"/>
+        </div>
+        <div class="col-sm-5">
+            <h1>Portal</h1>
+        </div>
+        <div id="logText" class="col-sm-6 d-inline-block text-right">
+            <p><b>Logged in as:</b> Sullivan</p>
+        </div>
     </div>
 
     <div id="reimbursements">
-        <button id="createBtn" onclick="createReimbursement()" hidden>Request a Reimbursement</button>
-        <div id="reimTable"></div>
+        <div class="row">
+            <div class="col-sm-10"></div>
+            <div class="col-sm-2">
+                <button id="createBtn" onclick="createReimbursement()" class="btn btn-primary">Request a Reimbursement</button>
+            </div>
+        </div>
+        <div id="headRow" class="row">Reimbursements</div>
+        <div id="reimTable" class="text-center"></div>
     </div>
 </body>
 
-<script src="home.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="home.js"></script>
 
 </html>

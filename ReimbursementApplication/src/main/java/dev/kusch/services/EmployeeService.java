@@ -2,6 +2,7 @@ package dev.kusch.services;
 
 import java.util.List;
 
+import dev.kusch.dtos.LoginDTO;
 import dev.kusch.entities.Employee;
 
 public interface EmployeeService {
@@ -11,5 +12,5 @@ public interface EmployeeService {
 
 	Employee updateEmployee(Employee employee);
 
-	boolean loginEmployee(String username, String password);
+	Employee loginEmployee(LoginDTO login);
 }

@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+import dev.kusch.dtos.LoginDTO;
+import dev.kusch.entities.Employee;
 import dev.kusch.entities.Manager;
 import dev.kusch.services.ManagerService;
 import dev.kusch.services.ManagerServiceImpl;
@@ -71,14 +73,28 @@ private static ManagerService mserv = new ManagerServiceImpl();
 	@Test
 	@Order(7)
 	void testLoginSuccess() {
-		boolean result = mserv.loginManager("Waternoose", "TotallyNotEvilAtAll");
-		Assertions.assertTrue(result);
+		Manager result = mserv.loginManager(new LoginDTO("Waternoose", "TotallyNotEvilAtAll"));
+		Assertions.assertNotNull(result);
 	}
 	
 	@Test
 	@Order(8)
 	void testLoginBadPass() {
-		boolean result = mserv.loginManager("Waternoose", "FakePassword");
-		Assertions.assertFalse(result);
+		Manager result = mserv.loginManager(new LoginDTO("Waternoose", "FakePassword"));
+		Assertions.assertNull(result);
+	}
+
+	@Test
+	@Order(9)
+	void testLoginBadUser() {
+		Manager result = mserv.loginManager(new LoginDTO("FakeManager", "TotallyNotEvilAtAll"));
+		Assertions.assertNull(result);
+	}
+
+	@Test
+	@Order(10)
+	void testLoginWrongUserPass() {
+		Manager result = mserv.loginManager(new LoginDTO("Roz", "TotallyNotEvilAtAll"));
+		Assertions.assertNull(result);
 	}
 }

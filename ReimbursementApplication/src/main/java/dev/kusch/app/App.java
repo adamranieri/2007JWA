@@ -1,6 +1,7 @@
 package dev.kusch.app;
 
 import dev.kusch.controllers.EmployeeController;
+import dev.kusch.controllers.LoginController;
 import dev.kusch.controllers.ManagerController;
 import dev.kusch.controllers.ReimbursementController;
 import io.javalin.Javalin;
@@ -31,6 +32,9 @@ public class App {
 		
 		// DELETE
 		app.delete("/reimbursements", ReimbursementController.deleteReimbursement);
+		
+		app.post("/login", LoginController.loginHandler);
+		app.get("/userinfo", LoginController.getUserInfo);
 	}
 
 }

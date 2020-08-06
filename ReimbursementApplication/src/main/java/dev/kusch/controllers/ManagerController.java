@@ -16,29 +16,14 @@ public class ManagerController {
 	private static Gson gson = new Gson();
 
 	public static Handler getManager = (ctx) -> {
-		
-		String userQuery = ctx.queryParam("username");
-		String passQuery = ctx.queryParam("password");
-		if (userQuery != null) {
-			if (passQuery != null) {
-				boolean result = mserv.loginManager(userQuery, passQuery);
-				ctx.result(gson.toJson(result));
-				return;
-			}
-			List<Manager> emps = new ArrayList<Manager>();
-			emps = mserv.getManagerByUser(userQuery);
-			ctx.result(gson.toJson(emps));
-			return;
+		Manager emp = mserv.getManagerById(Integer.parseInt(ctx.pathParam("mid")));
+		if (emp == null) {
+			ctx.status(404);
 		} else {
-			Manager emp = mserv.getManagerById(Integer.parseInt(ctx.pathParam("mid")));
-			if (emp == null) {
-				ctx.status(404);
-			} else {
-				ctx.status(200);
-			}
-			ctx.result(gson.toJson(emp));
-			return;
+			ctx.status(200);
 		}
+		ctx.result(gson.toJson(emp));
+		return;
 		
 	};
 	

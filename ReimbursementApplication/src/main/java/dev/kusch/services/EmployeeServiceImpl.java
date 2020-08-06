@@ -4,6 +4,7 @@ import java.util.List;
 
 import dev.kusch.daos.EmployeeDAO;
 import dev.kusch.daos.EmployeeDAOHibernate;
+import dev.kusch.dtos.LoginDTO;
 import dev.kusch.entities.Employee;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -26,20 +27,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public boolean loginEmployee(String username, String password) {
-		List<Employee> usr = edao.getEmployeeByUser(username);
-		List<Employee> pass = edao.getEmployeeByPass(password);
+	public Employee loginEmployee(LoginDTO login) {
+		List<Employee> usr = edao.getEmployeeByUser(login.getUsername());
+		List<Employee> pass = edao.getEmployeeByPass(login.getPassword());
 		if (usr.size() == 0 || pass.size() == 0) {
-			return false;
+			return null;
 		}
-		if (usr.get(0).getPassword().compareTo(password) == 0) {
-			if (pass.get(0).getUsername().compareTo(username) == 0) {
-				return true;
+		if (usr.get(0).getPassword().compareTo(login.getPassword()) == 0) {
+			if (pass.get(0).getUsername().compareTo(login.getUsername()) == 0) {
+				return usr.get(0);
 			} else {
-				return false;
+				return null;
 			}
 		} else {
-			return false;
+			return null;
 		}
 		
 	}

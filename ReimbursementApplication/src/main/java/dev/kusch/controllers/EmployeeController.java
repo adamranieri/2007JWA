@@ -16,29 +16,14 @@ public class EmployeeController {
 	private static Gson gson = new Gson();
 
 	public static Handler getEmployee = (ctx) -> {
-		String userQuery = ctx.queryParam("username");
-		String passQuery = ctx.queryParam("password");
-		if (userQuery != null) {
-			if (passQuery != null) {
-				boolean result = eserv.loginEmployee(userQuery, passQuery);
-				ctx.result(gson.toJson(result));
-				return;
-			}
-			List<Employee> emps = new ArrayList<Employee>();
-			emps = eserv.getEmployeeByUser(userQuery);
-			ctx.result(gson.toJson(emps));
-			return;
+		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
+		if (emp == null) {
+			ctx.status(404);
 		} else {
-			Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
-			if (emp == null) {
-				ctx.status(404);
-			} else {
-				ctx.status(200);
-			}
-			ctx.result(gson.toJson(emp));
-			return;
+			ctx.status(200);
 		}
-		
+		ctx.result(gson.toJson(emp));
+		return;
 	};
 	
 	public static Handler updateEmployee = (ctx) -> {

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import dev.kusch.dtos.LoginDTO;
 import dev.kusch.entities.Employee;
 import dev.kusch.entities.Reimbursement;
 import dev.kusch.services.EmployeeService;
@@ -70,32 +71,31 @@ class EmployeeServiceTests {
 		Employee emp = eserv.updateEmployee(employee);
 		Assertions.assertNull(emp);
 	}
-	
 	@Test
 	@Order(7)
 	void testLoginSuccess() {
-		boolean result = eserv.loginEmployee("Sullivan", "B3stSc4r3r");
-		Assertions.assertTrue(result);
+		Employee result = eserv.loginEmployee(new LoginDTO("Sullivan", "B3stSc4r3r"));
+		Assertions.assertNotNull(result);
 	}
 	
 	@Test
 	@Order(8)
 	void testLoginBadPass() {
-		boolean result = eserv.loginEmployee("Sullivan", "FakePassword");
-		Assertions.assertFalse(result);
+		Employee result = eserv.loginEmployee(new LoginDTO("Sullivan", "FakePassword"));
+		Assertions.assertNull(result);
 	}
 
 	@Test
 	@Order(9)
 	void testLoginBadUser() {
-		boolean result = eserv.loginEmployee("FakeEmployee", "B3stSc4r3r");
-		Assertions.assertFalse(result);
+		Employee result = eserv.loginEmployee(new LoginDTO("FakeEmployee", "B3stSc4r3r"));
+		Assertions.assertNull(result);
 	}
 
 	@Test
 	@Order(10)
 	void testLoginWrongUserPass() {
-		boolean result = eserv.loginEmployee("Wazowski", "B3stSc4r3r");
-		Assertions.assertFalse(result);
+		Employee result = eserv.loginEmployee(new LoginDTO("Wazowski", "B3stSc4r3r"));
+		Assertions.assertNull(result);
 	}
 }

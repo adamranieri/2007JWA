@@ -1,15 +1,20 @@
-let user = {username: "Sullivan", password: "B3stSc4r3r", isManager: false, eid: 1};
+let user = {username: "Waternoose", password: "B3stSc4r3r", isManager: true, id: 1};
 
 
 async function loadPage() {
+    // let response1 = await fetch("http://localhost:7000/userinfo");
+    // let response1Obj = await response1.json();
+    console.log(document.cookie);
+
+
+
     // Work on getting username and password from login page\
-    /**
     document.getElementById("createBtn").style.visibility = 'visible';
     let response;
     let responseObj;
     // Make the API calls to retreive all reimbursements we want to show
     if (!user.isManager) {
-        response = await fetch(`http://localhost:7000/employees/${user.eid}/reimbursements`);
+        response = await fetch(`http://localhost:7000/employees/${user.id}/reimbursements`);
         responseObj = await response.json();
         
     } else {
@@ -18,31 +23,28 @@ async function loadPage() {
     }
    
     // Build table using our reimbursement object
-    let tableHtml = ``;
+    let tableHtml = `<table class="table">`;
     for (let reimbursement of responseObj) {
-        tableHtml += `<tr><td>${reimbursement.message}</td><td>${reimbursement.amount}</td>`
+        tableHtml += `<tr scope="row"><td>${reimbursement.message}</td><td>$${reimbursement.amount}</td>`
 
         // customize the table between employees and managers
         if (user.isManager) {
             tableHtml += `<td>${reimbursement.employee.lastName}, ${reimbursement.employee.firstName}</td>`
-        } else {
-            tableHtml += `<td><button class="reviewBtn" onclick="reviewReimbursement(${reimbursement.rid})></button></td>`
         }
 
         if (reimbursement.status === "Pending") {
-            tableHtml += `<button class="pendBtn" onclick="reviewReimbursement(${reimbursement.rid})">Pending</button>`
+            tableHtml += `<td><button type="button" class="btn btn-warning" onclick="reviewReimbursement()">Pending</button></td>`
         } else if (reimbursement.status === "Accepted") {
-            tableHtml += `<button class="acceptBtn" onclick="reviewReimbursement(${reimbursement.rid})">Accepted</button>`
+            tableHtml += `<td><button type="button" class="btn btn-success" onclick="reviewReimbursement()">Accepted</button></td>`
         } else {
-            tableHtml += `<button class="denyBtn" onclick="reviewReimbursement(${reimbursement.rid})">Denied</button>`
+            tableHtml += `<td><button type="button" class="btn btn-danger" onclick="reviewReimbursement()">Denied</button></td>`
         }
         tableHtml += `</tr>`;
             
     }
-    console.log(tableHtml);
-    */
-    document.getElementById("reimTable").innerHtml = 'Hello world';//`<table id="table"><tr colspan="5">Reimbursements</tr>`  + tableHtml + `</table>`;
 
+    let table = document.getElementById("reimTable");
+    table.innerHTML += (tableHtml + `</table>`);
 }
 
 async function createReimbursement() {
@@ -50,5 +52,5 @@ async function createReimbursement() {
 }
 
 async function reviewReimbursement() {
-
+    console.log("hello world")
 }
