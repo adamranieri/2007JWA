@@ -67,7 +67,8 @@ class TestEmployeeServices {
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "1, gregUser, gregPass", "3, jaxUser, jaxPass", "6, robUser, robPass" })
+	@CsvSource({ "1, gregUser, gregPass", "3, jaxUser, jaxPass", "6, robUser, robPass", 
+		"2, riaUser, riaPass"})
 	@Order(1)
 	final void testRetrieveByUserAndPass(long eId, String user, String pass) {
 		Assertions.assertEquals(eId, empServ.retrieveByUsernameAndPassword(user, pass).getEmpId());
@@ -91,7 +92,8 @@ class TestEmployeeServices {
 		Assertions.assertEquals("gregUser", emp.getUsername());
 		Assertions.assertEquals("gregPass", emp.getPassword());
 		Assertions.assertEquals("John", emp.getMgr().getFirstName());
-		Assertions.assertEquals(1, emp.getReqs().size());
+		Assertions.assertEquals(4, emp.getReqs().size());
+		
 
 	}
 

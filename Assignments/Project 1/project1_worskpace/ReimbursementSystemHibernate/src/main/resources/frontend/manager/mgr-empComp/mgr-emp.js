@@ -1,5 +1,7 @@
-function init() {
-    emp = JSON.parse(window.localStorage.getItem("emp"));
+
+
+async function init() {
+    emp = await JSON.parse(window.localStorage.getItem("emp"));
     console.log(emp);
 
     document.getElementById("emp-name").innerHTML = `
@@ -90,7 +92,7 @@ function init() {
         document.getElementById("judgedTB").innerHTML = tb;
     }
 }
-function updateRequest(i) {
+async function updateRequest(i) {
 
     //console.log(document.getElementById("drop-down").value);
     pendingReqs[i].reimbursementStatus=document.getElementById("drop-down").value;
@@ -103,6 +105,24 @@ function updateRequest(i) {
         //get 
         //update values
         //call init to update the values 
+
+        const theRequest= pendingReqs[i];
+
+        const configRequest = {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+            body: JSON.stringify(theRequest)
+        };
+    
+    
+        const httpResponse = await fetch("http://localhost:7000/manager/employee-request", configRequest);
+        let empReturned = await httpResponse.json();
+    
+    
+    
+        window.localStorage.setItem("emp", JSON.stringify(empReturned));
+        window.location.reload();
+    
 
     }
 }

@@ -29,7 +29,7 @@ public class App {
 		// *** reimbursement form to submit page ***
 		
 		//create rr
-		app.post("/employee/reimbursement-request", EmployeePageController.createRequest);
+		app.post("/employee/submit-request", EmployeePageController.createRequest);
 		
 
 		//manager page

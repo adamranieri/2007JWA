@@ -1,10 +1,10 @@
 package dev.alsabea.doas.impl;
 
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import dev.alsabea.connection.HibernateConnectionEstablisher;
@@ -53,25 +53,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return sf.openSession().get(Employee.class, key);
 	}
 
-//	@Override
-//	public Employee retrieveByUsernameAndPassword(String username, String password) {
-//		
-//		Employee e= null;
-//		try (Session sess = sf.openSession()) {
-//
-//			@SuppressWarnings("deprecation")
-//			Criteria crit  = sess.createCriteria(Employee.class);
-//			crit.add(Restrictions.like("username", username));
-//			crit.add(Restrictions.like("password", password));
-//			e=(Employee) crit.uniqueResult();
-//			e.getReqs().size();
-//			return e;
-//		} catch(HibernateException ex) {
-//			ex.printStackTrace();
-//		}
-//
-//		return null;
-//	}
+	@Override
+	public Employee retrieveByUsernameAndPassword(String username, String password) {
+		
+		Employee e= null;
+		try (Session sess = sf.openSession()) {
+
+			@SuppressWarnings("deprecation")
+			Criteria crit  = sess.createCriteria(Employee.class);
+			crit.add(Restrictions.like("username", username));
+			crit.add(Restrictions.like("password", password));
+			e=(Employee) crit.uniqueResult();
+			return e;
+		} catch(HibernateException ex) {
+			ex.printStackTrace();
+		}
+
+		return null;
+	}
 
 	/*
 	 * Query query = session.createQuery("update Stock set stockName = :stockName" +
@@ -99,26 +98,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	}
 
-	@Override
-	public Employee retrieveByUsernameAndPassword(String username, String password) {
-		try (Session s = sf.openSession()) {
-		//	s.beginTransaction();
-
-			TypedQuery<Employee> q = s
-					.createQuery(
-							"SELECT e from Employee e JOIN FETCH e.reqs "
-									+ " WHERE e.username = :user AND e.password = :pass",
-							Employee.class)
-					.setParameter("user", username).setParameter("pass", password);
-
-		//	s.getTransaction().commit();
-			Employee e = q.getSingleResult();
-			return e;
-		} catch(NoResultException ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
+//	@Override
+//	public Employee retrieveByUsernameAndPassword(String username, String password) {
+//		try (Session s = sf.openSession()) {
+//		//	s.beginTransaction();
+//
+//			TypedQuery<Employee> q = s
+//					.createQuery(
+//							"SELECT e from Employee e JOIN FETCH e.reqs "
+//									+ " WHERE e.username = :user AND e.password = :pass",
+//							Employee.class)
+//					.setParameter("user", username).setParameter("pass", password);
+//
+//		//	s.getTransaction().commit();
+//			Employee e = q.getSingleResult();
+//			return e;
+//		} catch(NoResultException ex) {
+//			ex.printStackTrace();
+//			return null;
+//		}
+//	}
 
 	@Override
 	public boolean deleteById(long key) {

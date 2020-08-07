@@ -1,15 +1,15 @@
 
-        function init() {
+        async function init() {
             //global var
             
-            emp = JSON.parse(window.localStorage.getItem("emp"));
+            emp =  await JSON.parse(window.localStorage.getItem("emp"));
             console.log(emp);
 
             populateTable();
         };
 
 
-        function populateTable(){
+     async function populateTable(){
 
             console.log(emp.reqs);
 
@@ -30,7 +30,7 @@
         }
 
 
-        function moveToReimbursementPage() {
+       async function moveToReimbursementPage() {
             
             window.localStorage.setItem("emp", JSON.stringify(emp));
             window.location.replace("../emp-rComp/emp-reimbursement.html");

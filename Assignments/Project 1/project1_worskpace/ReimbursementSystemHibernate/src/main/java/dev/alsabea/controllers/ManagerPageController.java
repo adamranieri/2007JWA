@@ -7,8 +7,10 @@ import dev.alsabea.controllers.utilities.Ids;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.entities.ReimbursementRequest;
+import dev.alsabea.services.EmployeeServices;
 import dev.alsabea.services.ManagerServices;
 import dev.alsabea.services.ReimbursementRequestServices;
+import dev.alsabea.services.impl.EmployeeServicesImpl;
 import dev.alsabea.services.impl.ManagerServicesImpl;
 import dev.alsabea.services.impl.ReimbursementRequestServicesImpl;
 import io.javalin.http.Handler;
@@ -16,7 +18,8 @@ import io.javalin.http.Handler;
 public class ManagerPageController {
 	private static ReimbursementRequestServices rrServ= ReimbursementRequestServicesImpl.getInstance();
 	private static ManagerServices mServ = ManagerServicesImpl.getInstance();
-
+	private static EmployeeServices eServ = EmployeeServicesImpl.getInstance();
+	
 	private static Gson gs = new Gson();
 		
 
@@ -25,17 +28,17 @@ public class ManagerPageController {
 
 
 			//this is the updated Version
-			ReimbursementRequest rr= gs.fromJson(ctx.body(), ReimbursementRequest.class);
+			ReimbursementRequest rrNew= gs.fromJson(ctx.body(), ReimbursementRequest.class);
 			Ids ids= gs.fromJson(ctx.body(), Ids.class);
 			
-			rr.setRrId(ids.getRrId());
-			rr.setEmp(new Employee(ids.getEmpId()));
-			rr.setMgr(new Manager(ids.getMgrId()));
+			ReimbursementRequest rrTemp=rrServ.retrieveById(ids.getRrId());
+			rrNew.setEmp(rrTemp.getEmp());
+			rrNew.setMgr(rrTemp.getMgr());
 			
-			rrServ.update(rr);
-			Manager mCleaned =  Cleaner.cleanInstance(mServ.retrieveById(ids.getMgrId()));
+			rrServ.update(rrNew);
+			Employee eCleaned =  Cleaner.cleanInstance(eServ.retrieveById(rrNew.getEmp().getEmpId()));
 			
-			ctx.result(gs.toJson(mCleaned));
+			ctx.result(gs.toJson(eCleaned));
 			
 	};
 

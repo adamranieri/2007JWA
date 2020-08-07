@@ -40,7 +40,7 @@ public class Manager {
 	private String password;
 
 	
-	@OneToMany (mappedBy= "mgr", fetch= FetchType.LAZY) 
+	@OneToMany (mappedBy= "mgr", fetch= FetchType.EAGER) 
 	@Cascade(CascadeType.SAVE_UPDATE)
 	List<Employee> emps = new ArrayList<>();
 

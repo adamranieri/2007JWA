@@ -13,7 +13,7 @@
         <input type="text" id="usernameInput" placeholder="username">
         <input type="text" id="passwordInput" placeholder="password">
 
-        <button id="getPerson" onclick="getPerson()">get Person</button>
+        <button id="getPerson" onclick="getPerson()">Login</button>
     </div>
 
 
@@ -37,23 +37,19 @@
                 body: JSON.stringify(credentials)
             };
 
-
-            
-
-
             const httpResponse = await fetch("http://localhost:7000/xyz", config);
             let person = await httpResponse.json();
 
             if (person.role ==="mgr"){
-                //window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
-                //window.location.replace("mgr.html");
+                window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
+                window.location.replace("./manager/mgrComp/mgr.html");
 
 
             }
             else {
 
-               // window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
-                //window.location.replace("emp.html")
+                window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
+                window.location.replace("./employee/empComp/emp.html")
 
             }
 
