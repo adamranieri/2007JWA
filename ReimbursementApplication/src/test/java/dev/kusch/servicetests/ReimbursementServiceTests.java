@@ -1,18 +1,18 @@
 package dev.kusch.servicetests;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.mockito.Mockito;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import dev.kusch.daos.EmployeeDAO;
+import dev.kusch.daos.ReimbursementDAO;
 import dev.kusch.entities.Employee;
 import dev.kusch.entities.Reimbursement;
 import dev.kusch.services.EmployeeService;
@@ -23,93 +23,108 @@ import dev.kusch.services.ReimbursementServiceImpl;
 @TestMethodOrder(OrderAnnotation.class)
 class ReimbursementServiceTests {
 
-	private ReimbursementService rserv = new ReimbursementServiceImpl();
-	private EmployeeService eserv = new EmployeeServiceImpl();
-	private static Date date = new Date();
+	private static ReimbursementService rserv = null;
+	private static EmployeeService eserv = null;
+	
+	private static Employee emp;
+	private static Employee badEmp;
+	private static Reimbursement reim;
+	private static Reimbursement upReim;
+	private static Reimbursement badReim;
+	private static Reimbursement createReim;
+	private static List<Reimbursement> listReim;
 	
 	@BeforeAll
-	static void setDate() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		try {
-			date = dateFormat.parse("06/07/2020");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	static void setupMocks() {
+		emp = new Employee(1, "Sullivan", "B3stSc4r3r", "James", "Sullivan", new ArrayList<Reimbursement>());
+		badEmp = new Employee(100, "Boo", "hugs", "Boo", "Boo", new ArrayList<Reimbursement>());
+		createReim = new Reimbursement(0, "Denied", "Workplace accident at Chinese Restaraunt", 1000.00, "We received no invoice from a restaraunt", emp);
+		reim = new Reimbursement(1, "Denied", "Workplace accident at Chinese Restaraunt", 1000.00, "We received no invoice from a restaraunt", emp);
+		badReim = new Reimbursement(1000, "Pending", "YOUR FACE", 1000.00, "", badEmp);
+		upReim = new Reimbursement(1, "Approved", "Workplace accident at Chinese Restaraunt", 1000.00, "We received no invoice from a restaraunt", emp);
+		listReim = new ArrayList<Reimbursement>();
+		listReim.add(reim);
+		ReimbursementDAO rdao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO edao = Mockito.mock(EmployeeDAO.class);
+
+		Mockito.when(edao.getEmployeeById(1)).thenReturn(emp);
+		Mockito.when(edao.getEmployeeById(70)).thenReturn(badEmp);
+		
+		Mockito.when(rdao.createReimbursement(createReim)).thenReturn(reim);
+		Mockito.when(rdao.getAllReimbursements()).thenReturn(listReim);
+		Mockito.when(rdao.getReimbursementById(1)).thenReturn(reim);
+		Mockito.when(rdao.getReimbursementById(70)).thenReturn(null);
+		Mockito.when(rdao.getReimbursementsByEmployee(emp)).thenReturn(listReim);
+		Mockito.when(rdao.getReimbursementsByEmployee(badEmp)).thenReturn(new ArrayList<Reimbursement>());
+		Mockito.when(rdao.updateReimbursement(upReim)).thenReturn(upReim);
+		Mockito.when(rdao.updateReimbursement(badReim)).thenReturn(null);
+		Mockito.when(rdao.deleteReimbursement(reim)).thenReturn(true);
+		Mockito.when(rdao.deleteReimbursement(badReim)).thenReturn(false);
+		
+		rserv = new ReimbursementServiceImpl(rdao);
+		eserv = new EmployeeServiceImpl(edao);
 	}
 	
 	@Test
 	@Order(1)
 	void createReimbursement() {
-		Employee emp = eserv.getEmployeeById(1);
-		Reimbursement reim = new Reimbursement(0, "Denied", "Workplace accident at Chinese Restaraunt", date, 1000.00, "We received no invoice from a restaraunt",emp);
-		
-		rserv.createReimbursement(reim);
-		Assertions.assertNotEquals(0, reim.getRid());
+		Reimbursement reimbursement = rserv.createReimbursement(createReim);
+		Assertions.assertNotEquals(0, reimbursement.getRid());
 	}
 	
 	@Test
 	@Order(2)
 	void getAllReimbursements() {
-		List<Reimbursement> reim = rserv.getAllReimbursements();
-		Assertions.assertEquals(1, reim.size());
+		List<Reimbursement> reimbursement = rserv.getAllReimbursements();
+		Assertions.assertEquals(1, reimbursement.size());
 	}
 	
 	@Test
 	@Order(3)
 	void getReimbursement() {
-		Reimbursement reim = rserv.getReimbursement(1);
-		Assertions.assertEquals("Denied", reim.getStatus());
+		Reimbursement reimbursement = rserv.getReimbursement(1);
+		Assertions.assertEquals("Denied", reimbursement.getStatus());
 	}
 	
 	@Test
 	@Order(4)
 	void getReimbursementByBadId() {
-		Reimbursement reim = rserv.getReimbursement(10000);
-		Assertions.assertNull(reim);
+		Reimbursement reimbursement = rserv.getReimbursement(10000);
+		Assertions.assertNull(reimbursement);
 	}
 	
 	@Test
 	@Order(5)
 	void getReimbursementsByEmployee() {
-		Employee emp = eserv.getEmployeeById(1);
-		List<Reimbursement> reim = rserv.getReimbursementsByEmployee(emp);
-		System.out.println(reim);
-		Assertions.assertEquals(1, reim.size());
-		Assertions.assertEquals("Denied", reim.get(0).getStatus());
+		List<Reimbursement> reimbursement = rserv.getReimbursementsByEmployee(emp);
+		Assertions.assertEquals(1, reimbursement.size());
+		Assertions.assertEquals("Denied", reimbursement.get(0).getStatus());
 	}
 	
 	@Test
 	@Order(6)
 	void getReimbursementsByBadEmployee() {
-		Employee emp = new Employee(1000, "Bad", "Bad", "bad", "bad", new ArrayList<Reimbursement>());
-		List<Reimbursement> reim = rserv.getReimbursementsByEmployee(emp);
-		Assertions.assertEquals(0, reim.size());
+		List<Reimbursement> reimbursement = rserv.getReimbursementsByEmployee(badEmp);
+		Assertions.assertEquals(0, reimbursement.size());
 	}
 	
 	@Test
 	@Order(7)
 	void updateReimbursement() {
-		Reimbursement reim = rserv.getReimbursement(1);
-		reim.setStatus("Approved");
-		reim = rserv.updateReimbursement(reim);
-		Reimbursement reimAct = rserv.getReimbursement(1);
-		Assertions.assertEquals("Approved",reimAct.getStatus());
+		Reimbursement reimbursement = rserv.updateReimbursement(upReim);
+		Assertions.assertEquals("Approved",reimbursement.getStatus());
 	}
 	
 	@Test
 	@Order(8)
 	void updateBadReimbursement() {
-		Employee emp = new Employee(1000, "Bad", "Bad", "bad", "bad", new ArrayList<Reimbursement>());
-		Reimbursement reim = new Reimbursement(1000, "Pending", "YOUR FACE", date, 1000.00, "",emp);
-		reim = rserv.updateReimbursement(reim);
-		Assertions.assertNull(reim);
+		Reimbursement reimbursement = rserv.updateReimbursement(badReim);
+		Assertions.assertNull(reimbursement);
 	}
 	
 	@Test
 	@Order(9)
 	void testDeleteReimbursement() {
-		Reimbursement reim = rserv.getReimbursement(1);
 		boolean result = rserv.deleteReimbursement(reim);
 		Assertions.assertTrue(result);
 	}
@@ -117,9 +132,7 @@ class ReimbursementServiceTests {
 	@Test
 	@Order(10)
 	void testDeleteBadReimbursement() {
-		Employee emp = new Employee(1000, "Bad", "Bad", "bad", "bad", new ArrayList<Reimbursement>());
-		Reimbursement reim = new Reimbursement(1000, "Pending", "YOUR FACE", date, 1000.00, "",emp);
-		boolean result = rserv.deleteReimbursement(reim);
+		boolean result = rserv.deleteReimbursement(badReim);
 		Assertions.assertFalse(result);
 	}
 

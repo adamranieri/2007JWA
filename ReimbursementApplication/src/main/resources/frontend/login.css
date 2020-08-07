@@ -1,0 +1,34 @@
+#headbar {
+    height: 150px;
+    margin-bottom: 2%;
+    padding: 25px;
+    text-align: left;
+}
+
+#headbar h1 {
+    font-size: 36pt;
+}
+
+body {
+    text-align: center;
+}
+
+#loginForm {
+    border: solid;
+    border-width: 2px;
+    background-color: #428bca;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#userFieldP {
+    margin: 2%;
+}
+
+#passFieldP {
+    margin: 2%;
+}
+
+#logBtn {
+    margin: 2%;
+}

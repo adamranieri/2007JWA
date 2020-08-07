@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import dev.kusch.daos.ManagerDAO;
+import dev.kusch.daos.ManagerDAOHibernate;
 import dev.kusch.entities.Manager;
 import dev.kusch.services.ManagerService;
 import dev.kusch.services.ManagerServiceImpl;
@@ -12,7 +14,10 @@ import io.javalin.http.Handler;
 
 public class ManagerController {
 
-	private static ManagerService mserv = new ManagerServiceImpl();
+	private static ManagerDAO mdao = ManagerDAOHibernate.getManagerDAOHibernate();
+	
+	private static ManagerService mserv = new ManagerServiceImpl(mdao);
+	
 	private static Gson gson = new Gson();
 
 	public static Handler getManager = (ctx) -> {

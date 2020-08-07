@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import dev.kusch.daos.EmployeeDAO;
+import dev.kusch.daos.EmployeeDAOHibernate;
+import dev.kusch.daos.ReimbursementDAO;
+import dev.kusch.daos.ReimbursementDAOHibernate;
 import dev.kusch.entities.Employee;
 import dev.kusch.entities.Reimbursement;
 import dev.kusch.services.EmployeeService;
@@ -15,8 +19,12 @@ import io.javalin.http.Handler;
 
 public class ReimbursementController {
 	
-	private static ReimbursementService rserv = new ReimbursementServiceImpl();
-	private static EmployeeService eserv = new EmployeeServiceImpl();
+	private static ReimbursementDAO rdao = ReimbursementDAOHibernate.getReimbursementDAOHibernate();
+	private static EmployeeDAO edao = EmployeeDAOHibernate.getEmployeeDAOHibernate();
+	
+	private static ReimbursementService rserv = new ReimbursementServiceImpl(rdao);
+	private static EmployeeService eserv = new EmployeeServiceImpl(edao);
+	
 	private static Gson gson = new Gson();
 	
 	public static Handler createReimbursement = (ctx) -> {
@@ -56,7 +64,9 @@ public class ReimbursementController {
 	public static Handler updateReimbursement = (ctx) -> {
 		String reimJson = ctx.body();
 		Reimbursement reim = gson.fromJson(reimJson, Reimbursement.class);
+		System.out.println(reim);
 		reim = rserv.updateReimbursement(reim);
+		System.out.println(reim);
 		if (reim == null) {
 			ctx.status(404);
 		} else {

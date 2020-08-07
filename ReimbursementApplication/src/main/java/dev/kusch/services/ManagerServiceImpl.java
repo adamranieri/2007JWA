@@ -10,7 +10,11 @@ import dev.kusch.entities.Manager;
 
 public class ManagerServiceImpl implements ManagerService {
 
-	private static ManagerDAO mdao = ManagerDAOHibernate.getManagerDAOHibernate();
+	private static ManagerDAO mdao = null;
+	
+	public ManagerServiceImpl(ManagerDAO mdaoIn) {
+		mdao = mdaoIn;
+	}
 	
 	@Override
 	public Manager getManagerById(int id) {

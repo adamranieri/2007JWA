@@ -34,7 +34,6 @@ public class App {
 		app.delete("/reimbursements", ReimbursementController.deleteReimbursement);
 		
 		app.post("/login", LoginController.loginHandler);
-		app.get("/userinfo", LoginController.getUserInfo);
 	}
 
 }

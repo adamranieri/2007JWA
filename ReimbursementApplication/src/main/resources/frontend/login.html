@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MPortal Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div id="headbar">
-        <img src="MInc.png" alt="Monsters Inc. Logo"/>
+    <div id="headbar" class="row bg-primary text-white">
+        <div class="col-sm-1 d-inline-block">
+            <img src="MInc.png" alt="Monsters Inc. Logo" width="100px" height = "100px"/>
+        </div>
+        <div class="col-sm-5">
+            <h1>Portal</h1>
+        </div>
     </div>
 
     <div id="loginForm">
-        <p>Username: <input id="userField" type="text"/></p>
-        <p>Password: <input id="passField" type="password"/></p>
-        <button onclick="logIn()">Log In</button>
+        <p id="userFieldP"><b>Username: </b><input id="userField" type="text"/></p>
+        <p id="passFieldP"><b>Password: </b><input id="passField" type="password"/></p>
+        <button id="logBtn" class="btn btn-secondary" onclick="logIn()">Log In</button>
     </div>
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="login.js"></script>
 
 </html>

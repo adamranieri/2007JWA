@@ -1,0 +1,35 @@
+body {
+    text-align: center;
+}
+
+#headText {
+    text-align: left;
+}
+
+#createForm {
+    background-color: #428bca;;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#decisionForm {
+    background-color: #428bca;;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.createField {
+    margin: 2%;
+}
+
+.decideField {
+    margin: 2%;
+}
+
+#approveBtn {
+    margin-right: 2%;
+}
+
+#denyBtn {
+    margin-left: 2%;
+}

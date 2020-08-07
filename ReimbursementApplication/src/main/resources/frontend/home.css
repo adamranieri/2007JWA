@@ -23,6 +23,14 @@
     text-align: center;
 }
 
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
 .table {
     background-color:	#428bca;
     color: white;
@@ -38,5 +46,13 @@
 
 .table .denyBtn {
     color: red;
+}
+
+.decideBtn {
+    color: black;
+}
+
+.decideBtn:hover {
+    color: purple;
 }
 

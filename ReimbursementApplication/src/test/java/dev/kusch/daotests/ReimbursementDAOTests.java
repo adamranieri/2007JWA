@@ -1,6 +1,7 @@
 package dev.kusch.daotests;
 
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 
 import dev.kusch.daos.EmployeeDAO;
 import dev.kusch.daos.EmployeeDAOHibernate;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +40,7 @@ public class ReimbursementDAOTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Reimbursement reim = new Reimbursement(0, "Accepted", "Bought new clipboard", date, 10.45, "Better to file your paperwork", employee);
+		Reimbursement reim = new Reimbursement(0, "Accepted", "Bought new clipboard", 10.45, "Better to file your paperwork", employee);
 		rdao.createReimbursement(reim);
 		Assertions.assertNotEquals(0, reim.getRid());
 	}
@@ -102,7 +104,7 @@ public class ReimbursementDAOTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Reimbursement reimbursement = new Reimbursement(1000, "Submitted", "BAD REQUEST", date, 18.37, " ", employee);
+		Reimbursement reimbursement = new Reimbursement(1000, "Submitted", "BAD REQUEST", 18.37, " ", employee);
 		
 		
 		reimbursement = rdao.updateReimbursement(reimbursement);
@@ -129,7 +131,7 @@ public class ReimbursementDAOTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Reimbursement reimbursement = new Reimbursement(1000, "Submitted", "BAD REQUEST", date, 18.37, " ", employee);
+		Reimbursement reimbursement = new Reimbursement(1000, "Submitted", "BAD REQUEST", 18.37, " ", employee);
 		boolean result = rdao.deleteReimbursement(reimbursement);
 		Assertions.assertFalse(result);
 	}

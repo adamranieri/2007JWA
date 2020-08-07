@@ -28,9 +28,9 @@ public class Reimbursement {
 	@Column(name="message")
 	private String message;
 	
-	@Column(name="accepted")
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	//@Column(name="accepted")
+	//@Temporal(TemporalType.DATE)
+	//private Date date;
 	
 	@Column(name="amount")
 	private double amount;
@@ -47,13 +47,13 @@ public class Reimbursement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimbursement(int rid, String status, String message, Date date, double amount, String acceptMessage,
+	public Reimbursement(int rid, String status, String message, double amount, String acceptMessage,
 			Employee employee) {
 		super();
 		this.rid = rid;
 		this.status = status;
 		this.message = message;
-		this.date = date;
+		//this.date = date;
 		this.amount = amount;
 		this.acceptMessage = acceptMessage;
 		this.employee = employee;
@@ -61,7 +61,7 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [rid=" + rid + ", status=" + status + ", message=" + message + ", date=" + date
+		return "Reimbursement [rid=" + rid + ", status=" + status + ", message=" + message
 				+ ", amount=" + amount + ", accept_message=" + acceptMessage + ", employee=" + employee + "]";
 	}
 
@@ -89,13 +89,13 @@ public class Reimbursement {
 		this.message = message;
 	}
 
-	public Date getDate() {
-		return date;
-	}
+	//public Date getDate() {
+		//return date;
+	//}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	//public void setDate(Date date) {
+		//this.date = date;
+	//}
 
 	public String getAcceptMessage() {
 		return acceptMessage;

@@ -11,6 +11,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	private static EmployeeDAO edao = EmployeeDAOHibernate.getEmployeeDAOHibernate();
 	
+	public EmployeeServiceImpl(EmployeeDAO edaoIn) {
+		edao = edaoIn;
+	}
+	
 	@Override
 	public Employee getEmployeeById(int id) {
 		return edao.getEmployeeById(id);

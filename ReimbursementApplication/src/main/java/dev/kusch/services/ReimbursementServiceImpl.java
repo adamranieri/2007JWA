@@ -9,7 +9,11 @@ import dev.kusch.entities.Reimbursement;
 
 public class ReimbursementServiceImpl implements ReimbursementService {
 
-	private static ReimbursementDAO rdao = ReimbursementDAOHibernate.getReimbursementDAOHibernate();
+	private static ReimbursementDAO rdao = null;;
+	
+	public ReimbursementServiceImpl (ReimbursementDAO rdaoIn) {
+		rdao = rdaoIn;
+	}
 	
 	@Override
 	public Reimbursement createReimbursement(Reimbursement reimbursement) {
