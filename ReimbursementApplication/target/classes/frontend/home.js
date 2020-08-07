@@ -21,9 +21,9 @@ async function loadPage() {
     }
    
     // Build table using our reimbursement object
-    let tableHtml = `<table class="table">`;
+    let tableHtml = `<table id="reimbursementTable" class="table">`;
     for (let reimbursement of responseObj) {
-        tableHtml += `<tr scope="row"><td>${reimbursement.message}</td><td>$${reimbursement.amount}</td>`
+        tableHtml += `<tr scope="row"><td class="reimMessage>${reimbursement.message}</td><td class="reimAmount">$${reimbursement.amount}</td>`
 
         // customize the table between employees and managers
         if (user.isManager) {

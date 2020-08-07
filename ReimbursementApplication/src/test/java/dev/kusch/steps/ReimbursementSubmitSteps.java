@@ -2,6 +2,7 @@ package dev.kusch.steps;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,7 +26,7 @@ public class ReimbursementSubmitSteps {
 
 	@Then("^the title should be \"([^\"]*)\"$")
 	public void the_title_should_be(String arg1) throws Throwable {
-		Assert.assertEquals("MPortal", driver.getTitle());
+		Assert.assertEquals(arg1, driver.getTitle());
 	}
 	
 	@Given("^the Employee is on the login page$")
@@ -47,7 +48,7 @@ public class ReimbursementSubmitSteps {
 	public void the_Employee_clicks_the_submit_button() throws Throwable {
 		loginpage.logBtn.click();
 		synchronized (driver) {
-			driver.wait(300);
+			driver.wait(500);
 		}
 	}
 	
@@ -60,26 +61,38 @@ public class ReimbursementSubmitSteps {
 	public void the_Employee_clicks_the_create_reimbursement_button() throws Throwable {
 	    homepage.createBtn.click();
 	    synchronized (driver) {
-	    	driver.wait(300);
+	    	driver.wait(500);
 	    }
 	}
 	
 	@When("^the Employee types \"([^\"]*)\" into the reason field$")
 	public void the_Employee_types_into_the_reason_field(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    formpage.reasonField.sendKeys(arg1);
 	}
 
 	@When("^the Employee types \"([^\"]*)\" into the amount field$")
 	public void the_Employee_types_into_the_amount_field(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	   formpage.amountField.sendKeys(arg1);
 	}
 
 	@When("^the Employee clicks the send button$")
 	public void the_Employee_clicks_the_send_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    formpage.sendReimBtn.click();
+	    synchronized (driver) {
+	    	driver.wait(500);
+	    }
+	}
+	
+	@Then("^the last reimbursement should have this message \"([^\"]*)\"$")
+	public void the_last_reimbursement_should_have_this_message(String arg1) throws Throwable {
+	    WebElement lastEl = homepage.reimMessage.get(homepage.reimMessage.size() - 1);
+	    Assert.assertEquals(arg1, lastEl.getText());
+	}
+
+	@Then("^the last reimbursement should have this amount \"([^\"]*)\"$")
+	public void the_last_reimbursement_should_have_this_amount(String arg1) throws Throwable {
+	    WebElement lastEl = homepage.reimAmount.get(homepage.reimAmount.size() - 1);
+	    Assert.assertEquals('$' + arg1, lastEl.getText());
 	}
 
 }

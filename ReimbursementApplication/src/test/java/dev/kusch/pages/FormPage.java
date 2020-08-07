@@ -13,6 +13,21 @@ public class FormPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="createBtn")
-	public WebElement createBtn;
+	@FindBy(id="reasonField")
+	public WebElement reasonField;
+	
+	@FindBy(id="amountField")
+	public WebElement amountField;
+	
+	@FindBy(id="createBtnTwo")
+	public WebElement sendReimBtn;
+	
+	@FindBy(id="messageField")
+	public WebElement acceptMessageField;
+	
+	@FindBy(id="approveBtn")
+	public WebElement approveBtn;
+	
+	@FindBy(id="denyBtn")
+	public WebElement denyBtn;
 }

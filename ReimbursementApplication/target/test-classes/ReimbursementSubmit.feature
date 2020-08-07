@@ -13,3 +13,5 @@ Feature: Submit a Reimbursement
 		When the Employee types "Costs to go to the UScare Conference" into the reason field
 		When the Employee types "126.65" into the amount field
 		When the Employee clicks the send button
+		Then the last reimbursement should have this message "Costs to go to the UScare Conference"
+		Then the last reimbursement should have this amount "126.65"

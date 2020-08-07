@@ -28,13 +28,12 @@ public class ReimbursementController {
 	private static Gson gson = new Gson();
 	
 	public static Handler createReimbursement = (ctx) -> {
-		System.out.println("here");
 		String reimJson = ctx.body();
 		Reimbursement reim = gson.fromJson(reimJson, Reimbursement.class);
 		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
-		System.out.println(emp);
 		reim.setEmployee(emp);
 		reim = rserv.createReimbursement(reim);
+		System.out.println(reim);
 		ctx.status(201);
 		ctx.result(gson.toJson(reim));
 	};
@@ -46,7 +45,6 @@ public class ReimbursementController {
 	
 	public static Handler getReimbursementsByUser = (ctx) -> {
 		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
-		System.out.println(emp.getReimbursements());
 		List<Reimbursement> reims = rserv.getReimbursementsByEmployee(emp);
 		ctx.result(gson.toJson(reims));
 	};
@@ -64,9 +62,7 @@ public class ReimbursementController {
 	public static Handler updateReimbursement = (ctx) -> {
 		String reimJson = ctx.body();
 		Reimbursement reim = gson.fromJson(reimJson, Reimbursement.class);
-		System.out.println(reim);
 		reim = rserv.updateReimbursement(reim);
-		System.out.println(reim);
 		if (reim == null) {
 			ctx.status(404);
 		} else {
