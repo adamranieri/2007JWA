@@ -26,10 +26,10 @@
 
         function managerSession() {
 
-            let personMgr = {"role":"mgr","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe","username":"johnUser","password":"johnPass","emps":[{"empId":1,"firstName":"greg","lastName":"dreg","reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"}]},{"empId":2,"firstName":"ria","lastName":"bro","reqs":[]}]}};
+            let personMgr = {"role":"mgr","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe","username":"johnUser","password":"johnPass","emps":[{"empId":1,"firstName":"greg","lastName":"dreg","reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"},{"rrId":13,"reimbursementRequest":"50000 to the one who","reimbursementStatus":"PENDING","reason":""}]},{"empId":2,"firstName":"ria","lastName":"bro","reqs":[]}]}};
 
             window.localStorage.setItem("mgr", JSON.stringify(personMgr.mgr));
-            window.location.replace("./manager/mgr.html");
+            window.location.replace("./manager/mgrComp/mgr.html");
         }
 
 
@@ -39,12 +39,12 @@
 
 
 
-        let personEmp = {"role":"emp","emp":{"empId":1,"firstName":"greg","lastName":"dreg","username":"gregUser","password":"gregPass","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe"},"reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"}]}};
+        let personEmp = {"role":"emp","emp": { "empId":1,"firstName":"greg","lastName":"dreg","username":"gregUser","password":"gregPass","mgr":{"mgrId":1,"firstName":"John","lastName":"Doe"},"reqs":[{"rrId":1,"reimbursementRequest":"req 5000$ to buy awesome car","reimbursementStatus":"DENIED","reason":"you should save to buy it, no free money for you"},{"rrId":13,"reimbursementRequest":"50000 to the one who","reimbursementStatus":"PENDING","reason":""}]}};
 
 
         window.localStorage.setItem("emp",JSON.stringify(personEmp.emp) );
-        window.location.replace("./employee/emp.html");
-
+        window.location.replace("./employee/empComp/emp.html");
+            
         }
 
 

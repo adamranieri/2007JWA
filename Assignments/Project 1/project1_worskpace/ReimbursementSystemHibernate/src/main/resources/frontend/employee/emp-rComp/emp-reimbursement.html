@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reimbursement Request</title>
+   
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../generalStyles.css">
+    <script src="emp-reimbursement.js"></script>
+</head>
+<body onload="init()">
+    <a href="../empComp/emp.html"> <u><b> Back</b></u> </a> <br>
+
+
+            <h3 style="margin-left: 30% ;">Reimbursement Request Form</h3> 
+            <label for="eName"> Sender (You)</label>
+            <h5 id=eName></h5>
+            <br>
+
+            <label for="mName">To Manager</label>
+            <h5 id=mName></h5>
+
+            <br><br>
+            <label for="theRequest">Reimbursement Request</label>
+            <br>
+            <textarea name="req" id="theRequest" cols="50" rows="10"></textarea>
+      
+            <br>
+            <button  onclick="submitRequest()">Submit</button>
+
+      
+
+    <h4 id="test"></h4>
+
+
+
+    
+
+    
+
+   
+</body>
+</html>
