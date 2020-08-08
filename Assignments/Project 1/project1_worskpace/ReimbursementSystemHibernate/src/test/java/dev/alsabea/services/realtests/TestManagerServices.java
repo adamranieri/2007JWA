@@ -1,8 +1,8 @@
-package dev.alsabea.services;
+package dev.alsabea.services.realtests;
 
-import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,37 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.alsabea.connection.HibernateConnectionEstablisher;
+import dev.alsabea.doas.ManagerDao;
+import dev.alsabea.doas.impl.ManagerDaoImpl;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.services.ManagerServices;
 import dev.alsabea.services.impl.ManagerServicesImpl;
+import dev.alsabea.setupteardown.SetUpAndTearDown;
 
 
 @TestMethodOrder(OrderAnnotation.class)
 class TestManagerServices {
 
-	private static ManagerServices mServ= ManagerServicesImpl.getInstance();
+	private static ManagerServices mServ;
+	
+	
+	@BeforeAll
+	final static void initializeService() {
+		ManagerDao mDao= ManagerDaoImpl.getInstance();
+		mServ = new ManagerServicesImpl(mDao);
+	}
+	
+	
+	@BeforeAll
+	final static void setup() {
+		SetUpAndTearDown.setup();
+	}
+	
+	@AfterAll
+	final static void teardown() {
+		SetUpAndTearDown.teardown();
+	}
+	
 	
 	
 	@Test
@@ -59,16 +81,14 @@ class TestManagerServices {
 	
 	
 	@ParameterizedTest
-	@CsvSource({"1, John, Doe, 2" , 
-				"2, rick, brick, 2"})
+	@CsvSource({"1, John, Doe" , 
+				"2, rick, brick"})
 	@Order(2)
-	final void testRetrieveById(long id, String firstName, String lastName,
-			int empsSize) {
+	final void testRetrieveById(long id, String firstName, String lastName) {
 		Manager m= mServ.retrieveById(id);
 		
 		Assertions.assertEquals(firstName, m.getFirstName());
 		Assertions.assertEquals(lastName, m.getLastName());
-		Assertions.assertEquals(empsSize, m.getEmps().size());
 	}
 
 	@ParameterizedTest
@@ -136,21 +156,5 @@ class TestManagerServices {
 	final void testDeleteByIdNegative() {
 		Assertions.assertFalse(mServ.deleteById(78));	
 	}
-
-	
-	@AfterAll
-	final static void cleanUp() {
-		String sql = "DELETE FROM Manager  WHERE firstName LIKE 'test%'";
-		try (Session s= HibernateConnectionEstablisher.getSessionFactory().openSession()){
-
-			s.beginTransaction();
-			s.createQuery(sql).executeUpdate();
-			s.getTransaction().commit();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	
 }

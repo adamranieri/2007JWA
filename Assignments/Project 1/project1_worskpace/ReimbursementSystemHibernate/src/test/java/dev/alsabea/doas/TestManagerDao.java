@@ -3,6 +3,7 @@ package dev.alsabea.doas;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -14,12 +15,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.impl.ManagerDaoImpl;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.setupteardown.SetUpAndTearDown;
 
 
 @TestMethodOrder(OrderAnnotation.class)
 class TestManagerDao {
 
 	private static ManagerDao mDao= ManagerDaoImpl.getInstance();
+	
+	
+	@BeforeAll
+	@Test 
+	final static void setup() {
+		SetUpAndTearDown.setup();
+	}
+	
+	@AfterAll
+	@Test
+	final static void teardown() {
+		SetUpAndTearDown.teardown();
+	}
 	
 	
 	@Test
@@ -68,16 +83,14 @@ class TestManagerDao {
 
 	
 	@ParameterizedTest
-	@CsvSource({"1, John, Doe, 2" , 
-				"2, rick, brick, 2 "})
+	@CsvSource({"1, John, Doe" , 
+				"2, rick, brick"})
 	@Order(3)
-	final void testRetrieveById(long id, String firstName, String lastName,
-			int empsSize) {
+	final void testRetrieveById(long id, String firstName, String lastName) {
 		Manager m= mDao.retrieveById(id);
 		
 		Assertions.assertEquals(firstName, m.getFirstName());
 		Assertions.assertEquals(lastName, m.getLastName());
-		Assertions.assertEquals(empsSize, m.getEmps().size());
 	}
 
 	
@@ -146,21 +159,6 @@ class TestManagerDao {
 	@Test
 	final void testDeleteByIdNegative() {
 		Assertions.assertFalse(mDao.deleteById(78));	
-	}
-
-	
-	@AfterAll
-	final static void cleanUp() {
-		String sql = "DELETE FROM Manager  WHERE firstName LIKE 'test%'";
-		try (Session s= HibernateConnectionEstablisher.getSessionFactory().openSession()){
-
-			s.beginTransaction();
-			s.createQuery(sql).executeUpdate();
-			s.getTransaction().commit();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	

@@ -1,12 +1,9 @@
 package dev.alsabea.doas;
 
-import java.util.List;
-
-import javax.validation.ConstraintViolationException;
-
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,11 +16,26 @@ import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.impl.EmployeeDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.setupteardown.SetUpAndTearDown;
 
 @TestMethodOrder(OrderAnnotation.class)
 class TestEmployeeDao {
 
 	private static EmployeeDaoImpl  empDao = EmployeeDaoImpl.getInstance();
+	
+	@BeforeAll
+	@Test 
+	final static void setup() {
+		SetUpAndTearDown.setup();
+	}
+	
+	@AfterAll
+	@Test
+	final static void teardown() {
+		SetUpAndTearDown.teardown();
+	}
+	
+	
 	
 	@Test @Order(5)
 	final void testCreateInstance() {
@@ -184,21 +196,5 @@ class TestEmployeeDao {
 		Assertions.assertFalse(empDao.deleteById(9999));
 	}
 	
-
-	
-	
-	@AfterAll
-	final static void cleanUp() {
-		String sql = "DELETE FROM Employee  WHERE firstName LIKE 'test%'";
-		try (Session s= HibernateConnectionEstablisher.getSessionFactory().openSession()){
-
-			s.beginTransaction();
-			s.createQuery(sql).executeUpdate();
-			s.getTransaction().commit();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 }

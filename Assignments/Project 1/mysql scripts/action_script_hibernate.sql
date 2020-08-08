@@ -10,7 +10,7 @@ CALL reimbursement_system_db.procedure_tear_down_hibernate_project1_db;
 
 SELECT * FROM reimbursement_system_db.manager;
 SELECT * FROM reimbursement_system_db.employee;
-SELECT * FROM reimbursement_system_db.reimbursement_request rr ;
+SELECT * FROM reimbursement_system_db.reimbursement_request rr order by emp_id  ;
 
 DELETE FROM reimbursement_system_db.emp_mgr where emp_id > 3; -- to delete the employees
 

@@ -14,6 +14,7 @@ import io.javalin.http.Handler;
 public class LogInPageController {
 
 	private static EmployeeServices eServ = EmployeeServicesImpl.getInstance();
+	
 	private static ManagerServices mServ = ManagerServicesImpl.getInstance();
 
 	private static Gson gs = new Gson();

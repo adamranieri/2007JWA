@@ -12,6 +12,18 @@ public class ReimbursementRequestServicesImpl  implements ReimbursementRequestSe
 	private static ReimbursementRequestDao rrd = ReimbursementRequestDaoImpl.getInstance();
 	
 	
+	
+	//for mocks
+	public ReimbursementRequestServicesImpl(ReimbursementRequestDao rrd) {
+		super();
+		ReimbursementRequestServicesImpl.rrd= rrd;
+	}
+
+	private ReimbursementRequestServicesImpl() {
+		
+	}
+	
+
 	public static ReimbursementRequestServicesImpl getInstance() {
 		if (rrs==null)
 			rrs= new ReimbursementRequestServicesImpl();

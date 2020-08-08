@@ -7,22 +7,34 @@ import dev.alsabea.services.ManagerServices;
 
 public class ManagerServicesImpl implements ManagerServices {
 	
-	
 	private static ManagerServicesImpl mServ;
+	private static ManagerDao mDao = ManagerDaoImpl.getInstance(); // null;
 	
-	private static ManagerDao mDao= ManagerDaoImpl.getInstance();
+	
+	
+	//for mocks
+	public ManagerServicesImpl(ManagerDao mDao) {
+		super();
+		
+		ManagerServicesImpl.mDao=mDao;
+	}
+
+	
+	
+	private ManagerServicesImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 	public static ManagerServicesImpl getInstance() {
-		
-		if (mServ==null) 
+		if (mServ==null)
 			mServ= new ManagerServicesImpl();
 		return mServ;
 		
 	}
 	
 	
-
 	@Override
 	public long createInstance(Manager t) {
 		
@@ -50,6 +62,12 @@ public class ManagerServicesImpl implements ManagerServices {
 		
 		return mDao.deleteById(key);
 	}
+
+
+
+	
+
+
 
 
 

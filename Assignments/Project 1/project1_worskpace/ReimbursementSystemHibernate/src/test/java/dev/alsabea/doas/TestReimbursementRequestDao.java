@@ -3,6 +3,7 @@ package dev.alsabea.doas;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -15,12 +16,26 @@ import dev.alsabea.doas.impl.ReimbursementRequestDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.entities.ReimbursementRequest;
+import dev.alsabea.setupteardown.SetUpAndTearDown;
 
 @TestMethodOrder(OrderAnnotation.class)
 class TestReimbursementRequestDao {
 
 	private static ReimbursementRequestDao  rrDao = ReimbursementRequestDaoImpl.getInstance();
 	
+	@BeforeAll
+	@Test 
+	final static void setup() {
+		SetUpAndTearDown.setup();
+	}
+	
+	@AfterAll
+	@Test
+	final static void teardown() {
+		SetUpAndTearDown.teardown();
+	}
+	
+
 	
 	@Test
 	final void testCreateInstance() {
@@ -139,22 +154,6 @@ class TestReimbursementRequestDao {
 	final void testDeleteByIdNegative(int id) {
 
 		Assertions.assertFalse(rrDao.deleteById(id));
-	}
-	
-	
-	@AfterAll
-	final static void cleanUp() {
-		String sql = "DELETE FROM ReimbursementRequest  WHERE "
-				+ " reimbursementRequest LIKE 'test%'";
-		try (Session s = HibernateConnectionEstablisher.getSessionFactory().openSession()){
-
-			s.beginTransaction();
-			s.createQuery(sql).executeUpdate();
-			s.getTransaction().commit();
-
-		} catch (javax.persistence.PersistenceException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

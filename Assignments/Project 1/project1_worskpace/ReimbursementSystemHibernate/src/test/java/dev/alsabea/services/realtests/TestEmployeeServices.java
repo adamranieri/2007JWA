@@ -1,9 +1,10 @@
 
-package dev.alsabea.services;
+package dev.alsabea.services.realtests;
 
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,13 +16,29 @@ import org.junit.jupiter.params.provider.ValueSource;
 import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
+import dev.alsabea.services.EmployeeServices;
 import dev.alsabea.services.impl.EmployeeServicesImpl;
+import dev.alsabea.setupteardown.SetUpAndTearDown;
 
 @TestMethodOrder(OrderAnnotation.class)
 class TestEmployeeServices {
 
 	private static EmployeeServices empServ = EmployeeServicesImpl.getInstance();
 
+	
+	@BeforeAll
+	@Test 
+	final static void setup() {
+		SetUpAndTearDown.setup();
+	}
+	
+	@AfterAll
+	@Test
+	final static void teardown() {
+		SetUpAndTearDown.teardown();
+	}
+	
+	
 	@Test
 	@Order(5)
 	final void testCreateInstance() {
@@ -92,7 +109,7 @@ class TestEmployeeServices {
 		Assertions.assertEquals("gregUser", emp.getUsername());
 		Assertions.assertEquals("gregPass", emp.getPassword());
 		Assertions.assertEquals("John", emp.getMgr().getFirstName());
-		Assertions.assertEquals(4, emp.getReqs().size());
+		Assertions.assertEquals(1, emp.getReqs().size());
 		
 
 	}
@@ -174,20 +191,6 @@ class TestEmployeeServices {
 	@Test
 	final void testDeleteByIdNegative() {
 		Assertions.assertFalse(empServ.deleteById(9999));
-	}
-
-	@AfterAll
-	final static void cleanUp() {
-		String sql = "DELETE FROM Employee  WHERE firstName LIKE 'test%'";
-		try (Session s = HibernateConnectionEstablisher.getSessionFactory().openSession()) {
-
-			s.beginTransaction();
-			s.createQuery(sql).executeUpdate();
-			s.getTransaction().commit();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

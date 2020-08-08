@@ -36,7 +36,7 @@ async function submitRequest(){
     };
 
 
-    const httpResponse = await fetch("http://localhost:7000/employee/submit-request", configRequest);
+    const httpResponse = await fetch("http://localhost:7000/employee/submitRequest", configRequest);
     let empReturned = await httpResponse.json();
 
 

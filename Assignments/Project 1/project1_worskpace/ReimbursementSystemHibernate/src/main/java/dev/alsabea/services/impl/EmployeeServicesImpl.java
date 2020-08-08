@@ -16,6 +16,23 @@ public class EmployeeServicesImpl implements EmployeeServices {
 	private static ReimbursementRequestDao rrDao= ReimbursementRequestDaoImpl.getInstance();
 	
 	
+	//this is for mocking
+	public EmployeeServicesImpl(EmployeeDao eDao, ReimbursementRequestDao rrDao) {
+		super();
+		EmployeeServicesImpl.eDao= eDao;
+		EmployeeServicesImpl.rrDao= rrDao;
+		
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	private EmployeeServicesImpl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public static EmployeeServicesImpl getInstance() {
 		
 		if (ems==null) 

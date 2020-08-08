@@ -75,7 +75,6 @@ public class ManagerDaoImpl implements ManagerDao {
 			Manager m = q.getSingleResult();
 			return m;
 		} catch (NoResultException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}

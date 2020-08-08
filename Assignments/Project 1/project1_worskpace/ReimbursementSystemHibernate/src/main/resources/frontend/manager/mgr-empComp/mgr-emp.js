@@ -56,13 +56,15 @@ async function init() {
             <select id="drop-down" name="dropdown" >
                 <option value= "PENDING" selected>PENDING</option>
                 <option value= "APPROVED">APPROVED</option>
-                <option value= "REJECTED">REJECTED</option>
+                <option value= "DENIED">DENIED</option>
             </select>
 
             </td>
 
-            <td>${pendingReqs[i].reimbursementStatus}</td>
-            <td>    ${pendingReqs[i].reason} </td>
+            <td>    
+                    <textarea name="req" id="the-reason" cols="50" rows="5"></textarea>
+            </td>
+            
             <td><button onclick="updateRequest(${i})" >  update  </button></td>
         </tr>
         `
@@ -96,6 +98,7 @@ async function updateRequest(i) {
 
     //console.log(document.getElementById("drop-down").value);
     pendingReqs[i].reimbursementStatus=document.getElementById("drop-down").value;
+    pendingReqs[i].reason=document.getElementById("the-reason").value;
 
     //console.log(pendingReqs[i].reimbursementStatus);
 
@@ -115,7 +118,7 @@ async function updateRequest(i) {
         };
     
     
-        const httpResponse = await fetch("http://localhost:7000/manager/employee-request", configRequest);
+        const httpResponse = await fetch("http://localhost:7000/manager/judgeRequest", configRequest);
         let empReturned = await httpResponse.json();
     
     

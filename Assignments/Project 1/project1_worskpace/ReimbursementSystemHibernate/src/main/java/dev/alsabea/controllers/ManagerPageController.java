@@ -17,7 +17,6 @@ import io.javalin.http.Handler;
 
 public class ManagerPageController {
 	private static ReimbursementRequestServices rrServ= ReimbursementRequestServicesImpl.getInstance();
-	private static ManagerServices mServ = ManagerServicesImpl.getInstance();
 	private static EmployeeServices eServ = EmployeeServicesImpl.getInstance();
 	
 	private static Gson gs = new Gson();

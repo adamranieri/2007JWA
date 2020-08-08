@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XYZ Login</title>
 </head>
+
 <body>
     <h1>XYZ Best Company</h1>
 
@@ -37,21 +39,29 @@
                 body: JSON.stringify(credentials)
             };
 
-            const httpResponse = await fetch("http://localhost:7000/xyz", config);
-            let person = await httpResponse.json();
+            try {
+                const httpResponse = await fetch("http://localhost:7000/xyz", config);
+                let person = await httpResponse.json();
 
-            if (person.role ==="mgr"){
-                window.localStorage.setItem ( "mgr", JSON.stringify(person.mgr));
-                window.location.replace("./manager/mgrComp/mgr.html");
+                if (person.role === "mgr") {
+                    window.localStorage.setItem("mgr", JSON.stringify(person.mgr));
+                    window.location.replace("./manager/mgrComp/mgr.html");
 
 
+                }
+                else {
+
+                    window.localStorage.setItem("emp", JSON.stringify(person.emp));
+                    window.location.replace("./employee/empComp/emp.html")
+
+                }
+
+
+            } catch (err) {
+                alert("username or password is wrong");
             }
-            else {
 
-                window.localStorage.setItem("emp", JSON.stringify(person.emp)) ;
-                window.location.replace("./employee/empComp/emp.html")
 
-            }
 
 
         }
@@ -59,4 +69,5 @@
 
     </script>
 </body>
+
 </html>

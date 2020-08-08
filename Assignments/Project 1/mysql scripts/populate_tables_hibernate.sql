@@ -33,8 +33,11 @@ VALUES
 (0, 3, 2, 'req gazillion dollar to be rich', 'APPROVED', "why not, it is not like it's coming from my pocket"),
 (0, 3, 2, 'req 550000 to cover medical bill', 'APPROVED', "covered by insurance"),
 (0, 4, 2, 'req 550000 to cover Lamborghini', 'APPROVED', "it is an awesome car "),
-(0, 6, 3,  'req 10000 to cover student loans', 'DENIED', " no reason, I don't feel like it ");
-
-
+(0, 6, 3,  'req 10000 to cover student loans', 'DENIED', " no reason, I don't feel like it "),
+(0, 2,1,'dollars to pay bills', 'PENDING', ""),
+(0, 2, 1,  'trillion to live life', 'PENDING', ""),
+(0, 2, 1, 'billion to be billionaire', 'PENDING', "" );
 
 END;
+
+
