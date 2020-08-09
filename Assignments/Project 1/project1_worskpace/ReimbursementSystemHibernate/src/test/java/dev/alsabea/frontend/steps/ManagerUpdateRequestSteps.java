@@ -1,7 +1,5 @@
 package dev.alsabea.frontend.steps;
 
-import java.util.concurrent.TimeoutException;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,25 +29,33 @@ public class ManagerUpdateRequestSteps {
 	public void manager_gets_redirected_to_the_employee_requests_page() throws Throwable {
 	   wait.until(ExpectedConditions.titleIs("employee_requests"));
 	   
-	   	//I have to put it here.
+	   	//I have to put the below lines here here.
 	    this.initialPendingTbSize= urPage.pendingRequestsTableSize();
 	    this.initialJudgedTbSize= urPage.judgedRequestsTableSize();
 	}
 
 	@When("^Manager fills a reason, chooses Approve, and clicks update on a request$")
 	public void manager_fills_a_reason_chooses_Approve_and_clicks_update_on_a_request() throws Throwable {
-	    urPage.reasonTextArea.sendKeys("filled from Selenium this is a reason");
-	    Select selector = new Select(urPage.optionsId);
+	    urPage.reasonTextAreaApprove.sendKeys("filled from Selenium this is a reason APPROVE");
+	    Select selector = new Select(urPage.optionsIdApprove);
 	    
 	    selector.selectByVisibleText("PENDING");
 	    selector.selectByVisibleText("APPROVED");
-	    
-	    //urPage.dropDown.selectByVisibleText("Pending");
-	    //urPage.dropDown.selectByVisibleText("APPROVED");
 
-	   
-	    urPage.updateBtn.click();
+	    urPage.updateBtnApprove.click();
 	}
+	
+	@When("^Manager fills a reason, chooses Denied and clicks update on a request$")
+	public void manager_fills_a_reason_chooses_Denied_and_clicks_update_on_a_request() throws Throwable {
+		 urPage.reasonTextAreaDeny.sendKeys("filled from Selenium this is a reason  DENY");
+		    Select selector = new Select(urPage.optionsIdDeny);
+		    
+		    selector.selectByVisibleText("PENDING");
+		    selector.selectByVisibleText("DENIED");
+
+		    urPage.updateBtnDeny.click();
+	}
+	
 	
 	@Then("^Page gets reloaded$")
 	public void page_gets_reloaded() throws Throwable {
@@ -69,11 +75,12 @@ public class ManagerUpdateRequestSteps {
 
 	@Then("^the request moves from pending requests to past requests of the employee$")
 	public void the_request_moves_from_pending_requests_to_past_requests_of_the_employee() throws Throwable {
-		System.out.println(this.initialPendingTbSize + " " + urPage.pendingRequestsTableSize());
-		System.out.println(this.initialJudgedTbSize + "  " + urPage.judgedRequestsTableSize());
 	   Assert.assertTrue(this.initialPendingTbSize > urPage.pendingRequestsTableSize());
 	   Assert.assertTrue(this.initialJudgedTbSize < urPage.judgedRequestsTableSize());
 	}
+
+	
+	
 
 	
 }

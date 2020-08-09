@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import dev.alsabea.doas.EmployeeDao;
-import dev.alsabea.doas.ReimbursementRequestDao;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.services.EmployeeServices;
@@ -15,7 +14,7 @@ import dev.alsabea.services.impl.EmployeeServicesImpl;
 class MockTestEmployeeService {
 
 	private static EmployeeDao eDao;
-	private static ReimbursementRequestDao rrDao;
+
 
 	private static EmployeeServices eServ;
 
@@ -24,9 +23,7 @@ class MockTestEmployeeService {
 
 		eDao = Mockito.mock(EmployeeDao.class);
 
-		rrDao = Mockito.mock(ReimbursementRequestDao.class);
-
-		eServ = new EmployeeServicesImpl(eDao, rrDao);
+		eServ = new EmployeeServicesImpl(eDao);
 	}
 
 	final Employee buildEmployee(long id) {

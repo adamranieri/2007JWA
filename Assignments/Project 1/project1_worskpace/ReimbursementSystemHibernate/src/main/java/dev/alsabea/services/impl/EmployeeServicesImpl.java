@@ -1,9 +1,7 @@
 package dev.alsabea.services.impl;
 
 import dev.alsabea.doas.EmployeeDao;
-import dev.alsabea.doas.ReimbursementRequestDao;
 import dev.alsabea.doas.impl.EmployeeDaoImpl;
-import dev.alsabea.doas.impl.ReimbursementRequestDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.services.EmployeeServices;
 
@@ -13,14 +11,14 @@ public class EmployeeServicesImpl implements EmployeeServices {
 	private static EmployeeServicesImpl ems;
 	
 	private static EmployeeDao eDao= EmployeeDaoImpl.getInstance();
-	private static ReimbursementRequestDao rrDao= ReimbursementRequestDaoImpl.getInstance();
+
 	
 	
 	//this is for mocking
-	public EmployeeServicesImpl(EmployeeDao eDao, ReimbursementRequestDao rrDao) {
+	public EmployeeServicesImpl(EmployeeDao eDao) {
 		super();
 		EmployeeServicesImpl.eDao= eDao;
-		EmployeeServicesImpl.rrDao= rrDao;
+
 		
 		// TODO Auto-generated constructor stub
 	}

@@ -92,7 +92,7 @@ async function init() {
 async function updateRequest(i) {
 
     //console.log(document.getElementById("drop-down").value);
-    document.getElementById(`updateRequestBtn_${pendingReqs[i].rrId}`).style.backgroundColor= "red";
+    document.getElementById(`updateRequestBtn_${pendingReqs[i].rrId}`).style.backgroundColor= "lightblue";
     
     pendingReqs[i].reimbursementStatus=document.getElementById(`dropDown_${pendingReqs[i].rrId}`).value;
     pendingReqs[i].reason=document.getElementById(`theReason_${pendingReqs[i].rrId}`).value;

@@ -23,18 +23,33 @@ public class ManagerUpdateRequestPage {
 	public WebElement secondRow;
 	
 	@FindBy(id = "theReason_7")
-	public WebElement reasonTextArea;
+	public WebElement reasonTextAreaApprove;
 	
 	
 	@FindBy (id = "dropDown_7")
-	public WebElement optionsId;
+	public WebElement optionsIdApprove;
 	
 	
 	
 	@FindBy(id = "updateRequestBtn_7")
-	public WebElement updateBtn;
+	public WebElement updateBtnApprove;
 	
 
+	@FindBy(id = "theReason_8")
+	public WebElement reasonTextAreaDeny;
+	
+	
+	@FindBy (id = "dropDown_8")
+	public WebElement optionsIdDeny;
+	
+	
+	
+	@FindBy(id = "updateRequestBtn_8")
+	public WebElement updateBtnDeny;
+	
+
+	
+	
 	
 	public int pendingRequestsTableSize() {
 		

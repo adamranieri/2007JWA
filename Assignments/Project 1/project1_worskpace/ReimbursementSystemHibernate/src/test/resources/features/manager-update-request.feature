@@ -17,3 +17,16 @@ Feature: Manager updates a request
 		When Manager fills a reason, chooses Approve, and clicks update on a request
 		Then Page gets reloaded
 		Then the request moves from pending requests to past requests of the employee
+		
+		
+	Scenario: Manager Rejects Request
+	
+		When Manager clicks on the name of an employee
+		Then Manager gets redirected to the employee requests page
+		
+		When Manager fills a reason, chooses Denied and clicks update on a request
+		Then Page gets reloaded
+		Then the request moves from pending requests to past requests of the employee
+		
+	
+		

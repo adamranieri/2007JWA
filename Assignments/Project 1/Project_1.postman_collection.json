@@ -47,6 +47,47 @@
 			"response": []
 		},
 		{
+			"name": "Get Manager Through username and password Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d12cd02-1ea6-4590-81f8-d3e1e7e23cee",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"johnUser\",\"password\":\"johnPass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/xyz",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Employee Through username and password",
 			"event": [
 				{
@@ -68,6 +109,47 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\"username\":\"riaUser\",\"password\":\"riaPass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/xyz",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Through username and password Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e858cdc8-43b0-471b-8f59-7c423bee5a18",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"oaisdfk\",\"password\":\"akjsdgfkl\"}",
 					"options": {
 						"raw": {
 							"language": "json"
