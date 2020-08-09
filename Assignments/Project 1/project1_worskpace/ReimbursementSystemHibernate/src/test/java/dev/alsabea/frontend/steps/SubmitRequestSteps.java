@@ -1,8 +1,6 @@
 package dev.alsabea.frontend.steps;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,16 +8,16 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dev.alsabea.frontend.pages.LoginPage;
 import dev.alsabea.frontend.pages.SubmitRequestPage;
-import dev.alsabea.frontend.runners.SubmitRequestRunner;
+import dev.alsabea.frontend.runners.PageRunner;
 import junit.framework.Assert;
 
 public class SubmitRequestSteps {
 
 	
-	public static SubmitRequestPage srPage = SubmitRequestRunner.srPage;
-	public static LoginPage loginPage = SubmitRequestRunner.loginPage;
-	public static WebDriver driver = SubmitRequestRunner.driver;
-	public static WebDriverWait wait= new WebDriverWait(driver, 2);
+	public static SubmitRequestPage srPage = PageRunner.srPage;
+	public static LoginPage loginPage = PageRunner.loginPage;
+	public static WebDriver driver = PageRunner.driver;
+	public static WebDriverWait wait= PageRunner.wait;
 	
 	private static int rowCount = srPage.countRequestRows();
 

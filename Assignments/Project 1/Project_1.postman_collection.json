@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "53655227-d53e-44b6-913f-e5a8c9c23b33",
+		"name": "Project_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Manager Through username and password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "90584ba3-9e5f-47be-9e91-6979db0ce8b6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"johnUser\",\"password\":\"johnPass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/xyz",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Through username and password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bef44ac9-4389-4a24-9ef1-75850a51c8b7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"riaUser\",\"password\":\"riaPass\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/xyz",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0bba60f7-0ac1-4ad5-9160-d036f3f5c2e9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"empId\":1,\"mgrId\":1, \"reimbursementRequest\": \"10 grand to build my house\", \"reimbursementStatus\" :\r\n  \"PENDING\", \"reason\" : \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/employee/submitRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"employee",
+						"submitRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a request for manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50bc1f40-5a5d-44fe-957e-3b4655f3bb1c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rrId\": 3, \"empId\":3,\"mgrId\":2, \"reimbursementRequest\": \"req 550000 to cover medical bill\", \"reimbursementStatus\" : \"PENDING\", \"reason\" : \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/manager/judgeRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"manager",
+						"judgeRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a request for manager 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bae983af-7be7-45d7-a45a-1c4160333e3e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rrId\": 5, \"reimbursementRequest\": \"req 10000 to cover student loans\",\r\n \"reimbursementStatus\" : \"PENDING\", \"reason\" : \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/manager/judgeRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"manager",
+						"judgeRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get updated Manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dccba616-d06e-4819-aa72-262036104406",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mgrId\": \"1\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/manager/getUpdatedManager",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"manager",
+						"getUpdatedManager"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

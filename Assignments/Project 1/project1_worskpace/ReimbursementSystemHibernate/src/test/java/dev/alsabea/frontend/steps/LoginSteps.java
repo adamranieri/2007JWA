@@ -9,18 +9,15 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dev.alsabea.frontend.pages.LoginPage;
 import dev.alsabea.frontend.pages.SubmitRequestPage;
-import dev.alsabea.frontend.runners.SubmitRequestRunner;
+import dev.alsabea.frontend.runners.PageRunner;
 import junit.framework.Assert;
 
 public class LoginSteps {
 
-	public static SubmitRequestPage srPage = SubmitRequestRunner.srPage;
-	public static LoginPage loginPage = SubmitRequestRunner.loginPage;
-	public static WebDriver driver = SubmitRequestRunner.driver;
+	public static LoginPage loginPage = PageRunner.loginPage;
+	public static WebDriver driver = PageRunner.driver;
 	
-//	public static LoginPage loginPage = LoginRunner.loginPage;
-//	public static WebDriver driver = LoginRunner.driver;
-	public static WebDriverWait wait= new WebDriverWait(driver, 2);
+	public static WebDriverWait wait= PageRunner.wait;
 	
 	@Given ("Employee is on the login page")
 	public void Employee_is_on_the_login_page() throws Throwable {
@@ -58,8 +55,8 @@ public class LoginSteps {
 		  loginPage.loginButton.click();
 	}
 
-	@Then("^Manager gets redirected to his employee web page$")
-	public void manager_gets_directed_to_his_employee_web_page() throws Throwable {
+	@Then("^Manager gets redirected to his manager web page$")
+	public void manager_gets_directed_to_his_manager_web_page() throws Throwable {
 		
 		LoginSteps.wait.until(ExpectedConditions.titleIs("MGR"));
 	    Assert.assertEquals ("MGR", driver.getTitle());

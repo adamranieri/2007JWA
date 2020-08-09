@@ -10,7 +10,7 @@ Feature: login page
 	
 		Given Manager is on the login page
 		When  Manager enters his credentials and hits login
-		Then  Manager gets redirected to his employee web page
+		Then  Manager gets redirected to his manager web page
 		
 		
 	Scenario: Employee enters wrong username or password or both

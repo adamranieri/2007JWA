@@ -8,7 +8,7 @@ async function init() {
     for (let i = 0; i < mgr.emps.length; i++) {
         tb +=
             `
-                <tr  onclick = redirectToEmp(${i}) >
+                <tr id=${mgr.emps[i].lastName}   onclick = redirectToEmp(${i}) >
                     <td >
                             ${mgr.emps[i].firstName} &nbsp ${mgr.emps[i].lastName} 
                     </td>    
