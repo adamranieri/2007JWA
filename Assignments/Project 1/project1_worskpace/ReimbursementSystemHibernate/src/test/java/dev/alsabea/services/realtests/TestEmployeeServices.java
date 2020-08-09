@@ -1,7 +1,6 @@
 
 package dev.alsabea.services.realtests;
 
-import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.services.EmployeeServices;
@@ -27,13 +25,11 @@ class TestEmployeeServices {
 
 	
 	@BeforeAll
-	@Test 
 	final static void setup() {
 		SetUpAndTearDown.setup();
 	}
 	
 	@AfterAll
-	@Test
 	final static void teardown() {
 		SetUpAndTearDown.teardown();
 	}
@@ -50,9 +46,7 @@ class TestEmployeeServices {
 		emp.setLastName("testLastName");
 		emp.setUsername("testUserName");
 		emp.setPassword("testPassword");
-		Manager mgr = new Manager();
-		mgr.setMgrId(1);
-		emp.setMgr(mgr);
+		emp.setMgr(new Manager (1));
 
 		long generatedId = empServ.createInstance(emp);
 

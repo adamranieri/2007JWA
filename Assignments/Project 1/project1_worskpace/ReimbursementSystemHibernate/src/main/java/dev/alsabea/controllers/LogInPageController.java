@@ -14,7 +14,7 @@ import io.javalin.http.Handler;
 public class LogInPageController {
 
 	private static EmployeeServices eServ = EmployeeServicesImpl.getInstance();
-	
+
 	private static ManagerServices mServ = ManagerServicesImpl.getInstance();
 
 	private static Gson gs = new Gson();
@@ -24,28 +24,31 @@ public class LogInPageController {
 		PersonWithRole p = new PersonWithRole();
 
 		Credentials c = gs.fromJson(ctx.body(), Credentials.class);
-		
-		System.out.println(c.username +"  " + c.password);
+
+		System.out.println(c.username + "  " + c.password);
 
 		Employee e = eServ.retrieveByUsernameAndPassword(c.username, c.password);
 		Manager m = null;
-		if (e == null) {
-			m = mServ.retrieveByUsernameAndPassword(c.username, c.password);
-			if (m == null) {
-				ctx.status(404);
-				ctx.result("no such record exist");
+
+			if (e == null) {
+				m = mServ.retrieveByUsernameAndPassword(c.username, c.password);
+				if (m == null) {
+					ctx.status(404);
+					ctx.result("no such record exist");
+					return;
+				}
+
+				p.mgr = Cleaner.cleanInstance(m);
+				p.role = "mgr";
+				ctx.result(gs.toJson(p));
+
+			} else {
+
+				p.role = ("emp");
+				p.emp = Cleaner.cleanInstance(e);
+				ctx.result(gs.toJson(p));
 			}
-			
-			p.mgr =  Cleaner.cleanInstance(m);
-			p.role = "mgr";
-			ctx.result(gs.toJson(p));
 
-		} else {
-
-			p.role = ("emp");
-			p.emp = Cleaner.cleanInstance(e);
-			ctx.result(gs.toJson(p));
-		}
 
 	};
 
@@ -56,7 +59,7 @@ public class LogInPageController {
 		Manager mgr;
 
 	}
-	
+
 	/*
 	 * removes circular reference, manager and employee username and passwords.
 	 */

@@ -18,6 +18,8 @@ import io.javalin.http.Handler;
 public class ManagerPageController {
 	private static ReimbursementRequestServices rrServ= ReimbursementRequestServicesImpl.getInstance();
 	private static EmployeeServices eServ = EmployeeServicesImpl.getInstance();
+	private static ManagerServices mServ= ManagerServicesImpl.getInstance();
+	
 	
 	private static Gson gs = new Gson();
 		
@@ -39,6 +41,19 @@ public class ManagerPageController {
 			
 			ctx.result(gs.toJson(eCleaned));
 			
+	};
+	
+	
+	public static Handler getUpdatedManager = (ctx) -> {
+		
+		System.out.println(ctx.body());
+		
+		Ids ids= gs.fromJson(ctx.body(), Ids.class);
+		
+		Manager mgr =Cleaner.cleanInstance(mServ.retrieveById(ids.getMgrId()));
+		
+		ctx.result(gs.toJson(mgr));
+		
 	};
 
 	

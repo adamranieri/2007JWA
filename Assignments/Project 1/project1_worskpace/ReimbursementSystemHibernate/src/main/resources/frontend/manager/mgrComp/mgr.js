@@ -22,6 +22,8 @@ async function init() {
 
 
 async function redirectToEmp(i) {
+
+    mgr.emps[i].mgrId = mgr.mgrId;
     window.localStorage.setItem("emp", JSON.stringify(mgr.emps[i]));
     let jj = window.localStorage.getItem("emp");
     console.log(jj);

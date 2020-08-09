@@ -82,8 +82,34 @@ public class ManagerDaoImpl implements ManagerDao {
 	@Override
 	public Manager retrieveById(long key) {
 
-		return sf.openSession().get(Manager.class, key);
+		Manager m= null;
+		try(Session sess= sf.openSession()){
+			m=sess.get(Manager.class, key);
+		}
+		
+		return m;
 	}
+	
+//	public Manager retrieveById(long key) {
+//		
+//		Manager mKey = new Manager(key);
+//		try (Session s = sf.openSession()) {
+//			//s.beginTransaction();
+//
+//			TypedQuery<Manager> q = s.createQuery("SELECT m from Manager m JOIN FETCH m.emps "
+//									+ " WHERE mgr = :mKey",
+//									Manager.class)
+//					.setParameter("mKey", mKey);
+//
+//			//s.getTransaction().commit();
+//			Manager m = q.getSingleResult();
+//			return m;
+//		} catch (NoResultException e) {
+//			return null;
+//		} 
+//	}
+//	
+	
 
 	@Override
 	public boolean update(Manager t) {

@@ -120,12 +120,28 @@ async function updateRequest(i) {
     
         const httpResponse = await fetch("http://localhost:7000/manager/judgeRequest", configRequest);
         let empReturned = await httpResponse.json();
-    
-    
-    
+        empReturned.mgrId=emp.mgrId;
         window.localStorage.setItem("emp", JSON.stringify(empReturned));
+
+        
+
+        let theId={
+            mgrId : emp.mgrId};
+
+        const configMgr = {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+            body: JSON.stringify(theId)
+        };
+
+        const updatedMgrResponse = await fetch("http://localhost:7000/manager/getUpdatedManager", configMgr);
+        let mgrReturned = await updatedMgrResponse.json();
+
+        window.localStorage.setItem("mgr", JSON.stringify(mgrReturned));
+
         window.location.reload();
     
-
     }
+
+
 }

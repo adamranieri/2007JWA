@@ -17,26 +17,16 @@ public class App {
 		}).start(7000);
 		
 		
-		
-		//login page
-		
 		app.post("/xyz", LogInPageController.getStaff);
 		
-		
-		
-		// employee page
-		
-		// *** reimbursement form to submit page ***
-		
-		//create rr
+
 		app.post("/employee/submitRequest", EmployeePageController.createRequest);
 		
 
-		//manager page
-		
-		//update request
 		app.put("/manager/judgeRequest", ManagerPageController.updateRequest);
 
+		
+		app.post("/manager/getUpdatedManager", ManagerPageController.getUpdatedManager);
 		
 	}
 }

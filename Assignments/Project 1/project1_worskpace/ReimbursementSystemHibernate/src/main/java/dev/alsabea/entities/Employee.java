@@ -1,7 +1,8 @@
 package dev.alsabea.entities;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Subselect;
 
 @Entity
 @Table(name = "employee")
@@ -48,7 +46,7 @@ public class Employee {
 	
 	@OneToMany(mappedBy = "emp", fetch= FetchType.EAGER)
 	@Cascade(CascadeType.SAVE_UPDATE)
-	List<ReimbursementRequest> reqs = new ArrayList<>();
+	Set<ReimbursementRequest> reqs = new HashSet<>();
 
 	public Employee() {
 		super();
@@ -107,11 +105,11 @@ public class Employee {
 		this.mgr = mgr;
 	}
 
-	public List<ReimbursementRequest> getReqs() {
+	public Set<ReimbursementRequest> getReqs() {
 		return reqs;
 	}
 
-	public void setReqs(List<ReimbursementRequest> reqs) {
+	public void setReqs(Set<ReimbursementRequest> reqs) {
 		this.reqs = reqs;
 	}
 

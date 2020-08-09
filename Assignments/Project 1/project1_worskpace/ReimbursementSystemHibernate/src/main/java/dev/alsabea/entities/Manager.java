@@ -1,7 +1,9 @@
 package dev.alsabea.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +44,7 @@ public class Manager {
 	
 	@OneToMany (mappedBy= "mgr", fetch= FetchType.EAGER) 
 	@Cascade(CascadeType.SAVE_UPDATE)
-	List<Employee> emps = new ArrayList<>();
+	Set<Employee> emps = new HashSet<>();
 
 	public Manager() {
 		super();
@@ -95,11 +97,11 @@ public class Manager {
 		this.password = password;
 	}
 
-	public List<Employee> getEmps() {
+	public Set<Employee> getEmps() {
 		return emps;
 	}
 
-	public void setEmps(List<Employee> emps) {
+	public void setEmps(Set<Employee> emps) {
 		this.emps = emps;
 	}
 

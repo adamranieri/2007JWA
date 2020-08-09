@@ -1,7 +1,9 @@
 package dev.alsabea.controllers.utilities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;
@@ -26,7 +28,7 @@ public class Cleaner {
 	
 	public static Manager cleanInstance(Manager m) {
 		
-		List<Employee> emps= new ArrayList<>();
+		Set<Employee> emps= new HashSet<>();
 		for (Employee e: m.getEmps()) {
 			e.setUsername(null);
 			e.setPassword(null);
@@ -39,7 +41,7 @@ public class Cleaner {
 		
 	}
 	
-	public  static  List<ReimbursementRequest> cleanReqs(List<ReimbursementRequest> reqs){
+	public  static  Set<ReimbursementRequest> cleanReqs(Set<ReimbursementRequest> reqs){
 		for (ReimbursementRequest req: reqs) {
 			req.setEmp(null);
 			req.setMgr(null);

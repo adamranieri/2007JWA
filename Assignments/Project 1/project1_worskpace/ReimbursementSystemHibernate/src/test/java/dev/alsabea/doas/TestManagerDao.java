@@ -83,14 +83,15 @@ class TestManagerDao {
 
 	
 	@ParameterizedTest
-	@CsvSource({"1, John, Doe" , 
-				"2, rick, brick"})
+	@CsvSource({"1, John, Doe, 2" , 
+				"2, rick, brick, 2"})
 	@Order(3)
-	final void testRetrieveById(long id, String firstName, String lastName) {
+	final void testRetrieveById(long id, String firstName, String lastName, int numOfEmps) {
 		Manager m= mDao.retrieveById(id);
 		
 		Assertions.assertEquals(firstName, m.getFirstName());
 		Assertions.assertEquals(lastName, m.getLastName());
+		Assertions.assertEquals(numOfEmps, m.getEmps().size());
 	}
 
 	

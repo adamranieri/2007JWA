@@ -11,8 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.alsabea.doas.ManagerDao;
-import dev.alsabea.doas.impl.ManagerDaoImpl;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.services.ManagerServices;
 import dev.alsabea.services.impl.ManagerServicesImpl;
@@ -22,15 +20,7 @@ import dev.alsabea.setupteardown.SetUpAndTearDown;
 @TestMethodOrder(OrderAnnotation.class)
 class TestManagerServices {
 
-	private static ManagerServices mServ;
-	
-	
-	@BeforeAll
-	final static void initializeService() {
-		ManagerDao mDao= ManagerDaoImpl.getInstance();
-		mServ = new ManagerServicesImpl(mDao);
-	}
-	
+	private static ManagerServices mServ = ManagerServicesImpl.getInstance();
 	
 	@BeforeAll
 	final static void setup() {
@@ -56,7 +46,7 @@ class TestManagerServices {
 		
 		long generatedId= mServ.createInstance(mgr);
 		
-		Assertions.assertNotEquals(-1, generatedId);
+		Assertions.assertNotEquals(0, generatedId);
 	}
 	
 //	@Test

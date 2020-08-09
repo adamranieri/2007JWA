@@ -20,7 +20,7 @@
             for (let i=0; i<emp.reqs.length; i++){
                 tb+=
                 `<tr> 
-                <td>${emp.reqs[i].reimbursementRequest} </td>
+                <td  id= "req" >${emp.reqs[i].reimbursementRequest} </td>
                 <td>${emp.reqs[i].reimbursementStatus} </td>
                 <td>${emp.reqs[i].reason}              <td>           
                 </tr>`
