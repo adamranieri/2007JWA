@@ -4,3 +4,8 @@ body{
     margin-left: 2%;
     margin-top: 2%;
 }
+
+button:active{
+    background-color: lightgreen;
+}
+

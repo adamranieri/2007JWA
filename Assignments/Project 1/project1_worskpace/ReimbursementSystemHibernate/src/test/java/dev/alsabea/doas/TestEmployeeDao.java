@@ -1,6 +1,5 @@
 package dev.alsabea.doas;
 
-import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.impl.EmployeeDaoImpl;
 import dev.alsabea.entities.Employee;
 import dev.alsabea.entities.Manager;

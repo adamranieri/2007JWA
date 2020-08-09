@@ -15,4 +15,5 @@ Feature: Manager updates a request
 		Then Manager gets redirected to the employee requests page
 		
 		When Manager fills a reason, chooses Approve, and clicks update on a request
+		Then Page gets reloaded
 		Then the request moves from pending requests to past requests of the employee

@@ -34,7 +34,7 @@ public class PageRunner {
 		
 		driver = new ChromeDriver();
 		wait= new WebDriverWait(driver, 2);
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		
 		srPage = new SubmitRequestPage(driver);	
 		loginPage = new LoginPage(driver);

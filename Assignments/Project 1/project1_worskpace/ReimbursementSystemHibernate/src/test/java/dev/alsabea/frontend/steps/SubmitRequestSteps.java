@@ -15,7 +15,6 @@ public class SubmitRequestSteps {
 
 	
 	public static SubmitRequestPage srPage = PageRunner.srPage;
-	public static LoginPage loginPage = PageRunner.loginPage;
 	public static WebDriver driver = PageRunner.driver;
 	public static WebDriverWait wait= PageRunner.wait;
 	

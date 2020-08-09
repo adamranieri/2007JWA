@@ -7,12 +7,8 @@ async function init() {
     document.getElementById("emp-name").innerHTML = `
     ${emp.firstName} &nbsp ${emp.lastName}`;
 
-
-    // HERE I am breaking the reqs between pending and not pending.
-    //scoped
-    let judgedReqs = [];
-    
-    //not scoped because I may need it for the update function.
+    //global because I need them in other functions
+    judgedReqs = [];
     pendingReqs = [];
 
     for (let x = 0; x < emp.reqs.length; x++) {
@@ -36,24 +32,20 @@ async function init() {
     <th>              </th>
     </tr>`;
 
-/**
- * ${pendingReqs[i].reimbursementStatus} 
- * instead of the line above, I have put a drop down list,
- * I already know what the value is 
- */
+
 
     if (pendingReqs.length != 0) {
 
         let tb= tbHeader;
         for (let i = 0; i < pendingReqs.length; i++) {
             tb += `
-        <tr>
-            <td>    ${pendingReqs[i].rrId} </td>
+        <tr id = "pendingRow">
+            <td id = "requestId_${pendingReqs[i].rrId}">    ${pendingReqs[i].rrId} </td>
             <td>    ${pendingReqs[i].reimbursementRequest}</td>
             
             <td>   
 
-            <select id="drop-down" name="dropdown" >
+            <select id="dropDown_${pendingReqs[i].rrId}" name="dropdown" >
                 <option value= "PENDING" selected>PENDING</option>
                 <option value= "APPROVED">APPROVED</option>
                 <option value= "DENIED">DENIED</option>
@@ -62,10 +54,13 @@ async function init() {
             </td>
 
             <td>    
-                    <textarea name="req" id="the-reason" cols="50" rows="5"></textarea>
+                    <textarea name="req" id="theReason_${pendingReqs[i].rrId}" cols="50" rows="5"></textarea>
             </td>
             
-            <td><button onclick="updateRequest(${i})" >  update  </button></td>
+            <td >
+                    <button id ="updateRequestBtn_${pendingReqs[i].rrId}" 
+                        onclick="updateRequest(${i})" >  update  </button>
+            </td>
         </tr>
         `
 
@@ -81,8 +76,8 @@ async function init() {
 
         for (let i = 0; i < judgedReqs.length; i++) {
             tb += `
-        <tr>
-            <td>    ${judgedReqs[i].rrId} </td>
+        <tr id="judgedRow">
+            <td requestId_{judgedReqs[i].rrId}>    ${judgedReqs[i].rrId} </td>
             <td>    ${judgedReqs[i].reimbursementRequest}</td>
             <td>    ${judgedReqs[i].reimbursementStatus} </td>
             <td>    ${judgedReqs[i].reason} </td>
@@ -97,8 +92,10 @@ async function init() {
 async function updateRequest(i) {
 
     //console.log(document.getElementById("drop-down").value);
-    pendingReqs[i].reimbursementStatus=document.getElementById("drop-down").value;
-    pendingReqs[i].reason=document.getElementById("the-reason").value;
+    document.getElementById(`updateRequestBtn_${pendingReqs[i].rrId}`).style.backgroundColor= "red";
+    
+    pendingReqs[i].reimbursementStatus=document.getElementById(`dropDown_${pendingReqs[i].rrId}`).value;
+    pendingReqs[i].reason=document.getElementById(`theReason_${pendingReqs[i].rrId}`).value;
 
     //console.log(pendingReqs[i].reimbursementStatus);
 

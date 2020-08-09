@@ -16,11 +16,9 @@ class MockTestReimbursementRequestService {
 
 	private static ReimbursementRequestDao rrd;
 	private static ReimbursementRequestServices rrServ;
-	
-	
+
 	@BeforeAll
 	final static void init() {
-
 
 		rrd = Mockito.mock(ReimbursementRequestDao.class);
 
@@ -28,10 +26,11 @@ class MockTestReimbursementRequestService {
 	}
 
 	final ReimbursementRequest buildRequest(long id) {
-		
+
 		ReimbursementRequest rr = new ReimbursementRequest();
-		//(rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status , reason )
-		
+		// (rr_id, emp_id , mgr_id ,reimbursement_request , reimbursement_status ,
+		// reason )
+
 		rr.setRrId(id);
 		rr.setMgr(new Manager(2));
 		rr.setEmp(new Employee(4));
@@ -40,42 +39,40 @@ class MockTestReimbursementRequestService {
 		rr.setReason("testReason");
 		return rr;
 	}
-	
-	
+
 	@Test
 	final void testCreateInstance() {
-		ReimbursementRequest rr =  buildRequest(0);
-		
-		Mockito.when(rrd.createInstance(rr)).thenReturn(rr.getRrId()+1);
-		
+		ReimbursementRequest rr = buildRequest(0);
+
+		Mockito.when(rrd.createInstance(rr)).thenReturn(rr.getRrId() + 1);
+
 		Assertions.assertEquals(1, rrServ.createInstance(rr));
 	}
 
 	@Test
 	final void testRetrieveById() {
-		ReimbursementRequest rr =  buildRequest(1);
-		
+		ReimbursementRequest rr = buildRequest(1);
+
 		Mockito.when(rrd.retrieveById(1)).thenReturn(rr);
-		
+
 		Assertions.assertEquals(2, rrServ.retrieveById(1).getMgr().getMgrId());
 	}
 
 	@Test
 	final void testUpdate() {
-		
-		ReimbursementRequest rr =  buildRequest(1);
-		
+
+		ReimbursementRequest rr = buildRequest(1);
+
 		Mockito.when(rrd.update(rr)).thenReturn(true);
-		
+
 		Assertions.assertTrue(rrServ.update(rr));
 	}
-	
 
 	@Test
 	final void testDeleteById() {
-		
+
 		Mockito.when(rrd.deleteById(1)).thenReturn(true);
-		
+
 		Assertions.assertTrue(rrServ.deleteById(1));
 	}
 

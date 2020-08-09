@@ -1,6 +1,5 @@
 package dev.alsabea.doas;
 
-import org.hibernate.Session;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,31 +11,27 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.alsabea.connection.HibernateConnectionEstablisher;
 import dev.alsabea.doas.impl.ManagerDaoImpl;
 import dev.alsabea.entities.Manager;
 import dev.alsabea.setupteardown.SetUpAndTearDown;
 
-
 @TestMethodOrder(OrderAnnotation.class)
 class TestManagerDao {
 
-	private static ManagerDao mDao= ManagerDaoImpl.getInstance();
-	
-	
+	private static ManagerDao mDao = ManagerDaoImpl.getInstance();
+
 	@BeforeAll
-	@Test 
+	@Test
 	final static void setup() {
 		SetUpAndTearDown.setup();
 	}
-	
+
 	@AfterAll
 	@Test
 	final static void teardown() {
 		SetUpAndTearDown.teardown();
 	}
-	
-	
+
 	@Test
 	@Order(5)
 	final void testCreateInstance() {
@@ -45,66 +40,43 @@ class TestManagerDao {
 		mgr.setLastName("testLastName");
 		mgr.setUsername("testUserName");
 		mgr.setPassword("testPassword");
-	
-		
-		long generatedId= mDao.createInstance(mgr);
-		
+
+		long generatedId = mDao.createInstance(mgr);
+
 		Assertions.assertNotEquals(-1, generatedId);
 	}
-	
+
 	@ParameterizedTest
-	@CsvSource({"1, johnUser, johnPass", "3, maryUser, maryPass" })
+	@CsvSource({ "1, johnUser, johnPass", "3, maryUser, maryPass" })
 	@Order(1)
 	final void testRetrieveByUserAndPass(long mId, String user, String pass) {
 		Assertions.assertEquals(mId, mDao.retrieveByUsernameAndPassword(user, pass).getMgrId());
 	}
 
-	
 	@Test
 	@Order(2)
 	final void testRetrieveByUserAndPassNegative() {
 		Assertions.assertNull(mDao.retrieveByUsernameAndPassword("testtest", "noPass"));
 	}
 
-	
-//	@ParameterizedTest
-//	@CsvSource({"1, John, Doe, 2, 1" , 
-//				"2, rick, brick, 2, 3 "})
-//	@Order(3)
-//	final void testRetrieveById(long id, String firstName, String lastName,
-//			int empsSize, int numOfReqs) {
-//		Manager m= mDao.retrieveById(id);
-//		
-//		Assertions.assertEquals(firstName, m.getFirstName());
-//		Assertions.assertEquals(lastName, m.getLastName());
-//		Assertions.assertEquals(empsSize, m.getEmps().size());
-//		Assertions.assertEquals(numOfReqs, m.getReqs().size());
-//	}
-
-	
 	@ParameterizedTest
-	@CsvSource({"1, John, Doe, 2" , 
-				"2, rick, brick, 2"})
+	@CsvSource({ "1, John, Doe, 2", "2, rick, brick, 2" })
 	@Order(3)
 	final void testRetrieveById(long id, String firstName, String lastName, int numOfEmps) {
-		Manager m= mDao.retrieveById(id);
-		
+		Manager m = mDao.retrieveById(id);
+
 		Assertions.assertEquals(firstName, m.getFirstName());
 		Assertions.assertEquals(lastName, m.getLastName());
 		Assertions.assertEquals(numOfEmps, m.getEmps().size());
 	}
 
-	
-	
 	@ParameterizedTest
-	@ValueSource(ints = {100, 200, 300, 400})
+	@ValueSource(ints = { 100, 200, 300, 400 })
 	@Order(4)
 	final void testRetrieveById(long id) {
 		Assertions.assertNull(mDao.retrieveById(id));
 	}
 
-	
-	
 	@Test
 	final void testUpdate() {
 		Manager mgr = new Manager();
@@ -112,21 +84,19 @@ class TestManagerDao {
 		mgr.setLastName("testLastNameToBeUpdated");
 		mgr.setUsername("testUserNameToBeUpdated");
 		mgr.setPassword("testPasswordToBeUpdated");
-	
-		
-		long generatedId= mDao.createInstance(mgr);
-		
+
+		long generatedId = mDao.createInstance(mgr);
+
 		Manager mgr2 = new Manager();
 		mgr2.setMgrId(generatedId);
 		mgr2.setFirstName("testFirstNameUpdated");
 		mgr2.setLastName("testLastNameUpdated");
 		mgr2.setUsername("testUserNameUpdated");
 		mgr2.setPassword("testPasswordUpdated");
-		
+
 		Assertions.assertTrue(mDao.update(mgr2));
 	}
 
-	
 	@Test
 	final void testUpdateNegative() {
 
@@ -136,11 +106,10 @@ class TestManagerDao {
 		mgr2.setLastName("testLastNameUpdated");
 		mgr2.setUsername("testUserNameUpdated");
 		mgr2.setPassword("testPasswordUpdated");
-		
+
 		Assertions.assertFalse(mDao.update(mgr2));
 	}
-	
-	
+
 	@Test
 	final void testDeleteById() {
 		Manager mgr = new Manager();
@@ -148,19 +117,16 @@ class TestManagerDao {
 		mgr.setLastName("testLastNameToBeDeleted");
 		mgr.setUsername("testUserNameToBeDeleted");
 		mgr.setPassword("testPasswordToBeDeleted");
-		
-		
-		long generatedId= mDao.createInstance(mgr);
-		
+
+		long generatedId = mDao.createInstance(mgr);
+
 		Assertions.assertTrue(mDao.deleteById(generatedId));
-		
+
 	}
 
-	
 	@Test
 	final void testDeleteByIdNegative() {
-		Assertions.assertFalse(mDao.deleteById(78));	
+		Assertions.assertFalse(mDao.deleteById(78));
 	}
-	
-	
+
 }
