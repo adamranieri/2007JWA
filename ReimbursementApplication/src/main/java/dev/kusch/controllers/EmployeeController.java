@@ -34,6 +34,7 @@ public class EmployeeController {
 	public static Handler updateEmployee = (ctx) -> {
 		String employeeJson = ctx.body();
 		Employee emp = gson.fromJson(employeeJson, Employee.class);
+		System.out.println(emp);
 		emp = eserv.updateEmployee(emp);
 		if (emp == null) {
 			ctx.status(404);

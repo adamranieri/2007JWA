@@ -1,3 +1,4 @@
+
 package dev.kusch.controllers;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class ReimbursementController {
 		Employee emp = eserv.getEmployeeById(Integer.parseInt(ctx.pathParam("eid")));
 		reim.setEmployee(emp);
 		reim = rserv.createReimbursement(reim);
-		System.out.println(reim);
 		ctx.status(201);
 		ctx.result(gson.toJson(reim));
 	};

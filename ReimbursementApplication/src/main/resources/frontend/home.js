@@ -29,7 +29,7 @@ async function loadPage() {
         if (user.isManager) {
             tableHtml += `<td>${reimbursement.employee.lastName}, ${reimbursement.employee.firstName}</td>`
             if (reimbursement.status === "Pending") {
-                tableHtml += `<td><button class="decideBtn btn" onclick="decideReimbursement(` + reimbursement.rid + `)">Approve/Deny</button></td>`
+                tableHtml += `<td><button id="decisionBtn${reimbursement.rid}" class="decideBtn btn" onclick="decideReimbursement(` + reimbursement.rid + `)">Approve/Deny</button></td>`
             }
         }
         if (reimbursement.status !== "Pending") {
@@ -41,7 +41,7 @@ async function loadPage() {
         if (reimbursement.status === "Pending") {
             tableHtml += `<td style="color:yellow">Pending</td>`
         } else if (reimbursement.status === "Approved") {
-            tableHtml += `<td style="color:#7CFC00">Accepted</td>`
+            tableHtml += `<td id="approvedReim${reimbursement.rid}" style="color:#7CFC00">Approved</td>`
         } else {
             tableHtml += `<td style="color:red">Denied</td>`
         }

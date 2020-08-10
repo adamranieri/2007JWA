@@ -36,6 +36,9 @@ public class EmployeeDAOHibernate implements EmployeeDAO{
 		try (Session sess = sf.openSession()) {
 			sess.beginTransaction();
 			Employee employee = sess.get(Employee.class, id);
+			if (id == 3) {
+				System.out.println(employee);
+			}
 			sess.getTransaction().commit();
 			return employee;
 		} catch (HibernateException e) {

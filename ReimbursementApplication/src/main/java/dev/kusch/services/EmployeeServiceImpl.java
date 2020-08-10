@@ -17,6 +17,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	public Employee getEmployeeById(int id) {
+		if (id == 3) {
+			System.out.println("here");
+		}
 		return edao.getEmployeeById(id);
 	}
 

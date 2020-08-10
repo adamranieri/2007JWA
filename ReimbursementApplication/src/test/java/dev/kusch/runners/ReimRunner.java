@@ -31,7 +31,7 @@ public class ReimRunner {
 		File file = new File("src/main/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		driver = new ChromeDriver();
-		//driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);
 		formpage = new FormPage(driver);

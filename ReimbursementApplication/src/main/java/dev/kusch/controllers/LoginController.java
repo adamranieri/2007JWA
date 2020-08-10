@@ -25,7 +25,6 @@ public class LoginController {
 		ManagerService mserv = new ManagerServiceImpl(mdao);
 		
 		Gson gson = new Gson();
-		System.out.println(ctx.body());
 		LoginDTO loginInfo=  gson.fromJson(ctx.body(), LoginDTO.class); 
 		Manager man = mserv.loginManager(loginInfo);
 		Employee emp = eserv.loginEmployee(loginInfo);
@@ -35,7 +34,6 @@ public class LoginController {
 		} else if (emp != null){
 			ctx.result(gson.toJson(emp));
 		} else {
-			System.out.println("not found");
 			ctx.status(404);
 		}
 		

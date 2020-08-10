@@ -27,4 +27,10 @@ public class HomePage {
 	
 	@FindBy(className="reimbursementAmount")
 	public List<WebElement> reimAmount;
+	
+	@FindBy(id="approvedReim1")
+	public WebElement approvedReimbursement;
+	
+	@FindBy(id="decisionBtn1")
+	public WebElement approveBtn;
 }
