@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manager Home</title>
+    
+</head>
+
+<body onload="managerGetReimbursementsByStatus('')">
+<link rel="stylesheet" href="employeestyle.css">
+<div class="center">
+    <img class="logo" src="kissclipart-tuxedo-penguin-in-a-top-hat-clipart-penguin-tuxedo-85f80400ae6b69f1.png">
+    <h1 class="displayText">Manager Home Page!</h1>
+    <button id="logoutBtn" class="btn" onclick="logout()" style="position: fixed; right: 50px; top: 40px;">Logout</button>
+    <h3 class="displayText">Reimbursements</h3>
+
+
+    <h3><button id="managerBtn" class="btn">Update Reimbursement</button></h3>
+
+    <div class="dropdown">
+        <button class="dropbtn">View by:</button>
+        <div class="dropdown-content">
+            <a href="#" onclick="managerGetReimbursementsByStatus('')">All</a>
+            <a href="#/approved" onclick="managerGetReimbursementsByStatus('Approved')">Approved</a>
+            <a href="#/denied" onclick="managerGetReimbursementsByStatus('Denied')">Denied</a>
+            <a href="#/submitted" onclick="managerGetReimbursementsByStatus('Submitted')">Submitted</a>
+        </div>
+    </div>
+    
+    <table id="tableElement" class="table">
+        <thead><th>Reimbursement ID</th><th>Employee ID</th><th>Employee Name</th><th>Status</th><th>Date</th><th>Amount</th><th>Description</th><th>Manager Note</th></thead>
+    </table>
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <input id="rId" type="number" placeholder="ID">
+
+            <label for="status">Status:</label>
+                <select id="status" name="status">
+                <option value="Approved">Approved</option>
+                <option value="Denied">Denied</option>
+                </select>
+
+            <input id="note" type="text" placeholder="Note">
+
+            <button id="submitBtn" class="btn" onclick="managerSubmit()">Submit</button>
+        </div>
+
+    </div>
+</div>
+</body>
+
+<script src="employeescript.js"></script>
+<script src="managerscript.js"></script>
+
+</html>

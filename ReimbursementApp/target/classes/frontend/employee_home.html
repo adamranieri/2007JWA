@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee Home</title>
+</head>
+
+<body onload="getReimbursementsByStatus('')">
+<link rel="stylesheet" href="employeestyle.css">
+<div class="center">
+    <img class="logo" src="kissclipart-tuxedo-penguin-in-a-top-hat-clipart-penguin-tuxedo-85f80400ae6b69f1.png">
+    <h1 class="displayText">Employee Home Page!</h1>
+    <button id="logoutBtn" class="btn" onclick="logout()" style="position: fixed; right: 50px; top: 40px;">Logout</button>
+    <h3 class="displayText">Reimbursements</h3>
+
+
+    <h3><button id="myBtn" class="btn">Create New Reimbursement</button></h3>
+
+    <div class="dropdown">
+        <button class="dropbtn">View By:</button>
+        <div class="dropdown-content">
+            <a href="#" onclick="getReimbursementsByStatus('')">All</a>
+            <a href="#/approved" onclick="getReimbursementsByStatus('Approved')">Approved</a>
+            <a href="#/denied" onclick="getReimbursementsByStatus('Denied')">Denied</a>
+            <a href="#/submitted" onclick="getReimbursementsByStatus('Submitted')">Submitted</a>
+        </div>
+    </div>
+
+    <table id="tableElement" class="table" onload="getReimbursementsByStatus('')">
+        <thead><th>ID</th><th>Status</th><th>Date</th><th>Amount</th><th>Description</th><th>Manager Note</th></thead>
+        <td></td>
+    </table> 
+
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <input id="descInput" type="text" placeholder="Description">
+    <input id="amountInput" type="number" placeholder="Amount">
+    <button id="submitBtn" class="btn" onclick="submit()">Submit</button>
+
+  </div>
+
+</div>
+</div>
+
+</body>
+
+<script src="employeescript.js"></script>
+
+</html>

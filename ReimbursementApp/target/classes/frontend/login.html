@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+
+</head>
+
+<body>
+<link rel="stylesheet" href="employeestyle.css">
+<img class="logo" src="kissclipart-tuxedo-penguin-in-a-top-hat-clipart-penguin-tuxedo-85f80400ae6b69f1.png"> 
+<div class="center">
+<h1 class="displayText">Welcome To Penguin Enterprises!</h1>
+<h3 class="displayText" id="loginHeader">Login</h3>
+
+<input class="" type="text" id="usernameField" placeholder="username">
+<h5></h5>
+<input class="" type="password" id= "passwordField" placeholder="password">
+<h5></h5>
+
+<h5 style="color: white;"><input type="checkbox" onclick="passwordVisibility()">Show Password</h5>
+    
+<button class="btn" onclick="login()" id="loginButton">Login</button>
+    
+</div>
+</body>
+
+<script>
+
+function setEmployee(employee){
+    emp = employee;
+}
+
+function getEmployee(){
+    return emp; 
+}
+
+async function login()
+    {
+        const id = 0; 
+        let username = document.getElementById("usernameField").value;
+        let password = document.getElementById("passwordField").value;
+
+        let httpResponse = await fetch(`http://localhost:7000/login/?username=${username}&password=${password}`);
+        if(httpResponse.status === 404){
+            alert("Login Failed. Try again");
+        } 
+        let user = await httpResponse.json();
+       
+        console.log(user);
+        
+         if(user.title === 'Employee'){
+            // redirect to employee
+            goToEmployeePage();
+        }
+        else if(user.title === 'Manager'){
+            // redirect to manager
+            goToManagerPage();
+        }
+        
+    }
+    
+    
+    async function goToEmployeePage(){
+    	
+        location.replace(`http://localhost:7000/employee_home.html`);
+        
+        let config={
+            method: "GET",
+            headers: {'Content-Type' : 'application/json'},
+        }
+    	
+        let user = getEmployee();
+    	const http = await fetch(`http://localhost:7000/employees/${user.id}/reimbursements`,config);
+    	let result = await http.json();
+         
+    }
+
+    async function goToManagerPage(){
+    	location.replace(`http://localhost:7000/manager_home.html`);
+
+        
+        let config={
+            method: "GET",
+            headers: {'Content-Type' : 'application/json'},
+        }
+        
+        let user = getEmployee();
+
+        const http = await fetch(`http://localhost:7000/managers/${user.id}/reimbursements`, config);
+        let result = await http.json();
+    }
+
+    function passwordVisibility(){
+        let x = document.getElementById("passwordField");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    
+</script>
+
+</html>
