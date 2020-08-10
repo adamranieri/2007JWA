@@ -30,11 +30,14 @@ public class Reimbursement {
 	private String statusDate;
 	
 	
+	
+
+
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "emp_id")
 	private Employee employee;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "man_id")
 	private Manager manager;
 	
@@ -45,7 +48,6 @@ public class Reimbursement {
 	}
 	
 	
-	// Reimbursements cannot exist without an employee
 	public Reimbursement(int reimbursementId, String reimbursementName, double amount, String submitDate, Employee employee) {
 		super();
 		this.reimbursementId = reimbursementId;
@@ -55,6 +57,7 @@ public class Reimbursement {
 		this.employee = employee;
 	}
 
+	
 	public int getReimbursementId() {
 		return reimbursementId;
 	}
@@ -119,6 +122,14 @@ public class Reimbursement {
 		this.employee = employee;
 	}
 	
+	public Manager getManager() {
+		return manager;
+	}
+
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
 
 	@Override
 	public String toString() {

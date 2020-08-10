@@ -1,18 +1,78 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-<head>
-    <title>Reimbursement Portal</title>
-</head>
-<body>
-    <h1>Welcome!</h1>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Reimbursement Portal Login</title>
 
-    <div>
-        <h3>Login</h3>
-        <input type="text" id="username-input" placeholder="Username">
-        <input type="text" id="password-input" placeholder="Password">
-        <button id="employee-login-btn" onclick="getEmployeeByLogin()">Login</button>
+     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    
+  </head>
+
+  <body id="body">
+
+    <div class="container">
+      <div class="row">
+        <img src="vault-logo.png">
+      </div>
+      <div class="row">
+        <div id="main-form" class="form-signin">
+          <h1 id = "header" class="h3 mb-3 font-weight-normal text-center">Welcome to ROBCO Industries&#8482; Termlink</h1>
+          <div id="warning-msg">
+            <div class="bg-gif">
+              <p class="text-left" style="font-family: monospace; color: #199515;">
+              
+                VAULT - TEC - EMPLOYEE - PORTAL <br>
+                ================================ <br>
+                RobcOS v.85 <br>
+                (C)2076 Robco <br>
+                ========================================================================<br>
+                | User Log: <br>
+                | &gt;&gt; Administrator (RobcoID 2398-H) <br>
+                | &gt;&gt;&gt; RobcoIndustrial_userGroup <br>
+                ========================================================================<br>
+                &lt;!&gt; WARNING &lt;!&gt; <br>
+                ======================================================================== <br>
+                | &gt; Possible extreme weather events, including those of nuclear nature, <br>
+                |      have been detected outside of the vault<br>
+                | &gt; Vault-Tec cannot be held liable for loss of pay in the event of <br>  
+                |      global societal collapse and cannot ensure your currency will be <br>   
+                |      of value or dispersed in a timely manner<br>
+                | &gt; Please refer to VT00987/A in Volume 17 of the Employee Handbook when <br> 
+                |      exchanging US Dollars for goods of equivalent value<br>
+                | &gt; All Vault-Tec employees are still required to attend their weekly <br>  
+                |      staff meetings <br>
+                | &gt; Cafeteria privileges will be suspended in the event of hostile<br>
+                |      take-over. <br>
+                ========================================================================
+            <p>   
+            </div>
+            
+          </div>
+          
+          <h4 class="h4 mb-3 font-weight-normal text-left">Please sign in to the employee portal below</h4>
+          
+          <label class="text-left" for="username-input">Vault-Tec Email</label>
+          <input type="email" id="username-input" class="form-control1">
+          <label class = "text-left" for="password-input" >Vault-Tec Password</label>
+          <input type="password" id="password-input" class="form-control1">
+          <button id ="employee-login-btn" class="btn btn-lg btn-block text-left" onclick="getEmployeeByLogin()">Sign in</button>
+          <p class="mt-5 mb-3">&copy; 2076-&gt;&year=ERROR****</p>
+        
+        </div>
+      </div>
+      
     </div>
-
-    <script src = "js/login.js"></script>
-</body>
+      
+      
+    
+  
+    <script src = js/login.js>
+    </script>
+  </body>
 </html>
+

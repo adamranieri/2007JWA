@@ -31,8 +31,6 @@ public class Manager extends User{
 	@Column(name = "man_last_name")
 	private String manlName;
 	
-//	@OneToMany(mappedBy = "manager")
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	
 	@OneToMany (mappedBy= "manager", fetch= FetchType.EAGER) 
 	@Cascade(CascadeType.SAVE_UPDATE)

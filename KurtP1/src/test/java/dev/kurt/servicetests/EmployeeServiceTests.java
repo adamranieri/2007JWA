@@ -1,50 +1,38 @@
 package dev.kurt.servicetests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.mockito.Mockito;
 
-import dev.kurt.daos.EmployeeDAOHibernate;
-import dev.kurt.daos.ManagerDAOHibernate;
-import dev.kurt.daos.ReimbursementDAOHibernate;
+import dev.kurt.daos.EmployeeDAO;
+import dev.kurt.daos.ReimbursementDAO;
 import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
 import dev.kurt.entities.Reimbursement;
 import dev.kurt.services.EmployeeService;
 import dev.kurt.services.EmployeeServiceImpl;
-import dev.kurt.services.ManagerService;
-import dev.kurt.services.ManagerServiceImpl;
-import dev.kurt.utils.HibernateUtil;
 
 @TestMethodOrder(OrderAnnotation.class) 
 public class EmployeeServiceTests {
 	
-	private static EmployeeService eServ = new EmployeeServiceImpl(new EmployeeDAOHibernate(), new ReimbursementDAOHibernate());
-	private static ManagerService manServ = new ManagerServiceImpl(new ManagerDAOHibernate(), new EmployeeDAOHibernate());
-	private static Manager michael = new Manager(0,"gretzky@email.com","number1boss","Michael","Scott");
-	
-	@BeforeAll
-	static void setUp() {
-		manServ.createManager(michael);
-	}
-	
 	@Test
 	@Order(1)
 	void createEmployee() {
-		Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
+		Employee kurt = new Employee(1,"kd@email.com","password","Kurt","Martinez");
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.createEmployee(kurt)).thenReturn(kurt);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
 		eServ.createEmployee(kurt);
-		System.out.println(kurt);
 		Assertions.assertNotEquals(0, kurt.getEmployeeId());
 	}
 	
@@ -52,54 +40,106 @@ public class EmployeeServiceTests {
 	@Test
 	@Order(2)
 	void getEmployeeById() {
-		Employee employee = eServ.getEmployeeById(1);
-		System.out.println(employee);
-		Assertions.assertEquals(1, employee.getEmployeeId());
+		Employee kurt = new Employee(1,"kd@email.com","password","Kurt","Martinez");
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.getEmployeeById(1)).thenReturn(kurt);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		Employee Employee = eServ.getEmployeeById(1);
+		Assertions.assertEquals(1, Employee.getEmployeeId());
 	}
 	
 	@Test
 	@Order(3)
 	void getEmployeeByLogin() {
-		Employee employee = eServ.getEmployeeByLogin("kd@email.com", "password");
-		Assertions.assertEquals(1, employee.getEmployeeId());
+		Employee kurt = new Employee(1,"kd@email.com","password","Kurt","Martinez");
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.getEmployeeByLogin("kd@email.com", "password")).thenReturn(kurt);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		Employee Employee = eServ.getEmployeeByLogin("kd@email.com", "password");
+		Assertions.assertEquals(1, Employee.getEmployeeId());
 	}
 	
 	@Test
 	@Order(4) 
 	void getAllEmployees(){
 		Employee bobby = new Employee(0,"bob@email.com","bobspassword","Bob","Bobson");
-		eServ.createEmployee(bobby);
-		List<Employee> employees = eServ.getAllEmployees();
-		Assertions.assertEquals(2,employees.size());
+		Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
+		
+		List<Employee> fakeEmployees = new ArrayList<Employee>();
+		fakeEmployees.add(kurt);
+		fakeEmployees.add(bobby);
+		
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.getAllEmployees()).thenReturn(fakeEmployees);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		List<Employee> Employees = eServ.getAllEmployees();
+		Assertions.assertEquals(2,Employees.size());
 	}
 	
 	@Test
 	@Order(5) 
 	void updateEmployee() {
-		Employee employee = eServ.getEmployeeById(1);
-		employee.setEmpPassword("MoreSecurePassword123");
-		eServ.updateEmployee(employee);
-		Assertions.assertNotEquals("password",employee.getEmpPassword());
+		Employee bobby = new Employee(0,"bob@email.com","bobspassword","Bob","Bobson");
+		
+		Employee bobby2 = new Employee(0,"bob@email.com","bobspassword","Keith","Bobson");
+		
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.updateEmployee(bobby)).thenReturn(bobby2);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		bobby.setfName("Keith");
+		Employee Employee = eServ.updateEmployee(bobby);
+		Assertions.assertEquals("Keith",Employee.getEmpfName());
 	}
 	
 	@Test
 	@Order(6)
 	void getEmployeesByManager() {
-		Employee kurt = eServ.getEmployeeById(1);
-		kurt.setManager(michael);
-		eServ.updateEmployee(kurt);
-		Employee bobby = eServ.getEmployeeById(2);
-		bobby.setManager(michael);
-		eServ.updateEmployee(bobby);
-		List<Employee> michaelsEmployees = eServ.getEmployeesByManager(michael);
+		Employee bobby = new Employee(0,"bob@email.com","bobspassword","Bob","Bobson");
+		Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
+		Manager keith = new Manager(0,"kd@email.com","password","Keith","Richards");
+		
+		List<Employee> fakeEmployees = new ArrayList<Employee>();
+		fakeEmployees.add(kurt);
+		fakeEmployees.add(bobby);
+		
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.getEmployeesByManager(keith)).thenReturn(fakeEmployees);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		
+		List<Employee> michaelsEmployees = eServ.getEmployeesByManager(keith);
 		Assertions.assertEquals(2,michaelsEmployees.size());
 	}
 	
 	@Test
 	@Order(7) 
 	void addReimbursementToEmployee() {
-		Employee kurt = eServ.getEmployeeById(1);
+		Employee kurt = new Employee(0,"kd@email.com","password","Kurt","Martinez");
 		Reimbursement reimbursement = new Reimbursement(0,"Ubers from airport",100,"july29",kurt);
+		Employee kurt2 = new Employee(0,"kd@email.com","password","Kurt","Martinez");
+		kurt2.getReimbursements().add(reimbursement);
+		
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(eDao.updateEmployee(kurt)).thenReturn(kurt2);
+		Mockito.when(rDao.createReimbursement(reimbursement)).thenReturn(reimbursement);
+		EmployeeService eServ = new EmployeeServiceImpl(eDao,rDao);
+		
 		eServ.addReimbursementToEmployee(kurt, reimbursement);
 		List<Reimbursement> reis = kurt.getReimbursements();
 		Assertions.assertEquals(1,reis.size());
@@ -109,8 +149,15 @@ public class EmployeeServiceTests {
 	@Test
 	@Order(8) 
 	void deleteEmployee() {
-		Employee employee = eServ.getEmployeeById(1);
-		boolean result = eServ.deleteEmployee(employee);
+		Employee bobby = new Employee(0,"bob@email.com","bobspassword","Bob","Bobson");
+		
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		ReimbursementDAO rDao = Mockito.mock(ReimbursementDAO.class);
+		
+		Mockito.when(eDao.deleteEmployee(bobby)).thenReturn(true);
+		EmployeeService manServ = new EmployeeServiceImpl(eDao,rDao);
+		
+		boolean result = manServ.deleteEmployee(bobby);
 		Assertions.assertEquals(true,result);
 	}
 	

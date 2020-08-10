@@ -30,6 +30,7 @@ public class ReimbursementController {
 		Reimbursement reimbursement = gson.fromJson(ctx.body(), Reimbursement.class);  
 		Employee employee = eServ.getEmployeeById(employeeId);
 		reimbursement.setEmployee(employee);
+		reimbursement.setManager(employee.getManager());
 		reiServ.createReimbursement(reimbursement);
 		ctx.result(gson.toJson(reimbursement));
 		ctx.status(201); 
@@ -60,29 +61,12 @@ public class ReimbursementController {
 	public Handler updateReimbursement = (ctx) ->{
 		String reimbursementJson = ctx.body();
 		Reimbursement reimbursement = gson.fromJson(reimbursementJson, Reimbursement.class);
-		
-		String statQ = ctx.queryParam("status");
-		String noteQ = ctx.queryParam("notes");
-		
-		switch ((statQ != null) + "-" + (noteQ != null)) {
-	    case "false-false":
-	    	reiServ.updateReimbursement(reimbursement);	
-			ctx.result(gson.toJson(reimbursement));
-	        break;
-	    case "false-true":
-	    	// notes can be null but not status
-	        break;
-	    case "true-false":
-	    	reiServ.addStatusUpdateToReimbursement(reimbursement, statQ, noteQ);
-	    	ctx.result(gson.toJson(reimbursement));
-	    	break;
-	    case "true-true":
-	    	reiServ.addStatusUpdateToReimbursement(reimbursement, statQ, noteQ);
-	    	ctx.result(gson.toJson(reimbursement));
-		    break;
-	    default:
-	        throw new RuntimeException("404: Something Broke");
-		}
+		int employeeId = Integer.parseInt(ctx.pathParam("eid"));
+		Employee employee = eServ.getEmployeeById(employeeId);
+		reimbursement.setEmployee(employee);
+		reimbursement.setManager(employee.getManager());
+	    reiServ.updateReimbursement(reimbursement);	
+		ctx.result(gson.toJson(reimbursement));
 	};
 	
 	public Handler deleteReimbursement = (ctx) ->{

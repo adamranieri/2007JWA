@@ -1,20 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Portal</title>
+    
 </head>
-<body onload="getUserInfo()">
-    <h1>Managers</h1>
+<body id="body" onload="getUserInfo()">
+    <main role="main">
+    		
+      <div id="bo-head">
+        <div class="container-fluid">
+            
+            <div class="row" >
+                <div class="col-1" style="background-color: #5E757D">
+
+                </div>
+                <div id="banner" class="col-5" >
+                    <img src="banner.jpg" class="img-fluid" alt="Responsive image">
+                </div>
+                <div id="welcome" class="col">
+                    <h4 class="display text-center" style="font-family: monospace">Welcome,</h4>
+                    <h1 id = "name-field" class="display-4 text-center"></h1>
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
+        </div>
+      </div>
+        
+
+
+    <div id="bo-nav" class="container-fluid">
+        <div class="row">
+            <div class="col-1">
+                
+            </div>
+            <div class="col">
+                <div class= "float-left">
+                    <h1 class="text-left">MSG</h1>
+                </div>
+            </div>
+            <div class="col">
+                <div class= "float-left">
+                    <h1 class="text-left">RAD</h1>
+                </div>
+            </div>
+            <div class="col">
+                <div class= "float-left">
+                    <h1 class="text-left">HR</h1>
+                </div>
+            </div>
+            <div class="col-5">
+            </div>
+            <div class="col">
+                <div class= "float-right">
+                    <h1 class="text-right">RADIO</h1>
+                </div>
+            </div>
+            
+            <div class="col-1">
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="bo-space" class="container-fluid" >
+        <div class="row">
+            <div class="col-1">
+                
+            </div>
+            <div class="col">
+                <div class= "float-left">
+                    <h1 class="text-left">Employees</h1>
+                </div>
+            </div>
+            <div class="col-6">
+
+            </div>
+            <div class="col">
+                <div class= "float-right">
+                    <h1 class="text-right">Reimbursements</h1>
+                </div>
+            </div>
+            <div class="col-1">
+                
+            </div>
+        </div>
+    </div>
+    
+    <div id="bo-main" class="container-fluid" >
+        <div class="row">
+            <div class="col-1">
+                
+            </div>
+            <div class="col-3">
+                <div class="card text-left">
+                    <div class="card-body">
+                        <h5 class="card-title">Filter by</h5>
+                        <div class="input-group">
+                            <select id ="choose-emp" class="custom-select" name="custom-select" >
+                            <option selected>Choose...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">                    	
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h4 class="card-subtitle mb-2 text-muted">Filter</h4>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                        Default checkbox
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                        Default checkbox
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col-6">
+                <div id = "reimbursements" class="container">
+                    
+                </div>
+            </div>
+
+            <div class="col-1">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl">
+  		    <div class="modal-content">
+    		    <div class="modal-header">
+       			    <h5 class="modal-title" id="editModalLabel">What would you like to do?</h5>
+       				    <button id ="close-modal-btn" type="button" class="close" data-dismiss="modal" aria-label="Close">
+         				<span aria-hidden="true">&times;</span>
+       			 	    </button>
+    		    </div>
+     		    <div class="modal-body">
+                    <div class="col order-md-1">
+                    	<h4 class="mb-1">Edit Reimbursement</h4>
+                    	<p class="mb-2 text-muted">You can approve, deny, or ask your vault dwellers for additional documentation that pertains to their Reimbursement requests using this form</p>
+                        <form class="needs-validation">
+                          <div class="row">
+                            <div class="col-md-5 mb-3">
+                              <label for="country">Status</label>
+                              <select class="custom-select d-block w-100" id="rei-edit-status" required="">
+                                <option value="">Choose...</option>
+                                <option id="rei-edit-status-approved">Approved</option>
+                                <option id="rei-edit-status-denied">Denied</option>
+                                <option id="rei-edit-status-pending">Pending</option>
+                              </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <label for="state">Add a note?</label>
+                              <select class="custom-select d-block w-100" id="rei-edit-note-choice" required="">
+                                <option value="">Choose...</option>
+                                <option id="rei-edit-note-choice-yes">Yes</option>
+                                <option id="rei-edit-note-choice-no">No</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+         					<label for="address2">Note <span class="text-muted">(Optional)</span></label>
+          					<input type="text" class="form-control" id="rei-edit-note" placeholder="E.g. Bartering for Deathclaw Eggs is irresponsible">
+        				  </div>
+                        </form>
+                      </div>
+                </div>
+                
+      		
+      		<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="submit-rei-edit-btn" type="button" class="btn btn-primary" onclick="updateReimbursement()">Submit</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+     
+	
+   </main>
+   <footer id="footer" class="text-muted">
+        <div class="container-fluid">
+          <p class="float-center">
+          </p>
+        </div>
+      </footer>
+<script src="js/manager.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
-<script>
-async function getUserInfo() {
-    const userhttpResponse = await fetch("http://localhost:7000/login")
-    const user = await userhttpResponse.json();
-    console.log(user);
-}
 
-
-</script>
 </html>

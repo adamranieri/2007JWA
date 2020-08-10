@@ -37,8 +37,6 @@ public class Employee extends User {
 	@JoinColumn(name = "man_id")
 	private Manager manager;
 	
-//	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//	
 	
 	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
 	@Cascade(CascadeType.SAVE_UPDATE)

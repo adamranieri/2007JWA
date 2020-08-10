@@ -29,7 +29,7 @@ public class ReimbursementServiceImpl implements ReimbursementService{
 	public Reimbursement createReimbursement(Reimbursement reimbursement) {
 		reimbursement.setStatus("Pending");
 		Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd 'at' hh:mm:ss z");  
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy 'at' hh:mm:ss a z");  
         String strDate = dateFormat.format(date);  
         reimbursement.setSubmitDate(strDate);
 		return this.serDao.createReimbursement(reimbursement);
@@ -52,6 +52,10 @@ public class ReimbursementServiceImpl implements ReimbursementService{
 
 	@Override
 	public Reimbursement updateReimbursement(Reimbursement reimbursement) {
+		Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy 'at' hh:mm:ss a z");  
+        String strDate = dateFormat.format(date);  
+        reimbursement.setStatusDate(strDate);
 		return this.serDao.updateReimbursement(reimbursement);
 	}
 

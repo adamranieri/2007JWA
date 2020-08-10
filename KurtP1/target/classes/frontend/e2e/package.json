@@ -1,0 +1,14 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "My end to end tests for Vault-Tec portal",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kurt Dawiec",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "7.0.0"
+  }
+}

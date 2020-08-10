@@ -11,11 +11,13 @@ import dev.kurt.entities.Manager;
 
 public class ManagerServiceImpl implements ManagerService {
 
-	public ManagerDAO manDao = new ManagerDAOHibernate();
-	public EmployeeDAO empDao = new EmployeeDAOHibernate();
+	private ManagerDAO manDao; 
+	private EmployeeDAO empDao;
 	
 	public ManagerServiceImpl() {
 		super();
+		this.manDao = new ManagerDAOHibernate();
+		this.empDao = new EmployeeDAOHibernate();
 	}
 	
 	public ManagerServiceImpl(ManagerDAO manDao, EmployeeDAO empDao) {

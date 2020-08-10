@@ -86,7 +86,7 @@ public class EmployeeController {
 	public Handler getEmployeesByManager = (ctx) ->{
 		String id = ctx.pathParam("mid");
 		Manager manager = mServ.getManagerById(Integer.parseInt(id));
-		List<Employee> employees = manager.getEmployees();
+		List<Employee> employees = eServ.getEmployeesByManager(manager);
 		String json = gson.toJson(employees);
 		ctx.result(json);
 		

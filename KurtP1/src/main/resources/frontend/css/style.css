@@ -1,0 +1,220 @@
+@font-face{
+    font-family: monofonto;
+    src: url('monofonto.ttf');
+}
+
+@font-face{
+    font-family: overseer;
+    src: url('overseer.otf');
+}
+
+#bo-head{
+    background-color: #F2D295;
+    font-family: overseer;
+    color: #5E757D
+}
+#bo-head .col-1{
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#bo-head #banner{
+    max-width: 50%;
+    max-height: 50%;
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#bo-head #welcome{
+    margin-top: 7.5%;
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+
+
+#bo-nav .row{
+	padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #1b2f47
+    
+}
+
+#bo-nav h1{
+    color:rgb(238, 238, 238);
+    font-family: monofonto;
+}
+
+#bo-space .row{
+    padding-top: 8rem;
+    
+}
+
+#rei-modal-launch{
+	font-family: monofonto;
+}
+#exampleModal{
+	font-family: monofonto;
+}
+
+#editModal .btn-primary{
+	font-family: overseer;
+	background-color: #1b2f47;
+}
+
+#editModal{
+	font-family: monofonto;
+	
+}
+
+#bo-space .btn, .btn-lg ,.btn-block{
+    background-color: #325886;
+    color:white;
+
+}
+#bo-space h1{
+    color: #325886;
+    font-family: overseer;
+    border-bottom-color: #1b2f4757;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#body {
+	background-color: #F2D295;
+}
+
+#bo-main .row{
+    padding-top: 0.5rem;
+   
+}
+
+#bo-main .col-3{
+    font-family: monofonto;
+    background-color: rgb(255, 255, 255);
+    border-top-color:rgba(172, 172, 172, 0.466);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color:rgba(172, 172, 172, 0.466);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgba(172, 172, 172, 0.466);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(172, 172, 172, 0.466);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: 9px;
+    margin-bottom: 4em;
+
+}
+
+#bo-main .col-3> h2{
+    padding-top: 1rem;
+}
+
+#bo-main .col-3 .card{
+    border:0;
+}
+
+#bo-main .col-3 .input-group{
+    padding-bottom: 1rem;
+}
+#bo-main .col-3 .form-check{
+    padding-bottom: 1rem;
+}
+
+
+#bo-main h2{
+    background-color: rgb(255, 255, 255);
+    color: rgb(180, 122, 247);
+}
+
+#reimbursements .row {
+    font-family: monofonto;
+    margin-bottom: 3rem;
+    background-color: rgb(255, 255, 255);
+    border-top-color:rgba(172, 172, 172, 0.466);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color:rgba(172, 172, 172, 0.466);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgba(172, 172, 172, 0.466);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(172, 172, 172, 0.466);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: 9px;
+    min-width:100%;
+}
+
+#reimbursements .card {
+    border:0;
+}
+
+#reimbursements .rei-status-Approved {
+    background-color: #28A745;
+}
+#reimbursements .rei-status-Pending {
+    background-color: #FFC107;
+}
+#reimbursements .rei-status-Denied {
+    background-color: #DC3545;
+}
+
+#reimbursements .card-text,.card-title{
+	display: flex;
+  	justify-content: space-between;
+  	
+}
+
+#reimbursements .card-body{
+	padding-left:0;
+  	padding-right: 0;
+  	margin-right: 0.5em;
+  	margin-left: 0.5em;
+}
+
+#reimbursements .date-block .card-text{
+	margin-bottom: 0;
+}
+
+#reimbursements .date-block{
+	margin-bottom: 1em;
+}
+
+footer{
+	margin-top:2em;
+}
+main{
+	background-color: #F2D295;
+}
+
+
+
+
+/* #325886
+#447AB9
+#82A7D6
+#FEF265
+#FCE8A4
+#FEEED4 */
+

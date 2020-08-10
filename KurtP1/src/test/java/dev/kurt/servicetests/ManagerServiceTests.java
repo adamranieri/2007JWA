@@ -1,48 +1,36 @@
 package dev.kurt.servicetests;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
-import dev.kurt.daos.EmployeeDAOHibernate;
+import dev.kurt.daos.EmployeeDAO;
 import dev.kurt.daos.ManagerDAO;
-import dev.kurt.daos.ManagerDAOHibernate;
-import dev.kurt.daos.ReimbursementDAOHibernate;
 import dev.kurt.entities.Employee;
 import dev.kurt.entities.Manager;
-import dev.kurt.services.EmployeeService;
-import dev.kurt.services.EmployeeServiceImpl;
 import dev.kurt.services.ManagerService;
 import dev.kurt.services.ManagerServiceImpl;
-import dev.kurt.utils.HibernateUtil;
 
 
 @TestMethodOrder(OrderAnnotation.class)
 public class ManagerServiceTests {
 
-private static ManagerService manServ = new ManagerServiceImpl(new ManagerDAOHibernate(), new EmployeeDAOHibernate());
-private static EmployeeService empServ = new EmployeeServiceImpl(new EmployeeDAOHibernate(), new ReimbursementDAOHibernate());
-private static Employee employee = new Employee(0,"kurt1997","pword","kurt","dawiec");
-	
-	@BeforeAll
-	static void setUp() {
-		empServ.createEmployee(employee);
-	}
-
 	@Test
 	@Order(1)
 	void createManager() {
-		Manager kurt = new Manager(0,"kd@email.com","password","Kurt","Martinez");
+		Manager kurt = new Manager(1,"kd@email.com","password","Kurt","Martinez");
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.createManager(kurt)).thenReturn(kurt);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
 		manServ.createManager(kurt);
 		Assertions.assertNotEquals(0, kurt.getManagerId());
 	}
@@ -51,6 +39,13 @@ private static Employee employee = new Employee(0,"kurt1997","pword","kurt","daw
 	@Test
 	@Order(2)
 	void getManagerById() {
+		Manager kurt = new Manager(1,"kd@email.com","password","Kurt","Martinez");
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.getManagerById(1)).thenReturn(kurt);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
 		Manager manager = manServ.getManagerById(1);
 		Assertions.assertEquals(1, manager.getManagerId());
 	}
@@ -58,6 +53,13 @@ private static Employee employee = new Employee(0,"kurt1997","pword","kurt","daw
 	@Test
 	@Order(3)
 	void getManagerByLogin() {
+		Manager kurt = new Manager(1,"kd@email.com","password","Kurt","Martinez");
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.getManagerByLogin("kd@email.com", "password")).thenReturn(kurt);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
 		Manager manager = manServ.getManagerByLogin("kd@email.com", "password");
 		Assertions.assertEquals(1, manager.getManagerId());
 	}
@@ -66,7 +68,18 @@ private static Employee employee = new Employee(0,"kurt1997","pword","kurt","daw
 	@Order(4) 
 	void getAllManagers(){
 		Manager bobby = new Manager(0,"bob@email.com","bobspassword","Bob","Bobson");
-		manServ.createManager(bobby);
+		Manager kurt = new Manager(0,"kd@email.com","password","Kurt","Martinez");
+		
+		List<Manager> fakeManagers = new ArrayList<Manager>();
+		fakeManagers.add(kurt);
+		fakeManagers.add(bobby);
+		
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.getAllManagers()).thenReturn(fakeManagers);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
 		List<Manager> managers = manServ.getAllManagers();
 		Assertions.assertEquals(2,managers.size());
 	}
@@ -74,32 +87,53 @@ private static Employee employee = new Employee(0,"kurt1997","pword","kurt","daw
 	@Test
 	@Order(5) 
 	void updateManager() {
-		Manager manager = manServ.getManagerById(1);
-		manager.setManPassword("MoreSecurePassword123");
-		manServ.updateManager(manager);
-		Assertions.assertNotEquals("password",manager.getManPassword());
+		Manager bobby = new Manager(0,"bob@email.com","bobspassword","Bob","Bobson");
+		
+		Manager bobby2 = new Manager(0,"bob@email.com","bobspassword","Keith","Bobson");
+		
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.updateManager(bobby)).thenReturn(bobby2);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
+		bobby.setfName("Keith");
+		Manager manager = manServ.updateManager(bobby);
+		Assertions.assertEquals("Keith",manager.getManfName());
 	}
 	
 	@Test
 	@Order(6)
 	void addEmployee() {
-		Manager manager = manServ.getManagerById(1);
-		manServ.addEmployeeToManager(manager, employee);
+		Employee employee = new Employee(0,"kurt1997","pword","kurt","dawiec");
+		Manager bobby = new Manager(0,"bob@email.com","bobspassword","Bob","Bobson");
+		
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		
+		
+		Mockito.when(eDao.createEmployee(employee)).thenReturn(employee);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
+		Manager manager = manServ.addEmployeeToManager(bobby, employee);
 		Assertions.assertNotEquals(0,manager.getEmployees().size());
 	}
 	
 	@Test
 	@Order(7) 
 	void deleteManager() {
-		Manager manager = manServ.getManagerById(1);
-		System.out.println(manServ.getManagerById(2));
-		boolean result = manServ.deleteManager(manager);
+		Manager bobby = new Manager(0,"bob@email.com","bobspassword","Bob","Bobson");
+		
+		ManagerDAO mDao = Mockito.mock(ManagerDAO.class);
+		EmployeeDAO eDao = Mockito.mock(EmployeeDAO.class);
+		
+		Mockito.when(mDao.deleteManager(bobby)).thenReturn(true);
+		ManagerService manServ = new ManagerServiceImpl(mDao,eDao);
+		
+		boolean result = manServ.deleteManager(bobby);
 		Assertions.assertEquals(true,result);
 	}
 	
-	@AfterAll
-	static void tearDown() {
-		empServ.deleteEmployee(empServ.getEmployeeById(1));
-	}
 
 }

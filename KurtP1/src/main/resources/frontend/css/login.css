@@ -1,0 +1,120 @@
+html,
+body {
+  height: 100%;
+  font-family: monofonto;
+  color:#29db23;
+}
+#main-form textarea, select, input, button, .form-control { outline: none; }
+
+body {
+  background-color: #000000;
+}
+
+#main-form #header{
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom-color: #199515;
+    border-bottom-width: 2px;
+    border-bottom-style: dashed;
+    border-top-color: #199515;
+    border-top-width: 2px;
+    border-top-style: dashed;
+}
+
+.container img{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 750px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 750px;
+  padding: 15px;
+  margin: 0 auto;
+  color:#29db23;
+  
+  
+}
+
+.form-signin .form-control1 {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  width:720px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#warning-msg .bg-gif{
+  background-image: url('./bg.gif');
+  background-color: rgba(255, 255, 255, 0);
+  border-width: 2em;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+
+
+.form-signin input[type="email"] {
+  color:#29db23;
+  margin-bottom: 10px;
+  background-color: #000000;
+  border-top-color:#199515a9;
+  border-right-color:#199515;
+  border-bottom-color: #199515;
+  border-left-color: #199515a9;
+  border-radius: 0px;
+  outline: none;
+}
+.form-signin input[type="password"] {
+  color:#29db23;
+  margin-bottom: 20px;
+  background-color: #000000;
+  border-top-color:#199515a9;
+  border-right-color:#199515;
+  border-bottom-color: #199515;
+  border-left-color: #199515a9;
+  border-radius: 0px;
+  outline: none;
+}
+
+#main-form .form-signin input[type=text]:focus, textarea:focus {
+    box-shadow: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+  }
+
+#employee-login-btn{
+    background-color: #000000;
+    color: #29db23;
+    border-top-color:#199515;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color:#199515;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: #199515;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: #199515;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: 0px;
+}
+
+/* #325886
+#447AB9
+#82A7D6
+#FEF265
+#FCE8A4
+#FEEED4 */
+
