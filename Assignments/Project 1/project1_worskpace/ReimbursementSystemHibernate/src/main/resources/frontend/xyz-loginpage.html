@@ -14,7 +14,7 @@
     <div>
         <br>
         <input type="text" id="usernameInput" placeholder="username">
-        <input type="text" id="passwordInput" placeholder="password">
+        <input type="password" id="passwordInput" placeholder="password">
 
         <button id="getPerson" onclick="getPerson()">Login</button>
     </div>
@@ -41,7 +41,7 @@
             };
 
             try {
-                const httpResponse = await fetch("http://localhost:7000/xyz", config);
+                const httpResponse = await fetch("http://localhost:7000/xyz/login", config);
                 let person = await httpResponse.json();
 
                 if (person.role === "mgr") {

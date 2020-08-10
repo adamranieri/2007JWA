@@ -1,8 +1,5 @@
-
-
 async function init() {
     emp = await JSON.parse(window.localStorage.getItem("emp"));
-    console.log(emp);
 
     document.getElementById("emp-name").innerHTML = `
     ${emp.firstName} &nbsp ${emp.lastName}`;
@@ -18,10 +15,6 @@ async function init() {
             judgedReqs.push(emp.reqs[x]);
     }
 
-    console.log(pendingReqs);
-    console.log(judgedReqs);
-
-
     //Here I print if there is non 0 array of reqs
 
     let tbHeader = `<tr>
@@ -36,7 +29,7 @@ async function init() {
 
     if (pendingReqs.length != 0) {
 
-        let tb= tbHeader;
+        let tb = tbHeader;
         for (let i = 0; i < pendingReqs.length; i++) {
             tb += `
         <tr id = "pendingRow">
@@ -72,7 +65,7 @@ async function init() {
 
     if (judgedReqs.length != 0) {
 
-        let tb=tbHeader;
+        let tb = tbHeader;
 
         for (let i = 0; i < judgedReqs.length; i++) {
             tb += `
@@ -92,52 +85,53 @@ async function init() {
 async function updateRequest(i) {
 
     //console.log(document.getElementById("drop-down").value);
-    document.getElementById(`updateRequestBtn_${pendingReqs[i].rrId}`).style.backgroundColor= "lightblue";
-    
-    pendingReqs[i].reimbursementStatus=document.getElementById(`dropDown_${pendingReqs[i].rrId}`).value;
-    pendingReqs[i].reason=document.getElementById(`theReason_${pendingReqs[i].rrId}`).value;
+    document.getElementById(`updateRequestBtn_${pendingReqs[i].rrId}`).style.backgroundColor = "lightblue";
+
+    pendingReqs[i].reimbursementStatus = document.getElementById(`dropDown_${pendingReqs[i].rrId}`).value;
+    pendingReqs[i].reason = document.getElementById(`theReason_${pendingReqs[i].rrId}`).value;
 
     //console.log(pendingReqs[i].reimbursementStatus);
 
-    if(pendingReqs[i].reimbursementStatus!=='PENDING'){
-        console.log(pendingReqs[i]);
-        //put
-        //get 
-        //update values
-        //call init to update the values 
+    if (pendingReqs[i].reimbursementStatus !== 'PENDING') {
 
-        const theRequest= pendingReqs[i];
+        const theRequest = pendingReqs[i];
 
         const configRequest = {
             method: "PUT",
-            headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+            headers: {
+                'Content-Type': 'application/json'
+            }, // you can use the headers properties to set headers
             body: JSON.stringify(theRequest)
         };
-    
-    
-        const httpResponse = await fetch("http://localhost:7000/manager/judgeRequest", configRequest);
+
+
+        const httpResponse = await fetch(`http://localhost:7000/manager/${emp.mgrId}/judgeRequest`
+        , configRequest);
         let empReturned = await httpResponse.json();
-        empReturned.mgrId=emp.mgrId;
+        empReturned.mgrId = emp.mgrId;
         window.localStorage.setItem("emp", JSON.stringify(empReturned));
 
-        
 
-        let theId={
-            mgrId : emp.mgrId};
+
+        let theId = {
+            mgrId: emp.mgrId
+        };
 
         const configMgr = {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' }, // you can use the headers properties to set headers
+            headers: {
+                'Content-Type': 'application/json'
+            }, // you can use the headers properties to set headers
             body: JSON.stringify(theId)
         };
 
-        const updatedMgrResponse = await fetch("http://localhost:7000/manager/getUpdatedManager", configMgr);
+        const updatedMgrResponse = await fetch(`http://localhost:7000/manager/${emp.mgrId}/getUpdatedManager`, configMgr);
         let mgrReturned = await updatedMgrResponse.json();
 
         window.localStorage.setItem("mgr", JSON.stringify(mgrReturned));
 
         window.location.reload();
-    
+
     }
 
 

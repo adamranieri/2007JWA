@@ -17,16 +17,16 @@ public class App {
 		}).start(7000);
 		
 		
-		app.post("/xyz", LogInPageController.getStaff);
+		app.post("/xyz/login", LogInPageController.getStaff);
 		
 
-		app.post("/employee/submitRequest", EmployeePageController.createRequest);
+		app.post("/employee/:id/submitRequest", EmployeePageController.createRequest);
 		
 
-		app.put("/manager/judgeRequest", ManagerPageController.updateRequest);
+		app.put("/manager/:id/judgeRequest", ManagerPageController.updateRequest);
 
 		
-		app.post("/manager/getUpdatedManager", ManagerPageController.getUpdatedManager);
+		app.post("/manager/:id/getUpdatedManager", ManagerPageController.getUpdatedManager);
 		
 	}
 }

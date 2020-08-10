@@ -25,8 +25,6 @@ public class LogInPageController {
 
 		Credentials c = gs.fromJson(ctx.body(), Credentials.class);
 
-		System.out.println(c.username + "  " + c.password);
-
 		Employee e = eServ.retrieveByUsernameAndPassword(c.username, c.password);
 		Manager m = null;
 
