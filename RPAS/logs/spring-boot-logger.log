@@ -83,3 +83,359 @@
 2020-08-13 12:09:40,096 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2020-08-13 12:09:40,148 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 52 ms
 2020-08-13 12:09:40,329 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-1] Total amount of http calls 1
+2020-08-13 14:14:10,890 INFO org.springframework.boot.StartupInfoLogger [main] Starting RpasApplication on Rev-AdamRanieri with PID 21620 (C:\Users\Administrator\Desktop\2007JWA\RPAS\target\classes started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:14:10,893 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:14:11,566 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:14:11,629 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 50ms. Found 2 JPA repository interfaces.
+2020-08-13 14:14:12,878 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-13 14:14:12,888 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-13 14:14:12,888 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-13 14:14:12,889 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-13 14:14:13,006 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-13 14:14:13,006 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2034 ms
+2020-08-13 14:14:13,409 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:14:13,960 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:14:14,033 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:14:14,121 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:14:14,349 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:14:14,570 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:14:15,637 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:14:15,651 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:14:16,520 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:14:17,242 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:14:17,945 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-13 14:14:17,984 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-13 14:14:17,998 INFO org.springframework.boot.StartupInfoLogger [main] Started RpasApplication in 7.686 seconds (JVM running for 8.233)
+2020-08-13 14:21:44,144 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:21:44,153 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:21:44,444 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:21:44,469 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7a35b0f5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5e2c3d18, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2cb4893b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@cc43f62, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5b218417, org.springframework.test.context.transaction.TransactionalTestExecutionListener@645aa696, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6caf0677, org.springframework.test.context.event.EventPublishingTestExecutionListener@413d1baf, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@16eb3ea3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@273444fe, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@33bc72d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1a75e76a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5524cca1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5032714f]
+2020-08-13 14:21:44,982 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 6788 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:21:44,985 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:21:45,678 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:21:45,754 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 63ms. Found 2 JPA repository interfaces.
+2020-08-13 14:21:47,563 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:21:47,963 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:21:48,042 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:21:48,106 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:21:48,176 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:21:48,345 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:21:48,968 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:21:48,976 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:21:50,206 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:21:51,102 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:21:52,136 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.591 seconds (JVM running for 9.004)
+2020-08-13 14:21:52,252 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:21:52,254 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:21:52,257 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:21:52,297 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:28:14,869 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:28:14,875 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:28:15,191 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:28:15,212 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@16eb3ea3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@273444fe, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@33bc72d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a75e76a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5524cca1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5032714f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@48bb62, org.springframework.test.context.event.EventPublishingTestExecutionListener@353352b6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4681c175, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@57a78e3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@402c4085, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6fa51cd4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2767e23c, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@710c2b53]
+2020-08-13 14:28:15,641 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 18100 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:28:15,642 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:28:16,306 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:28:16,377 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 60ms. Found 2 JPA repository interfaces.
+2020-08-13 14:28:18,326 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:28:18,702 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:28:18,803 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:28:18,888 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:28:18,947 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:28:19,130 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:28:19,778 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:28:19,787 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:28:21,010 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:28:22,059 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:28:23,126 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.846 seconds (JVM running for 9.254)
+2020-08-13 14:28:23,179 ERROR org.springframework.test.context.TestContextManager [main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a75e76a] to prepare test instance [dev.ranieri.controllermocks.AssoicateControllerTests@7ee02968]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dev.ranieri.controllermocks.AssoicateControllerTests': Unsatisfied dependency expressed through field 'mvc'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.servlet.MockMvc' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1420)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:392)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.servlet.MockMvc' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1717)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1273)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 69 common frames omitted
+2020-08-13 14:28:23,197 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:28:23,198 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:28:23,201 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:28:23,249 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:29:08,453 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:29:08,463 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:29:08,776 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:29:08,804 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@16eb3ea3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@273444fe, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@33bc72d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a75e76a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5524cca1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5032714f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@48bb62, org.springframework.test.context.event.EventPublishingTestExecutionListener@353352b6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4681c175, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@57a78e3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@402c4085, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6fa51cd4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2767e23c, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@710c2b53]
+2020-08-13 14:29:09,309 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 1276 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:29:09,311 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:29:10,022 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:29:10,097 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 61ms. Found 2 JPA repository interfaces.
+2020-08-13 14:29:11,787 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:29:12,224 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:29:12,289 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:29:12,358 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:29:12,425 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:29:12,587 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:29:13,270 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:29:13,278 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:29:14,528 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:29:15,355 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:29:16,350 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.453 seconds (JVM running for 8.871)
+2020-08-13 14:29:16,420 ERROR org.springframework.test.context.TestContextManager [main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a75e76a] to prepare test instance [dev.ranieri.controllermocks.AssoicateControllerTests@64a7ad02]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dev.ranieri.controllermocks.AssoicateControllerTests': Unsatisfied dependency expressed through field 'mvc'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.servlet.MockMvc' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1420)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:392)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:743)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.servlet.MockMvc' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1717)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1273)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 69 common frames omitted
+2020-08-13 14:29:16,447 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:29:16,449 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:29:16,451 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:29:16,503 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:31:48,368 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:31:48,377 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:31:48,716 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:31:48,734 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ae0a9ec, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@35841320, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@61c4eee0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f10d5b6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1040be71, org.springframework.test.context.transaction.TransactionalTestExecutionListener@548a24a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@433defed, org.springframework.test.context.event.EventPublishingTestExecutionListener@2a693f59, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f4faf53, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7fd50002, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@533bda92, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@304bb45b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@723ca036, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@25be7b63]
+2020-08-13 14:31:49,185 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 5648 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:31:49,187 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:31:49,869 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:31:49,966 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 84ms. Found 2 JPA repository interfaces.
+2020-08-13 14:31:51,907 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:31:52,337 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:31:52,443 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:31:52,509 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:31:52,569 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:31:52,813 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:31:53,462 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:31:53,470 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:31:54,828 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:31:55,709 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:31:56,776 INFO org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2020-08-13 14:31:56,777 INFO org.springframework.web.servlet.FrameworkServlet [main] Initializing Servlet ''
+2020-08-13 14:31:56,810 INFO org.springframework.web.servlet.FrameworkServlet [main] Completed initialization in 32 ms
+2020-08-13 14:31:56,834 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 8.038 seconds (JVM running for 9.452)
+2020-08-13 14:31:56,988 INFO dev.ranieri.aspects.LoggingAspect [main] Total amount of http calls 1
+2020-08-13 14:31:57,155 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:31:57,156 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:31:57,159 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:31:57,214 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:32:43,246 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:32:43,255 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:32:43,524 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:32:43,547 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ae0a9ec, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@35841320, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@61c4eee0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f10d5b6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1040be71, org.springframework.test.context.transaction.TransactionalTestExecutionListener@548a24a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@433defed, org.springframework.test.context.event.EventPublishingTestExecutionListener@2a693f59, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f4faf53, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7fd50002, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@533bda92, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@304bb45b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@723ca036, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@25be7b63]
+2020-08-13 14:32:44,009 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 13748 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:32:44,010 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:32:44,664 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:32:44,765 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 88ms. Found 2 JPA repository interfaces.
+2020-08-13 14:32:46,542 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:32:46,954 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:32:47,051 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:32:47,111 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:32:47,163 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:32:47,328 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:32:47,986 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:32:47,994 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:32:49,210 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:32:50,061 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:32:51,198 INFO org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2020-08-13 14:32:51,199 INFO org.springframework.web.servlet.FrameworkServlet [main] Initializing Servlet ''
+2020-08-13 14:32:51,244 INFO org.springframework.web.servlet.FrameworkServlet [main] Completed initialization in 44 ms
+2020-08-13 14:32:51,271 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.667 seconds (JVM running for 9.012)
+2020-08-13 14:32:51,424 INFO dev.ranieri.aspects.LoggingAspect [main] Total amount of http calls 1
+2020-08-13 14:32:51,563 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:32:51,566 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:32:51,570 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:32:51,613 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:35:17,074 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:35:17,085 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:35:17,361 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:35:17,384 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ae0a9ec, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@35841320, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@61c4eee0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f10d5b6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1040be71, org.springframework.test.context.transaction.TransactionalTestExecutionListener@548a24a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@433defed, org.springframework.test.context.event.EventPublishingTestExecutionListener@2a693f59, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f4faf53, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7fd50002, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@533bda92, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@304bb45b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@723ca036, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@25be7b63]
+2020-08-13 14:35:17,876 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 26284 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:35:17,877 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:35:18,666 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:35:18,745 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 64ms. Found 2 JPA repository interfaces.
+2020-08-13 14:35:20,435 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:35:20,818 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:35:20,889 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:35:20,950 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:35:21,001 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:35:21,156 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:35:21,817 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:35:21,824 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:35:23,117 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:35:24,018 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:35:25,118 INFO org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2020-08-13 14:35:25,119 INFO org.springframework.web.servlet.FrameworkServlet [main] Initializing Servlet ''
+2020-08-13 14:35:25,154 INFO org.springframework.web.servlet.FrameworkServlet [main] Completed initialization in 35 ms
+2020-08-13 14:35:25,183 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.741 seconds (JVM running for 9.169)
+2020-08-13 14:35:25,329 INFO dev.ranieri.aspects.LoggingAspect [main] Total amount of http calls 1
+2020-08-13 14:35:25,390 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:35:25,392 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:35:25,395 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:35:25,437 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-13 14:39:56,522 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [dev.ranieri.controllermocks.AssoicateControllerTests], using SpringBootContextLoader
+2020-08-13 14:39:56,536 INFO org.springframework.test.context.support.AbstractContextLoader [main] Could not detect default resource locations for test class [dev.ranieri.controllermocks.AssoicateControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-08-13 14:39:56,818 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-08-13 14:39:56,840 INFO org.springframework.test.context.support.AbstractTestContextBootstrapper [main] Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7ae0a9ec, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@35841320, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@61c4eee0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f10d5b6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1040be71, org.springframework.test.context.transaction.TransactionalTestExecutionListener@548a24a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@433defed, org.springframework.test.context.event.EventPublishingTestExecutionListener@2a693f59, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3f4faf53, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7fd50002, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@533bda92, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@304bb45b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@723ca036, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@25be7b63]
+2020-08-13 14:39:57,293 INFO org.springframework.boot.StartupInfoLogger [main] Starting AssoicateControllerTests on Rev-AdamRanieri with PID 9092 (started by Administrator in C:\Users\Administrator\Desktop\2007JWA\RPAS)
+2020-08-13 14:39:57,294 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 14:39:57,993 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 14:39:58,071 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 67ms. Found 2 JPA repository interfaces.
+2020-08-13 14:39:59,986 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 14:40:00,414 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 14:40:00,498 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 14:40:00,554 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 14:40:00,615 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 14:40:00,793 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 14:40:01,428 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 14:40:01,436 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:40:02,710 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 14:40:03,600 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:40:04,711 INFO org.springframework.mock.web.MockServletContext [main] Initializing Spring TestDispatcherServlet ''
+2020-08-13 14:40:04,712 INFO org.springframework.web.servlet.FrameworkServlet [main] Initializing Servlet ''
+2020-08-13 14:40:04,744 INFO org.springframework.web.servlet.FrameworkServlet [main] Completed initialization in 32 ms
+2020-08-13 14:40:04,764 INFO org.springframework.boot.StartupInfoLogger [main] Started AssoicateControllerTests in 7.871 seconds (JVM running for 9.276)
+2020-08-13 14:40:04,886 INFO dev.ranieri.aspects.LoggingAspect [main] Total amount of http calls 1
+2020-08-13 14:40:04,989 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 14:40:04,991 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 14:40:04,994 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-13 14:40:05,035 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
