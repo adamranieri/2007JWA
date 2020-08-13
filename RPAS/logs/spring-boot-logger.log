@@ -1,0 +1,85 @@
+2020-08-13 11:22:42,304 INFO org.springframework.boot.StartupInfoLogger [main] Starting RpasApplication on DESKTOP-L196VMO with PID 26404 (C:\Users\Michelle\eclipse-workspace\RPAS\target\classes started by Michelle in C:\Users\Michelle\eclipse-workspace\RPAS)
+2020-08-13 11:22:42,313 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 11:22:44,604 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 11:22:44,944 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 231ms. Found 2 JPA repository interfaces.
+2020-08-13 11:22:48,116 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-13 11:22:48,134 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-13 11:22:48,135 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-13 11:22:48,136 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-13 11:22:48,317 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-13 11:22:48,317 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 5564 ms
+2020-08-13 11:22:49,181 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 11:22:49,839 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 11:22:50,098 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 11:22:50,344 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 11:22:50,659 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 11:22:50,997 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 11:22:52,837 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 11:22:52,877 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 11:22:54,538 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 11:22:55,436 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 11:22:56,194 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-13 11:22:56,244 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-13 11:22:56,265 INFO org.springframework.boot.StartupInfoLogger [main] Started RpasApplication in 15.111 seconds (JVM running for 17.368)
+2020-08-13 11:23:03,817 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-13 11:23:03,819 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-08-13 11:23:03,891 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 71 ms
+2020-08-13 11:23:04,086 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-1] Calls made to app1
+2020-08-13 11:23:06,300 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-2] Calls made to app2
+2020-08-13 11:43:43,810 INFO org.springframework.boot.StartupInfoLogger [main] Starting RpasApplication on DESKTOP-L196VMO with PID 14232 (C:\Users\Michelle\eclipse-workspace\RPAS\target\classes started by Michelle in C:\Users\Michelle\eclipse-workspace\RPAS)
+2020-08-13 11:43:43,814 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 11:43:44,752 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 11:43:44,863 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 91ms. Found 2 JPA repository interfaces.
+2020-08-13 11:43:47,236 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-13 11:43:47,260 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-13 11:43:47,263 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-13 11:43:47,264 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-13 11:43:47,415 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-13 11:43:47,416 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3478 ms
+2020-08-13 11:43:48,181 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 11:43:48,665 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 11:43:48,738 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 11:43:48,827 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 11:43:49,058 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 11:43:49,294 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 11:43:50,401 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 11:43:50,416 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 11:43:51,581 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 11:43:52,649 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 11:43:53,465 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-13 11:43:53,504 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-13 11:43:53,525 INFO org.springframework.boot.StartupInfoLogger [main] Started RpasApplication in 10.408 seconds (JVM running for 11.381)
+2020-08-13 11:44:10,321 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-13 11:44:10,322 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-08-13 11:44:10,344 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 21 ms
+2020-08-13 11:44:10,401 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-1] Total amount of http calls 1
+2020-08-13 11:44:18,715 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-4] Total amount of http calls 2
+2020-08-13 11:44:19,642 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-2] Total amount of http calls 3
+2020-08-13 11:44:20,593 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-5] Total amount of http calls 4
+2020-08-13 12:08:03,202 INFO org.springframework.boot.StartupInfoLogger [main] Starting RpasApplication on DESKTOP-L196VMO with PID 28668 (C:\Users\Michelle\eclipse-workspace\RPAS\target\classes started by Michelle in C:\Users\Michelle\eclipse-workspace\RPAS)
+2020-08-13 12:08:03,211 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-13 12:08:04,766 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-08-13 12:08:04,920 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 125ms. Found 2 JPA repository interfaces.
+2020-08-13 12:08:07,947 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-13 12:08:07,982 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-13 12:08:07,983 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-13 12:08:07,984 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-13 12:08:08,229 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-13 12:08:08,230 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4875 ms
+2020-08-13 12:08:08,788 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-13 12:08:09,364 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-13 12:08:09,515 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-13 12:08:09,627 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-08-13 12:08:10,111 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-13 12:08:10,385 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2020-08-13 12:08:12,454 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-13 12:08:12,477 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-13 12:08:13,818 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-13 12:08:14,860 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-13 12:08:16,141 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-13 12:08:18,199 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-13 12:08:18,216 INFO org.springframework.boot.StartupInfoLogger [main] Started RpasApplication in 15.866 seconds (JVM running for 17.004)
+2020-08-13 12:09:40,095 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-13 12:09:40,096 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-08-13 12:09:40,148 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 52 ms
+2020-08-13 12:09:40,329 INFO dev.ranieri.aspects.LoggingAspect [http-nio-8080-exec-1] Total amount of http calls 1

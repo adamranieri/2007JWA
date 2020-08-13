@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.ranieri.aspects.Authorized;
 import dev.ranieri.entities.Associate;
 import dev.ranieri.entities.Trainer;
 import dev.ranieri.services.AssociateService;
@@ -19,6 +21,7 @@ import dev.ranieri.services.AssociateService;
 @RestController // @ RestController says that all methods in the controller return string
 // ie they do not return views be default which is @controller default
 // You do not have to put @ResponseBody on each method
+@CrossOrigin("*") //enable cors anywhere
 public class AssociateController {
 	
 	@Autowired
@@ -34,6 +37,7 @@ public class AssociateController {
 		return this.as.getAllAssociates();
 	}
 	
+	@Authorized
 	@RequestMapping(value = "/associates", method = RequestMethod.POST)
 	public Associate createAssociate(@RequestBody Associate associate) {
 		return this.as.createAssociate(associate);
@@ -45,17 +49,20 @@ public class AssociateController {
 	}
 	
 	// Two ways of update endpoints
+	@Authorized
 	@RequestMapping(value = "/associates", method = RequestMethod.PUT)
 	public Associate updateAssociate(@RequestBody Associate associate) {
 		return this.as.updateAssociate(associate);
 	}
 	
+	@Authorized
 	@RequestMapping(value = "/associates/{id}", method = RequestMethod.PUT)
 	public Associate updateAssociateId(@RequestBody Associate associate, @PathVariable int id) {
 		associate.setaId(id);
 		return this.as.updateAssociate(associate);
 	}
 	
+	@Authorized
 	@RequestMapping(value = "/associates/{id}", method = RequestMethod.DELETE)
 	public Boolean deleteAssociate(@PathVariable int id) { // Spring does not like returning primitives. Use wrapper classes
 		Associate a = this.as.getAssociateById(id);
