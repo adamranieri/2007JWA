@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pawnee Reimbursement</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body onload="getAllReimbursements()">
+    <div id="table_container">
+    <input type="text" id="my_input" onkeyup="search()" placeholder="Search">
+
+    <button id="add_reim_btn" onclick="openReimModal()">Add Reimbursement</button>
+        <table id="reim_table">
+            <tr>
+                <th id="item_head"><button id="item_btn" onclick="sortItem()"></button><b>Item</b></th>
+                <th id="status_head"><button id="status_btn" onclick="sortStatus()"></button><b>Status</b></th>
+                <th id="category_head"><button id="category_btn" onclick="sortCategory()"></button><b>Category</b></th>
+                <th id="amount_head"><button id="amount_btn" onclick="sortAmount()"></button><b>Amount</b></th>
+                <th id="employee_head"><button id="employee_btn" onclick="sortEmployee()"></button><b>Employee</b></th>
+                <th id="note_head"><button id="note_btn" onclick="sortNote()"></button><b>Note</b></th>
+                <th id="date_head"><button id="date_btn" onclick="sortDate()"></button><b>Date Submitted</b></th>
+            </tr>
+        </table>
+
+        <div id="submit_modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeReimModal()">&times</span>
+                <h1 id="reim_header">Reimbursement Form</h1>
+                <table>
+                    <tr id="reim_form">
+                        <td><input id="item_field" type="text" placeholder="Item" required=""></td>
+                        <td><input id="status_field" type="text" placeholder="Status"></td>
+                        <td><input id="category_field" type="text" placeholder="Category"></td>
+                        <td><input id="amount_field" type="text" placeholder="Amount"></td>
+                    </tr>
+                    <tr id="reim_form">
+                        <td><input id="employee_name_field" type="text" placeholder="First and Last Name"></td>
+                        <td><input id="employee_id_field" type="text" placeholder="Employee Id"></td>
+                        <td><input id="note_field" type="text" placeholder="Note"></td>
+                        <td><input id="date_field" type="text" placeholder="Date Subtmitted"></td>
+                    </tr>
+                </table>
+                
+                <input type="submit" id="submit_reim_btn" onclick="submitReimbursement()" value="Submit Reimbursement">
+                
+            </div>
+        </div>
+            
+
+    
+    </div>
+</body>
+<script src="functions.js"></script>
+</html>

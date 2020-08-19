@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mariadb://txpracticedb.cag43v6yiq7g.us-east-2.rds.amazonaws.com:3306/project_one_db</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+		<property name="hibernate.connection.username">mark</property>
+		<property name="hibernate.connection.password">Nothanks4me!</property>
+
+		<!-- <property name="hibernate.hbm2ddl.auto">create-drop</property>  -->
+		<!-- create-drop mode will automatically drop and re-create your tables whenever you create a session factory
+			this is a testing / development feature, NEVER have this in a completed project -->
+		<property name="hibernate.show_sql">true</property>
+
+		<mapping class = "dev.nauman.entities.Employee"></mapping>
+		<mapping class = "dev.nauman.entities.Manager"></mapping>
+		<mapping class = "dev.nauman.entities.Reimbursement"></mapping>
+		
+	</session-factory>
+
+</hibernate-configuration>
